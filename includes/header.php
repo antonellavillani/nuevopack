@@ -1,3 +1,17 @@
+<?php
+require_once 'config/config.php';
+
+// Consulta para obtener los nombres de los productos
+try {
+    $query = "SELECT nombre FROM producto";
+    $stmt = $conn->prepare($query);
+    $stmt->execute();
+    $productos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    echo "Error al obtener los productos: " . $e->getMessage();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -36,11 +50,12 @@
                 <div class="productos-dropdown">
                     <button class="dropbtn">Productos</button>
                     <div class="dropdown-content">
-                        <a href="#">Producto 1</a>
-                        <a href="#">Producto 2</a>
-                        <a href="#">Producto 3</a>
-                        <a href="#">Producto 4</a>
-                        <a href="#">Producto 5</a>
+                    <?php
+                        // Mostrar cada producto en el menú desplegable
+                        foreach ($productos as $producto) {
+                            echo "<a href='#'>" . htmlspecialchars($producto['nombre']) . "</a>";
+                        }
+                        ?>
                     </div>
                 </div>
 
