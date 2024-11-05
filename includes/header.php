@@ -1,12 +1,19 @@
 <?php
+// Incluir el archivo de configuración de la base de datos
 require_once 'config/config.php';
+
+// Verificar si la conexión a la base de datos está configurada
+if (!isset($conn)) {
+    die("Error: La conexión a la base de datos no está configurada.");
+}
 
 // Consulta para obtener los nombres de los productos
 try {
-    $query = "SELECT nombre FROM producto";
+    $query = "SELECT idProducto, nombre FROM producto";
     $stmt = $conn->prepare($query);
     $stmt->execute();
     $productos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 } catch (PDOException $e) {
     echo "Error al obtener los productos: " . $e->getMessage();
 }
@@ -50,10 +57,16 @@ try {
                 <div class="productos-dropdown">
                     <button class="dropbtn">Productos</button>
                     <div class="dropdown-content">
-                    <?php
-                        // Mostrar cada producto en el menú desplegable
-                        foreach ($productos as $producto) {
-                            echo "<a href='#'>" . htmlspecialchars($producto['nombre']) . "</a>";
+                        <?php
+                        // Mostrar cada producto en el menú desplegable con enlace a ficha_producto.php
+                        if (!empty($productos)) {
+                            foreach ($productos as $producto) {
+                                $nombreProducto = htmlspecialchars($producto['nombre']);
+                                $idProducto = htmlspecialchars($producto['idProducto']);
+                                echo "<a href='ficha_producto.php?idProducto=$idProducto'>$nombreProducto</a>";
+                            }
+                        } else {
+                            echo "<p>No hay productos disponibles.</p>";
                         }
                         ?>
                     </div>
