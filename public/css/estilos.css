@@ -333,7 +333,7 @@ footer {
 
 .nombre-producto {
     font-size: 2em;
-    margin-bottom: 20px;
+    margin-top: 20px;
     color: #6A7348;
 }
 
@@ -350,13 +350,57 @@ footer {
     object-fit: cover;
 }
 
+/* Estilos para la calculadora de precios */
 .calculadora-precio {
-    background-color: #f4f4f4;
+    background-color: #f8f8f8;
     padding: 20px;
     border-radius: 8px;
-    width: 100%;
-    text-align: center;
 }
+
+.calculadora-precio h2,
+.resultado-precio h3 {
+    color: #0D0D0D;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+select, input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.btn-calcular {
+    background-color: #6A7348;
+    color: #ffffff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+}
+
+.btn-calcular:hover {
+    background-color: #888f55; /* Color al pasar el mouse por el botón */
+}
+
+.resultado {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 1.2em;
+    color: #333;
+}
+
 
 .descripcion-y-pagos {
     display: flex;
@@ -431,4 +475,41 @@ footer {
     width: 100%;
     height: auto;
     object-fit: cover;
+}
+
+#calculadora-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#calculadora-form label,
+#calculadora-form input,
+#calculadora-form select,
+#calculadora-form button {
+    font-size: 16px;
+}
+
+#calculadora-form button {
+    background-color: #6A7348;
+    color: #ffffff;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#calculadora-form button:hover {
+    background-color: #888f55;
+}
+
+/* Estilo para alinear las casillas y etiquetas de servicio */
+.opcion-servicio {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.opcion-servicio input[type="checkbox"] {
+    margin-right: 8px; /* Espacio entre la casilla y el texto */
 }

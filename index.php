@@ -73,8 +73,8 @@
 </main>
 
 <?php
-    // Incluir el footer
-    include('includes/footer.php');
+// Incluir el footer
+include('includes/footer.php');
 ?>
 
 <!-- JavaScript -->
