@@ -5,15 +5,15 @@ include('includes/header.php');
 // Incluir el archivo de configuración de la base de datos
 require_once('config/config.php');
 
-// Obtener el ID del producto de la URL (a través del método GET)
-$idProducto = $_GET['idProducto'] ?? '';
+// Obtener el ID del servicio de la URL (a través del método GET)
+$idServicio = $_GET['idServicio'] ?? '';
 
-// Consulta para obtener la información del producto
-$query = "SELECT * FROM producto WHERE idProducto = :idProducto";
+// Consulta para obtener la información del servicio
+$query = "SELECT * FROM servicio WHERE idServicio = :idServicio";
 $stmt = $conn->prepare($query);
-$stmt->bindParam(':idProducto', $idProducto, PDO::PARAM_INT);
+$stmt->bindParam(':idServicio', $idServicio, PDO::PARAM_INT);
 $stmt->execute();
-$producto = $stmt->fetch(PDO::FETCH_ASSOC);
+$servicio = $stmt->fetch(PDO::FETCH_ASSOC);
 
 // Consulta para obtener la tabla de precios
 $queryPrecios = "SELECT * FROM precios";
@@ -98,7 +98,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Si hay errores, redirigir con los errores
     if (count($errores) > 0) {
         $erroresStr = urlencode(implode(', ', $errores));
-        header("Location: ficha_producto.php?idProducto={$idProducto}&errores={$erroresStr}");
+        header("Location: ficha_producto.php?idServicio={$idServicio}&errores={$erroresStr}");
         exit;
     }
 }
@@ -106,19 +106,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <body>
 <div class="contenedor-ficha-producto">
-    <!-- Nombre del producto -->
-    <h1 class="nombre-producto"><?= htmlspecialchars($producto['nombre'] ?? 'Producto no encontrado') ?></h1>
+    <!-- Nombre del servicio -->
+    <h1 class="nombre-producto"><?= htmlspecialchars($servicio['nombre'] ?? 'Servicio no encontrado') ?></h1>
 
-    <!-- Imagen del producto y calculadora de precios -->
+    <!-- Imagen del servicio y calculadora de precios -->
     <div class="producto-imagen-calculadora">
         <div class="imagen-producto">
-            <img src="<?= htmlspecialchars($producto['fotoProducto'] ?? 'foto_producto_null.jpg') ?>" alt="<?= htmlspecialchars($producto['nombre'] ?? 'Producto') ?>">
+            <img src="<?= htmlspecialchars($servicio['foto'] ?? 'foto_producto_null.jpg') ?>" alt="<?= htmlspecialchars($servicio['nombre'] ?? 'Servicio') ?>">
         </div>
 
         <div class="calculadora-precio">
             <h2 class="nombre-producto">Calculadora de Precios</h2>
                 <!-- Formulario de la calculadora -->
-                <form id="calculadora-form" method="POST" action="ficha_producto.php?idProducto=<?= htmlspecialchars($idProducto) ?>">
+                <form id="calculadora-form" method="POST" action="ficha_producto.php?idServicio=<?= htmlspecialchars($idServicio) ?>">
 
                 <!-- Cantidad de pliegos -->
                 <label for="cantidadPliegos">Cantidad de Pliegos:</label>
@@ -181,11 +181,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
     </div>
 
-    <!-- Descripción del producto y medios de pago -->
+    <!-- Descripción del servicio y medios de pago -->
     <div class="descripcion-y-pagos">
         <div class="descripcion-producto">
             <h3>Descripción</h3>
-            <p><?= htmlspecialchars($producto['descripcion'] ?? 'Descripción no disponible.') ?></p>
+            <p><?= htmlspecialchars($servicio['descripcion'] ?? 'Descripción no disponible.') ?></p>
         </div>
         <div class="medios-pago">
             <h3>Medios de Pago</h3>

@@ -9,13 +9,13 @@ if (!isset($conn)) {
 
 // Consulta para obtener los nombres de los productos
 try {
-    $query = "SELECT idProducto, nombre FROM producto";
+    $query = "SELECT idServicio, nombre FROM servicio";
     $stmt = $conn->prepare($query);
     $stmt->execute();
-    $productos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $servicios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 } catch (PDOException $e) {
-    echo "Error al obtener los productos: " . $e->getMessage();
+    echo "Error al obtener los servicios: " . $e->getMessage();
 }
 ?>
 
@@ -53,17 +53,17 @@ try {
 
             <!-- Menú de navegación -->
             <nav class="menu">
-                <!-- Productos -->
+                <!-- Servicios -->
                 <div class="productos-dropdown">
-                    <button class="dropbtn">Productos</button>
+                    <button class="dropbtn">Servicios</button>
                     <div class="dropdown-content">
                         <?php
-                        // Mostrar cada producto en el menú desplegable con enlace a ficha_producto.php
-                        if (!empty($productos)) {
-                            foreach ($productos as $producto) {
-                                $nombreProducto = htmlspecialchars($producto['nombre']);
-                                $idProducto = htmlspecialchars($producto['idProducto']);
-                                echo "<a href='ficha_producto.php?idProducto=$idProducto'>$nombreProducto</a>";
+                        // Mostrar cada servicio en el menú desplegable con enlace a ficha_producto.php
+                        if (!empty($servicios)) {
+                            foreach ($servicios as $servicio) {
+                                $nombreServicio = htmlspecialchars($servicio['nombre']);
+                                $idServicio = htmlspecialchars($servicio['idServicio']);
+                                echo "<a href='ficha_producto.php?idServicio=$idServicio'>$nombreServicio</a>";
                             }
                         } else {
                             echo "<p>No hay productos disponibles.</p>";
@@ -77,11 +77,6 @@ try {
 
                 <!-- Contáctanos -->
                 <a href="contacto.php" class="menu-btn">Contáctanos</a>
-
-                <!-- Ícono de carrito -->
-                <a href="carrito.php" class="icon-btn">
-                    <span class="material-icons">shopping_cart</span>
-                </a>
 
                 <!-- Ícono de cuenta -->
                 <a href="login.php" class="icon-btn">
