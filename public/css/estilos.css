@@ -513,3 +513,28 @@ select, input[type="number"] {
 .opcion-servicio input[type="checkbox"] {
     margin-right: 8px; /* Espacio entre la casilla y el texto */
 }
+
+/* ---------------------------------------
+   Estilos para página Contactanos
+--------------------------------------- */
+.contact-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
+
+.formulario-contacto, .info-contacto {
+    flex: 1;
+    min-width: 300px;
+}
+
+#mapa iframe {
+    border-radius: 10px;
+}
+
+.contact-info {
+    margin-top: 10px;
+    font-size: 16px;
+}
