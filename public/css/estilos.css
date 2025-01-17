@@ -12,18 +12,21 @@ body {
     background-color: #F2F2F2; /* Fondo de la página */
     color: #0D0D0D; /* Color del texto */
     line-height: 1.6;
+    font-size: 14px;
 }
 
 /* Encabezados, títulos y botones */
 h1, h2, h3, h4, h5, h6, .header-logo, .nav-item a, .footer-section h4 {
     font-family: 'Poppins', sans-serif;
     font-weight: 700; /* Negrita */
+    /*font-size: calc(1em - 0.2em);*/
 }
 
 /* Textos en general (párrafos, descripciones, etc.) */
 p, .footer-text, .search-bar, .footer-section p {
     font-family: 'Roboto', sans-serif;
-    font-weight: 400; /* Peso normal para mejor lectura */
+    font-weight: 400;
+    font-size: 0.9em;
 }
 
 #nuevopack{
@@ -35,7 +38,7 @@ p, .footer-text, .search-bar, .footer-section p {
 --------------------------------------- */
 header {
     background-color: #6A7348; /* Color de fondo del header */
-    padding: 10px 0;
+    padding: 8px 0;
     color: #F2F2F2;
 }
 
@@ -61,7 +64,7 @@ header .nuevoPack {
     align-items: center;
     color: #ffffff; /* Color del texto del logo */
     text-decoration: none;
-    font-size: 24px; /* Tamaño de la fuente del texto NuevoPack */
+    font-size: 20px; /* Tamaño de la fuente del texto NuevoPack */
 }
 
 .logo img {
@@ -72,19 +75,20 @@ header .nuevoPack {
    Barra de Búsqueda
 --------------------------------------- */
 .barra-busqueda input {
-    padding: 8px;
+    padding: 6px;
     border-radius: 5px;
     border: none;
-    width: 200px; /* Ancho del campo de búsqueda */
+    width: 180px; /* Ancho del campo de búsqueda */
 }
 
 .barra-busqueda button {
     background-color: #B5BF69; /* Color de fondo del botón de búsqueda  */
     color: #ffffff; /* Color del texto del botón */
-    padding: 8px 12px;
+    padding: 6px 10px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 0.9em;
 }
 
 .barra-busqueda button:hover {
@@ -103,7 +107,7 @@ header .nuevoPack {
     margin-left: 15px;
     text-decoration: none;
     color: #ffffff; /* Color de los enlaces del menú */
-    padding: 8px;
+    padding: 6px;
 }
 
 .menu a:hover {
@@ -122,8 +126,8 @@ header .nuevoPack {
 .dropbtn {
     background-color: #B5BF69; /* Color de fondo del botón Productos */
     color: #ffffff; /* Color del texto del botón */
-    padding: 10px;
-    font-size: 16px;
+    padding: 8px;
+    font-size: 14px;
     border: none;
     cursor: pointer;
     border-radius: 5px;
@@ -140,9 +144,10 @@ header .nuevoPack {
 
 .dropdown-content a {
     color: #ffffff; /* Color de los enlaces dentro del dropdown */
-    padding: 12px 16px;
+    padding: 10px 14px;
     text-decoration: none;
     display: block;
+    font-size: 0.9em;
 }
 
 .dropdown-content a:hover {
@@ -151,23 +156,6 @@ header .nuevoPack {
 
 .productos-dropdown:hover .dropdown-content {
     display: block; /* Mostrar el dropdown al pasar el mouse */
-}
-
-/* ---------------------------------------
-   Estilos para Íconos de Carrito y Cuenta (Material Design)
---------------------------------------- */
-.icon-btn {
-    margin-left: 15px;
-    padding: 8px;
-}
-
-.icon-btn .material-icons {
-    font-size: 24px; /* Tamaño de los íconos */
-    color: #ffffff; /* Color de los íconos */
-}
-
-.icon-btn:hover .material-icons {
-    color: #ffffff; /* Cambiar color al hacer hover */
 }
 
 /* ---------------------------------------
@@ -192,13 +180,14 @@ footer {
 }
 
 .footer-content h4 {
-    font-size: 1.2em;
+    font-size: 1em;
     margin-bottom: 10px;
 }
 
 .footer-content a {
-    color: #F2F2F2; /* Color de los enlaces en el footer */
+    color: #F2F2F2;
     text-decoration: none;
+    font-size: 0.9em;
 }
 
 .footer-content a:hover {
@@ -208,16 +197,19 @@ footer {
 
 .footer-bottom {
     padding: 15px 0;
-    background-color: #c663a1; /* Color del footer bottom */
+    background-color: #c663a1;
     color: #ffffff;
 }
 
-/* Estilos para el carrusel */
+/* ---------------------------------------
+   Carrusel
+--------------------------------------- */
+
 .carousel {
     position: relative;
     max-width: 100%;
     margin: 20px auto; 
-    height: 400px; 
+    height: 300px; 
     overflow: hidden;
 }
 .carousel-container {
@@ -234,6 +226,7 @@ footer {
     position: relative;
     transition: transform 0.5s ease;
 }
+
 .carousel-slide img {
     width: 100%;
     height: auto;
@@ -247,6 +240,7 @@ footer {
     background: rgba(0, 0, 0, 0.5);
     padding: 10px;
     border-radius: 5px;
+    font-size: 0.9em;
 }
 .prev, .next {
     cursor: pointer;
@@ -254,7 +248,7 @@ footer {
     top: 50%;
     transform: translateY(-50%);
     color: white;
-    font-size: 24px;
+    font-size: 20px;
     padding: 16px;
     user-select: none;
 }
@@ -277,20 +271,22 @@ footer {
 }
 .article-container article {
     background: #f4f4f4;
-    padding: 20px;
-    width: 45%;
+    padding: 15px;
+    width: 40%;
     border-radius: 5px;
 }
 .article-container article h3 {
     font-family: 'Poppins', sans-serif;
+    font-size: 1.2em;
 }
 
 /* Estilos para el rectángulo informativo */
 .important-info {
     background: #fff5b1; /* Rectángulo informativo */
-    padding: 30px;
+    padding: 20px;
     margin: 20px 0;
     text-align: center;
+    font-size: 0.9em;
 }
 .info-box {
     max-width: 800px;
@@ -309,14 +305,14 @@ footer {
 .product-gallery {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    gap: 15px;
     margin-top: 20px;
 }
 .product-item img {
     width: 100%;
     height: auto;
     object-fit: cover;
-    border-radius: 5px;
+    border-radius: 4px;
 }
 
 /* ---------------------------------------
@@ -332,7 +328,7 @@ footer {
 }
 
 .nombre-producto {
-    font-size: 2em;
+    font-size: 1.8em;
     margin-top: 20px;
     color: #6A7348;
 }
@@ -344,7 +340,7 @@ footer {
 }
 
 .imagen-producto img {
-    width: 400px;
+    width: 350px;
     height: auto;
     border-radius: 8px;
     object-fit: cover;
@@ -353,7 +349,7 @@ footer {
 /* Estilos para la calculadora de precios */
 .calculadora-precio {
     background-color: #f8f8f8;
-    padding: 20px;
+    padding: 15px;
     border-radius: 8px;
 }
 
@@ -382,12 +378,12 @@ select, input[type="number"] {
 .btn-calcular {
     background-color: #6A7348;
     color: #ffffff;
-    padding: 10px;
+    padding: 8px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     width: 100%;
-    font-size: 16px;
+    font-size: 0.9em;
 }
 
 .btn-calcular:hover {
@@ -404,13 +400,13 @@ select, input[type="number"] {
 
 .descripcion-y-pagos {
     display: flex;
-    gap: 20px;
+    gap: 15px;
     margin-top: 20px;
 }
 
 .descripcion-producto, .medios-pago {
     background-color: #f4f4f4;
-    padding: 20px;
+    padding: 15px;
     border-radius: 8px;
     width: 100%;
 }
@@ -445,7 +441,7 @@ select, input[type="number"] {
 }
 
 .formulario-contacto input, .formulario-contacto textarea {
-    padding: 10px;
+    padding: 8px;
     border-radius: 5px;
     border: 1px solid #ccc;
     width: 100%;
@@ -454,10 +450,11 @@ select, input[type="number"] {
 .formulario-contacto button {
     background-color: #6A7348;
     color: white;
-    padding: 10px;
+    padding: 8px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 0.9em;
 }
 
 .formulario-contacto button:hover {
@@ -472,7 +469,7 @@ select, input[type="number"] {
 
 /* Ajuste para la imagen dentro de su contenedor */
 .producto-imagen-calculadora .imagen-producto img {
-    width: 100%;
+    width: 90%;
     height: auto;
     object-fit: cover;
 }
@@ -514,6 +511,24 @@ select, input[type="number"] {
     margin-right: 8px; /* Espacio entre la casilla y el texto */
 }
 
+.mensaje {
+    padding: 8px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 0.85em;
+}
+
+.mensaje.exito {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+.mensaje.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
 /* ---------------------------------------
    Estilos para página Contactanos
 --------------------------------------- */
@@ -537,4 +552,181 @@ select, input[type="number"] {
 .contact-info {
     margin-top: 10px;
     font-size: 16px;
+}
+
+/* ---------------------------------------
+   Página "Quiénes Somos"
+--------------------------------------- */
+
+/* Espaciado entre secciones */
+.seccion {
+    margin-bottom: 40px;
+}
+
+/* Título Principal y Subtítulo */
+.titulo-principal {
+    font-size: 2.5em;
+    font-weight: 700;
+    color: #6A7348;
+    margin: 20px 0;
+}
+
+.subtitulo {
+    font-size: 1.5em;
+    color: #888f55;
+    margin-bottom: 30px;
+}
+
+/* Sección: Nuestra Historia */
+.nuestra-historia {
+    margin: 40px auto;
+    max-width: 1200px;
+    text-align: center;
+}
+
+.nuestra-historia p {
+    font-size: 1em;
+    line-height: 1.8;
+    color: #0D0D0D;
+}
+
+.imagen-historia {
+    margin-top: 20px;
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+/* Misión, Visión y Valores */
+.mision-vision-valores {
+    background-color: #F9F9F9;
+    padding: 40px 20px;
+    border-radius: 10px;
+}
+
+.mision, .vision, .valores {
+    margin-bottom: 20px;
+}
+
+.mision h3, .vision h3, .valores h3 {
+    font-size: 1.5em;
+    color: #6A7348;
+    margin-bottom: 10px;
+}
+
+.mision p, .vision p, .valores ul {
+    font-size: 1em;
+    color: #333333;
+    line-height: 1.6;
+}
+
+.valores ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.valores li {
+    margin-bottom: 10px;
+    padding-left: 15px;
+    position: relative;
+}
+
+.valores li::before {
+    content: "✔️";
+    position: absolute;
+    left: 0;
+    color: #6A7348;
+}
+
+/* Nuestro Equipo */
+.nuestro-equipo {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.nuestro-equipo p {
+    font-size: 1em;
+    line-height: 1.8;
+    color: #0D0D0D;
+}
+
+.imagen-equipo {
+    margin-top: 20px;
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+/* Logros y Datos Clave */
+.logros-datos {
+    background-color: #F4F4F4;
+    padding: 30px 20px;
+    border-radius: 10px;
+}
+
+.logros-datos ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: left;
+}
+
+.logros-datos li {
+    margin-bottom: 10px;
+    font-size: 1em;
+    line-height: 1.6;
+    position: relative;
+    padding-left: 25px;
+}
+
+.logros-datos li::before {
+    content: "🎯";
+    position: absolute;
+    left: 0;
+    color: #6A7348;
+    font-size: 1.2em;
+}
+
+/* Nuestro Compromiso con la Sostenibilidad */
+.sostenibilidad {
+    background-color: #EAF8E8;
+    padding: 30px 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.sostenibilidad p {
+    font-size: 1em;
+    line-height: 1.8;
+    color: #333333;
+}
+
+/* Cierre Inspirador */
+.cierre {
+    text-align: center;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.cierre p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    color: #6A7348;
+}
+
+.botones {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.botones .btn {
+    background-color: #6A7348;
+    color: #ffffff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.botones .btn:hover {
+    background-color: #888f55;
 }

@@ -9,21 +9,21 @@
     <section class="carousel">
         <div class="carousel-container" id="carouselContainer">
             <div class="carousel-slide">
-                <img src="public/img/foto_carrusel_1.jpg" alt="Imagen 1">
+                <img src="public/img/foto_carrusel_1.png" alt="Imagen 1">
                 <div class="carousel-text">
                     <h2>Título 1</h2>
                     <p>Este es un breve párrafo de ejemplo para la imagen 1.</p>
                 </div>
             </div>
             <div class="carousel-slide">
-                <img src="public/img/foto_carrusel_2.jpg" alt="Imagen 2">
+                <img src="public/img/foto_carrusel_2.png" alt="Imagen 2">
                 <div class="carousel-text">
                     <h2>Título 2</h2>
                     <p>Este es un breve párrafo de ejemplo para la imagen 2.</p>
                 </div>
             </div>
             <div class="carousel-slide">
-                <img src="public/img/foto_carrusel_3.jpg" alt="Imagen 3">
+                <img src="public/img/foto_carrusel_3.png" alt="Imagen 3">
                 <div class="carousel-text">
                     <h2>Título 3</h2>
                     <p>Este es un breve párrafo de ejemplo para la imagen 3.</p>

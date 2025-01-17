@@ -200,26 +200,37 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     <!-- Formulario de contacto -->
     <div class="formulario-contacto">
-        <h3>Contacto</h3>
-        <form action="#" method="post" id="form-contacto">
-            <label for="nombre">Nombre:</label>
+
+        <h3 class="nombre-producto">Contacto</h3>
+
+        <form id="form-contacto" method="POST">
+            <label for="nombre">Indícanos tu nombre:</label>
             <input type="text" id="nombre" name="nombre" required>
             
-            <label for="email">Email:</label>
+            <label for="email">Tu email:</label>
             <input type="email" id="email" name="email" required>
             
-            <label for="mensaje">Mensaje:</label>
+            <label for="mensaje">Tu consulta:</label>
             <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
             
             <button type="submit">Enviar Consulta</button>
         </form>
+
     </div>
+
 </div>
 
-<!-- JavaScript -->
-<script src="public/js/script.js" defer></script>
+<!-- Mensaje flotante -->
+<div id="mensaje-flotante" style="display:none;">
+    <p id="mensaje-texto"></p>
+</div>
 
 <?php
 // Incluir el footer
 include('includes/footer.php');
 ?>
+
+</body>
+
+<!-- JavaScript -->
+<script src="public/js/script.js" defer></script>
