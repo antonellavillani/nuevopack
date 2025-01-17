@@ -71,8 +71,7 @@ include('includes/header.php');
         <section class="cierre">
             <p>En NuevoPack, no solo imprimimos, hacemos realidad tus ideas. Queremos ser tu socio de confianza en cada proyecto, grande o pequeño. ¡Contáctanos hoy y descubre cómo podemos ayudarte a crear algo extraordinario!</p>
             <div class="botones">
-                <a href="contacto.html" class="btn">Contáctanos</a>
-                <a href="catalogo.html" class="btn">Conoce nuestros productos</a>
+                <a href="contacto.php" class="btn">Contáctanos</a>
             </div>
         </section>
 
