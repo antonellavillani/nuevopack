@@ -75,44 +75,12 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// PROCESAMIENTO DE CORREOS ELECTRÓNICOS ENVIADOS POR FORMULARIOS  
-// Esperar a que el documento esté listo
-document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('form-contacto');
-    const mensajeFlotante = document.getElementById('mensaje-flotante');
-    const mensajeTexto = document.getElementById('mensaje-texto');
-
-    form.addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        const nombre = document.getElementById('nombre').value;
-        const email = document.getElementById('email').value;
-        const mensaje = document.getElementById('mensaje').value;
-
-        const data = new FormData();
-        data.append('nombre', nombre);
-        data.append('email', email);
-        data.append('mensaje', mensaje);
-
-        fetch('/procesar_correo.php', {
-            method: 'POST',
-            body: data
-        })
-        .then(response => response.json())  // Parsear la respuesta JSON
-        .then(data => {
-            console.log('Respuesta del servidor:', data); 
-            if (data.status === 'success') {
-                mensajeTexto.innerText = data.message;
-                mensajeFlotante.style.display = 'block';
-            } else {
-                console.error('Error del servidor:', data.message); // Mostrar mensaje de error
-            }
-            setTimeout(() => {
-                mensajeFlotante.style.display = 'none';
-            }, 5000);
-        })
-        .catch(error => {
-            console.error('Error en el fetch:', error);
-        });
-    });
+// ------------------------------------------------------------------------------------
+// ATAJO PARA DASHBOARD
+document.addEventListener("keydown", function(event) {
+    // Combinación de teclas: Ctrl + Shift + Y
+    if (event.ctrlKey && event.shiftKey && event.key === "Y") {
+        // Redirige al panel de administración
+        window.location.href = "/nuevopack/admin-xyz2025/login.php";
+    }
 });

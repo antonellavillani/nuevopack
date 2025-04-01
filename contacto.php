@@ -34,7 +34,7 @@ include('includes/header.php');
                 <!-- Mapa de Google -->
                 <div id="mapa">
                     <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3282.7258489313467!2d-58.38164468477401!3d-34.60373448045988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccac64b7f56a7%3A0x885b7ec39b162717!2sVenancio%20Flores%204378%2C%20Claypole!5e0!3m2!1ses!2sar!4v1690123456789!5m2!1ses!2sar" 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3282.2310116409636!2d-58.25012358477338!3d-34.70012328043442!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcd3a3a8f9b4b7%3A0x123456789abcdef!2s237%20P.%20Elustondo%2C%20Quilmes!5e0!3m2!1ses!2sar!4v1710000000000!5m2!1ses!2sar" 
                         width="100%" 
                         height="300" 
                         style="border:0;" 
@@ -45,8 +45,8 @@ include('includes/header.php');
                 
                 <!-- Información de Contacto -->
                 <div class="contact-info">
-                    <p><strong>Teléfono:</strong> (011) 1234-5678</p>
-                    <p><strong>Correo Electrónico:</strong> contacto@nuevopack.com</p>
+                    <p><strong>Teléfono:</strong> (+54) 11 3932-7709 (Daniel)</p>
+                    <p><strong>Correo Electrónico:</strong> contacto@imprentanuevopack.online</p>
                 </div>
             </div>
         </div>

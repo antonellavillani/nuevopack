@@ -78,10 +78,6 @@ try {
                 <!-- Contáctanos -->
                 <a href="contacto.php" class="menu-btn">Contáctanos</a>
 
-                <!-- Ícono de cuenta -->
-                <a href="login.php" class="icon-btn">
-                    <span class="material-icons">account_circle</span>
-                </a>
             </nav>
         </div>
     </header>
