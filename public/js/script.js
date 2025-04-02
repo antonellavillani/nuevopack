@@ -1,3 +1,18 @@
+// BOTÓN DESPLEGABLE NAVBAR
+document.addEventListener("DOMContentLoaded", function() {
+    const dropdown = document.querySelector('.productos-dropdown');
+    const dropdownContent = dropdown.querySelector('.dropdown-content');
+    
+    dropdown.addEventListener('mouseover', function() {
+        dropdownContent.classList.add('show');
+    });
+
+    dropdown.addEventListener('mouseout', function() {
+        dropdownContent.classList.remove('show');
+    });
+});
+
+// ------------------------------------------------------------------------------------
 // CARRUSEL DE IMÁGENES EN INICIO
 let currentSlide = 0;
 const slides = document.querySelectorAll(".carousel-slide");

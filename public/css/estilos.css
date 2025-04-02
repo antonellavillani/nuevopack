@@ -127,13 +127,18 @@ header .nuevoPack {
 }
 
 .dropbtn {
-    background-color: #B5BF69; /* Color de fondo del botón Productos */
+    background-color: #B5BF69; /* Color de fondo del botón Servicios */
     color: #ffffff; /* Color del texto del botón */
     padding: 8px;
     font-size: 14px;
     border: none;
     cursor: pointer;
     border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.dropbtn:hover {
+    background-color: #9e9e4f;
 }
 
 .dropdown-content {
@@ -143,14 +148,32 @@ header .nuevoPack {
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
     min-width: 160px;
     z-index: 1;
+    border-radius: 8px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0;
+}
+
+.dropdown-content.show {
+    display: block;
+    opacity: 1;
+    visibility: visible;
 }
 
 .dropdown-content a {
     color: #ffffff; /* Color de los enlaces dentro del dropdown */
-    padding: 10px 14px;
+    padding: 12px 20px;
     text-decoration: none;
     display: block;
-    font-size: 0.9em;
+    font-size: 0.95em;
+    border-bottom: 1px solid #8a9d47;
+    transition: background-color 0.3 ease;
+    text-align: center;
+    border-radius: 6px;
+    margin: 2px 0;
 }
 
 .dropdown-content a:hover {
@@ -159,6 +182,17 @@ header .nuevoPack {
 
 .productos-dropdown:hover .dropdown-content {
     display: block; /* Mostrar el dropdown al pasar el mouse */
+}
+
+/* Eliminar márgenes extra en los enlaces */
+.dropdown-content a {
+    margin: 0; /* Eliminar márgenes adicionales */
+}
+
+/* Agregar un efecto de sombra sutil en los enlaces */
+.dropdown-content a:hover {
+    background-color: #7f8c35; /* Fondo más oscuro al pasar el mouse */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Sombra suave al pasar el mouse */
 }
 
 /* ---------------------------------------
