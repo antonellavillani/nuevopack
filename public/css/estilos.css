@@ -33,6 +33,9 @@ p, .footer-text, .search-bar, .footer-section p {
     font-family: '';
 }
 
+.padding{
+    padding-bottom: 20px;
+}
 /* ---------------------------------------
    Estilos del Header
 --------------------------------------- */
@@ -220,7 +223,8 @@ footer {
 }
 .carousel-container {
     display: flex;
-    transition: transform 0.5s ease;
+    transition: transform 0.5s ease-in-out;
+    /*width: 100%;*/
     height: 100%;
 }
 .carousel-slide {
@@ -230,12 +234,12 @@ footer {
     justify-content: center;
     align-items: center;
     position: relative;
-    transition: transform 0.5s ease;
+    /*transition: transform 0.5s ease;*/
 }
 
 .carousel-slide img {
     width: 100%;
-    height: auto;
+    height: 100%;
     object-fit: cover;
 }
 .carousel-text {
@@ -243,7 +247,7 @@ footer {
     bottom: 20px;
     left: 20px;
     color: white;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(106, 115, 72, 0.8);
     padding: 10px;
     border-radius: 5px;
     font-size: 0.9em;
@@ -254,15 +258,40 @@ footer {
     top: 50%;
     transform: translateY(-50%);
     color: white;
-    font-size: 20px;
-    padding: 16px;
-    user-select: none;
+    font-size: 25px;
+    padding: 15px;
+    /*user-select: none;*/
+    background: rgba(106, 115, 72, 0.8);
+    transition: background 0.3s ease, color 0.3s ease;
+    border-radius: 50%;
+    transition: 0.3s;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px; /* Tamaño del círculo */
+    height: 50px; /* Debe ser igual al width */
 }
 .prev {
-    left: 10px;
+    left: 20px;
 }
 .next {
-    right: 10px;
+    right: 20px;
+}
+
+.prev:hover, .next:hover {
+    background: #B5BF69;
+}
+
+/* Estilo del ícono */
+.prev i, .next i {
+    color: white;
+    font-size: 24px;
+    transition: color 0.3s ease;
+}
+
+.prev:hover i, .next:hover i {
+    color: white;
 }
 
 /* Estilos para los artículos */
@@ -280,6 +309,8 @@ footer {
     padding: 15px;
     width: 40%;
     border-radius: 5px;
+    background: rgba(106, 115, 72, 0.8);
+    color: white;
 }
 .article-container article h3 {
     font-family: 'Poppins', sans-serif;
@@ -303,7 +334,7 @@ footer {
     border-radius: 10px;
 }
 
-/* Estilos para los productos */
+/* Estilos para los servicios */
 .products {
     text-align: center;
     padding: 20px;
@@ -319,6 +350,56 @@ footer {
     height: auto;
     object-fit: cover;
     border-radius: 4px;
+}
+
+/* Ajustar el tamaño del título */
+.service-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+/* Imágenes dentro de los servicios */
+.service img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Descripción de los servicios */
+.service-description {
+    font-size: 0.9em;
+    color: #444;
+    line-height: 1.5;
+}
+
+/* Contenedor de los servicios */
+.services-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Estilo de cada servicio (tarjeta) */
+.service {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    width: calc(50% - 20px); /* Dos columnas */
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efecto hover en las tarjetas */
+.service:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 /* ---------------------------------------

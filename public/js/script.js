@@ -1,10 +1,11 @@
-// Variables y funciones para el carrusel
+// CARRUSEL DE IMÁGENES EN INICIO
 let currentSlide = 0;
+const slides = document.querySelectorAll(".carousel-slide");
+const totalSlides = slides.length;
+const carouselContainer = document.getElementById("carouselContainer");
 
+// Función para mostrar el slide actual
 function showSlide(index) {
-    const slides = document.querySelectorAll('.carousel-slide');
-    const totalSlides = slides.length;
-
     if (index >= totalSlides) {
         currentSlide = 0;
     } else if (index < 0) {
@@ -13,30 +14,45 @@ function showSlide(index) {
         currentSlide = index;
     }
 
-    // Oculta todos los slides y muestra el actual
-    slides.forEach((slide, i) => {
-        slide.style.display = i === currentSlide ? 'flex' : 'none';
-    });
+    // Mover el contenedor del carrusel
+    carouselContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
 }
 
-// Funciones para cambiar de slide
+// Función para avanzar al siguiente slide
 function nextSlide() {
-    document.querySelector('.next-button').addEventListener('click', nextSlide);
     showSlide(currentSlide + 1);
 }
 
+// Función para retroceder al slide anterior
 function prevSlide() {
-    document.querySelector('.prev-button').addEventListener('click', prevSlide);
     showSlide(currentSlide - 1);
 }
 
-// Inicializa el carrusel mostrando el primer slide
-document.addEventListener('DOMContentLoaded', () => {
+// Evento para los botones de navegación
+document.querySelector(".next-button").addEventListener("click", nextSlide);
+document.querySelector(".prev-button").addEventListener("click", prevSlide);
+
+// Auto-slide cada 5 segundos
+let autoSlide = setInterval(nextSlide, 5000);
+
+// Pausar auto-slide al pasar el mouse por el carrusel
+document.querySelector(".carousel").addEventListener("mouseenter", () => {
+    clearInterval(autoSlide);
+});
+
+// Reanudar auto-slide al salir del carrusel
+document.querySelector(".carousel").addEventListener("mouseleave", () => {
+    autoSlide = setInterval(nextSlide, 5000);
+});
+
+// Inicializa el carrusel
+document.addEventListener("DOMContentLoaded", () => {
     showSlide(currentSlide);
 });
 
+
 // ------------------------------------------------------------------------------------
-// JS PARA LA CALCULADORA DE PRECIOS
+// CALCULADORA DE PRECIOS
 document.addEventListener('DOMContentLoaded', function() {
     // Obtener el checkbox "Barniz" y el contenedor de "Barniz Adicional"
     const barnizCheckbox = document.getElementById('barniz');
