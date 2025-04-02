@@ -74,10 +74,10 @@ try {
                 </div>
 
                 <!-- Quiénes Somos -->
-                <a href="quienes_somos.php" class="menu-btn">Quiénes Somos</a>
+                <a href="quienes_somos.php" class="menu-link">Quiénes Somos</a>
 
                 <!-- Contáctanos -->
-                <a href="contacto.php" class="menu-btn">Contáctanos</a>
+                <a href="contacto.php" class="menu-link">Contáctanos</a>
 
             </nav>
         </div>

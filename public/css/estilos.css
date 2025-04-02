@@ -82,6 +82,7 @@ header .nuevoPack {
     border-radius: 5px;
     border: none;
     width: 180px; /* Ancho del campo de búsqueda */
+    font-family: 'Roboto', sans-serif;
 }
 
 .barra-busqueda button {
@@ -92,10 +93,14 @@ header .nuevoPack {
     border-radius: 5px;
     cursor: pointer;
     font-size: 0.9em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: inline-block;
+    text-align: center;
 }
 
 .barra-busqueda button:hover {
     background-color: #888f55; /* Color al pasar el mouse por el botón */
+    transform: scale(1.05);
 }
 
 /* ---------------------------------------
@@ -104,18 +109,25 @@ header .nuevoPack {
 .menu {
     display: flex;
     align-items: center;
+    gap: 15px;
 }
 
-.menu a {
-    margin-left: 15px;
+.menu-link {
+    background-color: #B5BF69; /* Color de fondo del botón */
+    color: #ffffff; /* Color del texto */
+    padding: 8px; /* Espaciado interno */
+    font-size: 14px;
     text-decoration: none;
-    color: #ffffff; /* Color de los enlaces del menú */
-    padding: 6px;
+    border: none;
+    border-radius: 5px; /* Bordes redondeados */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: inline-block;
+    text-align: center;
 }
 
-.menu a:hover {
-    background-color: #888f55; /* Color al pasar el mouse por los enlaces */
-    border-radius: 5px;
+.menu-link:hover {
+    background-color: #9e9e4f; /* Cambio de color al hacer hover */
+    transform: scale(1.05); /* Efecto de leve aumento */
 }
 
 /* ---------------------------------------
@@ -129,7 +141,7 @@ header .nuevoPack {
 .dropbtn {
     background-color: #B5BF69; /* Color de fondo del botón Servicios */
     color: #ffffff; /* Color del texto del botón */
-    padding: 8px;
+    padding: 11px;
     font-size: 14px;
     border: none;
     cursor: pointer;
@@ -139,6 +151,7 @@ header .nuevoPack {
 
 .dropbtn:hover {
     background-color: #9e9e4f;
+    transform: scale(1.05);
 }
 
 .dropdown-content {
