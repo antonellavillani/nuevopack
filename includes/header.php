@@ -33,6 +33,8 @@ try {
     <!-- Google Fonts: Poppins y Roboto -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
@@ -42,7 +44,10 @@ try {
             <div class="logo">
                 <a href="index.php">
                     <img src="public/img/logo.png" alt="Logo NuevoPack" width="50" height="50">
-                    <span class="nuevoPack">NuevoPack</span>
+                    <span class="nuevoPack">
+                        <span class="nuevo">Nuevo</span><span class="pack">Pack</span>
+                    </span>
+
                 </a>
             </div>
 

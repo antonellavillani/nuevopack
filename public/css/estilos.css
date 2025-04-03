@@ -16,7 +16,7 @@ body {
 }
 
 /* Encabezados, títulos y botones */
-h1, h2, h3, h4, h5, h6, .header-logo, .nav-item a, .footer-section h4 {
+h1, h2, h3, h4, h5, h6, .nav-item a, .footer-section h4 {
     font-family: 'Poppins', sans-serif;
     font-weight: 700; /* Negrita */
     /*font-size: calc(1em - 0.2em);*/
@@ -29,9 +29,9 @@ p, .footer-text, .search-bar, .footer-section p {
     font-size: 0.9em;
 }
 
-#nuevopack{
-    font-family: '';
-}
+/*#nuevopack{
+    font-family: 'Montserrat', monospace;
+}*/
 
 .padding{
     padding-bottom: 20px;
@@ -54,9 +54,21 @@ header {
 }
 
 header .nuevoPack {
-    font-family: 'Open Sans', sans-serif; /* Aplicar la fuente Open Sans */
-    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
     color: #F2F2F2; /* Color del texto en el header */
+    letter-spacing: 1px;
+    filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.3)); /* Sombra permanente */
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* Estilo diferenciado en la tipografía */
+header .nuevoPack .nuevo {
+    font-weight: 900 !important; /* Más negrita */
+}
+
+header .nuevoPack .pack {
+    font-weight: 200 !important; /* Más delgada */
 }
 
 /* ---------------------------------------
@@ -65,15 +77,29 @@ header .nuevoPack {
 .logo a {
     display: flex;
     align-items: center;
-    color: #ffffff; /* Color del texto del logo */
+    /*color: #ffffff; */
     text-decoration: none;
-    font-size: 20px; /* Tamaño de la fuente del texto NuevoPack */
+    transition: transform 0.3s ease, filter 0.3s ease;
 }
 
 .logo img {
-    margin-right: 10px; /* Espacio entre el logo y el texto */
+    width: 50px;
+    height: auto;
+    margin-right: 10px;
+    /*image-rendering: crisp-edges; */
+    filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.3)); /* Sombra permanente */
+    transition: transform 0.3s ease, filter 0.3s ease;
 }
 
+.logo a:hover .nuevoPack{
+    transform: scale(1.1); /* Efecto de agrandar al pasar el mouse */
+    filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.5)); /* Mayor sombra en hover */
+}
+
+.logo a:hover img {
+    transform: scale(1.1); /* Efecto de agrandar */
+    filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.5)); /* Mayor sombra en hover */
+}
 /* ---------------------------------------
    Barra de Búsqueda
 --------------------------------------- */
