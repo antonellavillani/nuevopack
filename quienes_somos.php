@@ -81,3 +81,7 @@ include('includes/header.php');
 // Incluir el footer
 include('includes/footer.php');
 ?>
+
+<!-- JavaScript -->
+<script src="public/js/script.js" defer></script>
+    

@@ -203,7 +203,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         <h3 class="nombre-producto">Contacto</h3>
 
-        <form id="form-contacto" method="POST">
+        <form id="form-contacto" action="backend/enviar_correo.php" method="POST">
             <label for="nombre">Indícanos tu nombre:</label>
             <input type="text" id="nombre" name="nombre" required>
             
@@ -215,6 +215,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             
             <button type="submit">Enviar Consulta</button>
         </form>
+        <?php if (isset($_GET['mensaje']) && $_GET['mensaje'] === 'success'): ?>
+    <div class="mensaje-exito">Tu consulta fue enviada con éxito.</div>
+<?php endif; ?>
 
     </div>
 
