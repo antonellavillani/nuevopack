@@ -61,7 +61,7 @@ try {
             <nav class="menu">
                 <!-- Servicios -->
                 <div class="productos-dropdown">
-                    <button class="dropbtn">Servicios</button>
+                    <button class="dropbtn" id="servicios-btn">Servicios</button>
                     <div class="dropdown-content">
                         <?php
                         // Mostrar cada servicio en el menú desplegable con enlace a ficha_producto.php

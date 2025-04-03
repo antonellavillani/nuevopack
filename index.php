@@ -3,6 +3,8 @@
     include('includes/header.php');
 ?>
 
+<body>
+
 <!-- Contenido principal del index -->
 <main>
     <!-- Sección del carrusel -->
@@ -60,7 +62,7 @@
     </section>
 
     <!-- Sección de servicios -->
-    <section class="products">
+    <section class="products" id="servicios-section">
         <h2 class="padding">Explora nuestros servicios</h2>
 
         <div class="services-container">
@@ -96,10 +98,12 @@
     </section>
 </main>
 
+</body>
+
 <?php
 // Incluir el footer
 include('includes/footer.php');
 ?>
 
 <!-- JavaScript -->
-<script src="public/js/script.js" defer></script>
+<script src="public/js/script.js"></script>

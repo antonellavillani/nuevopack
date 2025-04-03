@@ -1,3 +1,48 @@
+console.log("El script se ejecutó correctamente.");
+
+document.addEventListener("DOMContentLoaded", function () {
+    console.log("DOM completamente cargado");
+
+    const serviciosBtn = document.getElementById("servicios-btn");
+    console.log("Botón Servicios:", serviciosBtn);
+
+    if (serviciosBtn) {
+        serviciosBtn.addEventListener("click", function (event) {
+            event.preventDefault();
+            console.log("Click detectado en el botón Servicios");
+
+            if (window.location.pathname.endsWith("index.php") || window.location.pathname === "/") {
+                const serviciosSection = document.getElementById("servicios-section");
+                if (serviciosSection) {
+                    console.log("Sección encontrada, haciendo scroll");
+                    serviciosSection.scrollIntoView({ behavior: "smooth" });
+                } else {
+                    console.log("⚠️ Sección NO encontrada en index.php");
+                }
+            } else {
+                console.log("No estamos en index.php, redirigiendo...");
+                sessionStorage.setItem("scrollToServicios", "true"); // Guarda la intención en el almacenamiento temporal
+                window.location.href = "index.php"; // Redirige sin el hash
+            }
+        });
+    } else {
+        console.log("⚠️ El botón 'Servicios' NO se encontró en el DOM.");
+    }
+
+    // Comprobar si viene de otra página con intención de hacer scroll
+    if (sessionStorage.getItem("scrollToServicios") === "true") {
+        sessionStorage.removeItem("scrollToServicios"); // Elimina la intención para evitar loops
+        setTimeout(() => {
+            const serviciosSection = document.getElementById("servicios-section");
+            if (serviciosSection) {
+                console.log("Redirigido desde otra página, haciendo scroll ahora.");
+                serviciosSection.scrollIntoView({ behavior: "smooth" });
+            }
+        }, 500); // Pequeño delay para asegurar que la página haya cargado completamente
+    }
+});
+
+// ------------------------------------------------------------------------------------
 // BOTÓN DESPLEGABLE NAVBAR
 document.addEventListener("DOMContentLoaded", function() {
     const dropdown = document.querySelector('.productos-dropdown');
