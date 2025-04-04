@@ -235,6 +235,120 @@ header .nuevoPack .pack {
 }
 
 /* ---------------------------------------
+   Botón Hamburguesa
+--------------------------------------- */
+/* Ocultar el botón hamburguesa y el menú móvil por defecto */
+/*.hamburguesa, .menu-movil {
+    display: none;
+}*/
+
+.hamburguesa {
+    display: none;
+    position: relative;
+    z-index: 10;
+}
+
+/* Menú móvil */
+.menu-movil {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    background: #6A7348;
+    width: 200px;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+/* RESPONSIVE: Ajustes para pantallas pequeñas */
+@media (max-width: 767px) {
+    /* Ocultar el span 'NuevoPack' */
+    .nuevoPack {
+        display: none;
+    }
+
+    /* Ajustar la barra de búsqueda */
+    .barra-busqueda {
+        display: flex;
+        align-items: center;
+        max-width: 100%;
+        gap: 5px;
+    }
+    
+    .barra-busqueda input {
+        width: 120px; /* Reducir el tamaño del input */
+    }
+
+    /* Mostrar el botón hamburguesa */
+    .hamburguesa {
+        display: block;
+        background: none;
+        border: none;
+        font-size: 24px;
+        color: #ffffff;
+        cursor: pointer;
+        margin-left: 5px;
+        margin-right: 15px;
+    }
+
+    /* Ocultar el menú de navegación normal en móviles */
+    .menu {
+        display: none;
+    }
+
+    /* Estilos para el menú desplegable móvil */
+    .menu-movil {
+        display: block;
+        position: absolute;
+        top: 60px;
+        right: 10px;
+        background: #6A7348;
+        width: 200px;
+        border-radius: 5px;
+        padding: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .menu-movil a {
+        display: block;
+        color: white;
+        text-decoration: none;
+        padding: 10px;
+        border-bottom: 1px solid #B5BF69;
+    }
+
+    .menu-movil a:hover {
+        background: #B5BF69;
+    }
+
+    /* Submenú de servicios en móvil */
+    .submenu-movil {
+        display: none;
+        padding-left: 10px;
+    }
+
+    .submenu-movil a {
+        font-size: 14px;
+        padding: 5px 10px;
+        display: block;
+    }
+
+      /* Estilo para el menú hamburguesa */
+  .navbar-collapse {
+    position: absolute;
+    z-index: 1;
+  }
+
+  /* Estilo para el carrusel */
+  .carousel {
+    position: relative;
+    z-index: 0;
+  }
+}
+
+/* ---------------------------------------
    Estilos para Footer
 --------------------------------------- */
 footer {
@@ -293,6 +407,7 @@ footer {
     margin: 20px auto; 
     height: 300px; 
     overflow: hidden;
+    z-index: 0;
 }
 .carousel-container {
     display: flex;

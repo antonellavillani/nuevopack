@@ -57,6 +57,11 @@ try {
                 <button type="submit">Buscar</button>
             </div>
 
+             <!-- Botón Hamburguesa (Solo en pantallas táctiles) -->
+            <button id="hamburguesa-btn" class="hamburguesa">
+                <i class="fas fa-bars"></i>
+            </button>
+
             <!-- Menú de navegación -->
             <nav class="menu">
                 <!-- Servicios -->
@@ -64,7 +69,6 @@ try {
                     <button class="dropbtn" id="servicios-btn">Servicios</button>
                     <div class="dropdown-content">
                         <?php
-                        // Mostrar cada servicio en el menú desplegable con enlace a ficha_producto.php
                         if (!empty($servicios)) {
                             foreach ($servicios as $servicio) {
                                 $nombreServicio = htmlspecialchars($servicio['nombre']);
@@ -85,7 +89,29 @@ try {
                 <a href="contacto.php" class="menu-link">Contáctanos</a>
 
             </nav>
+
+            <!-- Menú Desplegable del Botón Hamburguesa (Solo para móviles) -->
+            <div id="menu-movil" class="menu-movil">
+                <a href="#" id="movil-servicios">Servicios</a>
+                <div class="submenu-movil">
+                    <?php
+                    if (!empty($servicios)) {
+                        foreach ($servicios as $servicio) {
+                            $nombreServicio = htmlspecialchars($servicio['nombre']);
+                            $idServicio = htmlspecialchars($servicio['idServicio']);
+                            echo "<a href='ficha_producto.php?idServicio=$idServicio'>$nombreServicio</a>";
+                        }
+                    }
+                    ?>
+                </div>
+
+                <a href="quienes_somos.php">Quiénes Somos</a>
+                <a href="contacto.php">Contáctanos</a>
+            </div>
         </div>
+
+        <script src="../public/js/script.js"></script>
+
     </header>
 </body>
 

@@ -40,6 +40,64 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }, 500); // Pequeño delay para asegurar que la página haya cargado completamente
     }
+    // Menú hamburguesa y submenú móviles
+    const hamburguesaBtn = document.getElementById("hamburguesa-btn");
+    const menuMovil = document.getElementById("menu-movil");
+    const movilServicios = document.getElementById("movil-servicios");
+    const submenuMovil = document.querySelector(".submenu-movil");
+
+    // Mostrar/ocultar el menú móvil al hacer clic en el botón hamburguesa
+    hamburguesaBtn.addEventListener("click", function () {
+        if (menuMovil.style.display === "block") {
+            menuMovil.style.display = "none";
+        } else {
+            menuMovil.style.display = "block";
+        }
+    });
+
+    // Mostrar/ocultar el submenú de 'Servicios' al hacer clic
+    movilServicios.addEventListener("click", function (event) {
+        event.preventDefault();
+        submenuMovil.style.display = (submenuMovil.style.display === "block") ? "none" : "block";
+    });
+
+    // Evitar que 'Servicios' haga scroll en pantallas pequeñas
+    const serviciosBtnMovil = document.getElementById("servicios-btn");
+    if (serviciosBtnMovil) {
+        serviciosBtnMovil.addEventListener("click", function (event) {
+            if (window.innerWidth <= 768) {
+                event.preventDefault(); // Evita el scroll en móviles
+            }
+        });
+    }
+
+});
+
+// Obtener todos los enlaces dentro del menú móvil
+const menuLinks = document.querySelectorAll('.menu-movil a');
+
+// Restablecer el estado del botón hamburguesa cuando se carga una nueva página
+window.addEventListener('load', () => {
+    const menu = document.querySelector('.menu-movil');
+    const hamburguesa = document.querySelector('.hamburguesa');
+    
+    // Asegurarse de que el menú esté cerrado cuando se recargue la página
+    menu.style.display = 'none';
+    
+    // Opcional: cambiar el ícono del botón hamburguesa a su estado inicial si es necesario
+    hamburguesa.classList.remove('is-active'); // Si usas alguna clase activa para indicar el estado
+});
+
+
+// Detectar clic fuera del menú móvil para cerrarlo
+document.addEventListener('click', function(event) {
+    const menu = document.querySelector('.menu-movil');
+    const hamburguesa = document.querySelector('.hamburguesa');
+    
+    // Verificar si el clic fue fuera del menú o el botón hamburguesa
+    if (!menu.contains(event.target) && !hamburguesa.contains(event.target)) {
+        menu.style.display = 'none'; // Cerrar el menú si el clic fue fuera
+    }
 });
 
 // ------------------------------------------------------------------------------------
