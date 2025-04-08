@@ -400,7 +400,6 @@ footer {
 /* ---------------------------------------
    Carrusel
 --------------------------------------- */
-
 .carousel {
     position: relative;
     max-width: 100%;
@@ -505,6 +504,18 @@ footer {
     font-size: 1.2em;
 }
 
+@media (max-width: 768px) {
+    .article-container {
+        flex-direction: column; /* Apila los artículos uno debajo del otro */
+        align-items: center;    /* Centra los artículos horizontalmente */
+    }
+
+    .article-container article {
+        width: 90%;             /* Ancho adecuado para mobile */
+        margin-bottom: 20px;    /* Espacio entre los artículos */
+    }
+}
+
 /* Estilos para el rectángulo informativo */
 .important-info {
     background: #fff5b1; /* Rectángulo informativo */
@@ -588,6 +599,17 @@ footer {
 .service:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+    .services-container {
+        flex-direction: column; /* Apila las tarjetas verticalmente */
+        align-items: center;    /* Centra cada tarjeta */
+    }
+
+    .service {
+        width: 90% !important;  /* Hace que cada servicio ocupe casi toda la pantalla */
+    }
 }
 
 /* ---------------------------------------
