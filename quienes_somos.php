@@ -19,7 +19,7 @@ include('includes/header.php');
         </section>
 
         <!-- Sección: Misión y Valores -->
-        <section class="mision-vision-valores articulo">
+        <section class="mision-valores articulo">
             <div class="seccion mision">
                 <h3>Misión</h3>
                 <p>En NuevoPack, nuestra misión es ofrecer soluciones de impresión personalizadas que combinen creatividad, calidad e innovación. Nos esforzamos por superar las expectativas de nuestros clientes y convertir sus ideas en proyectos que marquen la diferencia.</p>

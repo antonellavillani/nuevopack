@@ -62,7 +62,7 @@
     </section>
 
     <!-- Sección de servicios -->
-    <section class="products" id="servicios-section">
+    <section class="servicios" id="servicios-section">
         <h2 class="padding">Explora nuestros servicios</h2>
 
         <div class="services-container">

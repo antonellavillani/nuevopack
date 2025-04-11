@@ -23,6 +23,6 @@
 
     <!-- Copyright -->
     <div class="footer-bottom">
-        <p>© 2024 NuevoPack. Todos los derechos reservados.</p>
+        <p>© 2025 NuevoPack. Todos los derechos reservados.</p>
     </div>
 </footer>

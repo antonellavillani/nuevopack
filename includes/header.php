@@ -65,7 +65,7 @@ try {
             <!-- Menú de navegación -->
             <nav class="menu">
                 <!-- Servicios -->
-                <div class="productos-dropdown">
+                <div class="servicios-dropdown">
                     <button class="dropbtn" id="servicios-btn">Servicios</button>
                     <div class="dropdown-content">
                         <?php

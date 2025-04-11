@@ -29,18 +29,15 @@ p, .footer-text, .search-bar, .footer-section p {
     font-size: 0.9em;
 }
 
-/*#nuevopack{
-    font-family: 'Montserrat', monospace;
-}*/
-
 .padding{
     padding-bottom: 20px;
 }
+
 /* ---------------------------------------
    Estilos del Header
 --------------------------------------- */
 header {
-    background-color: #6A7348; /* Color de fondo del header */
+    background-color: #6A7348;
     padding: 8px 0;
     color: #F2F2F2;
 }
@@ -56,7 +53,7 @@ header {
 header .nuevoPack {
     font-family: 'Montserrat', sans-serif;
     font-size: 20px;
-    color: #F2F2F2; /* Color del texto en el header */
+    color: #F2F2F2;
     letter-spacing: 1px;
     filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.3)); /* Sombra permanente */
     transition: transform 0.3s ease, filter 0.3s ease;
@@ -77,7 +74,6 @@ header .nuevoPack .pack {
 .logo a {
     display: flex;
     align-items: center;
-    /*color: #ffffff; */
     text-decoration: none;
     transition: transform 0.3s ease, filter 0.3s ease;
 }
@@ -157,9 +153,9 @@ header .nuevoPack .pack {
 }
 
 /* ---------------------------------------
-   Dropdown (Menú Desplegable de Productos)
+   Dropdown (Menú Desplegable de Servicios)
 --------------------------------------- */
-.productos-dropdown {
+.servicios-dropdown {
     position: relative;
     display: inline-block;
 }
@@ -219,28 +215,24 @@ header .nuevoPack .pack {
     background-color: #888f55; /* Hover en los enlaces del dropdown */
 }
 
-.productos-dropdown:hover .dropdown-content {
+.servicios-dropdown:hover .dropdown-content {
     display: block; /* Mostrar el dropdown al pasar el mouse */
 }
 
 /* Eliminar márgenes extra en los enlaces */
 .dropdown-content a {
-    margin: 0; /* Eliminar márgenes adicionales */
+    margin: 0;
 }
 
-/* Agregar un efecto de sombra sutil en los enlaces */
+/* Efecto de sombra sutil en los enlaces */
 .dropdown-content a:hover {
     background-color: #7f8c35; /* Fondo más oscuro al pasar el mouse */
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Sombra suave al pasar el mouse */
 }
 
 /* ---------------------------------------
-   Botón Hamburguesa
+   Botón Hamburguesa para pantallas pequeñas
 --------------------------------------- */
-/* Ocultar el botón hamburguesa y el menú móvil por defecto */
-/*.hamburguesa, .menu-movil {
-    display: none;
-}*/
 
 .hamburguesa {
     display: none;
@@ -352,7 +344,7 @@ header .nuevoPack .pack {
    Estilos para Footer
 --------------------------------------- */
 footer {
-    background-color: #6A7348; /* Color de fondo del footer */
+    background-color: #6A7348;
     color: #F2F2F2;
     padding: 20px 0;
     text-align: center;
@@ -391,14 +383,14 @@ footer {
     color: #ffffff;
 }
 
-.liststyle_none{
+.liststyle_none{ 
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
 /* ---------------------------------------
-   Carrusel
+   Carrusel de imágenes en index
 --------------------------------------- */
 .carousel {
     position: relative;
@@ -411,7 +403,6 @@ footer {
 .carousel-container {
     display: flex;
     transition: transform 0.5s ease-in-out;
-    /*width: 100%;*/
     height: 100%;
 }
 .carousel-slide {
@@ -421,7 +412,6 @@ footer {
     justify-content: center;
     align-items: center;
     position: relative;
-    /*transition: transform 0.5s ease;*/
 }
 
 .carousel-slide img {
@@ -439,7 +429,7 @@ footer {
     border-radius: 5px;
     font-size: 0.9em;
 }
-.prev, .next {
+.prev, .next { 
     cursor: pointer;
     position: absolute;
     top: 50%;
@@ -447,7 +437,6 @@ footer {
     color: white;
     font-size: 25px;
     padding: 15px;
-    /*user-select: none;*/
     background: rgba(106, 115, 72, 0.8);
     transition: background 0.3s ease, color 0.3s ease;
     border-radius: 50%;
@@ -457,7 +446,7 @@ footer {
     justify-content: center;
     align-items: center;
     width: 50px; /* Tamaño del círculo */
-    height: 50px; /* Debe ser igual al width */
+    height: 50px;
 }
 .prev {
     left: 20px;
@@ -481,12 +470,14 @@ footer {
     color: white;
 }
 
-/* Estilos para los artículos */
+/* ---------------------------------------
+   Estilos para los artículos
+--------------------------------------- */
 .articles {
     padding: 20px;
     text-align: center;
 }
-.article-container {
+.article-container { 
     display: flex;
     justify-content: space-around;
     margin-top: 20px;
@@ -499,11 +490,12 @@ footer {
     background: rgba(106, 115, 72, 0.8);
     color: white;
 }
-.article-container article h3 {
+.article-container article h3 { 
     font-family: 'Poppins', sans-serif;
     font-size: 1.2em;
 }
 
+/* Ajuste para pantallas pequeñas */
 @media (max-width: 768px) {
     .article-container {
         flex-direction: column; /* Apila los artículos uno debajo del otro */
@@ -511,48 +503,36 @@ footer {
     }
 
     .article-container article {
-        width: 90%;             /* Ancho adecuado para mobile */
+        width: 90%;             /* Ancho para mobile */
         margin-bottom: 20px;    /* Espacio entre los artículos */
     }
 }
 
 /* Estilos para el rectángulo informativo */
 .important-info {
-    background: #fff5b1; /* Rectángulo informativo */
+    background: #fff5b1;
     padding: 20px;
     margin: 20px 0;
     text-align: center;
     font-size: 0.9em;
 }
-.info-box {
+.info-box { 
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-    background: #c663a1; /* Fondo del info box */
+    background: #c663a1;
     color: white;
     border-radius: 10px;
 }
 
 /* Estilos para los servicios */
-.products {
+.servicios {
     text-align: center;
     padding: 20px;
 }
-.product-gallery {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-    margin-top: 20px;
-}
-.product-item img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    border-radius: 4px;
-}
 
-/* Ajustar el tamaño del título */
-.service-title {
+/* Ajuste del tamaño del título */
+.service-title { 
     font-size: 1.2em;
     font-weight: bold;
     margin: 10px 0;
@@ -574,7 +554,7 @@ footer {
 }
 
 /* Contenedor de los servicios */
-.services-container {
+.services-container { 
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -596,7 +576,7 @@ footer {
 }
 
 /* Efecto hover en las tarjetas */
-.service:hover {
+.service:hover { 
     transform: translateY(-5px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
@@ -827,7 +807,7 @@ select, input[type="number"] {
 }
 
 /* ---------------------------------------
-   Estilos para página Contactanos
+   Estilos para página Contacto
 --------------------------------------- */
 .contact-container {
     display: flex;
@@ -852,7 +832,7 @@ select, input[type="number"] {
 }
 
 /* ---------------------------------------
-   Página "Quiénes Somos"
+    Estilos para página Quiénes Somos
 --------------------------------------- */
 /* Estilo para resaltar artículos como tarjetas */
 .articulo {
@@ -874,7 +854,7 @@ select, input[type="number"] {
     margin-bottom: 40px;
 }
 
-/* Título Principal y Subtítulo */
+/* Título principal y subtítulo */
 .titulo-principal {
     font-size: 2.5em;
     font-weight: 700;
@@ -907,24 +887,24 @@ select, input[type="number"] {
     border-radius: 8px;
 }
 
-/* Misión, Visión y Valores */
-.mision-vision-valores {
+/* Misión y Valores */
+.mision-valores {
     background-color: #B5BF69;
     padding: 40px 20px;
     border-radius: 10px;
 }
 
-.mision, .vision, .valores {
+.mision, .valores {
     margin-bottom: 20px;
 }
 
-.mision h3, .vision h3, .valores h3 {
+.mision h3, .valores h3 {
     font-size: 1.5em;
     color: #c663a1;
     margin-bottom: 10px;
 }
 
-.mision p, .vision p, .valores ul {
+.mision p, .valores ul {
     font-size: 1em;
     color: #333333;
     line-height: 1.6;
@@ -998,7 +978,7 @@ select, input[type="number"] {
     font-size: 1.2em;
 }
 
-/* Cierre Inspirador */
+/* Cierre */
 .cierre {
     text-align: center;
     margin: 40px auto;
