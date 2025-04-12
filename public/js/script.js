@@ -103,7 +103,7 @@ document.addEventListener('click', function(event) {
 // ------------------------------------------------------------------------------------
 // BOTÓN DESPLEGABLE NAVBAR
 document.addEventListener("DOMContentLoaded", function() {
-    const dropdown = document.querySelector('.productos-dropdown');
+    const dropdown = document.querySelector('.servicios-dropdown');
     const dropdownContent = dropdown.querySelector('.dropdown-content');
     
     dropdown.addEventListener('mouseover', function() {
