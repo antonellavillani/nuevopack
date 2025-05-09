@@ -1,7 +1,7 @@
 <?php
 // Configuración de conexión a la base de datos
 $host = 'localhost'; // o la dirección IP del servidor de la base de datos
-$dbname = 'nuevopackdb';
+$dbname = 'nuevopack_db';
 $username = 'root'; // Reemplaza con el nombre de usuario de tu base de datos
 $password = 'toor'; // Reemplaza con la contraseña de tu base de datos
 
@@ -16,4 +16,5 @@ try {
     echo "Error de conexión: " . $e->getMessage();
     exit();
 }
+
 ?>
