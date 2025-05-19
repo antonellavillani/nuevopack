@@ -9,7 +9,7 @@ if (!isset($conn)) {
 
 // Consulta para obtener los nombres de los productos
 try {
-    $query = "SELECT idServicio, nombre FROM servicio";
+    $query = "SELECT id, nombre FROM servicios";
     $stmt = $conn->prepare($query);
     $stmt->execute();
     $servicios = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -72,8 +72,8 @@ try {
                         if (!empty($servicios)) {
                             foreach ($servicios as $servicio) {
                                 $nombreServicio = htmlspecialchars($servicio['nombre']);
-                                $idServicio = htmlspecialchars($servicio['idServicio']);
-                                echo "<a href='ficha_producto.php?idServicio=$idServicio'>$nombreServicio</a>";
+                                $idServicio = htmlspecialchars($servicio['id']);
+                                echo "<a href='ficha_servicio.php?idServicio=$idServicio'>$nombreServicio</a>";
                             }
                         } else {
                             echo "<p>No hay productos disponibles.</p>";
@@ -98,8 +98,8 @@ try {
                     if (!empty($servicios)) {
                         foreach ($servicios as $servicio) {
                             $nombreServicio = htmlspecialchars($servicio['nombre']);
-                            $idServicio = htmlspecialchars($servicio['idServicio']);
-                            echo "<a href='ficha_producto.php?idServicio=$idServicio'>$nombreServicio</a>";
+                            $idServicio = htmlspecialchars($servicio['id']);
+                            echo "<a href='ficha_servicio.php?idServicio=$idServicio'>$nombreServicio</a>";
                         }
                     }
                     ?>
