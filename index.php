@@ -34,8 +34,8 @@
         </div>
 
         <!-- Controles del carrusel -->
-        <div class="prev" onclick="prevSlide()"><i class="fas fa-chevron-left"></i></div>
-        <div class="next" onclick="nextSlide()"><i class="fas fa-chevron-right"></i></div>
+        <div class="prev" id="prevBtn"><i class="fas fa-chevron-left"></i></div>
+        <div class="next" id="nextBtn"><i class="fas fa-chevron-right"></i></div>
     </section>
 
     <!-- Sección de artículos -->

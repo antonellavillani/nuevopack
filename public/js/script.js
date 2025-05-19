@@ -87,11 +87,13 @@ document.addEventListener("DOMContentLoaded", function () {
             showSlide(currentSlide - 1);
         }
 
-        const nextBtn = document.querySelector(".next-button");
-        const prevBtn = document.querySelector(".prev-button");
+        const prevBtn = document.getElementById("prevBtn");
+        const nextBtn = document.getElementById("nextBtn");
 
-        if (nextBtn) nextBtn.addEventListener("click", nextSlide);
-        if (prevBtn) prevBtn.addEventListener("click", prevSlide);
+        if (prevBtn && nextBtn) {
+            prevBtn.addEventListener("click", prevSlide);
+            nextBtn.addEventListener("click", nextSlide);
+        }
 
         let autoSlide = setInterval(nextSlide, 5000);
 
@@ -105,20 +107,23 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Calculadora de precios
-    function toggleSection(checkboxId, sectionId) {
+    const secciones = [
+        { checkboxId: "troquelado_toggle", seccionId: "troquelado_seccion" },
+        { checkboxId: "barniz_toggle", seccionId: "barniz_seccion" },
+        { checkboxId: "estuches_toggle", seccionId: "estuches_seccion" }
+    ];
+    
+    secciones.forEach(({ checkboxId, seccionId }) => {
         const checkbox = document.getElementById(checkboxId);
-        const section = document.getElementById(sectionId);
-        if (checkbox && section) {
-            section.style.display = checkbox.checked ? "block" : "none";
-            checkbox.addEventListener('change', () => {
-                section.style.display = checkbox.checked ? "block" : "none";
+        const seccion = document.getElementById(seccionId);
+        if (checkbox && seccion) {
+            seccion.style.display = checkbox.checked ? "block" : "none";
+            checkbox.addEventListener("change", () => {
+                seccion.style.display = checkbox.checked ? "block" : "none";
             });
         }
-    }
-
-    toggleSection('troquelado_toggle', 'troquelado_seccion');
-    toggleSection('barniz_toggle', 'barniz_seccion');
-    toggleSection('estuches_toggle', 'estuches_seccion');
+    });
+    
 });
 
 // Menú móvil al cargar la página
@@ -143,4 +148,5 @@ document.addEventListener("keydown", function(event) {
     if (event.ctrlKey && event.shiftKey && event.key === "Y") {
         window.location.href = "/nuevopack/admin-xyz2025/login.php";
     }
+
 });
