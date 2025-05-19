@@ -595,7 +595,7 @@ footer {
 /* ---------------------------------------
    Estilos para Fichas de Servicio
 --------------------------------------- */
-.contenedor-ficha-producto {
+.contenedor-ficha-servicio {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
@@ -1034,8 +1034,14 @@ select, input[type="number"] {
 /* --------------------------------------------------- */
 .calculadora {
     max-width: 600px;
+    max-height: 600px;
+    overflow-y: auto;
     margin: 0 auto;
-    padding: 1rem;
+    background-color: #ffffff;
+    padding: 20px;
+    padding-right: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   }
   
   .calculadora h2, .calculadora h3 {
@@ -1106,13 +1112,6 @@ select, input[type="number"] {
     max-width: 100%;
     height: auto;
     border-radius: 8px;
-}
-
-.calculadora {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .grupo-campo {

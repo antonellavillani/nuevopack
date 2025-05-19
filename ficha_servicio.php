@@ -31,11 +31,11 @@ foreach ($precios as $precio) {
 ?>
 
 <body>
-<div class="contenedor-ficha-producto">
+<div class="contenedor-ficha-servicio">
 
     <!-- CONTENEDOR 1: FOTO DEL SERVICIO + CALCULADORA -->
     <div class="fila-doble">
-        <div class="columna-izquierda">
+        <div class="columna-izquierda contenedor-ficha-servicio">
             <h1 class="nombre-producto"><?= htmlspecialchars($servicio['nombre'] ?? 'Servicio no encontrado') ?></h1>
             <div class="imagen-producto">
                 <img src="<?= htmlspecialchars($servicio['foto'] ?? 'foto_producto_null.jpg') ?>" alt="<?= htmlspecialchars($servicio['nombre'] ?? 'Servicio') ?>">
@@ -103,8 +103,6 @@ foreach ($precios as $precio) {
                     </div>
                 </div>
 
-                <p><strong>Para trabajos especiales, enviar mail para cotizar su pedido.</strong></p>
-
                 <button type="submit" name="calcular_precio">Calcular</button>
                 </section>
             </form>
@@ -145,7 +143,8 @@ foreach ($precios as $precio) {
                     $total += $cantidad_estuches * ($preciosServicios[4][$clave_estuche] ?? 0);
                 }                
 
-                echo "<div class='resultado-precio'><strong>Total estimado: $ " . number_format($total, 2, ',', '.') . "</strong></div>";
+                echo "<div class='resultado-precio'><strong>Total estimado: $ " . number_format($total, 2, ',', '.') . "</strong>
+                <p><strong>Para trabajos especiales, enviar mail para cotizar su pedido.</strong></p></div>";
             }
             ?>
         </div>
@@ -153,12 +152,12 @@ foreach ($precios as $precio) {
 
     <!-- CONTENEDOR 2: DESCRIPCIÓN + MEDIOS DE PAGO -->
     <div class="fila-doble">
-        <div class="columna-izquierda">
-            <h3>Descripción</h3>
+        <div class="columna-izquierda contenedor-ficha-servicio">
+            <h3 class="nombre-producto">Descripción</h3>
             <p><?= htmlspecialchars($servicio['descripcion'] ?? 'Descripción no disponible.') ?></p>
         </div>
-        <div class="columna-derecha">
-            <h3>Medios de Pago</h3>
+        <div class="columna-derecha contenedor-ficha-servicio">
+            <h3 class="nombre-producto">Medios de Pago</h3>
             <ul>
                 <li>Efectivo</li>
                 <li>Transferencia Bancaria</li>
