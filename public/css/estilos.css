@@ -344,7 +344,7 @@ header .nuevoPack .pack {
    Estilos para Footer
 --------------------------------------- */
 footer {
-    background-color: #6A7348;
+    background-color: #4E5735;
     color: #F2F2F2;
     padding: 20px 0;
     text-align: center;
@@ -392,13 +392,23 @@ footer {
 /* ---------------------------------------
    Carrusel de imágenes en index
 --------------------------------------- */
-.carousel {
+.carousel{
+    background-color: #4E5735;
+    padding: 40px 0;
+    margin-top: 15px;
+}
+
+.carousel-inner {
     position: relative;
-    max-width: 100%;
-    margin: 20px auto; 
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto; 
     height: 300px; 
     overflow: hidden;
     z-index: 0;
+    border: 5px solid white; /* Borde visible dentro del fondo verde */
+    border-radius: 9px;
+    background-color: white; /* Fondo interno blanco para que resalte */
 }
 .carousel-container {
     display: flex;
@@ -415,9 +425,12 @@ footer {
 }
 
 .carousel-slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
 }
 .carousel-text {
     position: absolute;
@@ -429,34 +442,37 @@ footer {
     border-radius: 5px;
     font-size: 0.9em;
 }
-.prev, .next { 
-    cursor: pointer;
+
+.prev, .next {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    color: white;
-    font-size: 25px;
-    padding: 15px;
-    background: rgba(106, 115, 72, 0.8);
-    transition: background 0.3s ease, color 0.3s ease;
+    z-index: 10;
+    background: rgba(106, 115, 72, 0.6);
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
-    transition: 0.3s;
-    z-index: 100;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50px; /* Tamaño del círculo */
-    height: 50px;
-}
-.prev {
-    left: 20px;
-}
-.next {
-    right: 20px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease, opacity 0.3s ease;
+    opacity: 0.7;
 }
 
 .prev:hover, .next:hover {
-    background: #B5BF69;
+    background: rgba(106, 115, 72, 0.9);
+    opacity: 1;
+}
+
+.prev {
+    left: 8px;
+}
+
+.next {
+    right: 8px;
 }
 
 /* Estilo del ícono */

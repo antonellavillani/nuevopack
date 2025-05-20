@@ -12,25 +12,14 @@
         <div class="carousel-container" id="carouselContainer">
             <div class="carousel-slide">
                 <img src="public/img/foto_carrusel_1.png" alt="Imagen 1">
-                <div class="carousel-text">
-                    <h2>Troquelado de Precisión para tus Proyectos</h2>
-                    <p>Ofrecemos servicios de troquelado adaptados a tus necesidades, garantizando cortes precisos y acabados de alta calidad.</p>
-                </div>
             </div>
             <div class="carousel-slide">
                 <img src="public/img/foto_carrusel_2.png" alt="Imagen 2">
-                <div class="carousel-text">
-                    <h2>Impresiones que Captan la Atención</h2>
-                    <p>Utilizamos tecnología de impresión avanzada para brindar colores vibrantes y detalles nítidos en cada proyecto.</p>
-                </div>
             </div>
             <div class="carousel-slide">
                 <img src="public/img/foto_carrusel_3.png" alt="Imagen 3">
-                <div class="carousel-text">
-                    <h2>Soluciones Integrales en Pegado de Estuches</h2>
-                    <p>Nos especializamos en el ensamblaje y pegado de estuches, ofreciendo productos duraderos y bien terminados.</p>
-                </div>
             </div>
+            
         </div>
 
         <!-- Controles del carrusel -->
