@@ -9,22 +9,24 @@
 <main>
     <!-- Sección del carrusel -->
     <section class="carousel">
-        <div class="carousel-container" id="carouselContainer">
-            <div class="carousel-slide">
-                <img src="public/img/foto_carrusel_1.png" alt="Imagen 1">
-            </div>
-            <div class="carousel-slide">
-                <img src="public/img/foto_carrusel_2.png" alt="Imagen 2">
-            </div>
-            <div class="carousel-slide">
-                <img src="public/img/foto_carrusel_3.png" alt="Imagen 3">
-            </div>
+        <div class="carousel-inner">
+            <div class="carousel-container" id="carouselContainer">
+                <div class="carousel-slide">
+                    <img src="public/img/foto_carrusel_1.png" alt="Imagen 1">
+                </div>
+                <div class="carousel-slide">
+                    <img src="public/img/foto_carrusel_2.png" alt="Imagen 2">
+                </div>
+                <div class="carousel-slide">
+                    <img src="public/img/foto_carrusel_3.png" alt="Imagen 3">
+                </div>
             
-        </div>
+            </div>
 
-        <!-- Controles del carrusel -->
-        <div class="prev" id="prevBtn"><i class="fas fa-chevron-left"></i></div>
-        <div class="next" id="nextBtn"><i class="fas fa-chevron-right"></i></div>
+            <!-- Controles del carrusel -->
+            <div class="prev" id="prevBtn"><i class="fas fa-chevron-left"></i></div>
+            <div class="next" id="nextBtn"><i class="fas fa-chevron-right"></i></div>
+        </div>
     </section>
 
     <!-- Sección de artículos -->
@@ -52,33 +54,33 @@
 
     <!-- Sección de servicios -->
     <section class="servicios" id="servicios-section">
-        <h2 class="padding">Explora nuestros servicios</h2>
+        <h2 class="padding">Explorá nuestros servicios</h2>
 
         <div class="services-container">
         <!-- Servicio de impresión -->
         <div class="service">
-            <img src="imagen-servicio.jpg" alt="Servicio 1">
+            <img src="public/img/articulo_servicio_impresion.png" alt="Servicio 1">
             <h3 class="service-title">Servicio de Impresión</h3>
             <p class="service-description">En <strong>NuevoPack</strong>, utilizamos tecnología de impresión de última generación para garantizar resultados impecables. Contamos con una amplia variedad de opciones en papel, acabados y tintas para adaptarnos a las necesidades de cada cliente. Desde folletos y tarjetas hasta envases y etiquetas, cada impresión refleja calidad y profesionalismo.</p>
         </div>
 
         <!-- Servicio de troquelado -->
         <div class="service">
-            <img src="imagen-servicio.jpg" alt="Servicio 2">
+            <img src="public/img/articulo_servicio_troquelado.png" alt="Servicio 2">
             <h3 class="service-title">Servicio de Troquelado</h3>
             <p class="service-description">El troquelado es clave para obtener piezas con formas personalizadas y bordes definidos. En <strong>NuevoPack</strong>, empleamos troqueles de alta precisión para cortes exactos en cartón, papel y otros materiales, asegurando resultados impecables en packaging, etiquetas, estuches y más.</p>
         </div>
 
         <!-- Servicio de pegado de estuches (lateral) -->
         <div class="service">
-            <img src="imagen-servicio.jpg" alt="Servicio 3">
+            <img src="public/img/articulo_servicio_pegado_estuches.png" alt="Servicio 3">
             <h3 class="service-title">Servicio de Pegados de Estuches (lateral)</h3>
             <p class="service-description">Ofrecemos un servicio de pegado lateral eficiente y de alta calidad, ideal para cajas y estuches de distintos formatos. Nuestro sistema de pegado asegura resistencia y durabilidad, brindando soluciones prácticas para embalajes comerciales y promocionales.</p>
         </div>
 
         <!-- Servicio de almanaques -->
         <div class="service">
-            <img src="imagen-servicio.jpg" alt="Servicio 4">
+            <img src="public/img/articulo_servicio_almanaques.png" alt="Servicio 4">
             <h3 class="service-title">Servicio de Almanaques</h3>
             <p class="service-description">Los almanaques son una excelente herramienta de marketing y organización. En <strong>NuevoPack</strong>, diseñamos y producimos almanaques personalizados con impresiones nítidas y acabados de primera calidad. Perfectos para oficinas, negocios o como obsequios corporativos.</p>
         </div>
