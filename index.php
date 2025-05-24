@@ -59,7 +59,7 @@
         <div class="services-container">
         <!-- Servicio de impresión -->
         <div class="service">
-            <img src="public/img/articulo_servicio_impresion.png" alt="Servicio 1">
+            <img src="public/img/articulo_servicio_impresion.png" alt="Servicio 1" width="300" height="300">
             <h3 class="service-title">Servicio de Impresión</h3>
             <p class="service-description">En <strong>NuevoPack</strong>, utilizamos tecnología de impresión de última generación para garantizar resultados impecables. Contamos con una amplia variedad de opciones en papel, acabados y tintas para adaptarnos a las necesidades de cada cliente. Desde folletos y tarjetas hasta envases y etiquetas, cada impresión refleja calidad y profesionalismo.</p>
         </div>
