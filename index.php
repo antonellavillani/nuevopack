@@ -27,6 +27,12 @@
             <div class="prev" id="prevBtn"><i class="fas fa-chevron-left"></i></div>
             <div class="next" id="nextBtn"><i class="fas fa-chevron-right"></i></div>
         </div>
+
+        <!-- Indicadores del carrusel -->
+        <div class="carousel-indicators" id="carouselIndicators">
+            <!-- Los puntitos se generan dinámicamente con JS -->
+        </div>
+
     </section>
 
     <!-- Sección de artículos -->

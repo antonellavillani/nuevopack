@@ -486,6 +486,28 @@ footer {
     color: white;
 }
 
+/* Estilo para los indicadores */
+.carousel-indicators {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    gap: 8px;
+}
+
+.carousel-indicators button {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: none;
+    background-color: #6A7348;;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.carousel-indicators button.active {
+    background-color: #fff;
+}
+
 /* ---------------------------------------
    Estilos para los artículos
 --------------------------------------- */

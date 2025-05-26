@@ -74,9 +74,27 @@ document.addEventListener("DOMContentLoaded", function () {
         let currentSlide = 0;
         const totalSlides = slides.length;
 
+        const indicatorsContainer = document.getElementById("carouselIndicators");
+
+        // Crear botones de indicador
+        const indicators = [];
+        for (let i = 0; i < totalSlides; i++) {
+            const btn = document.createElement("button");
+            btn.addEventListener("click", () => showSlide(i));
+            indicatorsContainer.appendChild(btn);
+            indicators.push(btn);
+        }
+
+
         function showSlide(index) {
             currentSlide = (index + totalSlides) % totalSlides;
             carouselContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+            // Actualizar los indicadores activos
+            indicators.forEach((btn, i) => {
+                btn.classList.toggle("active", i === currentSlide);
+            });
+
         }
 
         function nextSlide() {
