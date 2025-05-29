@@ -15,7 +15,7 @@ include('includes/header.php');
             <h2>Nuestra Historia</h2>
             <p>En NuevoPack, llevamos más de 20 años ofreciendo soluciones de impresión innovadoras, 
         adaptándonos a las necesidades de nuestros clientes y comprometiéndonos con la calidad y la creatividad.</p>
-            <img src="imagen_historia.jpg" alt="Foto de nuestra historia" class="imagen-historia">
+            <img src="public/img/nuestra_historia.png" alt="Foto de nuestra historia" class="imagen-historia">
         </section>
 
         <!-- Sección: Misión y Valores -->
@@ -40,7 +40,7 @@ include('includes/header.php');
         <section class="nuestro-equipo articulo">
             <h2>Nuestro Equipo</h2>
             <p>Detrás de NuevoPack hay un equipo apasionado por la creatividad y la excelencia. Desde diseñadores hasta especialistas en impresión, cada miembro aporta su experiencia y compromiso para brindar soluciones que superen tus expectativas. Estamos aquí para acompañarte en cada paso de tu proyecto.</p>
-            <img src="equipo.jpg" alt="Foto del equipo" class="imagen-equipo">
+            <img src="public/img/nuestro_equipo.png" alt="Foto del equipo" class="imagen-equipo">
         </section>
 
         <!-- Sección: Logros y Datos Clave -->
