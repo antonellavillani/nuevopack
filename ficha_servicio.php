@@ -169,21 +169,68 @@ foreach ($precios as $precio) {
     <!-- CONTENEDOR 3: FORMULARIO DE CONTACTO -->
     <div class="formulario-contacto">
         <h3 class="nombre-producto">Contacto</h3>
-        <form id="form-contacto" action="backend/enviar_correo.php" method="POST">
-            <label for="nombre">Indícanos tu nombre:</label>
+        <form id="form-contacto" action="backend/enviar_correo.php" method="POST" enctype="multipart/form-data">
+            <label for="nombre">Nombre completo:</label>
             <input type="text" id="nombre" name="nombre" required>
             
-            <label for="email">Tu email:</label>
+            <label for="email">Correo electrónico:</label>
             <input type="email" id="email" name="email" required>
             
-            <label for="mensaje">Tu consulta:</label>
-            <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+            <label for="telefono">Teléfono (opcional):</label>
+            <input type="tel" id="telefono" name="telefono">
             
-            <button type="submit">Enviar Consulta</button>
-        </form>
-        <?php if (isset($_GET['mensaje']) && $_GET['mensaje'] === 'success'): ?>
-        <div class="mensaje-exito">Tu consulta fue enviada con éxito.</div>
-        <?php endif; ?>
+            <!-- Servicios requeridos con cantidad -->
+            <fieldset>Servicios requeridos:
+
+            <input type="checkbox" id="servicio_impresion" name="servicios[]" value="impresion">
+            <label for="servicio_impresion">Servicio de impresión</label>
+
+            <input type="checkbox" id="servicio_troquelado" name="servicios[]" value="troquelado"> <label for="servicio_troquelado">Servicio de troquelado</label>
+
+            <input type="checkbox" id="servicio_pegado" name="servicios[]" value="pegado_estuches"> <label for="servicio_pegado">Servicio de pegado de estuches</label>
+
+            <input type="checkbox" id="servicio_almanaques" name="servicios[]" value="almanaques"> <label for="servicio_almanaques">Servicio de almanaques</label>
+
+            </fieldset>
+
+            <!-- Descripción del pedido -->
+            <label for="descripcion">Descripción del pedido:</label>
+
+            <textarea id="descripcion" name="descripcion" rows="4" placeholder="Ej: Necesito 500 cajas troqueladas, impresas a color..."></textarea>
+            
+            <!-- Diseño -->
+            <label>¿Tenés un diseño?</label>
+            <input type="radio" id="diseno1" name="diseno" value="tengo" required>
+            <label for="diseno1">Ya tengo el diseño</label>
+            <input type="radio" id="diseno2" name="diseno" value="necesito">
+            <label for="diseno2">Necesito que lo diseñen</label>
+
+            <!-- Subida de archivo -->
+            <label for="archivo">Subí tu diseño o referencia (opcional):</label>
+            <input type="file" id="archivo" name="archivo" accept=".jpg,.jpeg,.png,.pdf,.ai,.psd">
+
+            <!-- Medio de contacto preferido -->
+            <label for="medio">¿Cómo preferís que te contactemos?</label>
+            <select id="medio" name="medio">
+                <option value="email">Correo electrónico</option>
+                <option value="telefono">Teléfono</option>
+                <option value="whatsapp">WhatsApp</option>
+            </select>
+
+            <!-- Cómo nos conociste -->
+            <label for="conocio">¿Cómo nos conociste? (opcional)</label>
+            <select id="conocio" name="conocio">
+                <option value="" selected>Seleccionar</option>
+                <option value="google">Google</option>
+                <option value="redes">Redes sociales</option>
+                <option value="recomendacion">Recomendación</option>
+                <option value="otro">Otro</option>
+            </select>
+            
+            <!-- Botón de envío -->
+            <button type="submit">Enviar consulta</button>
+
+            </form>
     </div>
 </div>
 
