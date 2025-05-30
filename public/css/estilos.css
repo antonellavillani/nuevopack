@@ -1183,6 +1183,23 @@ select, input[type="number"] {
     gap: 15px;
 }
 
+/* Scroll del formulario de contacto */
+.scroll-formulario-contacto {
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 10px; /* Espacio para que no corte el contenido */
+    padding-bottom: 10px;
+}
+
+/* Ajustes para que el scroll sea más suave y visible */
+.scroll-formulario-contacto::-webkit-scrollbar {
+    width: 8px;
+}
+.scroll-formulario-contacto::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 4px;
+}
+
 #troquelado_seccion,
 #barniz_seccion,
 #estuches_seccion {

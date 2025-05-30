@@ -142,6 +142,25 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
     
+    // Mostrar/ocultar campo oculto en formulario de contacto de ficha_servicio.php
+    document.getElementById('conocio').addEventListener('change', function () {
+        const otroInput = document.getElementById('input-oculto-otro');
+        if (this.value === 'otro') {
+            otroInput.style.display = 'block';
+        } else {
+            otroInput.style.display = 'none';
+            document.getElementById('conocio_otro').value = ''; // esto limpia el campo si no es "otro"
+        }
+    });
+
+    // Ocultar el campo 'otro' si no está seleccionado por defecto
+    const selectConocio = document.getElementById('conocio');
+    const otroInput = document.getElementById('input-oculto-otro');
+    if (selectConocio && otroInput && selectConocio.value !== 'otro') {
+        otroInput.style.display = 'none';
+    }
+
+
 });
 
 // Menú móvil al cargar la página
