@@ -648,33 +648,11 @@ footer {
     color: #6A7348;
 }
 
-/* Contenedor principal para la imagen y la calculadora de precios */
-.producto-imagen-calculadora {
-    display: flex;
-    gap: 20px;
-}
-
 .imagen-producto img {
     width: 350px;
     height: auto;
     border-radius: 8px;
     object-fit: cover;
-}
-
-/* Estilos para la calculadora de precios */
-.calculadora-precio {
-    background-color: #f8f8f8;
-    padding: 15px;
-    border-radius: 8px;
-}
-
-.calculadora-precio h2,
-.resultado-precio h3 {
-    color: #0D0D0D;
-}
-
-.form-group {
-    margin-bottom: 15px;
 }
 
 label {
@@ -690,103 +668,12 @@ select, input[type="number"] {
     border: 1px solid #ccc;
 }
 
-.btn-calcular {
-    background-color: #6A7348;
-    color: #ffffff;
-    padding: 8px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 100%;
-    font-size: 0.9em;
-}
-
-.btn-calcular:hover {
-    background-color: #888f55; /* Color al pasar el mouse por el botón */
-}
-
+/* ----- Calculadora de Precios -----*/
 .resultado {
     margin-top: 20px;
     text-align: center;
     font-size: 1.2em;
     color: #333;
-}
-
-
-.descripcion-y-pagos {
-    display: flex;
-    gap: 15px;
-    margin-top: 20px;
-}
-
-.descripcion-producto, .medios-pago {
-    background-color: #f4f4f4;
-    padding: 15px;
-    border-radius: 8px;
-    width: 100%;
-}
-
-.descripcion-producto h3, .medios-pago h3 {
-    font-size: 1.5em;
-    margin-bottom: 10px;
-    color: #6A7348;
-}
-
-.medios-pago ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.medios-pago li {
-    font-size: 1em;
-    margin: 5px 0;
-}
-
-.formulario-contacto {
-    margin-top: 20px;
-    padding: 20px;
-    background-color: #f4f4f4;
-    border-radius: 8px;
-}
-
-.formulario-contacto form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.formulario-contacto input, .formulario-contacto textarea {
-    padding: 8px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    width: 100%;
-}
-
-.formulario-contacto button {
-    background-color: #6A7348;
-    color: white;
-    padding: 8px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 0.9em;
-}
-
-.formulario-contacto button:hover {
-    background-color: #888f55;
-}
-
-/* Estilo para que cada elemento ocupe el 50% */
-.producto-imagen-calculadora .imagen-producto,
-.producto-imagen-calculadora .calculadora-precio {
-    flex: 1;
-}
-
-/* Ajuste para la imagen dentro de su contenedor */
-.producto-imagen-calculadora .imagen-producto img {
-    width: 90%;
-    height: auto;
-    object-fit: cover;
 }
 
 #calculadora-form {
@@ -826,6 +713,77 @@ select, input[type="number"] {
     margin-right: 8px; /* Espacio entre la casilla y el texto */
 }
 
+#troquelado_seccion,
+#barniz_seccion,
+#estuches_seccion {
+    transition: all 0.3s ease;
+    display: none;
+}
+
+.resultado-precio {
+    margin-top: 20px;
+    font-size: 18px;
+    color: green;
+}
+
+.calculadora {
+    max-width: 600px;
+    max-height: 600px;
+    overflow-y: auto;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 20px;
+    padding-right: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .calculadora h2, .calculadora h3 {
+    margin-top: 1rem;
+    font-size: 1.5rem;
+  }
+  
+  .calculadora label {
+    display: block;
+    margin-top: 0.5rem;
+    font-weight: bold;
+  }
+  
+  .calculadora input[type="number"],
+  .calculadora input[type="text"] {
+    width: 100%;
+    padding: 0.4rem;
+    margin-bottom: 0.8rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .calculadora button {
+    margin-top: 1rem;
+    padding: 0.6rem 1.2rem;
+    background-color: #222;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .resultado-precio {
+    margin-top: 20px;
+    text-align: center;
+    background-color: #e0ffe0;
+    padding: 15px;
+    border: 1px solid #b2d8b2;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #2c662d;
+  }
+
+  .grupo-campo {
+    margin-bottom: 15px;
+}
+
 .mensaje {
     padding: 8px;
     border-radius: 5px;
@@ -854,6 +812,454 @@ select, input[type="number"] {
         max-width: 100%;
     }
 }
+
+/* ----- Formulario Contacto ----- */
+#texto-centrado{
+    text-align: center;
+}
+
+.formulario-contacto {
+    margin: 50px auto; /* Centra horizontalmente */
+    margin-top: 20px;   
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+}
+
+.form-grupo {
+    margin-bottom: 12px;
+}
+
+.form-grupo button {
+    margin: 0 auto;
+    display: block;
+}
+
+.formulario-contacto form {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.formulario-contacto input, .formulario-contacto textarea {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 100%;
+}
+
+.formulario-contacto button {
+    background-color: #4E5735;
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+    max-width: 250px;
+    align-self: center;
+}
+
+.formulario-contacto button:hover {
+    background-color: #3b4427;
+    transform: scale(1.03);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Estilo para los inputs, selects y textarea */
+.formulario-contacto input[type="text"],
+.formulario-contacto input[type="email"],
+.formulario-contacto input[type="tel"],
+.formulario-contacto input[type="file"],
+.formulario-contacto textarea,
+.formulario-contacto select {
+    width: 100%;
+    max-width: 500px;
+    padding: 10px;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.formulario-contacto select {
+    color: #555;
+    font-size: 14px;
+}
+
+.formulario-contacto textarea {
+    resize: none;
+}
+
+.formulario-contacto input:focus,
+.formulario-contacto textarea:focus,
+.formulario-contacto select:focus {
+    border-color: #4E5735;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+}
+
+::placeholder {
+    font-size: 14px;
+    color: #999;
+}
+
+button {
+    background-color: #6A7348;
+    color: white;
+    border: none;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #888f55;
+}
+
+.fieldset-servicios {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.fieldset-servicios legend {
+    margin-top: 5px;
+    padding: 0 8px;
+    font-size: 14px;
+    font-weight: 600; 
+    color: #6A7348;
+    margin-bottom: 2px;
+}
+
+.fieldset-servicios label {
+    margin-left: 8px;
+    margin-bottom: 8px;
+}
+
+.checkbox-wrapper-46 label.opcion-servicio:first-child {
+    margin-top: 4px;
+}
+
+/* Estilo para fieldset y etiquetas */
+.formulario-contacto fieldset {
+    border: none;
+    margin-bottom: 16px;
+    padding: 0;
+}
+
+.formulario-contacto label {
+    display: block;
+    margin-top: 12px;
+    font-weight: 500;
+    color: #6A7348;
+}
+
+/* Scrollbar personalizado */
+.scroll-formulario::-webkit-scrollbar {
+    width: 8px;
+}
+.scroll-formulario::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 4px;
+}
+
+/* Scroll del formulario de contacto */
+.scroll-formulario-contacto {
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 10px; /* Espacio para que no corte el contenido */
+    padding-bottom: 10px;
+}
+
+/* Ajustes para que el scroll sea más suave y visible */
+.scroll-formulario-contacto::-webkit-scrollbar {
+    width: 8px;
+}
+.scroll-formulario-contacto::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 4px;
+}
+
+/* Radio buttons de Uiverse.io */ 
+.radio-input {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .radio-input * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .radio-input label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid #B6C197;
+    border-radius: 10px;
+    padding: 10px 15px;
+    width: 220px;
+    cursor: pointer;
+    height: 50px;
+    position: relative;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    background-color: #f0f4e8;
+  }
+  
+  .radio-input label::before {
+    position: absolute;
+    content: "";
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 220px;
+    height: 45px;
+    z-index: -1;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    border-radius: 10px;
+    border: 2px solid transparent;
+  }
+  .radio-input label:hover::before {
+    transition: all 0.2s ease;
+  }
+
+.radio-input .label:has(input:checked) {
+    background-color: #4E5735;
+    border-color: #3b4427;
+    color: white;
+}
+
+.radio-input .label:has(input:checked) .text {
+    color: white;
+}
+
+.radio-input label:hover {
+    background-color: #e0e6d4;
+}
+
+  .radio-input .label:has(input:checked)::before {
+    height: 50px;
+  }
+  .radio-input .label .text {
+    color: #555;
+  }
+  
+  .radio-input .label input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: white;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #6A7348;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+    position: relative;
+  }
+  .radio-input .label input[type="radio"]:checked {
+    background-color: #6A7348;
+    /*-webkit-animation: puls 0.7s forwards;
+    animation: pulse 0.7s forwards;*/
+    box-shadow: 0 0 0 3px #dce2c6;
+  }
+  
+  .radio-input .label input[type="radio"]:before {
+    content: "";
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 8px;
+    height: 8px;
+    background-color: #fff;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+  
+  .radio-input .label input[type="radio"]:checked::before {
+    /*transform: scale(1);*/
+    opacity: 1;
+  }
+
+.radio-input .text {
+    margin: 0;
+    font-size: 13px;
+    color: #4E5735;
+    font-weight: 500;
+}
+
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+    }
+    70% {
+      box-shadow: 0 0 0 8px rgba(255, 255, 255, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+    }
+  }
+  
+  /* Checkboxes de Uiverse.io */ 
+.checkbox-wrapper-46 input[type="checkbox"] {
+    display: none;
+    visibility: hidden;
+  }
+  
+  .checkbox-wrapper-46 .cbx {
+    margin: auto;
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: pointer;
+  }
+  .checkbox-wrapper-46 .cbx span {
+    display: inline-block;
+    vertical-align: middle;
+    transform: translate3d(0, 0, 0);
+  }
+  .checkbox-wrapper-46 .cbx span:first-child {
+    position: relative;
+    width: 18px;
+    height: 18px;
+    border-radius: 3px;
+    transform: scale(1);
+    vertical-align: middle;
+    border: 1px solid #9098a9;
+    transition: all 0.2s ease;
+  }
+  .checkbox-wrapper-46 .cbx span:first-child svg {
+    position: absolute;
+    top: 3px;
+    left: 2px;
+    fill: none;
+    stroke: #ffffff;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 16px;
+    stroke-dashoffset: 16px;
+    transition: all 0.3s ease;
+    transition-delay: 0.1s;
+    transform: translate3d(0, 0, 0);
+  }
+  .checkbox-wrapper-46 .cbx span:first-child:before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: grey;
+    display: block;
+    transform: scale(0);
+    opacity: 1;
+    border-radius: 50%;
+  }
+  .checkbox-wrapper-46 .cbx span:last-child {
+    padding-left: 8px;
+  }
+  .checkbox-wrapper-46 .cbx:hover span:first-child {
+    border-color: grey;
+  }
+  
+  .checkbox-wrapper-46 .inp-cbx:checked + .cbx span:first-child {
+    background: #4E5735;
+    border-color: #6A7348;
+    animation: wave-46 0.4s ease;
+  }
+  .checkbox-wrapper-46 .inp-cbx:checked + .cbx span:first-child svg {
+    stroke-dashoffset: 0;
+  }
+  .checkbox-wrapper-46 .inp-cbx:checked + .cbx span:first-child:before {
+    transform: scale(3.5);
+    opacity: 0;
+    transition: all 0.6s ease;
+  }
+  
+  @keyframes wave-46 {
+    50% {
+      transform: scale(0.9);
+    }
+  }
+
+  /* Color verde oscuro al estar marcado */
+.inp-cbx:checked + .cbx span svg {
+    stroke: whitesmoke; /* verde oscuro */
+    animation: checkAnim 0.3s ease forwards;
+}
+
+/* Animación personalizada */
+@keyframes checkAnim {
+    0% { transform: scale(0.5); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Texto del checkbox */
+.cbx > span:last-child {
+    color: #444;
+    transition: color 0.3s;
+}
+
+.inp-cbx:checked + .cbx > span:last-child {
+    color: #4E5735;
+}
+
+/* Subir archivos de Uiverse.io */
+.custum-file-upload {
+    height: 200px;
+    width: 100%;
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed #aaa;
+    background-color: rgba(255, 255, 255, 1);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 48px 35px -48px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: border 0.3s ease;
+    margin-top: 8px;
+  }
+  
+.custum-file-upload:hover {
+    border-color: #6A7348;
+}
+
+.custum-file-upload .icon {
+    font-size: 24px;
+    color: #6A7348;
+    margin-bottom: 8px;
+}
+
+  .custum-file-upload .icon svg {
+    height: 80px;
+    fill: rgba(75, 85, 99, 1);
+  }
+  
+  .custum-file-upload .text span {
+    font-weight: 400;
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .custum-file-upload input[type="file"] {
+    display: none;
+  }
 
 /* ---------------------------------------
    Estilos para página Contacto
@@ -1069,60 +1475,6 @@ select, input[type="number"] {
     margin: 0 auto;
     text-align: center;
 }
-/* --------------------------------------------------- */
-.calculadora {
-    max-width: 600px;
-    max-height: 600px;
-    overflow-y: auto;
-    margin: 0 auto;
-    background-color: #ffffff;
-    padding: 20px;
-    padding-right: 10px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .calculadora h2, .calculadora h3 {
-    margin-top: 1rem;
-    font-size: 1.5rem;
-  }
-  
-  .calculadora label {
-    display: block;
-    margin-top: 0.5rem;
-    font-weight: bold;
-  }
-  
-  .calculadora input[type="number"],
-  .calculadora input[type="text"] {
-    width: 100%;
-    padding: 0.4rem;
-    margin-bottom: 0.8rem;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-  }
-  
-  .calculadora button {
-    margin-top: 1rem;
-    padding: 0.6rem 1.2rem;
-    background-color: #222;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .resultado-precio {
-    margin-top: 20px;
-    text-align: center;
-    background-color: #e0ffe0;
-    padding: 15px;
-    border: 1px solid #b2d8b2;
-    border-radius: 5px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #2c662d;
-  }
   
   .fila-doble {
     display: flex;
@@ -1152,57 +1504,9 @@ select, input[type="number"] {
     border-radius: 8px;
 }
 
-.grupo-campo {
-    margin-bottom: 15px;
-}
-
-.resultado-precio {
-    margin-top: 20px;
-    font-size: 18px;
-    color: green;
-}
-
 .descripcion-y-pagos {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     gap: 20px;
-}
-
-.formulario-contacto {
-    margin-top: 50px;
-    background-color: #ffffff;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.formulario-contacto form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-/* Scroll del formulario de contacto */
-.scroll-formulario-contacto {
-    max-height: 400px;
-    overflow-y: auto;
-    padding-right: 10px; /* Espacio para que no corte el contenido */
-    padding-bottom: 10px;
-}
-
-/* Ajustes para que el scroll sea más suave y visible */
-.scroll-formulario-contacto::-webkit-scrollbar {
-    width: 8px;
-}
-.scroll-formulario-contacto::-webkit-scrollbar-thumb {
-    background-color: #ccc;
-    border-radius: 4px;
-}
-
-#troquelado_seccion,
-#barniz_seccion,
-#estuches_seccion {
-    transition: all 0.3s ease;
-    display: none;
 }

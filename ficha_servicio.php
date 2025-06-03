@@ -44,7 +44,7 @@ foreach ($precios as $precio) {
 
         <div class="columna-derecha">
             <form action="" method="POST">
-                <section class="calculadora">
+                <section class="calculadora calculadora-form">
                 <h2 class="nombre-producto">Calculadora de precios</h2>
 
                 <!-- Impresión -->
@@ -168,75 +168,150 @@ foreach ($precios as $precio) {
 
     <!-- CONTENEDOR 3: FORMULARIO DE CONTACTO -->
     <div class="formulario-contacto">
-        <h3 class="nombre-producto">Contacto</h3>
+        <h3 class="nombre-producto" id="texto-centrado">Contacto</h3>
         <div class="scroll-formulario-contacto">
             <form id="form-contacto" action="backend/enviar_correo.php" method="POST" enctype="multipart/form-data">
-                <label for="nombre">Nombre completo:</label>
-                <input type="text" id="nombre" name="nombre" required>
-                
-                <label for="email">Correo electrónico:</label>
-                <input type="email" id="email" name="email" required>
-                
-                <label for="telefono">Teléfono (opcional):</label>
-                <input type="tel" id="telefono" name="telefono">
-                
+                <div class="form-grupo">
+                    <label for="nombre">Nombre completo:</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Escribí tu nombre" required>
+                </div>
+
+                <div class="form-grupo">
+                    <label for="email">Correo electrónico:</label>
+                    <input type="email" id="email" name="email" placeholder="Escribí tu correo electrónico" required>
+                </div>
+
+                <div class="form-grupo">
+                    <label for="telefono">Teléfono (opcional):</label>
+                    <input type="tel" id="telefono" name="telefono" placeholder="Ej.: 11 2233 4455">
+                </div>
+
+
                 <!-- Servicios requeridos con cantidad -->
-                <fieldset>Servicios requeridos:
+                <fieldset class="fieldset-servicios">
+                    <legend>Servicios requeridos:</legend>
 
-                <input type="checkbox" id="servicio_impresion" name="servicios[]" value="impresion">
-                <label for="servicio_impresion">Servicio de impresión</label>
+                    <div class="checkbox-wrapper-46">
+                        <label class="opcion-servicio">
+                        <input class="inp-cbx" type="checkbox" id="servicio_impresion" name="servicios[]" value="impresion" />
 
-                <input type="checkbox" id="servicio_troquelado" name="servicios[]" value="troquelado"> <label for="servicio_troquelado">Servicio de troquelado</label>
+                        <span class="cbx">
+                            <span>
+                                <svg width="12px" height="10px" viewBox="0 0 12 10">
+                                    <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                </svg>
+                            </span>
+                            <span>Servicio de impresión</span>
+                        </span>
+                        </label>
 
-                <input type="checkbox" id="servicio_pegado" name="servicios[]" value="pegado_estuches"> <label for="servicio_pegado">Servicio de pegado de estuches</label>
+                        <label class="opcion-servicio">
+                        <input class="inp-cbx" type="checkbox" id="servicio_troquelado" name="servicios[]" value="troquelado" />
+                        <span class="cbx">
+                            <span>
+                                <svg width="12px" height="10px" viewBox="0 0 12 10">
+                                    <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                </svg>
+                            </span>
+                            <span>Servicio de troquelado</span>
+                        </span>
+                    </label>
 
-                <input type="checkbox" id="servicio_almanaques" name="servicios[]" value="almanaques"> <label for="servicio_almanaques">Servicio de almanaques</label>
+                    <label class="opcion-servicio">
+                        <input class="inp-cbx" type="checkbox" id="servicio_pegado" name="servicios[]" value="pegado_estuches" />
+                        <span class="cbx">
+                            <span>
+                                <svg width="12px" height="10px" viewBox="0 0 12 10">
+                                    <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                </svg>
+                            </span>
+                            <span>Servicio de pegado de estuches</span>
+                        </span>
+                    </label>
 
-                </fieldset>
+                    <label class="opcion-servicio">
+                        <input class="inp-cbx" type="checkbox" id="servicio_almanaques" name="servicios[]" value="almanaques" />
+                        <span class="cbx">
+                            <span>
+                                <svg width="12px" height="10px" viewBox="0 0 12 10">
+                                    <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                </svg>
+                            </span>
+                            <span>Servicio de almanaques</span>
+                        </span>
+                    </label>
+                </div>
+            </fieldset>
 
-                <!-- Descripción del pedido -->
-                <label for="descripcion">Descripción del pedido:</label>
-
-                <textarea id="descripcion" name="descripcion" rows="4" placeholder="Ej: Necesito 500 cajas troqueladas, impresas a color..."></textarea>
+                <!-- Descripción -->
+                <div class="form-grupo">
+                    <label for="descripcion">Descripción del pedido:</label>
+                    <textarea id="descripcion" name="descripcion" rows="10" placeholder="Ej: Necesito 500 cajas troqueladas, impresas a color..."></textarea>
+                </div>
                 
                 <!-- Diseño -->
-                <label>¿Tenés un diseño?</label>
-                <input type="radio" id="diseno1" name="diseno" value="tengo" required>
-                <label for="diseno1">Ya tengo el diseño</label>
-                <input type="radio" id="diseno2" name="diseno" value="necesito">
-                <label for="diseno2">Necesito que lo diseñen</label>
+                <fieldset class="fieldset-servicios">
+                    <legend>Diseño gráfico requerido:</legend>
+                    <div class="radio-input">
+                        <label class="label">
+                            <input type="radio" name="diseno" value="tengo" required />
+                            <p class="text">Ya tengo el diseño</p>
+                        </label>
+                        <label class="label">
+                            <input type="radio" name="diseno" value="necesito" />
+                            <p class="text">Necesito un diseño</p>
+                        </label>
+                    </div>
+                </fieldset>
 
-                <!-- Subida de archivo -->
-                <label for="archivo">Subí tu diseño o referencia (opcional):</label>
-                <input type="file" id="archivo" name="archivo" accept=".jpg,.jpeg,.png,.pdf,.ai,.psd">
+                <!-- Subir archivo -->
+                <div class="form-grupo">
+                    <label for="archivo">Subí tu diseño o referencia (opcional):</label>
+                    <label for="archivo" class="custum-file-upload">
+                        <div class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                            </svg>
+                        </div>
+                        <div class="text">
+                            <span>Subí tu diseño o referencia</span>
+                        </div>
+                        <input type="file" id="archivo" name="archivo" accept=".jpg,.jpeg,.png,.pdf,.ai,.psd">
+                    </label>
+                </div>
 
-                <!-- Medio de contacto preferido -->
-                <label for="medio">¿Cómo preferís que te contactemos?</label>
-                <select id="medio" name="medio">
-                    <option value="email">Correo electrónico</option>
-                    <option value="telefono">Teléfono</option>
-                    <option value="whatsapp">WhatsApp</option>
-                </select>
+                <!-- Medio contacto -->
+                <div class="form-grupo">
+                    <label for="medio">¿Cómo preferís que te contactemos?</label>
+                    <select id="medio" name="medio">
+                        <option value="email">Correo electrónico</option>
+                        <option value="telefono">Teléfono</option>
+                        <option value="whatsapp">WhatsApp</option>
+                    </select>
+                </div>
 
                 <!-- Cómo nos conociste -->
-                <label for="conocio">¿Cómo nos conociste? (opcional)</label>
-                <select id="conocio" name="conocio">
-                    <option value="" selected>Seleccionar</option>
-                    <option value="google">Google</option>
-                    <option value="redes">Redes sociales</option>
-                    <option value="recomendacion">Recomendación</option>
-                    <option value="otro">Otro</option>
-                </select>
-                <div id="input-oculto-otro">
-                <!-- Input oculto para la opción 'Otro' -->
-                    <label for="conocio_otro">Contanos cómo nos conociste:</label><br>
+                <div class="form-grupo">
+                    <label for="conocio">¿Cómo nos conociste? (opcional)</label>
+                    <select id="conocio" name="conocio">
+                        <option value="" selected>Seleccionar</option>
+                        <option value="google">Google</option>
+                        <option value="redes">Redes sociales</option>
+                        <option value="recomendacion">Recomendación</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                </div>
+
+                <div id="input-oculto-otro" class="form-grupo">
+                    <label for="conocio_otro">Contanos cómo nos conociste:</label>
                     <input type="text" id="conocio_otro" name="conocio_otro">
                 </div>
 
-                <!-- Botón de envío -->
-                <button type="submit">Enviar consulta</button>
-            </div>
-        </form>
+                <div class="form-grupo">
+                    <button type="submit">Enviar consulta</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
