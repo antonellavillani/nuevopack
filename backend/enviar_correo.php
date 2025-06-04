@@ -41,7 +41,7 @@ function formatearOpciones($cadena) {
 $mensaje = '
 <div style="font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px;">
   <div style="max-width: 600px; margin: auto; background-color: #ffffff; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-    <h2 style="color: #333333;">📩 Nueva consulta desde el formulario</h2>
+    <h2 style="color: #333333;">📩 Nueva consulta desde la web</h2>
     <p><strong>👤 Nombre completo:</strong> ' . htmlspecialchars($nombre) . '</p>
     <p><strong>✉️ Correo electrónico:</strong> ' . htmlspecialchars($email) . '</p>
     <p><strong>📞 Teléfono:</strong> ' . htmlspecialchars($telefono) . '</p>
@@ -68,7 +68,7 @@ try {
     $mail->Port = 587;
 
     // Configuración del remitente y destinatario
-    $mail->setFrom('villxni@gmail.com', 'Formulario Imprenta');
+    $mail->setFrom('villxni@gmail.com', 'Consulta Web');
     $mail->addAddress($destinatario);
 
     // Adjuntar archivo si fue enviado

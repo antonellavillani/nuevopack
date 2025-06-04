@@ -904,7 +904,7 @@ select, input[type="number"] {
 .formulario-contacto select:focus {
     border-color: #4E5735;
     outline: none;
-    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+    box-shadow: 0 0 0 2px rgba(78, 87, 53, 0.3);
 }
 
 ::placeholder {
@@ -990,7 +990,7 @@ button:hover {
 }
 
 /* Estilo para el mensaje de envío de mail */
-#mensaje-envio-mail{
+.mensaje-envio-mail{
     margin-top: 1rem; 
     font-weight: bold;
 }
@@ -1388,26 +1388,158 @@ button:hover {
 /* ---------------------------------------
    Estilos para página Contacto
 --------------------------------------- */
-.contact-container {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding: 20px;
+main.contacto-page {
+    margin-top: 40px;
 }
 
-.formulario-contacto, .info-contacto {
+main.contacto-page h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.contact-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    gap: 30px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.formulario-contacto-consultas,
+.info-contacto {
+    flex: 1 1 45%;
+    min-width: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: auto;
+    align-self: stretch;
+}
+
+.formulario-contacto-consultas {
+    background-color: #f9f9f9;
+    padding: 20px;
+    text-align: center;
+    margin-top: 0px;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.formulario-contacto-consultas form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.formulario-contacto-consultas .form-grupo {
+    margin-bottom: 12px;
+    width: 100%;
+}
+
+.formulario-contacto-consultas label {
+    margin-top: 10px;
+    display: block;
+    font-weight: 500;
+    color: #6A7348;
+    text-align: left;
+    width: 100%;
+    max-width: 500px;
+}
+
+.formulario-contacto-consultas input,
+.formulario-contacto-consultas textarea {
+    margin-top: 5px;
+    margin-bottom: 15px;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 100%;
+    max-width: 500px;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+.formulario-contacto-consultas textarea {
+    resize: none;
+}
+
+.formulario-contacto-consultas input:focus,
+.formulario-contacto-consultas textarea:focus {
+    border-color: #4E5735;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(78, 87, 53, 0.3);
+}
+
+.formulario-contacto-consultas button {
+    background-color: #4E5735;
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+    max-width: 250px;
+    align-self: center;
+}
+
+.formulario-contacto-consultas button:hover {
+    background-color: #3b4427;
+    transform: scale(1.03);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+::placeholder {
+    font-size: 14px;
+    color: #999;
+}
+
+.info-contacto{
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+    color: #333;
+    margin-top: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.formulario-contacto-consultas h2, .info-contacto h2{
     flex: 1;
     min-width: 300px;
+    color: #6A7348;
+    text-align: center;
 }
 
 #mapa iframe {
     border-radius: 10px;
+    margin-top: 10px;
+    flex-grow: 1;
+    height: 100%;
+    min-height: 250px;
+}
+
+#mapa {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 .contact-info {
-    margin-top: 10px;
+    margin-top: 40px;
     font-size: 16px;
+    color: #555;
 }
 
 /* ---------------------------------------

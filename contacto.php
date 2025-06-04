@@ -5,16 +5,16 @@ include('includes/header.php');
 
 <body>
     <!-- Contenido Principal -->
-    <main class="articles">
+    <main class="articles articles contacto-page">
         <!-- Título Principal -->
         <h1>Contáctanos</h1>
         
         <!-- Contenedor de Contacto -->
         <div class="contact-container">
             <!-- Formulario de Contacto -->
-            <div class="formulario-contacto">
+            <div class="formulario-contacto-consultas">
                 <h2>Déjanos tu consulta</h2>
-                <form>
+                <form id="form-consulta" action="backend/enviar_consulta.php" method="POST">
                     <label for="nombre">Nombre:</label>
                     <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
 
@@ -25,6 +25,7 @@ include('includes/header.php');
                     <textarea id="consulta" name="consulta" placeholder="Escribe tu consulta aquí" rows="6" required></textarea>
 
                     <button type="submit">Enviar</button>
+                    <div id="mensaje-envio" class="mensaje-envio-mail"></div>
                 </form>
             </div>
 

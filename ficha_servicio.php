@@ -326,7 +326,7 @@ foreach ($precios as $precio) {
                     <div class="dot-spinner__dot"></div>
                 </div>
             </form>
-            <div id="mensaje-respuesta" id="mensaje-envio-mail" class="texto-centrado"></div>
+            <div id="mensaje-respuesta" class="mensaje-envio-mail" class="texto-centrado"></div>
         </div>
     </div>
 </div>

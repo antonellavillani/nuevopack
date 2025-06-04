@@ -216,6 +216,43 @@ document.addEventListener("DOMContentLoaded", function () {
         this.value = this.value.replace(/\D/g, '');
     });
 
+    // enviar_consulta.php
+    document.addEventListener('DOMContentLoaded', function () {
+        const formulario = document.getElementById('form-consulta');
+        const mensajeEnvio = document.getElementById('mensaje-envio');
+    
+        if (!formulario) return;
+    
+        formulario.addEventListener('submit', function (e) {
+            e.preventDefault(); // Evita recargar la página
+    
+            const formData = new FormData(formulario);
+    
+            fetch('backend/enviar_consulta.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                mensajeEnvio.textContent = data;
+                mensajeEnvio.classList.add('visible');
+    
+                // Podés mejorar el control del mensaje con estilos, por ejemplo:
+                if (data.includes('Mensaje enviado correctamente')) {
+                    mensajeEnvio.style.color = 'green';
+                    formulario.reset();
+                } else {
+                    mensajeEnvio.style.color = 'red';
+                }
+            })
+            .catch(error => {
+                mensajeEnvio.textContent = 'Ocurrió un error al enviar la consulta.';
+                mensajeEnvio.style.color = 'red';
+                console.error(error);
+            });
+        });
+    });
+    
 });
 
 // Menú móvil al cargar la página
