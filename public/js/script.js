@@ -142,6 +142,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
     
+    // Scripts para formulario de contacto
     // Mostrar/ocultar campo oculto en formulario de contacto de ficha_servicio.php
     document.getElementById('conocio').addEventListener('change', function () {
         const otroInput = document.getElementById('input-oculto-otro');
@@ -160,6 +161,60 @@ document.addEventListener("DOMContentLoaded", function () {
         otroInput.style.display = 'none';
     }
 
+    
+    // Mostrar nombre del archivo seleccionado
+    document.getElementById('archivo').addEventListener('change', function() {
+        const nombreArchivo = this.files[0] ? this.files[0].name : 'Ningún archivo seleccionado';
+        document.getElementById('archivo-nombre').textContent = nombreArchivo;
+    });
+
+    // Validar y enviar el formulario con spinner
+    document.getElementById('form-contacto').addEventListener('submit', function(e) {
+        e.preventDefault(); // Evita el envío automático del formulario
+
+        const medio = document.getElementById('medio');
+        const errorMedio = document.getElementById('error-medio');
+
+        if (medio.value === '') {
+            errorMedio.style.display = 'block';
+            medio.focus();
+            return;
+        } else {
+            errorMedio.style.display = 'none';
+        }
+
+        // Mostrar spinner
+        const spinner = document.getElementById('spinner');
+        spinner.style.display = 'flex';
+
+        const form = e.target;
+        const formData = new FormData(form);
+
+        fetch(form.action, {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('mensaje-respuesta').textContent = data;
+            spinner.style.display = 'none';
+
+            if (data.includes('Mensaje enviado correctamente')) {
+                form.reset();
+                document.getElementById('archivo-nombre').textContent = '';
+            }
+        })
+        .catch(error => {
+            document.getElementById('mensaje-respuesta').textContent = 'Ocurrió un error al enviar el mensaje.';
+            spinner.style.display = 'none';
+            console.error(error);
+        });
+    });
+
+    // Solo permitir números en el teléfono
+    document.getElementById('telefono').addEventListener('input', function () {
+        this.value = this.value.replace(/\D/g, '');
+    });
 
 });
 

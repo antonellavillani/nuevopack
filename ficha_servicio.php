@@ -183,7 +183,7 @@ foreach ($precios as $precio) {
 
                 <div class="form-grupo">
                     <label for="telefono">Teléfono (opcional):</label>
-                    <input type="tel" id="telefono" name="telefono" placeholder="Ej.: 11 2233 4455">
+                    <input type="text" id="telefono" name="telefono" placeholder="Ej.: 11 2233 4455" inputmode="numeric" pattern="[0-9]*" maxlength="15" title="Solo se permiten números">
                 </div>
 
 
@@ -278,16 +278,19 @@ foreach ($precios as $precio) {
                         </div>
                         <input type="file" id="archivo" name="archivo" accept=".jpg,.jpeg,.png,.pdf,.ai,.psd">
                     </label>
+                    <p id="archivo-nombre" style="font-size: 14px; color: #444; margin-top: 5px;"></p>
                 </div>
 
                 <!-- Medio contacto -->
                 <div class="form-grupo">
                     <label for="medio">¿Cómo preferís que te contactemos?</label>
                     <select id="medio" name="medio">
+                        <option value="" selected>Seleccionar</option>
                         <option value="email">Correo electrónico</option>
                         <option value="telefono">Teléfono</option>
                         <option value="whatsapp">WhatsApp</option>
                     </select>
+                    <p id="error-medio" style="color: red; font-size: 14px; display: none;">Por favor, seleccioná una opción.</p>
                 </div>
 
                 <!-- Cómo nos conociste -->
@@ -310,7 +313,20 @@ foreach ($precios as $precio) {
                 <div class="form-grupo">
                     <button type="submit">Enviar consulta</button>
                 </div>
+
+                <!-- Ícono de cargando -->
+                <div id="spinner" class="dot-spinner" style="display: none; margin: 20px auto;">
+                    <div class="dot-spinner__dot"></div>
+                    <div class="dot-spinner__dot"></div>
+                    <div class="dot-spinner__dot"></div>
+                    <div class="dot-spinner__dot"></div>
+                    <div class="dot-spinner__dot"></div>
+                    <div class="dot-spinner__dot"></div>
+                    <div class="dot-spinner__dot"></div>
+                    <div class="dot-spinner__dot"></div>
+                </div>
             </form>
+            <div id="mensaje-respuesta" style="margin-top: 1rem; font-weight: bold;"></div>
         </div>
     </div>
 </div>
