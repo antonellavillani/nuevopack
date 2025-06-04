@@ -814,7 +814,7 @@ select, input[type="number"] {
 }
 
 /* ----- Formulario Contacto ----- */
-#texto-centrado{
+.texto-centrado{
     text-align: center;
 }
 
@@ -987,6 +987,24 @@ button:hover {
 .scroll-formulario-contacto::-webkit-scrollbar-thumb {
     background-color: #ccc;
     border-radius: 4px;
+}
+
+/* Estilo para el mensaje de envío de mail */
+#mensaje-envio-mail{
+    margin-top: 1rem; 
+    font-weight: bold;
+}
+
+#nombre-archivo{
+    font-size: 14px; 
+    color: #444; 
+    margin-top: 5px;
+}
+
+#mensaje-advertencia{
+    color: red; 
+    font-size: 14px; 
+    display: none;
 }
 
 /* Radio buttons de Uiverse.io */ 

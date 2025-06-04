@@ -168,7 +168,7 @@ foreach ($precios as $precio) {
 
     <!-- CONTENEDOR 3: FORMULARIO DE CONTACTO -->
     <div class="formulario-contacto">
-        <h3 class="nombre-producto" id="texto-centrado">Contacto</h3>
+        <h3 class="nombre-producto texto-centrado">Contacto</h3>
         <div class="scroll-formulario-contacto">
             <form id="form-contacto" action="backend/enviar_correo.php" method="POST" enctype="multipart/form-data">
                 <div class="form-grupo">
@@ -278,7 +278,7 @@ foreach ($precios as $precio) {
                         </div>
                         <input type="file" id="archivo" name="archivo" accept=".jpg,.jpeg,.png,.pdf,.ai,.psd">
                     </label>
-                    <p id="archivo-nombre" style="font-size: 14px; color: #444; margin-top: 5px;"></p>
+                    <p id="archivo-nombre" id="nombre-archivo"></p>
                 </div>
 
                 <!-- Medio contacto -->
@@ -290,7 +290,7 @@ foreach ($precios as $precio) {
                         <option value="telefono">Teléfono</option>
                         <option value="whatsapp">WhatsApp</option>
                     </select>
-                    <p id="error-medio" style="color: red; font-size: 14px; display: none;">Por favor, seleccioná una opción.</p>
+                    <p id="error-medio" id="mensaje-advertencia">Por favor, seleccioná una opción.</p>
                 </div>
 
                 <!-- Cómo nos conociste -->
@@ -314,7 +314,7 @@ foreach ($precios as $precio) {
                     <button type="submit">Enviar consulta</button>
                 </div>
 
-                <!-- Ícono de cargando -->
+                <!-- Ícono de cargando inicialmente oculto -->
                 <div id="spinner" class="dot-spinner" style="display: none; margin: 20px auto;">
                     <div class="dot-spinner__dot"></div>
                     <div class="dot-spinner__dot"></div>
@@ -326,7 +326,7 @@ foreach ($precios as $precio) {
                     <div class="dot-spinner__dot"></div>
                 </div>
             </form>
-            <div id="mensaje-respuesta" style="margin-top: 1rem; font-weight: bold;"></div>
+            <div id="mensaje-respuesta" id="mensaje-envio-mail" class="texto-centrado"></div>
         </div>
     </div>
 </div>
