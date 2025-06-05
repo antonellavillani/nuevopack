@@ -389,6 +389,11 @@ footer {
     margin: 0;
 }
 
+.informacion-contacto{
+    margin-top: 40px;
+    font-size: 16px;
+}
+
 /* ---------------------------------------
    Carrusel de imágenes en index
 --------------------------------------- */

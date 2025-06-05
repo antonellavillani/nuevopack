@@ -1,7 +1,7 @@
 <footer>
     <div class="footer-content">
         <!-- Información de contacto -->
-        <div class="contact-info">
+        <div class="informacion-contacto">
             <h4>Contacto</h4>
             <p>Dirección: 237 P. Elustondo, Quilmes, Buenos Aires Argentina</p>
             <p>Teléfono: +54 11 3932-7709 (Daniel)</p>
