@@ -25,8 +25,20 @@ include('includes/header.php');
                     <textarea id="consulta" name="consulta" placeholder="Escribe tu consulta aquí" rows="6" required></textarea>
 
                     <button type="submit">Enviar</button>
-                    <div id="mensaje-envio" class="mensaje-envio-mail"></div>
+
+                    <!-- Ícono de cargando inicialmente oculto -->
+                    <div id="spinner" class="dot-spinner" style="display: none; margin: 20px auto;">
+                        <div class="dot-spinner__dot"></div>
+                        <div class="dot-spinner__dot"></div>
+                        <div class="dot-spinner__dot"></div>
+                        <div class="dot-spinner__dot"></div>
+                        <div class="dot-spinner__dot"></div>
+                        <div class="dot-spinner__dot"></div>
+                        <div class="dot-spinner__dot"></div>
+                        <div class="dot-spinner__dot"></div>
+                    </div>
                 </form>
+                <div id="mensaje-envio" class="mensaje-envio-mail texto-centrado"></div>
             </div>
 
             <!-- Información de Contacto y Mapa -->

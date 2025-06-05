@@ -290,7 +290,7 @@ foreach ($precios as $precio) {
                         <option value="telefono">Teléfono</option>
                         <option value="whatsapp">WhatsApp</option>
                     </select>
-                    <p id="error-medio" id="mensaje-advertencia">Por favor, seleccioná una opción.</p>
+                    <p id="error-medio" class="mensaje-advertencia">Por favor, seleccioná una opción.</p>
                 </div>
 
                 <!-- Cómo nos conociste -->
@@ -326,7 +326,7 @@ foreach ($precios as $precio) {
                     <div class="dot-spinner__dot"></div>
                 </div>
             </form>
-            <div id="mensaje-respuesta" class="mensaje-envio-mail" class="texto-centrado"></div>
+            <div id="mensaje-respuesta" class="mensaje-envio-mail texto-centrado"></div>
         </div>
     </div>
 </div>

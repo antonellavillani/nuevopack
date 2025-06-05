@@ -993,6 +993,7 @@ button:hover {
 .mensaje-envio-mail{
     margin-top: 1rem; 
     font-weight: bold;
+    color: #555;
 }
 
 #nombre-archivo{
@@ -1001,7 +1002,7 @@ button:hover {
     margin-top: 5px;
 }
 
-#mensaje-advertencia{
+.mensaje-advertencia{
     color: red; 
     font-size: 14px; 
     display: none;
