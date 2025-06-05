@@ -163,9 +163,16 @@ document.addEventListener("DOMContentLoaded", function () {
                 errorMedio.style.display = 'none';
             }
 
+            const contenedor = document.querySelector('.scroll-formulario-contacto');
             const spinner = document.getElementById('spinner');
-            spinner.style.display = 'flex';
-
+            
+            if (contenedor && spinner) {
+              spinner.style.display = 'flex';
+              setTimeout(() => {
+                contenedor.scrollTop = spinner.offsetTop;
+              }, 50);
+            }            
+            
             const formData = new FormData(this);
 
             fetch(this.action, {
