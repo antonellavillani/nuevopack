@@ -983,6 +983,7 @@ button:hover {
     overflow-y: auto;
     padding-right: 10px; /* Espacio para que no corte el contenido */
     padding-bottom: 10px;
+    scroll-behavior: smooth;
 }
 
 /* Ajustes para que el scroll sea más suave y visible */

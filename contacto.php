@@ -58,7 +58,7 @@ include('includes/header.php');
                 
                 <!-- Información de Contacto -->
                 <div class="contact-info">
-                    <p><strong>Teléfono:</strong> (+54) 11 3932-7709 (Daniel)</p>
+                    <p><strong>Teléfono:</strong> 11 3932-7709 (Daniel)</p>
                     <p><strong>Correo Electrónico:</strong> contacto@imprentanuevopack.online</p>
                 </div>
             </div>

@@ -4,7 +4,7 @@
         <div class="informacion-contacto">
             <h4>Contacto</h4>
             <p>Dirección: 237 P. Elustondo, Quilmes, Buenos Aires Argentina</p>
-            <p>Teléfono: +54 11 3932-7709 (Daniel)</p>
+            <p>Teléfono: 11 3932-7709 (Daniel)</p>
             <p>Email: nuevopack@gmail.com</p>
             <p>Horario: Lunes a Viernes, 9:00 a 18:00. Sábados, 9:00 a 13:00.</p>
         </div>
