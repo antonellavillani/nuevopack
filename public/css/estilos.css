@@ -654,7 +654,7 @@ footer {
 }
 
 .imagen-producto img {
-    width: 350px;
+    width: 500px;
     height: auto;
     border-radius: 8px;
     object-fit: cover;

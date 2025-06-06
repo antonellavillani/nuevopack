@@ -38,7 +38,7 @@ foreach ($precios as $precio) {
         <div class="columna-izquierda contenedor-ficha-servicio">
             <h1 class="nombre-producto"><?= htmlspecialchars($servicio['nombre'] ?? 'Servicio no encontrado') ?></h1>
             <div class="imagen-producto">
-                <img src="<?= htmlspecialchars($servicio['foto'] ?? 'foto_producto_null.jpg') ?>" alt="<?= htmlspecialchars($servicio['nombre'] ?? 'Servicio') ?>">
+                <img src="uploads/<?= htmlspecialchars($servicio['foto'] ?? 'foto_producto_null.jpg') ?>" alt="<?= htmlspecialchars($servicio['nombre'] ?? 'Servicio') ?>">
             </div>
         </div>
 
