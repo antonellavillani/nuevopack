@@ -673,6 +673,10 @@ select, input[type="number"] {
     border: 1px solid #ccc;
 }
 
+.font-size-descripcion{
+    font-size: 0.9em;
+}
+
 /* ----- Calculadora de Precios -----*/
 .resultado {
     margin-top: 20px;

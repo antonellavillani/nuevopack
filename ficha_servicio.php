@@ -154,7 +154,7 @@ foreach ($precios as $precio) {
     <div class="fila-doble">
         <div class="columna-izquierda contenedor-ficha-servicio">
             <h3 class="nombre-producto">Descripción</h3>
-            <p><?= htmlspecialchars($servicio['descripcion'] ?? 'Descripción no disponible.') ?></p>
+            <p class="font-size-descripcion"><?= htmlspecialchars($servicio['descripcion'] ?? 'Descripción no disponible.') ?></p>
         </div>
         <div class="columna-derecha contenedor-ficha-servicio">
             <h3 class="nombre-producto">Medios de Pago</h3>
