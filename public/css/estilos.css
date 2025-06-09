@@ -1898,6 +1898,19 @@ main.contacto-page h1 {
     max-width: 48%;
 }
 
+@media (max-width: 768px) {
+    .fila-doble {
+        flex-direction: column;
+    }
+
+    .columna-izquierda,
+    .columna-derecha {
+        max-width: 100%;
+        width: 100%;
+        margin: 0 auto; /* Centra el div horizontalmente */
+    }
+}
+
 .descripcion-y-pagos {
     display: flex;
     flex-wrap: wrap;
