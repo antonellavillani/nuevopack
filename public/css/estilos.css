@@ -655,6 +655,7 @@ footer {
 
 .imagen-producto img {
     width: 500px;
+    max-width: 100%;
     height: auto;
     border-radius: 8px;
     object-fit: cover;
@@ -675,6 +676,138 @@ select, input[type="number"] {
 
 .font-size-descripcion{
     font-size: 0.9em;
+}
+
+/* ----- Tarjetas Almanaques -----*/
+.tarjeta-modelo{
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    min-width: 240px;
+    max-width: 350px;
+    transition: transform 0.3s ease;
+}
+
+.tarjeta-modelo:hover {
+    transform: scale(1.02);
+}
+
+.tarjeta-modelo img{
+    width: 100%;
+    height: 140px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .tarjeta-modelo img {
+    height: 150px;
+  }
+
+  .tarjeta-modelo img {
+    height: 120px;
+  }
+}
+
+.tarjeta-modelo h4{
+    color: #4E5735;
+}
+
+.tarjeta-modelo p{
+    color: #555;
+}
+
+.carrusel-almanaques{
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.contenedor-carrusel{
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 1rem;
+}
+
+.modal-imagen {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  padding-top: 60px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.9);
+}
+
+.contenido-modal {
+  margin: auto;
+  display: block;
+  max-width: 90%;
+  max-height: 80vh;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(255,255,255,0.3);
+}
+
+.cerrar-modal {
+  position: absolute;
+  top: 30px;
+  right: 35px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.cerrar-modal:hover {
+  color: #bbb;
+}
+
+.imagen-con-hover {
+  position: relative;
+  display: inline-block;
+  cursor: zoom-in;
+}
+
+.imagen-con-hover img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.texto-hover {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.imagen-con-hover:hover .texto-hover {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .texto-hover {
+    opacity: 1;
+    font-size: 0.8rem;
+    bottom: 5px;
+  }
 }
 
 /* ----- Calculadora de Precios -----*/
@@ -1763,12 +1896,6 @@ main.contacto-page h1 {
 
 .columna-derecha {
     max-width: 48%;
-}
-
-.imagen-producto img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
 }
 
 .descripcion-y-pagos {

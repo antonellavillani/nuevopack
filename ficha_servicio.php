@@ -43,6 +43,33 @@ foreach ($precios as $precio) {
         </div>
 
         <div class="columna-derecha">
+            <?php if ($idServicio == 5): ?>
+                <!-- Carrusel de modelos para almanaques -->
+                <section class="carrusel-almanaques contenedor-ficha-servicio">
+                    <h2 class="nombre-producto">Modelos de almanaques disponibles</h2>
+                    <div class="contenedor-carrusel">
+                        <!-- Tarjeta 1 -->
+                        <div class="tarjeta-modelo">
+                            <div class="imagen-con-hover">
+                                <img src="public/img/modelo-mensual.jpg" alt="Modelo 1">
+                                <div class="texto-hover">Click para ampliar</div>
+                            </div>
+                            <h4 class="texto-centrado">Modelo Mensual</h4>
+                            <p class="texto-centrado">37x53cm abierto, con zona publicitaria de 37x27cm.<br>Incluye fotocromo, laqueado brillante, mensual de 34x23cm impreso en 3 colores sobre papel de 90g.<br>Soporte de cartulina Triplex 370g y varilla metálica para colgar.</p>
+                        </div>
+                        <!-- Tarjeta 2 -->
+                        <div class="tarjeta-modelo">
+                            <div class="imagen-con-hover">
+                                <img src="public/img/modelo-trimestral.jpg" alt="Modelo 2">
+                                <div class="texto-hover">Click para ampliar</div>
+                            </div>
+                            <h4 class="texto-centrado">Modelo Trimestral Tipo Marítimo</h4>
+                            <p class="texto-centrado">29x65cm desplegado, 29x44cm cerrado.<br>Zona publicitaria de 29x21cm.<br>Incluye tres mensuales en papel obra de 90g, impresos en 3 colores.<br>Soporte en cartulina Triplex 370g, con anillado metálico Ring Wire, indicador de fecha rojo y varilla metálica para colgar.</p>
+                        </div>
+                    </div>
+                </section>
+            <?php else: ?>
+            <!-- Calculadora de precios -->
             <form action="" method="POST">
                 <section class="calculadora calculadora-form">
                 <h2 class="nombre-producto">Calculadora de precios</h2>
@@ -147,6 +174,7 @@ foreach ($precios as $precio) {
                 <p><strong>Para trabajos especiales, enviar mail para cotizar su pedido.</strong></p></div>";
             }
             ?>
+            <?php endif; ?>
         </div>
     </div>
 
@@ -341,5 +369,11 @@ foreach ($precios as $precio) {
 // Incluir el footer
 include('includes/footer.php');
 ?>
+
+<!-- Modal para mostrar la imagen de los almanaques ampliada -->
+<div id="modalImagen" class="modal-imagen">
+  <span class="cerrar-modal">&times;</span>
+  <img class="contenido-modal" id="imagenAmpliada" alt="Imagen ampliada">
+</div>
 
 </body>

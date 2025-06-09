@@ -232,7 +232,29 @@ document.addEventListener("DOMContentLoaded", function () {
                     console.error(error);
                 });
         });
-    }
+    } 
+    /* Abrir imágenes de almanaques */
+    document.querySelectorAll('.tarjeta-modelo img').forEach(img => {
+        img.addEventListener('click', () => {
+            const modal = document.getElementById('modalImagen');
+            const imagenAmpliada = document.getElementById('imagenAmpliada');
+            modal.style.display = 'block';
+            imagenAmpliada.src = img.src;
+            imagenAmpliada.alt = img.alt || 'Imagen ampliada';
+        });
+    });
+
+    document.querySelector('.cerrar-modal').addEventListener('click', () => {
+        document.getElementById('modalImagen').style.display = 'none';
+    });
+
+    window.addEventListener('click', (event) => {
+        const modal = document.getElementById('modalImagen');
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+
 });
 
 // ---------------------- Menú móvil al cargar y cerrar con clic externo ----------------------
