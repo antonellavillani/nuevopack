@@ -19,7 +19,6 @@ body {
 h1, h2, h3, h4, h5, h6, .nav-item a, .footer-section h4 {
     font-family: 'Poppins', sans-serif;
     font-weight: 700; /* Negrita */
-    /*font-size: calc(1em - 0.2em);*/
 }
 
 /* Textos en general (párrafos, descripciones, etc.) */
@@ -33,6 +32,45 @@ p, .footer-text, .search-bar, .footer-section p {
     padding-bottom: 20px;
 }
 
+.titulo-pagina {
+  font-size: 2.3rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 1px;
+  color: #4E5735;
+  position: relative;
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: aparecerTitulo 1s ease-out forwards;
+}
+
+@keyframes aparecerTitulo {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.titulo-pagina::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 50%;
+  height: 4px;
+  background-color: #D6B15C;
+  border-radius: 2px;
+}
+
+.seccion-titulo {
+  text-align: center;
+  padding: 10px 20px;
+}
+
+.small-font{
+    font-size: 1.8em;
+}
 /* ---------------------------------------
    Estilos del Header
 --------------------------------------- */
@@ -96,6 +134,7 @@ header .nuevoPack .pack {
     transform: scale(1.1); /* Efecto de agrandar */
     filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.5)); /* Mayor sombra en hover */
 }
+
 /* ---------------------------------------
    Barra de Búsqueda
 --------------------------------------- */

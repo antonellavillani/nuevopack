@@ -34,7 +34,7 @@ foreach ($precios as $precio) {
 <div class="contenedor-ficha-servicio">
 
     <!-- CONTENEDOR 1: FOTO DEL SERVICIO + CALCULADORA -->
-    <div class="fila-doble">
+    <div class="fila-doble" data-aos="fade-up">
         <div class="columna-izquierda contenedor-ficha-servicio">
             <h1 class="nombre-producto"><?= htmlspecialchars($servicio['nombre'] ?? 'Servicio no encontrado') ?></h1>
             <div class="imagen-producto">
@@ -179,7 +179,7 @@ foreach ($precios as $precio) {
     </div>
 
     <!-- CONTENEDOR 2: DESCRIPCIÓN + MEDIOS DE PAGO -->
-    <div class="fila-doble">
+    <div class="fila-doble" data-aos="fade-up">
         <div class="columna-izquierda contenedor-ficha-servicio">
             <h3 class="nombre-producto">Descripción</h3>
             <p class="font-size-descripcion"><?= htmlspecialchars($servicio['descripcion'] ?? 'Descripción no disponible.') ?></p>
@@ -195,7 +195,7 @@ foreach ($precios as $precio) {
     </div>
 
     <!-- CONTENEDOR 3: FORMULARIO DE CONTACTO -->
-    <div class="formulario-contacto">
+    <div class="formulario-contacto" data-aos="fade-up">
         <h3 class="nombre-producto texto-centrado">Contacto</h3>
         <div class="scroll-formulario-contacto">
             <form id="form-contacto" action="backend/enviar_correo.php" method="POST" enctype="multipart/form-data">

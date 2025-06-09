@@ -8,7 +8,7 @@
 <!-- Contenido principal del index -->
 <main>
     <!-- Sección del carrusel -->
-    <section class="carousel">
+    <section class="carousel" data-aos="fade-up">
         <div class="carousel-inner">
             <div class="carousel-container" id="carouselContainer">
                 <div class="carousel-slide">
@@ -37,8 +37,8 @@
 
     <!-- Sección de artículos -->
     <section class="articles">
-        <h2>Personalización sin Límites: Creá el Diseño Ideal para tus Impresiones</h2>
-        <div class="article-container">
+        <h2 class="titulo-pagina small-font" data-aos="fade-up">Personalización sin Límites: Creá el Diseño Ideal para tus Impresiones</h2>
+        <div class="article-container" data-aos="fade-up">
             <article>
                 <h3>La Importancia del Troquelado en el Diseño de Packaging</h3>
                 <p>El troquelado es esencial para crear envases personalizados que se ajusten perfectamente al producto, mejorando su presentación y funcionalidad. En nuestra imprenta, utilizamos técnicas de troquelado de última generación para garantizar resultados óptimos.</p>
@@ -51,7 +51,7 @@
     </section>
 
     <!-- Rectángulo de información importante -->
-    <section class="important-info">
+    <section class="important-info" data-aos="fade-up">
         <div class="info-box">
             <h3>Todo lo que Necesitás Saber Antes de Realizar tu Pedido</h3>
             <p>Realizamos envíos a todo el país con diferentes opciones de mensajería. Consultá costos y tiempos de entrega según tu ubicación.</p>
@@ -59,7 +59,7 @@
     </section>
 
     <!-- Sección de servicios -->
-    <section class="servicios" id="servicios-section">
+    <section class="servicios" id="servicios-section" data-aos="fade-up">
         <h2 class="padding">Explorá nuestros servicios</h2>
 
         <div class="services-container">

@@ -3,6 +3,12 @@ console.log("El script se ejecutó correctamente.");
 document.addEventListener("DOMContentLoaded", function () {
     console.log("DOM completamente cargado");
 
+    // ---------------------- AOS Animation ----------------------
+    AOS.init({
+        duration: 1000,
+        once: true
+    });
+
     // ---------------------- Botón de Servicios (desktop y mobile) ----------------------
     const serviciosBtn = document.getElementById("servicios-btn");
     if (serviciosBtn) {

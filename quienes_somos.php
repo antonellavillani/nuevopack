@@ -8,10 +8,12 @@ include('includes/header.php');
     <main class="articles">
 
         <!-- Título Principal -->
-        <h1>Quiénes Somos</h1>
-        
+        <section class="seccion-titulo" data-aos="fade-up">
+            <h1 class="titulo-pagina">Quiénes Somos</h1>
+        </section>
+
         <!-- Sección: Nuestra Historia -->
-        <section class="nuestra-historia articulo">
+        <section class="nuestra-historia articulo" data-aos="fade-up">
             <h2>Nuestra Historia</h2>
             <p>En NuevoPack, llevamos más de 20 años ofreciendo soluciones de impresión innovadoras, 
         adaptándonos a las necesidades de nuestros clientes y comprometiéndonos con la calidad y la creatividad.</p>
@@ -19,7 +21,7 @@ include('includes/header.php');
         </section>
 
         <!-- Sección: Misión y Valores -->
-        <section class="mision-valores articulo">
+        <section class="mision-valores articulo" data-aos="fade-up">
             <div class="seccion mision">
                 <h3>Misión</h3>
                 <p>En NuevoPack, nuestra misión es ofrecer soluciones de impresión personalizadas que combinen creatividad, calidad e innovación. Nos esforzamos por superar las expectativas de nuestros clientes y convertir sus ideas en proyectos que marquen la diferencia.</p>
@@ -37,14 +39,14 @@ include('includes/header.php');
         </section>
 
         <!-- Sección: Nuestro Equipo -->
-        <section class="nuestro-equipo articulo">
+        <section class="nuestro-equipo articulo" data-aos="fade-up">
             <h2>Nuestro Equipo</h2>
             <p>Detrás de NuevoPack hay un equipo apasionado por la creatividad y la excelencia. Desde diseñadores hasta especialistas en impresión, cada miembro aporta su experiencia y compromiso para brindar soluciones que superen tus expectativas. Estamos aquí para acompañarte en cada paso de tu proyecto.</p>
             <img src="public/img/nuestro_equipo.png" alt="Foto del equipo" class="imagen-equipo">
         </section>
 
         <!-- Sección: Logros y Datos Clave -->
-        <section class="logros-datos articulo">
+        <section class="logros-datos articulo" data-aos="fade-up">
             <h2>Logros y Datos Clave</h2>
             <ul>
                 <li><strong>+1,500 proyectos entregados:</strong> Con soluciones que combinan calidad y creatividad.</li>
@@ -55,7 +57,7 @@ include('includes/header.php');
         </section>
 
         <!-- Sección final -->
-        <section class="cierre">
+        <section class="cierre" data-aos="fade-up">
             <div class="card">
                 <p>En NuevoPack, no solo imprimimos, hacemos realidad tus ideas. Queremos ser tu socio de confianza en cada proyecto, grande o pequeño. ¡Contáctanos hoy y descubre cómo podemos ayudarte a crear algo extraordinario!</p>
                 <div class="botones">

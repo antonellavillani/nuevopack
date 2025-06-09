@@ -7,10 +7,12 @@ include('includes/header.php');
     <!-- Contenido Principal -->
     <main class="articles articles contacto-page">
         <!-- Título Principal -->
-        <h1>Contáctanos</h1>
+        <section class="seccion-titulo" data-aos="fade-up">
+            <h1 class="titulo-pagina">Contactános</h1>
+        </section>
         
         <!-- Contenedor de Contacto -->
-        <div class="contact-container">
+        <div class="contact-container" data-aos="fade-up">
             <!-- Formulario de Contacto -->
             <div class="formulario-contacto-consultas">
                 <h2>Déjanos tu consulta</h2>
@@ -42,7 +44,7 @@ include('includes/header.php');
             </div>
 
             <!-- Información de Contacto y Mapa -->
-            <div class="info-contacto">
+            <div class="info-contacto" data-aos="fade-up">
                 <h2>Encuéntranos</h2>
                 <!-- Mapa de Google -->
                 <div id="mapa">

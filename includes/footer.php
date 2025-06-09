@@ -25,4 +25,6 @@
     <div class="footer-bottom">
         <p>© 2025 NuevoPack. Todos los derechos reservados.</p>
     </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 </footer>
