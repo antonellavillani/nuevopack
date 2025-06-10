@@ -138,30 +138,82 @@ header .nuevoPack .pack {
 /* ---------------------------------------
    Barra de Búsqueda
 --------------------------------------- */
-.barra-busqueda input {
-    padding: 6px;
-    border-radius: 5px;
-    border: none;
-    width: 180px; /* Ancho del campo de búsqueda */
-    font-family: 'Roboto', sans-serif;
+.barra-busqueda {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.barra-busqueda button {
-    background-color: #B5BF69; /* Color de fondo del botón de búsqueda  */
-    color: #ffffff; /* Color del texto del botón */
-    padding: 6px 10px;
+.barra-busqueda input[type="text"] {
+    padding: 10px 15px;
+    font-size: 15px;
+    border: 2px solid #BCC69F;
+    border-radius: 25px;
+    outline: none;
+    width: 250px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background-color: #DDE3BD;
+    color: #555;
+}
+
+.barra-busqueda input[type="text"]:focus {
+    border-color: #4E5735;
+    box-shadow: 0 0 8px rgba(78, 87, 53, 0.5);
+}
+
+.barra-busqueda input[type="text"]::placeholder {
+    color: #555;
+}
+
+.resultados-busqueda {
+    max-height: 250px;
+    overflow-y: auto;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #DDE3BD;
     border: none;
-    border-radius: 5px;
+    z-index: 999;
+    display: none;
+    padding: 5px;
+}
+
+.resultados-busqueda div {
+    padding: 10px;
+    margin-bottom: 6px;
     cursor: pointer;
-    font-size: 0.9em;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    display: inline-block;
-    text-align: center;
+    color: #333;
+    font-size: 14px;
+    transition: background 0.2s ease, transform 0.2s ease;
+    border: 1px solid #A6AF80;
+    background-color: #C9D3A0;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
-.barra-busqueda button:hover {
-    background-color: #888f55; /* Color al pasar el mouse por el botón */
-    transform: scale(1.05);
+.resultados-busqueda div:hover {
+    background-color: #B5BF69;
+    transform: scale(1.01);
+}
+
+.resultados-busqueda a {
+    display: block;
+    padding: 10px 15px;
+    font-size: 14px;
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+    font-family: 'Poppins', sans-serif;
+    background-color: #C9D3A0;
+}
+
+.resultados-busqueda a:hover {
+    background-color: #f0f0f0;
+    color: #000;
+    cursor: pointer;
 }
 
 /* ---------------------------------------

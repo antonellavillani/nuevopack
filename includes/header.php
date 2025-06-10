@@ -56,8 +56,8 @@ try {
 
             <!-- Barra de búsqueda -->
             <div class="barra-busqueda">
-                <input type="text" placeholder="Buscar...">
-                <button type="submit">Buscar</button>
+                <input type="text" id="busqueda-input" placeholder="Buscar...">
+                <div id="resultados-busqueda" class="resultados-busqueda"></div>
             </div>
 
              <!-- Botón Hamburguesa (Solo en pantallas táctiles) -->
@@ -112,10 +112,50 @@ try {
                 <a href="contacto.php">Contáctanos</a>
             </div>
         </div>
-
-        <script src="../public/js/script.js"></script>
-
     </header>
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+    const inputBusqueda = document.getElementById('busqueda-input');
+    const resultadosDiv = document.getElementById('resultados-busqueda');
+
+    inputBusqueda.addEventListener('input', () => {
+        const texto = inputBusqueda.value.trim();
+
+        if (texto.length === 0) {
+            resultadosDiv.style.display = 'none';
+            resultadosDiv.innerHTML = '';
+            return;
+        }
+
+        fetch(`backend/buscar_servicios.php?term=${encodeURIComponent(texto)}`)
+            .then(response => response.json())
+            .then(data => {
+                resultadosDiv.innerHTML = '';
+                data.forEach(item => {
+                    const enlace = document.createElement('a');
+                    enlace.textContent = item.nombre;
+                    enlace.href = item.url;
+                    if (item.url !== '#') {
+                        enlace.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            window.location.href = item.url;
+                        });
+                    }
+                    resultadosDiv.appendChild(enlace);
+                });
+                resultadosDiv.style.display = 'block';
+            });
+    });
+
+    // Ocultar resultados si se hace clic fuera
+    document.addEventListener('click', (e) => {
+        if (!inputBusqueda.contains(e.target) && !resultadosDiv.contains(e.target)) {
+            resultadosDiv.style.display = 'none';
+        }
+    });
+});
+</script>
+
 </body>
 
 </html>
