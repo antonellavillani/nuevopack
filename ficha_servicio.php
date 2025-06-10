@@ -70,7 +70,7 @@ foreach ($precios as $precio) {
                 </section>
             <?php else: ?>
             <!-- Calculadora de precios -->
-            <form action="" method="POST">
+            <form id="form-calculadora" action="backend/calcular_precio.php" method="POST">
                 <section class="calculadora calculadora-form">
                 <h2 class="nombre-producto">Calculadora de precios</h2>
 
@@ -131,49 +131,10 @@ foreach ($precios as $precio) {
                 </div>
 
                 <button type="submit" name="calcular_precio">Calcular</button>
+                <div id="resultado-calculadora"></div>
                 </section>
             </form>
 
-            <?php           
-            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                $ctp = intval($_POST['ctp'] ?? 0);
-                $postura_impresion = intval($_POST['postura_impresion'] ?? 0);
-                $millar_impresion = intval($_POST['millar_impresion'] ?? 0);
-
-                $bocas = intval($_POST['bocas'] ?? 0);
-                $millar_troquelado = intval($_POST['millar_troquelado'] ?? 0);
-
-                $postura_barniz = intval($_POST['postura_barniz'] ?? 0);
-                $millar_barniz = intval($_POST['millar_barniz'] ?? 0);
-
-                $medida_estuche = $_POST['medida_estuche'] ?? '';
-                $cantidad_estuches = intval($_POST['cantidad_estuches'] ?? 0);
-
-                $total = 0;
-                
-                // Servicio de Impresión (id = 1)
-                $total += $ctp * ($preciosServicios[1]['ctp'] ?? 0);
-                $total += $postura_impresion * ($preciosServicios[1]['postura'] ?? 0);
-                $total += $millar_impresion * ($preciosServicios[1]['millares'] ?? 0);
-
-                // Servicio de Troquelado (id = 3)
-                $total += $bocas * ($preciosServicios[3]['bocas'] ?? 0);
-                $total += $millar_troquelado * ($preciosServicios[3]['millares'] ?? 0);
-
-                // Servicio de Barniz (id = 2)
-                $total += $postura_barniz * ($preciosServicios[2]['postura'] ?? 0);
-                $total += $millar_barniz * ($preciosServicios[2]['millares'] ?? 0);
-
-                // Servicio de Pegado de Estuches (id = 4)
-                if (!empty($medida_estuche)) {
-                    $clave_estuche = strtolower(trim($medida_estuche));
-                    $total += $cantidad_estuches * ($preciosServicios[4][$clave_estuche] ?? 0);
-                }                
-
-                echo "<div class='resultado-precio'><strong>Total estimado: $ " . number_format($total, 2, ',', '.') . "</strong>
-                <p><strong>Para trabajos especiales, enviar mail para cotizar su pedido.</strong></p></div>";
-            }
-            ?>
             <?php endif; ?>
         </div>
     </div>
@@ -195,7 +156,7 @@ foreach ($precios as $precio) {
     </div>
 
     <!-- CONTENEDOR 3: FORMULARIO DE CONTACTO -->
-    <div class="formulario-contacto" data-aos="fade-up">
+    <div class="formulario-contacto" id="formulario-contacto" data-aos="fade-up">
         <h3 class="nombre-producto texto-centrado">Contacto</h3>
         <div class="scroll-formulario-contacto">
             <form id="form-contacto" action="backend/enviar_correo.php" method="POST" enctype="multipart/form-data">
@@ -363,8 +324,6 @@ foreach ($precios as $precio) {
     const preciosServicios = <?= json_encode($preciosServicios) ?>;
 </script>
 
-<script src="public/js/script.js"></script>
-
 <?php
 // Incluir el footer
 include('includes/footer.php');
@@ -375,5 +334,7 @@ include('includes/footer.php');
   <span class="cerrar-modal">&times;</span>
   <img class="contenido-modal" id="imagenAmpliada" alt="Imagen ampliada">
 </div>
+
+<script src="public/js/script.js"></script>
 
 </body>

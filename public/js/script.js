@@ -130,6 +130,132 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+        // ---------------------- Llenar formulario de contacto según datos de la calculadora ----------
+    const form = document.getElementById('form-calculadora');
+    const resultadoDiv = document.getElementById('resultado-calculadora');
+
+    form.addEventListener('submit', function (e) {
+        e.preventDefault(); // Evita recargar la página
+
+        const formData = new FormData(form);
+function configurarBotonConsulta() {
+    const botonConsulta = document.getElementById('boton-consulta');
+
+    if (botonConsulta) {
+        botonConsulta.addEventListener('click', function () {
+            const resumenPedido = botonConsulta.getAttribute('data-resumen');
+
+            // Scroll suave al formulario
+            const formulario = document.getElementById('formulario-contacto');
+            if (formulario) {
+                formulario.scrollIntoView({ behavior: 'smooth' });
+
+                // Llenar el campo de descripción automáticamente
+                const descripcion = document.getElementById('descripcion');
+                if (descripcion) {
+                    descripcion.value = resumenPedido;
+                }
+            }
+        });
+    }
+}
+
+        fetch('backend/calcular_precio.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.text())
+        .then(html => {
+            resultadoDiv.innerHTML = html;
+
+        // Scroll dentro de la calculadora
+        const contenedor = document.querySelector('.calculadora');
+        const objetivo = document.getElementById('resultado-precio');
+        
+        if (contenedor && objetivo) {
+            const offsetTop = objetivo.offsetTop - contenedor.offsetTop;
+            contenedor.scrollTo({
+                top: offsetTop,
+                behavior: 'smooth'
+            });
+        }
+
+            configurarBotonConsulta();
+
+            // Reactivar botón de consulta dinámicamente
+            const botonConsulta = document.getElementById('btn-enviar-consulta');
+            if (botonConsulta) {
+                botonConsulta.addEventListener('click', () => {
+                    // Obtener valores de los campos
+                    const ctp = document.getElementById('ctp').value;
+                    const posturaImpresion = document.getElementById('postura_impresion').value;
+                    const millarImpresion = document.getElementById('millar_impresion').value;
+
+                    const troqueladoActivo = document.getElementById('troquelado_toggle').checked;
+                    const bocas = document.getElementById('bocas').value;
+                    const millarTroquelado = document.getElementById('millar_troquelado').value;
+
+                    const barnizActivo = document.getElementById('barniz_toggle').checked;
+                    const posturaBarniz = document.getElementById('postura_barniz').value;
+                    const millarBarniz = document.getElementById('millar_barniz').value;
+
+                    const estuchesActivo = document.getElementById('estuches_toggle').checked;
+                    const medidaEstuche = document.querySelector('input[name="medida_estuche"]:checked');
+                    const cantidadEstuches = document.getElementById('cantidad_estuches').value;
+
+                    let descripcion = "Hola, me gustaría consultar por el siguiente pedido:\n\n";
+
+                    if (ctp || posturaImpresion || millarImpresion) {
+                        descripcion += "🔹 **Impresión**:\n";
+                        if (ctp) descripcion += `- CTP (chapa): ${ctp}\n`;
+                        if (posturaImpresion) descripcion += `- Postura: ${posturaImpresion}\n`;
+                        if (millarImpresion) descripcion += `- Millares: ${millarImpresion}\n`;
+                        descripcion += "\n";
+                    }
+
+                    if (troqueladoActivo && (bocas || millarTroquelado)) {
+                        descripcion += "🔹 **Troquelado**:\n";
+                        if (bocas) descripcion += `- Bocas: ${bocas}\n`;
+                        if (millarTroquelado) descripcion += `- Millares: ${millarTroquelado}\n`;
+                        descripcion += "\n";
+                    }
+
+                    if (barnizActivo && (posturaBarniz || millarBarniz)) {
+                        descripcion += "🔹 **Barniz**:\n";
+                        if (posturaBarniz) descripcion += `- Postura: ${posturaBarniz}\n`;
+                        if (millarBarniz) descripcion += `- Millares: ${millarBarniz}\n`;
+                        descripcion += "\n";
+                    }
+
+                    if (estuchesActivo && (cantidadEstuches || medidaEstuche)) {
+                        descripcion += "🔹 **Pegado de estuches**:\n";
+                        if (medidaEstuche) descripcion += `- Medida: ${medidaEstuche.value}\n`;
+                        if (cantidadEstuches) descripcion += `- Cantidad: ${cantidadEstuches}\n`;
+                        descripcion += "\n";
+                    }
+
+        descripcion += "Gracias, quedo a la espera de su respuesta.";
+
+        // Llenar el textarea
+        const campoDescripcion = document.getElementById('descripcion');
+        if (campoDescripcion) {
+            campoDescripcion.value = descripcion;
+        }
+
+        // Scroll suave al formulario
+        const formulario = document.getElementById('form-contacto');
+        if (formulario) {
+            formulario.scrollIntoView({ behavior: 'smooth' });
+        }
+                });
+            }
+        })
+        .catch(error => {
+            resultadoDiv.innerHTML = "<p>Ocurrió un error al calcular el precio.</p>";
+            console.error('Error:', error);
+        });
+    });
+
     // ---------------------- Formulario de contacto (ficha_servicio.php) ----------------------
     const conocio = document.getElementById('conocio');
     const inputOcultoOtro = document.getElementById('input-oculto-otro');
