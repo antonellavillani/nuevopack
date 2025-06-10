@@ -120,8 +120,8 @@ foreach ($precios as $precio) {
                 <div id="estuches_seccion">
                     <p>Medida del estuche abierto</p>
                     <div class="grupo-campo">
-                        <label><input type="radio" name="medida_estuche" value="estuches de 10cm a 15cm"> 10cm a 15cm</label><br>
-                        <label><input type="radio" name="medida_estuche" value="estuches de 16cm a 25cm"> 16cm a 25cm</label><br>
+                        <label><input type="radio" name="medida_estuche" value="estuches de 10cm a 15cm"> 10cm a 15cm</label>
+                        <label><input type="radio" name="medida_estuche" value="estuches de 16cm a 25cm"> 16cm a 25cm</label>
                         <label><input type="radio" name="medida_estuche" value="estuches de 26cm a 50cm"> 26cm a 50cm</label>
                     </div>
                     <div class="grupo-campo">
