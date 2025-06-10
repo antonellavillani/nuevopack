@@ -206,7 +206,7 @@ function configurarBotonConsulta() {
                     let descripcion = "Hola, me gustaría consultar por el siguiente pedido:\n\n";
 
                     if (ctp || posturaImpresion || millarImpresion) {
-                        descripcion += "🔹 **Impresión**:\n";
+                        descripcion += "🔹 Impresión:\n";
                         if (ctp) descripcion += `- CTP (chapa): ${ctp}\n`;
                         if (posturaImpresion) descripcion += `- Postura: ${posturaImpresion}\n`;
                         if (millarImpresion) descripcion += `- Millares: ${millarImpresion}\n`;
@@ -214,21 +214,21 @@ function configurarBotonConsulta() {
                     }
 
                     if (troqueladoActivo && (bocas || millarTroquelado)) {
-                        descripcion += "🔹 **Troquelado**:\n";
+                        descripcion += "🔹 Troquelado:\n";
                         if (bocas) descripcion += `- Bocas: ${bocas}\n`;
                         if (millarTroquelado) descripcion += `- Millares: ${millarTroquelado}\n`;
                         descripcion += "\n";
                     }
 
                     if (barnizActivo && (posturaBarniz || millarBarniz)) {
-                        descripcion += "🔹 **Barniz**:\n";
+                        descripcion += "🔹 Barniz:\n";
                         if (posturaBarniz) descripcion += `- Postura: ${posturaBarniz}\n`;
                         if (millarBarniz) descripcion += `- Millares: ${millarBarniz}\n`;
                         descripcion += "\n";
                     }
 
                     if (estuchesActivo && (cantidadEstuches || medidaEstuche)) {
-                        descripcion += "🔹 **Pegado de estuches**:\n";
+                        descripcion += "🔹 Pegado de estuches:\n";
                         if (medidaEstuche) descripcion += `- Medida: ${medidaEstuche.value}\n`;
                         if (cantidadEstuches) descripcion += `- Cantidad: ${cantidadEstuches}\n`;
                         descripcion += "\n";

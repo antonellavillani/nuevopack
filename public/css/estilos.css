@@ -971,7 +971,7 @@ h3:has(#troquelado_toggle)::before {
   content: "✂️";
 }
 h3:has(#barniz_toggle)::before {
-  content: "🧴";
+  content: "✨";
 }
 h3:has(#estuches_toggle)::before {
   content: "📦";
@@ -1025,7 +1025,7 @@ input[type="radio"] {
     padding: 12px 24px;
     font-size: 1rem;
     background-color: #6A7348;
-    transition: background-color 0.2s ease;
+    transition: transform 0.2s ease, background-color 0.2s ease;
     color: white;
     border: none;
     border-radius: 6px;
@@ -1034,10 +1034,11 @@ input[type="radio"] {
 }
 
 .calculadora button:hover {
-  background-color: #5b6240;
+  background-color: #4E5433;
+  transform: scale(1.05);
 }
 
-  .resultado-precio {
+.resultado-precio {
     margin-top: 20px;
     text-align: center;
     background-color: #e0ffe0;
@@ -1049,7 +1050,7 @@ input[type="radio"] {
     color: #2c662d;
   }
 
-  .grupo-campo {
+.grupo-campo {
     margin-bottom: 15px;
 }
 
@@ -1098,8 +1099,8 @@ input[type="radio"] {
     }
 }
 
-.boton-consulta {
-    background-color: #2a2a2a;
+.calculadora .boton-consulta {
+    background-color: #6A7348;
     color: white;
     padding: 10px 25px;
     border: none;
@@ -1107,10 +1108,12 @@ input[type="radio"] {
     margin-top: 1em;
     cursor: pointer;
     font-size: 16px;
-    transition: background-color 0.3s ease;
+    transition: transform 0.2s ease, background-color 0.2s ease;
 }
-.boton-consulta:hover {
-    background-color: #444;
+
+.calculadora .boton-consulta:hover {
+    background-color: #4E5433;
+    transform: scale(1.05);
 }
 
 /* ----- Formulario Contacto ----- */
