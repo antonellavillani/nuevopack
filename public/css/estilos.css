@@ -921,6 +921,12 @@ select, input[type="number"] {
 #estuches_seccion {
     transition: all 0.3s ease;
     display: none;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-left: 4px solid #6A7348;
+    padding: 15px;
+    margin-top: 10px;
+    border-radius: 6px;
 }
 
 .resultado-precio {
@@ -941,36 +947,96 @@ select, input[type="number"] {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   }
   
-  .calculadora h2, .calculadora h3 {
+  .calculadora h2 {
     margin-top: 1rem;
     font-size: 1.5rem;
   }
+
+.calculadora h3 {
+  font-size: 1.2rem;
+  color: #444;
+  margin-top: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.calculadora h3::before {
+  display: inline-block;
+  font-size: 1.2rem;
+  margin-right: 6px;
+}
+
+h3:has(#troquelado_toggle)::before {
+  content: "✂️";
+}
+h3:has(#barniz_toggle)::before {
+  content: "🧴";
+}
+h3:has(#estuches_toggle)::before {
+  content: "📦";
+}
+
+/* Radios y checkboxes */
+input[type="checkbox"],
+input[type="radio"] {
+  accent-color: #6A7348;
+}
   
-  .calculadora label {
+.calculadora label {
     display: block;
-    margin-top: 0.5rem;
-    font-weight: bold;
-  }
+    margin-top: 5px;
+    font-weight: 600;
+    color: #444;
+    font-size: 0.95rem;
+}
   
   .calculadora input[type="number"],
   .calculadora input[type="text"] {
     width: 100%;
-    padding: 0.4rem;
     margin-bottom: 0.8rem;
-    border-radius: 5px;
+    padding: 10px;
+    margin-top: 3px;
+    border-radius: 6px;
     border: 1px solid #ccc;
+    background-color: #fefefe;
+    font-size: 0.95rem;
+    transition: border-color 0.2s ease;
   }
-  
-  .calculadora button {
-    margin-top: 1rem;
-    padding: 0.6rem 1.2rem;
-    background-color: #222;
+
+.calculadora input[type="number"]:focus,
+.calculadora input[type="text"]:focus {
+  border-color: #6A7348;
+  outline: none;
+}
+
+.calculadora input[type="checkbox"] {
+  transform: scale(1.1);
+  accent-color: #6A7348;
+}
+
+.calculadora input[type="radio"] {
+  accent-color: #6A7348;
+  margin-right: 6px;
+}
+
+.calculadora button {
+    margin: 25px auto 0 auto;
+    padding: 12px 24px;
+    font-size: 1rem;
+    background-color: #6A7348;
+    transition: background-color 0.2s ease;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 6px;
     cursor: pointer;
-  }
-  
+    display: block;
+}
+
+.calculadora button:hover {
+  background-color: #5b6240;
+}
+
   .resultado-precio {
     margin-top: 20px;
     text-align: center;
@@ -985,6 +1051,22 @@ select, input[type="number"] {
 
   .grupo-campo {
     margin-bottom: 15px;
+}
+
+.grupo-campo label {
+  font-weight: 600;
+  color: #333;
+}
+
+.grupo-campo input {
+  background-color: #fafafa;
+  border: 1px solid #ccc;
+  transition: border-color 0.2s ease;
+}
+
+.grupo-campo input:focus {
+  border-color: #6A7348;
+  outline: none;
 }
 
 .mensaje {
