@@ -186,10 +186,10 @@ foreach ($precios as $precio) {
         </div>
         <div class="columna-derecha contenedor-ficha-servicio">
             <h3 class="nombre-producto">Medios de Pago</h3>
-            <ul>
+            <ul class="medios-pago">
                 <li>Efectivo</li>
                 <li>Transferencia Bancaria</li>
-                <li>MercadoPago</li>
+                <li>E-Check o cheque físico</li>
             </ul>
         </div>
     </div>
