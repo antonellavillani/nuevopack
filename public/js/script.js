@@ -9,6 +9,39 @@ document.addEventListener("DOMContentLoaded", function () {
         once: true
     });
 
+    // ---------------------- Formulario de consultas (contacto.php) ----------------------
+    const formConsulta = document.getElementById('form-consulta');
+    if (formConsulta) {
+        formConsulta.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const spinner = document.getElementById('spinner-consulta');
+            const mensajeEnvio = document.getElementById('mensaje-envio-consulta');
+
+            spinner.style.display = 'flex';
+
+            const formData = new FormData(this);
+
+            fetch(this.action, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                mensajeEnvio.textContent = data;
+                spinner.style.display = 'none';
+                if (data.includes('Mensaje enviado correctamente.')) {
+                    this.reset();
+                }
+            })
+            .catch(error => {
+                mensajeEnvio.textContent = 'Ocurrió un error al enviar el mensaje. Por favor, intente nuevamente.';
+                spinner.style.display = 'none';
+                console.error(error);
+            });
+        });
+    }
+    
     // ---------------------- Botón de Servicios (desktop y mobile) ----------------------
     const serviciosBtn = document.getElementById("servicios-btn");
     if (serviciosBtn) {
@@ -334,38 +367,8 @@ document.addEventListener("DOMContentLoaded", function () {
             this.value = this.value.replace(/\D/g, '');
         });
     }
-
-    // ---------------------- Formulario de consultas (contacto.php) ----------------------
-    const formConsulta = document.getElementById('form-consulta');
-    if (formConsulta) {
-        formConsulta.addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            const spinner = document.getElementById('spinner');
-            spinner.style.display = 'flex';
-
-            const formData = new FormData(this);
-
-            fetch(this.action, {
-                method: 'POST',
-                body: formData
-            })
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('mensaje-envio').textContent = data;
-                    spinner.style.display = 'none';
-                    if (data.includes('Mensaje enviado correctamente')) {
-                        this.reset();
-                    }
-                })
-                .catch(error => {
-                    document.getElementById('mensaje-envio').textContent = 'Ocurrió un error al enviar el mensaje. Por favor, intente nuevamente.';
-                    spinner.style.display = 'none';
-                    console.error(error);
-                });
-        });
-    } 
-    /* Abrir imágenes de almanaques */
+    
+    // ---------------------- Abrir imágenes de almanaques (ficha_servicio.php) ----------------------
     document.querySelectorAll('.tarjeta-modelo img').forEach(img => {
         img.addEventListener('click', () => {
             const modal = document.getElementById('modalImagen');
@@ -386,8 +389,6 @@ document.addEventListener("DOMContentLoaded", function () {
             modal.style.display = 'none';
         }
     });
-
-});
 
 // ---------------------- Menú móvil al cargar y cerrar con clic externo ----------------------
 window.addEventListener('load', () => {
@@ -410,4 +411,6 @@ document.addEventListener("keydown", function (event) {
     if (event.ctrlKey && event.shiftKey && event.key === "Y") {
         window.location.href = "/nuevopack/admin-xyz2025/login.php";
     }
+});
+
 });

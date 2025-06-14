@@ -29,7 +29,7 @@ include('includes/header.php');
                     <button type="submit">Enviar</button>
 
                     <!-- Ícono de cargando inicialmente oculto -->
-                    <div id="spinner" class="dot-spinner" style="display: none; margin: 20px auto;">
+                    <div id="spinner-consulta" class="dot-spinner" style="display: none; margin: 20px auto;">
                         <div class="dot-spinner__dot"></div>
                         <div class="dot-spinner__dot"></div>
                         <div class="dot-spinner__dot"></div>
@@ -40,7 +40,7 @@ include('includes/header.php');
                         <div class="dot-spinner__dot"></div>
                     </div>
                 </form>
-                <div id="mensaje-envio" class="mensaje-envio-mail texto-centrado"></div>
+                <div id="mensaje-envio-consulta" class="mensaje-envio-mail texto-centrado"></div>
             </div>
 
             <!-- Información de Contacto y Mapa -->
@@ -73,4 +73,5 @@ include('includes/footer.php');
 ?>
 
 <!-- JavaScript -->
-<script src="public/js/script.js" defer></script>
+<script src="public/js/script.js"></script>
+</body>
