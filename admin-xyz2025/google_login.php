@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . 'config_secrets.php';
 require_once '../vendor/autoload.php';
 use Google\Client as Google_Client;
 use Google\Service\Oauth2 as Google_Service_Oauth2;
@@ -6,8 +7,8 @@ require_once '../config/config.php';
 session_start();
 
 $client = new Google_Client();
-$client->setClientId('446871795490-ift5v8so2rcu53hsiqn3iu71o17tct0m.apps.googleusercontent.com');
-$client->setClientSecret('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');
+$client->setClientId('GOOGLE_CLIENT_ID');
+$client->setClientSecret('GOOGLE_CLIENT_SECRET');
 $client->setRedirectUri('http://localhost/nuevopack/admin-xyz2025/google_login.php');
 $client->addScope("email");
 $client->addScope("profile");

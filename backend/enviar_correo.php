@@ -1,4 +1,6 @@
 <?php
+require_once __DIR__ . '/../admin-xyz2025/config_secrets.php';
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
@@ -7,7 +9,7 @@ require 'PHPMailer-master/PHPMailer-master/src/PHPMailer.php';
 require 'PHPMailer-master/PHPMailer-master/src/SMTP.php';
 
 // Configurar destinatario
-$destinatario = 'villxni@gmail.com';
+$destinatario = SMTP_USER;
 
 // Recolectar datos del formulario
 $nombre = $_POST['nombre'] ?? '';
@@ -60,15 +62,15 @@ $mail = new PHPMailer(true);
 try {
     // Configuración del servidor SMTP
     $mail->isSMTP();
-    $mail->Host = 'smtp.gmail.com';  // Servidor SMTP de Gmail
+    $mail->Host = SMTP_HOST;
     $mail->SMTPAuth = true;
-    $mail->Username = 'villxni@gmail.com';  // Correo de Gmail que recibe los emails
-    $mail->Password = 'yefmddgboqolwlsr';
+    $mail->Username = SMTP_USER;  // Correo de Gmail que recibe los emails
+    $mail->Password = SMTP_PASSWORD;
     $mail->SMTPSecure = 'tls';
-    $mail->Port = 587;
+    $mail->Port = SMTP_PORT;
 
     // Configuración del remitente y destinatario
-    $mail->setFrom('villxni@gmail.com', 'Consulta Web');
+    $mail->setFrom(SMTP_USER, 'Consulta Web');
     $mail->addAddress($destinatario);
 
     // Adjuntar archivo si fue enviado
