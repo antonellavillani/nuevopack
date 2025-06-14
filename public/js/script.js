@@ -138,24 +138,24 @@ document.addEventListener("DOMContentLoaded", function () {
         e.preventDefault(); // Evita recargar la página
 
         const formData = new FormData(form);
-function configurarBotonConsulta() {
-    const botonConsulta = document.getElementById('boton-consulta');
+        function configurarBotonConsulta() {
+            const botonConsulta = document.getElementById('boton-consulta');
 
-    if (botonConsulta) {
-        botonConsulta.addEventListener('click', function () {
-            const resumenPedido = botonConsulta.getAttribute('data-resumen');
+            if (botonConsulta) {
+                botonConsulta.addEventListener('click', function () {
+                const resumenPedido = botonConsulta.getAttribute('data-resumen');
 
-            // Scroll suave al formulario
-            const formulario = document.getElementById('formulario-contacto');
-            if (formulario) {
-                formulario.scrollIntoView({ behavior: 'smooth' });
+                // Scroll suave al formulario
+                const formulario = document.getElementById('formulario-contacto');
+                if (formulario) {
+                    formulario.scrollIntoView({ behavior: 'smooth' });
 
-                // Llenar el campo de descripción automáticamente
-                const descripcion = document.getElementById('descripcion');
-                if (descripcion) {
-                    descripcion.value = resumenPedido;
+                    // Llenar el campo de descripción automáticamente
+                    const descripcion = document.getElementById('descripcion');
+                    if (descripcion) {
+                        descripcion.value = resumenPedido;
+                    }
                 }
-            }
         });
     }
 }

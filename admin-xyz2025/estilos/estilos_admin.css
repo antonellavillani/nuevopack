@@ -1,4 +1,150 @@
 /* ---------------------------------------
+   Estilos para el Login
+--------------------------------------- */
+.body-login {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f3f4f6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* ---------- login.php ---------- */
+.login-card {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+}
+
+.login-card h2 {
+    margin-bottom: 25px;
+    font-size: 24px;
+    color: #333;
+}
+
+.form-login input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.btn-ingresar {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    background-color: #6A7348;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-ingresar:hover {
+    background-color: #4E5433;
+}
+
+.link-olvido {
+    display: block;
+    text-align: center;
+    margin-top: 5px;
+    font-size: 13px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.link-olvido:hover {
+    text-decoration: underline;
+}
+
+.separador {
+    margin: 20px 0;
+    color: #888;
+    font-size: 14px;
+}
+
+.btn-google {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.btn-google:hover {
+    background-color: #f0f0f0;
+}
+
+.icono-google {
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+}
+
+.link-volver {
+    display: block;
+    margin-top: 25px;
+    font-size: 14px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.link-volver:hover {
+    text-decoration: underline;
+}
+
+/* ---------- google_login.php ---------- */
+.mensaje-container {
+    background-color: #fff;
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 400px;
+}
+
+.mensaje-container h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.mensaje-container p {
+    font-size: 16px;
+    color: #555;
+}
+
+.btn-volver-login {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 10px 20px;
+    background-color: #6A7348;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-volver-login:hover {
+    background-color: #4E5433;
+}
+
+/* ---------------------------------------
    Estilos para ABM
 --------------------------------------- */
 .container {

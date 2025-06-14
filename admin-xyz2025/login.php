@@ -37,24 +37,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Admin</title>
-    <link rel="stylesheet" href="estilos_admin.css">
+    <title>Iniciar Sesión - NuevoPack Admin</title>
+    <link rel="stylesheet" href="estilos/estilos_admin.css">
 </head>
-<body class="admin-login">
-    <div class="login-container">
+<body class="body-login">
+    <div class="login-card">
         <h2>Panel de Administración</h2>
         <form method="post" class="form-login">
-            <label>Email:</label>
-            <input type="email" name="email" required>
-            <label>Contraseña:</label>
-            <input type="password" name="password" required>
-            <button type="submit">Ingresar</button>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Contraseña" required>
+            <a href="#" class="link-olvido">¿Olvidaste tu contraseña?</a>
+            <button type="submit" class="btn-ingresar">Ingresar</button>
         </form>
+
+        <div class="separador">o</div>
+
+        <a href="google_login.php" class="btn-google">
+            <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google" class="icono-google">
+            Iniciar sesión con Google
+        </a>
+
         <?php if ($error): ?>
             <p class="mensaje-error"><?php echo htmlspecialchars($error); ?></p>
         <?php endif; ?>
-        <br>
-        <a href="../index.php">← Volver al Inicio</a>
+
+        <a href="../index.php" class="link-volver">← Volver al Inicio</a>
+
     </div>
 </body>
 </html>
