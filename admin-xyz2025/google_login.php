@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . 'config_secrets.php';
+require_once __DIR__ . '/config_secrets.php';
 require_once '../vendor/autoload.php';
 use Google\Client as Google_Client;
 use Google\Service\Oauth2 as Google_Service_Oauth2;
@@ -7,8 +7,8 @@ require_once '../config/config.php';
 session_start();
 
 $client = new Google_Client();
-$client->setClientId('GOOGLE_CLIENT_ID');
-$client->setClientSecret('GOOGLE_CLIENT_SECRET');
+$client->setClientId(GOOGLE_CLIENT_ID);
+$client->setClientSecret(GOOGLE_CLIENT_SECRET);
 $client->setRedirectUri('http://localhost/nuevopack/admin-xyz2025/google_login.php');
 $client->addScope("email");
 $client->addScope("profile");
@@ -69,7 +69,7 @@ if (!isset($_GET['code'])) {
                     <link rel="stylesheet" href="estilos/estilos_admin.css">
                     <title>Acceso pendiente</title>
                 </head>
-                <body>
+                <body class="body-login">
                     <div class="mensaje-container">
                         <h2>Acceso pendiente</h2>
                         <p>Tu cuenta fue registrada pero necesita aprobación del administrador.</p>
