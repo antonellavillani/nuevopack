@@ -64,16 +64,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <title>Editar Usuario</title>
     <link rel="stylesheet" href="../estilos/estilos_admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-    <div class="admin-container">
-        <h2 class="titulo">Editar Usuario Especial</h2>
+    <div class="contenedor">
+        <h2 class="titulo-pagina icono-editar">Editar Usuario Especial</h2>
 
         <?php if ($error): ?>
             <p class="mensaje-error"><?= htmlspecialchars($error) ?></p>
         <?php endif; ?>
 
-        <form method="POST" class="form-admin">
+        <form method="POST" class="formulario-admin">
             <label>Nombre:</label>
             <input type="text" name="nombre" value="<?= htmlspecialchars($usuario['nombre']) ?>" required>
 
@@ -91,9 +92,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <div class="form-botones">
                 <button type="submit" class="btn-guardar">Actualizar</button>
-                <a href="../usuarios.php" class="btn-cancelar">Cancelar</a>
             </div>
         </form>
+        <a href="../usuarios.php" class="link-volver"><i class="fa-solid fa-arrow-left"></i> Volver</a>
     </div>
 </body>
 </html>
