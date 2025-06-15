@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($usuario && password_verify($password, $usuario['password_hash'])) {
             $_SESSION['admin_logged_in'] = true;
-            $_SESSION['admin_nombre'] = $usuario['nombre'];
+            $_SESSION['nombre'] = $usuario['nombre'];
             $_SESSION['admin_id'] = $usuario['id'];
             header("Location: dashboard.php");
             exit();

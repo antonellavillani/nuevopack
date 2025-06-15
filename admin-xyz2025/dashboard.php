@@ -16,6 +16,7 @@ require_once('../config/config.php');
     <meta charset="UTF-8">
     <title>Panel de Administración | NuevoPack</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Poppins:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="estilos/estilos_admin.css">
 </head>
 <body>
@@ -23,17 +24,17 @@ require_once('../config/config.php');
 <div class="container">
     <!-- Sidebar -->
     <div class="sidebar">
-        <h2>Admin NuevoPack</h2>
-        <div class="nav-item"><a href="dashboard.php">📊 Dashboard</a></div>
-        <div class="nav-item"><a href="servicios.php">🛠️ Servicios</a></div>
-        <div class="nav-item"><a href="precios.php">💲 Precios</a></div>
-        <div class="nav-item"><a href="usuarios.php">👤 Usuarios</a></div>
-        <div class="nav-item"><a href="logout.php">🔓 Cerrar Sesión</a></div>
+        <h2 class="sidebar-title">Panel de Administrador NuevoPack</h2>
+        <div class="nav-item"><a href="dashboard.php" class="inicio">Dashboard</a></div>
+        <div class="nav-item"><a href="servicios.php" class="servicios">Servicios</a></div>
+        <div class="nav-item"><a href="precios.php" class="precios">Precios</a></div>
+        <div class="nav-item"><a href="usuarios.php" class="usuarios">Usuarios</a></div>
+        <div class="nav-item"><a href="logout.php" class="logout">Cerrar Sesión</a></div>
     </div>
 
     <!-- Contenido principal -->
     <div class="main-content">
-        <h1>Bienvenido, Admin 👋</h1>
+        <h1 class="titulo-pagina">Bienvenido, <?php echo $_SESSION['nombre']; ?></h1>
 
         <!-- Resumen -->
         <div class="card-container">
@@ -62,16 +63,25 @@ require_once('../config/config.php');
 
         <!-- Accesos rápidos -->
         <div class="quick-actions">
-            <h2>➕ Accesos Rápidos</h2>
-            <button onclick="window.location.href='servicios.php?accion=crear'">➕ Nuevo Servicio</button>
-            <button onclick="window.location.href='precios.php?accion=crear'">➕ Nuevo Precio</button>
-            <button onclick="window.location.href='usuarios.php?accion=crear'">➕ Nuevo Usuario</button>
+            <h2 class="titulo-seccion">Accesos Rápidos</h2>
+            <div class="botones-rapidos">
+                <button onclick="window.location.href='servicios.php?accion=crear'" class="boton-acceso">
+                    <i class="fa-solid fa-plus"></i>Nuevo Servicio
+                </button>
+                <button onclick="window.location.href='precios.php?accion=crear'" class="boton-acceso">
+                    <i class="fa-solid fa-plus"></i>Nuevo Precio
+                </button>
+                <button onclick="window.location.href='usuarios.php?accion=crear'" class="boton-acceso">
+                    <i class="fa-solid fa-plus"></i>Nuevo Usuario
+                </button>
+                
+            </div>        
         </div>
 
         <!-- Actividad reciente -->
         <div class="activity-log">
-            <h2>🕓 Actividad Reciente</h2>
-            <ul>
+            <h2 class="actividad-titulo titulo-seccion">Actividad Reciente</h2>
+            <ul class="lista-actividad">
                 <li>Servicio “Tarjetas personales” actualizado ayer</li>
                 <li>Nuevo usuario “lucas@example.com” creado el lunes</li>
                 <li>Precio actualizado para “Bolsas impresas”</li>
@@ -80,8 +90,8 @@ require_once('../config/config.php');
 
         <!-- Alertas -->
         <div class="alerts">
-            <h2>⚠️ Alertas</h2>
-            <ul>
+            <h2 class="alertas-titulo titulo-seccion">Alertas</h2>
+            <ul class="lista-actividad">
                 <li>2 servicios no tienen imagen</li>
                 <li>Faltan precios en algunos servicios</li>
             </ul>

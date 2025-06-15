@@ -36,7 +36,7 @@ if (!isset($_GET['code'])) {
 
         if ($usuario && $usuario['aprobado']) {
             $_SESSION['admin_logged_in'] = true;
-            $_SESSION['admin_nombre'] = $usuario['nombre'];
+            $_SESSION['nombre'] = $usuario['nombre'];
             $_SESSION['admin_id'] = $usuario['id'];
             header("Location: dashboard.php");
             exit();
