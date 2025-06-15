@@ -1,5 +1,5 @@
 /* ---------------------------------------
-   Estilos para el Login
+   Estilos generales
 --------------------------------------- */
 body, html {
     margin: 0;
@@ -8,6 +8,9 @@ body, html {
     overflow-x: hidden;
 }
 
+/* ---------------------------------------
+   Estilos para el login
+--------------------------------------- */
 .body-login {
     font-family: 'Segoe UI', sans-serif;
     background-color: #f3f4f6;
@@ -159,9 +162,21 @@ body, html {
 }
 
 /* ---------------------------------------
-   Estilos para ABM
+   Estilos para dashboard.php
 --------------------------------------- */
-/* ---------- dashboard.php ---------- */
+/* ---------- Estilos generales ---------- */
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 30px;
+    overflow-y: auto;
+}
+
+/* ---------- Títulos ---------- */
 .titulo-pagina {
     font-size: 2.1rem;
     font-weight: 700;
@@ -219,11 +234,7 @@ body, html {
     border-radius: 2px;
 }
 
-.container {
-    display: flex;
-    height: 100vh;
-}
-
+/* ---------- Sidebar ---------- */
 .sidebar {
     width: 220px;
     background-color: #6A7348;
@@ -289,12 +300,7 @@ body, html {
     color: #555;
 }
 
-.main-content {
-    flex-grow: 1;
-    padding: 30px;
-    overflow-y: auto;
-}
-
+/* ---------- Datos caargados en bd ---------- */
 .card-container {
     display: flex;
     gap: 20px;
@@ -331,6 +337,7 @@ body, html {
     font-size: 0.9rem;
 }
 
+/* ---------- Acciones rápidas ---------- */
 .quick-actions {
     margin-bottom: 30px;
 }
@@ -379,7 +386,7 @@ body, html {
     background-color: #4E5433;
     transform: scale(1.05);
 }
-
+/* ---------- Actividad reciente y Alertas ---------- */
 .actividad-titulo, .alertas-titulo {
     font-size: 20px;
     color: #2c2c2c;
@@ -427,11 +434,11 @@ body, html {
 }
 
 .activity-log .lista-actividad li {
-  border-left: 4px solid #5BC0DE; /* celeste */
+  border-left: 4px solid #5BC0DE;
 }
 
 .alerts .lista-actividad li {
-  border-left: 4px solid #D9534F; /* rojo alerta */
+  border-left: 4px solid #D9534F;
 }
 
 .lista-actividad li,
@@ -452,7 +459,10 @@ body, html {
   background-color: #ececec;
 }
 
-/* --------------- SERVICIOS --------------- */
+/* ---------------------------------------
+   Estilos para servicios.php
+--------------------------------------- */
+/* ---------- Estilos generales ---------- */
 .contenedor {
     max-width: 900px;
     margin: 40px auto;
@@ -469,6 +479,7 @@ body, html {
     display: block;
 }
 
+/* ---------- Botón 'Nuevo servicio' ---------- */
 .boton-nuevo {
     display: inline-flex;
     align-items: center;
@@ -497,7 +508,8 @@ body, html {
     vertical-align: middle;
 }
 
-.tabla-servicios {
+/* ---------- Estilos para la tabla ---------- */
+.tabla-bd {
     width: 100%;
     border-collapse: collapse;
     margin-top: 15px;
@@ -506,7 +518,7 @@ body, html {
     overflow: hidden;
 }
 
-.tabla-servicios th {
+.tabla-bd th {
     background-color: #6A7348;
     color: white;
     font-weight: 600;
@@ -516,7 +528,7 @@ body, html {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.tabla-servicios td {
+.tabla-bd td {
     padding: 10px;
     border-bottom: 1px solid #e0e0e0;
     font-size: 0.9rem;
@@ -524,20 +536,20 @@ body, html {
     background-color: #fafafa;
 }
 
-.tabla-servicios tr:hover td {
+.tabla-bd tr:hover td {
     background-color: #f0f0f0;
 }
 
-.tabla-servicios th,
-.tabla-servicios td {
+.tabla-bd th,
+.tabla-bd td {
     border: 1px solid rgba(0, 0, 0, 0.1);
     padding: 10px;
     text-align: center;
     vertical-align: middle;
 }
 
-.tabla-servicios th:last-child,
-.tabla-servicios td:last-child {
+.tabla-bd th:last-child,
+.tabla-bd td:last-child {
     border-right: none;
 }
 
@@ -588,153 +600,11 @@ body, html {
     transform: scale(1.05);
 }
 
-/* Formulario de edición */
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-input[type="text"], input[type="file"] {
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    font-family: 'Roboto', sans-serif;
-    font-size: 14px;
-}
-
-.tabla {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: white;
-    margin-top: 20px;
-}
-
-.tabla th, .tabla td {
-    padding: 10px;
-    border: 1px solid #ddd;
-    text-align: left;
-}
-
-.tabla th {
-    background-color: #f0f0f0;
-}
-
-.btn-agregar {
-    display: inline-block;
-    padding: 8px 12px;
-    margin-bottom: 10px;
-    background-color: #4CAF50;
-    color: white;
-    text-decoration: none;
-    border-radius: 4px;
-}
-
-.btn-editar {
-    background-color: #2196F3;
-    color: white;
-    padding: 6px 10px;
-    border-radius: 4px;
-    text-decoration: none;
-    margin-right: 5px;
-}
-
-.btn-eliminar {
-    background-color: #f44336;
-    color: white;
-    padding: 6px 10px;
-    border-radius: 4px;
-    text-decoration: none;
-}
- /* PRECIOS.PHP */
- .admin-container {
-    max-width: 1000px;
-    margin: 40px auto;
-    padding: 20px;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-
-.titulo {
-    font-size: 22px;
-    margin-bottom: 20px;
-    color: #333;
-}
-
-.tabla-admin {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: white;
-}
-
-.tabla-admin th, .tabla-admin td {
-    padding: 10px;
-    border: 1px solid #ddd;
-    text-align: left;
-}
-
-.tabla-admin th {
-    background-color: #f0f0f0;
-    font-weight: bold;
-}
-
-.btn-agregar:hover {
-    background-color: #45a049;
-}
-
-.btn-editar:hover {
-    background-color: #1976D2;
-}
-
-.btn-eliminar:hover {
-    background-color: #d32f2f;
-}
-
-/* precios_crear.php */
-
-.formulario-admin {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-top: 20px;
-}
-
-.formulario-admin input,
-.formulario-admin select {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.btn-guardar {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.btn-guardar:hover {
-    background-color: #45a049;
-}
-
-.btn-volver {
-    display: inline-block;
-    margin-bottom: 10px;
-    color: #2196F3;
-    text-decoration: none;
-}
-
-.mensaje-error {
-    color: #f44336;
-    font-weight: bold;
-}
-
-.mensaje-exito {
-    color: #4CAF50;
-    font-weight: bold;
+/* ---------------------------------------
+   Estilos para precios.php
+--------------------------------------- */
+/* ---------- Título ---------- */
+.titulo-pagina.icono-precio::before {
+    content: '💲';
+    margin-right: 8px;
 }

@@ -30,7 +30,7 @@ $servicios = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <?php if (count($servicios) === 0): ?>
             <p>No hay servicios cargados aún.</p>
         <?php else: ?>
-            <table class="tabla-servicios">
+            <table class="tabla-bd">
                 <thead>
                     <tr>
                         <th>ID</th>
