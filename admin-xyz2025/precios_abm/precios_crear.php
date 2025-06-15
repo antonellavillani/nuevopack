@@ -37,11 +37,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <title>Agregar Precio</title>
     <link rel="stylesheet" href="../estilos/estilos_admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-    <div class="admin-container">
-        <h2 class="titulo">💲 Crear Nuevo Precio</h2>
-        <a href="../precios.php" class="btn-volver">← Volver</a>
+    <div class="contenedor">
+        <h2 class="titulo-pagina icono-precio">Crear Nuevo Precio</h2>
 
         <?php if ($error): ?>
             <p class="mensaje-error"><?php echo $error; ?></p>
@@ -69,6 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <button type="submit" class="btn-guardar">Guardar</button>
         </form>
+        <a href="../precios.php" class="link-volver"><i class="fa-solid fa-arrow-left"></i> Volver</a>
     </div>
 </body>
 </html>

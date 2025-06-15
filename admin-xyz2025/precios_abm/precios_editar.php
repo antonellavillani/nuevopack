@@ -52,11 +52,11 @@ if (!$precio) {
     <meta charset="UTF-8">
     <title>Editar Precio</title>
     <link rel="stylesheet" href="../estilos/estilos_admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-    <div class="admin-container">
-        <h2 class="titulo">✏️ Editar Precio</h2>
-        <a href="../precios.php" class="btn-volver">← Volver</a>
+    <div class="contenedor">
+        <h2 class="titulo-pagina icono-editar">Editar Precio</h2>
 
         <?php if ($mensaje): ?>
             <p class="mensaje-exito"><?php echo $mensaje; ?></p>
@@ -86,6 +86,7 @@ if (!$precio) {
 
                 <button type="submit" class="btn-guardar">Guardar cambios</button>
             </form>
+            <a href="../precios.php" class="link-volver"><i class="fa-solid fa-arrow-left"></i> Volver</a>
         <?php endif; ?>
     </div>
 </body>

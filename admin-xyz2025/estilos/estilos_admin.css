@@ -310,7 +310,7 @@ body, html {
     color: #555;
 }
 
-/* ---------- Datos caargados en bd ---------- */
+/* ---------- Datos cargados en bd ---------- */
 .card-container {
     display: flex;
     gap: 20px;
@@ -588,12 +588,12 @@ body, html {
 }
 
 .btn-editar-tabla::before {
-    content: "✏️ ";
+    content: "✏️";
     margin-right: 4px;
 }
 
 .btn-eliminar-tabla::before {
-    content: "🗑️ ";
+    content: "🗑️";
     margin-right: 4px;
 }
 
@@ -625,5 +625,79 @@ body, html {
 /* ---------- Título ---------- */
 .titulo-pagina.icono-usuario::before {
     content: '👥';
+    margin-right: 8px;
+}
+
+/* ---------------------------------------
+   Estilos para los formularios
+--------------------------------------- */
+/* ---------- Generales ---------- */
+.formulario-admin {
+    background-color: #fafafa;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px 25px;
+    margin-top: 15px;
+    width: 100%;
+    max-width: 600px;
+    font-family: Arial, Helvetica, sans-serif;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
+    margin: 20px auto;
+    display: block;
+}
+
+.formulario-admin label {
+    display: block;
+    margin-top: 12px;
+    font-weight: bold;
+    color: #4E5735;
+    font-size: 0.95rem;
+}
+
+.formulario-admin input[type="text"],
+.formulario-admin input[type="number"],
+.formulario-admin select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    font-size: 0.9rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #fff;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease;
+}
+
+.formulario-admin input:focus,
+.formulario-admin select:focus {
+    border-color: #6A7348;
+    outline: none;
+}
+
+/* ---------- Botones ---------- */
+.btn-guardar {
+    margin-top: 18px;
+    background-color: #6A7348;
+    color: white;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+    margin: 20px auto;
+    display: block;
+    letter-spacing: 0.8px;
+}
+
+.btn-guardar:hover {
+    background-color: #4E5735;
+    transform: scale(1.05);
+}
+
+/* ---------- Ícono 'Editar' ---------- */
+.titulo-pagina.icono-editar::before {
+    content: '✏️';
     margin-right: 8px;
 }
