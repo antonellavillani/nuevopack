@@ -7,7 +7,7 @@ if (!isset($_SESSION['admin_logged_in'])) {
 
 require_once '../config/config.php';
 
-$stmt = $conn->query("SELECT * FROM servicios ORDER BY id DESC");
+$stmt = $conn->query("SELECT * FROM servicios ORDER BY id ASC");
 $servicios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
@@ -17,12 +17,15 @@ $servicios = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <title>Servicios | NuevoPack Dashboard</title>
     <link rel="stylesheet" href="estilos/estilos_admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
     <div class="contenedor">
-        <h2>🛠️ Gestión de Servicios</h2>
+        <h2 class="titulo-pagina">🛠️ Gestión de Servicios</h2>
 
-        <a href="servicios_abm/servicios_crear.php" class="boton-nuevo">+ Nuevo Servicio</a>
+        <a href="servicios_abm/servicios_crear.php" class="boton-nuevo">
+            <i class="fa-solid fa-plus"></i>Nuevo Servicio
+        </a>
 
         <?php if (count($servicios) === 0): ?>
             <p>No hay servicios cargados aún.</p>
@@ -45,8 +48,8 @@ $servicios = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 <img src="../uploads/<?= $serv['foto'] ?>" alt="Imagen" class="img-tabla">
                             </td>
                             <td>
-                                <a href="servicios_abm/servicios_editar.php?id=<?= $serv['id'] ?>" class="boton-accion editar">✏️ Editar</a>
-                                <a href="servicios_abm/servicios_eliminar.php?id=<?= $serv['id'] ?>" class="boton-accion eliminar" onclick="return confirm('¿Estás seguro que querés eliminar este servicio?')">🗑️ Eliminar</a>
+                                <a href="servicios_abm/servicios_editar.php?id=<?= $serv['id'] ?>" class="btn-editar-tabla">Editar</a>
+                                <a href="servicios_abm/servicios_eliminar.php?id=<?= $serv['id'] ?>" class="btn-eliminar-tabla" onclick="return confirm('¿Estás seguro que querés eliminar este servicio?')">Eliminar</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -55,7 +58,7 @@ $servicios = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <?php endif; ?>
 
         <br>
-        <a href="dashboard.php">← Volver al Dashboard</a>
+        <a href="dashboard.php" class="link-volver"><i class="fa-solid fa-arrow-left"></i> Volver al Dashboard</a>
     </div>
 </body>
 </html>

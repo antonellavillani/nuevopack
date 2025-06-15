@@ -5,7 +5,7 @@ body, html {
     margin: 0;
     padding: 0;
     height: 100%;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 .body-login {
@@ -105,14 +105,21 @@ body, html {
 }
 
 .link-volver {
-    display: block;
-    margin-top: 25px;
     font-size: 14px;
-    color: #007bff;
     text-decoration: none;
+    display: inline-block;
+    margin: 15px 0;
+    color: #4E5735;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.link-volver i {
+    margin-right: 5px;
 }
 
 .link-volver:hover {
+    color: #6A7348;
     text-decoration: underline;
 }
 
@@ -454,36 +461,79 @@ body, html {
     margin-bottom: 20px;
     font-size: 24px;
     color: #333;
+    display: block;
 }
 
 .boton-nuevo {
-    display: inline-block;
-    background-color: #28a745;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     color: white;
-    padding: 10px 15px;
-    border-radius: 5px;
     text-decoration: none;
-    margin-bottom: 15px;
+    margin: 10px 10px 10px 0;
+    padding: 12px 24px;
+    font-size: 0.9rem;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    background-color: #6A7348;
+    border-radius: 8px;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    letter-spacing: 1px;
 }
 
 .boton-nuevo:hover {
-    background-color: #218838;
+    background-color: #4E5433;
+    transform: scale(1.05);
+}
+
+.boton-nuevo i {
+    font-size: 1rem;
+    vertical-align: middle;
 }
 
 .tabla-servicios {
     width: 100%;
     border-collapse: collapse;
     margin-top: 15px;
-}
-
-.tabla-servicios th, .tabla-servicios td {
     border: 1px solid #ccc;
-    padding: 10px;
-    text-align: center;
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 .tabla-servicios th {
+    background-color: #6A7348;
+    color: white;
+    font-weight: 600;
+    padding: 12px;
+    text-align: left;
+    font-size: 0.95rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.tabla-servicios td {
+    padding: 10px;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 0.9rem;
+    color: #333;
+    background-color: #fafafa;
+}
+
+.tabla-servicios tr:hover td {
     background-color: #f0f0f0;
+}
+
+.tabla-servicios th,
+.tabla-servicios td {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.tabla-servicios th:last-child,
+.tabla-servicios td:last-child {
+    border-right: none;
 }
 
 .img-tabla {
@@ -492,30 +542,45 @@ body, html {
     border-radius: 5px;
 }
 
-.boton-accion {
-    display: inline-block;
-    padding: 6px 10px;
-    border-radius: 4px;
+.btn-editar-tabla,
+.btn-eliminar-tabla {
     color: white;
     text-decoration: none;
     margin: 0 5px;
     font-size: 14px;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 0.9px;
 }
 
-.boton-accion.editar {
-    background-color: #007bff;
+.btn-editar-tabla::before {
+    content: "✏️ ";
+    margin-right: 4px;
 }
 
-.boton-accion.editar:hover {
-    background-color: #0056b3;
+.btn-eliminar-tabla::before {
+    content: "🗑️ ";
+    margin-right: 4px;
 }
 
-.boton-accion.eliminar {
-    background-color: #dc3545;
+.btn-editar-tabla {
+    background-color: #a9c27c;
 }
 
-.boton-accion.eliminar:hover {
-    background-color: #c82333;
+.btn-eliminar-tabla {
+    background-color: #c85e5e; 
+}
+
+.btn-editar-tabla:hover,
+.btn-eliminar-tabla:hover {
+    transform: scale(1.05);
 }
 
 /* Formulario de edición */
