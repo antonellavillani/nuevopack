@@ -1,48 +1,68 @@
 console.log("El script se ejecutó correctamente.");
 
 document.addEventListener("DOMContentLoaded", function () {
-    console.log("DOM completamente cargado");
+    console.log("DOM completamente cargado.");
+    // ---------------------- Funciones ----------------------
+    initAOS(); // AOS Animation
+    initFormularioConsultaContacto(); // Formulario de consultas (contacto.php)
+    initBotonServicios(); // Botón de Servicios (desktop y mobile)
+    initMenuHamburguesa(); // Menú hamburguesa
+    initSubmenuServiciosMovil(); // Submenú de servicios móvil
+    initDropdownNavbarDesktop(); // Dropdown en navbar (desktop)
+    initCarruselImagenes(); // Carrusel de imágenes (index.php)
+    initCalculadoraPrecios(); // Calculadora de precios (ficha_servicio.php)
+    initFormularioDesdeCalculadora(); // Llenar formulario de contacto según datos de la calculadora
+    initFormularioContactoServicio(); // Formulario de contacto (ficha_servicio.php)
+    initModalImagenAlmanaques(); // Abrir imágenes de almanaques (ficha_servicio.php)
+    initAtajoDashboard(); // Atajo secreto para Dashboard
+    initMenuMovilCargar_CerrarClickExterno(); // Menú móvil al cargar y cerrar con click externo
+});
 
-    // ---------------------- AOS Animation ----------------------
+// ---------------------- AOS Animation ----------------------
+function initAOS() {
     AOS.init({
         duration: 1000,
         once: true
     });
+}
 
-    // ---------------------- Formulario de consultas (contacto.php) ----------------------
+// ---------------------- Formulario de consultas (contacto.php) ----------------------
+function initFormularioConsultaContacto() {
     const formConsulta = document.getElementById('form-consulta');
-    if (formConsulta) {
-        formConsulta.addEventListener('submit', function (e) {
-            e.preventDefault();
+    if (!formConsulta) return;
 
-            const spinner = document.getElementById('spinner-consulta');
-            const mensajeEnvio = document.getElementById('mensaje-envio-consulta');
+    const spinner = document.getElementById('spinner-consulta');
+    const mensajeEnvio = document.getElementById('mensaje-envio-consulta');
 
-            spinner.style.display = 'flex';
+    formConsulta.addEventListener('submit', function (e) {
+        e.preventDefault();
 
-            const formData = new FormData(this);
+        if (spinner) spinner.style.display = 'flex';
 
-            fetch(this.action, {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.text())
-            .then(data => {
-                mensajeEnvio.textContent = data;
-                spinner.style.display = 'none';
-                if (data.includes('Mensaje enviado correctamente.')) {
-                    this.reset();
-                }
-            })
-            .catch(error => {
-                mensajeEnvio.textContent = 'Ocurrió un error al enviar el mensaje. Por favor, intente nuevamente.';
-                spinner.style.display = 'none';
-                console.error(error);
-            });
+        const formData = new FormData(this);
+
+        fetch(this.action, {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.text())
+        .then(data => {
+            if (mensajeEnvio) mensajeEnvio.textContent = data;
+            if (spinner) spinner.style.display = 'none';
+            if (data.includes('Mensaje enviado correctamente.')) {
+                this.reset();
+            }
+        })
+        .catch(error => {
+            if (mensajeEnvio) mensajeEnvio.textContent = 'Ocurrió un error al enviar el mensaje. Por favor, intente nuevamente.';
+            if (spinner) spinner.style.display = 'none';
+            console.error(error);
         });
-    }
-    
-    // ---------------------- Botón de Servicios (desktop y mobile) ----------------------
+    });
+}
+
+// ---------------------- Botón de Servicios (desktop y mobile) ----------------------
+function initBotonServicios() {
     const serviciosBtn = document.getElementById("servicios-btn");
     if (serviciosBtn) {
         serviciosBtn.addEventListener("click", function (event) {
@@ -71,81 +91,104 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }, 500);
     }
+}
 
-    // ---------------------- Menú hamburguesa ----------------------
+// ---------------------- Menú hamburguesa ----------------------
+function initMenuHamburguesa() {
     const hamburguesaBtn = document.getElementById("hamburguesa-btn");
     const menuMovil = document.getElementById("menu-movil");
-    if (hamburguesaBtn && menuMovil) {
-        hamburguesaBtn.addEventListener("click", function () {
-            menuMovil.style.display = (menuMovil.style.display === "block") ? "none" : "block";
-        });
-    }
 
-    // ---------------------- Submenú de servicios móvil ----------------------
+    if (!hamburguesaBtn || !menuMovil) return;
+
+    hamburguesaBtn.addEventListener("click", function () {
+        menuMovil.style.display = (menuMovil.style.display === "block") ? "none" : "block";
+    });
+}
+
+// ---------------------- Submenú de servicios móvil ----------------------
+function initSubmenuServiciosMovil() {
     const movilServicios = document.getElementById("movil-servicios");
     const submenuMovil = document.querySelector(".submenu-movil");
+
     if (movilServicios && submenuMovil) {
         movilServicios.addEventListener("click", function (event) {
             event.preventDefault();
             submenuMovil.style.display = (submenuMovil.style.display === "block") ? "none" : "block";
         });
     }
+}
 
-    // ---------------------- Dropdown en navbar (desktop) ----------------------
+// ---------------------- Dropdown en navbar (desktop) ----------------------
+function initDropdownNavbarDesktop() {
     const dropdown = document.querySelector('.servicios-dropdown');
-    if (dropdown) {
-        const dropdownContent = dropdown.querySelector('.dropdown-content');
-        if (dropdownContent) {
-            dropdown.addEventListener('mouseover', () => dropdownContent.classList.add('show'));
-            dropdown.addEventListener('mouseout', () => dropdownContent.classList.remove('show'));
-        }
-    }
+    if (!dropdown) return;
 
-    // ---------------------- Carrusel de imágenes ----------------------
+    const dropdownContent = dropdown.querySelector('.dropdown-content');
+    if (!dropdownContent) return;
+
+    dropdown.addEventListener('mouseover', () => {
+        dropdownContent.classList.add('show');
+    });
+
+    dropdown.addEventListener('mouseout', () => {
+        dropdownContent.classList.remove('show');
+    });
+}
+
+// ---------------------- Carrusel de imágenes (index.php) ----------------------
+function initCarruselImagenes() {
     const slides = document.querySelectorAll(".carousel-slide");
     const carouselContainer = document.getElementById("carouselContainer");
 
-    if (slides.length && carouselContainer) {
-        let currentSlide = 0;
-        const totalSlides = slides.length;
-        const indicatorsContainer = document.getElementById("carouselIndicators");
-        const indicators = [];
+    if (!slides.length || !carouselContainer) return;
 
-        for (let i = 0; i < totalSlides; i++) {
-            const btn = document.createElement("button");
-            btn.addEventListener("click", () => showSlide(i));
-            indicatorsContainer.appendChild(btn);
-            indicators.push(btn);
-        }
+    let currentSlide = 0;
+    const totalSlides = slides.length;
+    const indicatorsContainer = document.getElementById("carouselIndicators");
+    const indicators = [];
 
-        function showSlide(index) {
-            currentSlide = (index + totalSlides) % totalSlides;
-            carouselContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
-            indicators.forEach((btn, i) => {
-                btn.classList.toggle("active", i === currentSlide);
-            });
-        }
-
-        function nextSlide() { showSlide(currentSlide + 1); }
-        function prevSlide() { showSlide(currentSlide - 1); }
-
-        const prevBtn = document.getElementById("prevBtn");
-        const nextBtn = document.getElementById("nextBtn");
-        if (prevBtn) prevBtn.addEventListener("click", prevSlide);
-        if (nextBtn) nextBtn.addEventListener("click", nextSlide);
-
-        let autoSlide = setInterval(nextSlide, 5000);
-        const carousel = document.querySelector(".carousel");
-
-        if (carousel) {
-            carousel.addEventListener("mouseenter", () => clearInterval(autoSlide));
-            carousel.addEventListener("mouseleave", () => autoSlide = setInterval(nextSlide, 5000));
-        }
-
-        showSlide(currentSlide);
+    for (let i = 0; i < totalSlides; i++) {
+        const btn = document.createElement("button");
+        btn.addEventListener("click", () => showSlide(i));
+        indicatorsContainer.appendChild(btn);
+        indicators.push(btn);
     }
 
-    // ---------------------- Calculadora de precios ----------------------
+    function showSlide(index) {
+        currentSlide = (index + totalSlides) % totalSlides;
+        carouselContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+        indicators.forEach((btn, i) => {
+            btn.classList.toggle("active", i === currentSlide);
+        });
+    }
+
+    function nextSlide() {
+        showSlide(currentSlide + 1);
+    }
+
+    function prevSlide() {
+        showSlide(currentSlide - 1);
+    }
+
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+
+    if (prevBtn) prevBtn.addEventListener("click", prevSlide);
+    if (nextBtn) nextBtn.addEventListener("click", nextSlide);
+
+    let autoSlide = setInterval(nextSlide, 5000);
+    const carousel = document.querySelector(".carousel");
+
+    if (carousel) {
+        carousel.addEventListener("mouseenter", () => clearInterval(autoSlide));
+        carousel.addEventListener("mouseleave", () => autoSlide = setInterval(nextSlide, 5000));
+    }
+
+    showSlide(currentSlide);
+}
+
+// ---------------------- Calculadora de precios (ficha_servicio.php) ----------------------
+function initCalculadoraPrecios() {
     const secciones = [
         { checkboxId: "troquelado_toggle", seccionId: "troquelado_seccion" },
         { checkboxId: "barniz_toggle", seccionId: "barniz_seccion" },
@@ -162,141 +205,143 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         }
     });
+}
 
-        // ---------------------- Llenar formulario de contacto según datos de la calculadora ----------
+// ---------------------- Llenar formulario de contacto según datos de la calculadora ----------
+function initFormularioDesdeCalculadora() {
     const form = document.getElementById('form-calculadora');
     const resultadoDiv = document.getElementById('resultado-calculadora');
 
+    if (!form || !resultadoDiv) return;
+
     form.addEventListener('submit', function (e) {
-        e.preventDefault(); // Evita recargar la página
+        e.preventDefault();
 
         const formData = new FormData(form);
+
         function configurarBotonConsulta() {
             const botonConsulta = document.getElementById('boton-consulta');
 
             if (botonConsulta) {
                 botonConsulta.addEventListener('click', function () {
-                const resumenPedido = botonConsulta.getAttribute('data-resumen');
+                    const resumenPedido = botonConsulta.getAttribute('data-resumen');
 
-                // Scroll suave al formulario
-                const formulario = document.getElementById('formulario-contacto');
-                if (formulario) {
-                    formulario.scrollIntoView({ behavior: 'smooth' });
+                    const formulario = document.getElementById('formulario-contacto');
+                    if (formulario) {
+                        formulario.scrollIntoView({ behavior: 'smooth' });
 
-                    // Llenar el campo de descripción automáticamente
-                    const descripcion = document.getElementById('descripcion');
-                    if (descripcion) {
-                        descripcion.value = resumenPedido;
+                        const descripcion = document.getElementById('descripcion');
+                        if (descripcion) {
+                            descripcion.value = resumenPedido;
+                        }
                     }
-                }
-        });
-    }
-}
+                });
+            }
+        }
 
         fetch('backend/calcular_precio.php', {
             method: 'POST',
             body: formData
         })
-        .then(response => response.text())
-        .then(html => {
-            resultadoDiv.innerHTML = html;
+            .then(response => response.text())
+            .then(html => {
+                resultadoDiv.innerHTML = html;
 
-        // Scroll dentro de la calculadora
-        const contenedor = document.querySelector('.calculadora');
-        const objetivo = document.getElementById('resultado-precio');
-        
-        if (contenedor && objetivo) {
-            const offsetTop = objetivo.offsetTop - contenedor.offsetTop;
-            contenedor.scrollTo({
-                top: offsetTop,
-                behavior: 'smooth'
+                const contenedor = document.querySelector('.calculadora');
+                const objetivo = document.getElementById('resultado-precio');
+
+                if (contenedor && objetivo) {
+                    const offsetTop = objetivo.offsetTop - contenedor.offsetTop;
+                    contenedor.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+
+                configurarBotonConsulta();
+
+                const botonConsulta = document.getElementById('btn-enviar-consulta');
+                if (botonConsulta) {
+                    botonConsulta.addEventListener('click', () => {
+                        const ctp = document.getElementById('ctp').value;
+                        const posturaImpresion = document.getElementById('postura_impresion').value;
+                        const millarImpresion = document.getElementById('millar_impresion').value;
+
+                        const troqueladoActivo = document.getElementById('troquelado_toggle').checked;
+                        const bocas = document.getElementById('bocas').value;
+                        const millarTroquelado = document.getElementById('millar_troquelado').value;
+
+                        const barnizActivo = document.getElementById('barniz_toggle').checked;
+                        const posturaBarniz = document.getElementById('postura_barniz').value;
+                        const millarBarniz = document.getElementById('millar_barniz').value;
+
+                        const estuchesActivo = document.getElementById('estuches_toggle').checked;
+                        const medidaEstuche = document.querySelector('input[name="medida_estuche"]:checked');
+                        const cantidadEstuches = document.getElementById('cantidad_estuches').value;
+
+                        let descripcion = "Hola, me gustaría consultar por el siguiente pedido:\n\n";
+
+                        if (ctp || posturaImpresion || millarImpresion) {
+                            descripcion += "🔹 Impresión:\n";
+                            if (ctp) descripcion += `- CTP (chapa): ${ctp}\n`;
+                            if (posturaImpresion) descripcion += `- Postura: ${posturaImpresion}\n`;
+                            if (millarImpresion) descripcion += `- Millares: ${millarImpresion}\n`;
+                            descripcion += "\n";
+                        }
+
+                        if (troqueladoActivo && (bocas || millarTroquelado)) {
+                            descripcion += "🔹 Troquelado:\n";
+                            if (bocas) descripcion += `- Bocas: ${bocas}\n`;
+                            if (millarTroquelado) descripcion += `- Millares: ${millarTroquelado}\n`;
+                            descripcion += "\n";
+                        }
+
+                        if (barnizActivo && (posturaBarniz || millarBarniz)) {
+                            descripcion += "🔹 Barniz:\n";
+                            if (posturaBarniz) descripcion += `- Postura: ${posturaBarniz}\n`;
+                            if (millarBarniz) descripcion += `- Millares: ${millarBarniz}\n`;
+                            descripcion += "\n";
+                        }
+
+                        if (estuchesActivo && (cantidadEstuches || medidaEstuche)) {
+                            descripcion += "🔹 Pegado de estuches:\n";
+                            if (medidaEstuche) descripcion += `- Medida: ${medidaEstuche.value}\n`;
+                            if (cantidadEstuches) descripcion += `- Cantidad: ${cantidadEstuches}\n`;
+                            descripcion += "\n";
+                        }
+
+                        descripcion += "Gracias, quedo a la espera de su respuesta.";
+
+                        const campoDescripcion = document.getElementById('descripcion');
+                        if (campoDescripcion) {
+                            campoDescripcion.value = descripcion;
+                        }
+
+                        const formulario = document.getElementById('form-contacto');
+                        if (formulario) {
+                            formulario.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    });
+                }
+            })
+            .catch(error => {
+                resultadoDiv.innerHTML = "<p>Ocurrió un error al calcular el precio.</p>";
+                console.error('Error:', error);
             });
-        }
-
-            configurarBotonConsulta();
-
-            // Reactivar botón de consulta dinámicamente
-            const botonConsulta = document.getElementById('btn-enviar-consulta');
-            if (botonConsulta) {
-                botonConsulta.addEventListener('click', () => {
-                    // Obtener valores de los campos
-                    const ctp = document.getElementById('ctp').value;
-                    const posturaImpresion = document.getElementById('postura_impresion').value;
-                    const millarImpresion = document.getElementById('millar_impresion').value;
-
-                    const troqueladoActivo = document.getElementById('troquelado_toggle').checked;
-                    const bocas = document.getElementById('bocas').value;
-                    const millarTroquelado = document.getElementById('millar_troquelado').value;
-
-                    const barnizActivo = document.getElementById('barniz_toggle').checked;
-                    const posturaBarniz = document.getElementById('postura_barniz').value;
-                    const millarBarniz = document.getElementById('millar_barniz').value;
-
-                    const estuchesActivo = document.getElementById('estuches_toggle').checked;
-                    const medidaEstuche = document.querySelector('input[name="medida_estuche"]:checked');
-                    const cantidadEstuches = document.getElementById('cantidad_estuches').value;
-
-                    let descripcion = "Hola, me gustaría consultar por el siguiente pedido:\n\n";
-
-                    if (ctp || posturaImpresion || millarImpresion) {
-                        descripcion += "🔹 Impresión:\n";
-                        if (ctp) descripcion += `- CTP (chapa): ${ctp}\n`;
-                        if (posturaImpresion) descripcion += `- Postura: ${posturaImpresion}\n`;
-                        if (millarImpresion) descripcion += `- Millares: ${millarImpresion}\n`;
-                        descripcion += "\n";
-                    }
-
-                    if (troqueladoActivo && (bocas || millarTroquelado)) {
-                        descripcion += "🔹 Troquelado:\n";
-                        if (bocas) descripcion += `- Bocas: ${bocas}\n`;
-                        if (millarTroquelado) descripcion += `- Millares: ${millarTroquelado}\n`;
-                        descripcion += "\n";
-                    }
-
-                    if (barnizActivo && (posturaBarniz || millarBarniz)) {
-                        descripcion += "🔹 Barniz:\n";
-                        if (posturaBarniz) descripcion += `- Postura: ${posturaBarniz}\n`;
-                        if (millarBarniz) descripcion += `- Millares: ${millarBarniz}\n`;
-                        descripcion += "\n";
-                    }
-
-                    if (estuchesActivo && (cantidadEstuches || medidaEstuche)) {
-                        descripcion += "🔹 Pegado de estuches:\n";
-                        if (medidaEstuche) descripcion += `- Medida: ${medidaEstuche.value}\n`;
-                        if (cantidadEstuches) descripcion += `- Cantidad: ${cantidadEstuches}\n`;
-                        descripcion += "\n";
-                    }
-
-        descripcion += "Gracias, quedo a la espera de su respuesta.";
-
-        // Llenar el textarea
-        const campoDescripcion = document.getElementById('descripcion');
-        if (campoDescripcion) {
-            campoDescripcion.value = descripcion;
-        }
-
-        // Scroll suave al formulario
-        const formulario = document.getElementById('form-contacto');
-        if (formulario) {
-            formulario.scrollIntoView({ behavior: 'smooth' });
-        }
-                });
-            }
-        })
-        .catch(error => {
-            resultadoDiv.innerHTML = "<p>Ocurrió un error al calcular el precio.</p>";
-            console.error('Error:', error);
-        });
     });
+}
 
-    // ---------------------- Formulario de contacto (ficha_servicio.php) ----------------------
+// ---------------------- Formulario de contacto (ficha_servicio.php) ----------------------
+function initFormularioContactoServicio() {
     const conocio = document.getElementById('conocio');
     const inputOcultoOtro = document.getElementById('input-oculto-otro');
+
     if (conocio && inputOcultoOtro) {
         conocio.addEventListener('change', function () {
             inputOcultoOtro.style.display = this.value === 'otro' ? 'block' : 'none';
             if (this.value !== 'otro') {
-                document.getElementById('conocio_otro').value = '';
+                const otro = document.getElementById('conocio_otro');
+                if (otro) otro.value = '';
             }
         });
 
@@ -318,6 +363,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (formContacto) {
         formContacto.addEventListener('submit', function (e) {
             e.preventDefault();
+
             const medio = document.getElementById('medio');
             const errorMedio = document.getElementById('error-medio');
             if (medio && medio.value === '') {
@@ -330,14 +376,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const contenedor = document.querySelector('.scroll-formulario-contacto');
             const spinner = document.getElementById('spinner');
-            
+
             if (contenedor && spinner) {
-              spinner.style.display = 'flex';
-              setTimeout(() => {
-                contenedor.scrollTop = spinner.offsetTop;
-              }, 50);
-            }            
-            
+                spinner.style.display = 'flex';
+                setTimeout(() => {
+                    contenedor.scrollTop = spinner.offsetTop;
+                }, 50);
+            }
+
             const formData = new FormData(this);
 
             fetch(this.action, {
@@ -346,16 +392,19 @@ document.addEventListener("DOMContentLoaded", function () {
             })
                 .then(response => response.text())
                 .then(data => {
-                    document.getElementById('mensaje-respuesta').textContent = data;
-                    spinner.style.display = 'none';
+                    const mensaje = document.getElementById('mensaje-respuesta');
+                    if (mensaje) mensaje.textContent = data;
+                    if (spinner) spinner.style.display = 'none';
                     if (data.includes('Mensaje enviado correctamente')) {
                         this.reset();
-                        document.getElementById('archivo-nombre').textContent = '';
+                        const archivoNombre = document.getElementById('archivo-nombre');
+                        if (archivoNombre) archivoNombre.textContent = '';
                     }
                 })
                 .catch(error => {
-                    document.getElementById('mensaje-respuesta').textContent = 'Ocurrió un error al enviar el mensaje. Por favor, intente nuevamente.';
-                    spinner.style.display = 'none';
+                    const mensaje = document.getElementById('mensaje-respuesta');
+                    if (mensaje) mensaje.textContent = 'Ocurrió un error al enviar el mensaje. Por favor, intente nuevamente.';
+                    if (spinner) spinner.style.display = 'none';
                     console.error(error);
                 });
         });
@@ -367,30 +416,47 @@ document.addEventListener("DOMContentLoaded", function () {
             this.value = this.value.replace(/\D/g, '');
         });
     }
-    
-    // ---------------------- Abrir imágenes de almanaques (ficha_servicio.php) ----------------------
-    document.querySelectorAll('.tarjeta-modelo img').forEach(img => {
+}
+
+// ---------------------- Abrir imágenes de almanaques (ficha_servicio.php) ----------------------
+function initModalImagenAlmanaques() {
+    const imagenes = document.querySelectorAll('.tarjeta-modelo img');
+    const modal = document.getElementById('modalImagen');
+    const imagenAmpliada = document.getElementById('imagenAmpliada');
+    const cerrarModal = document.querySelector('.cerrar-modal');
+
+    if (!imagenes.length || !modal || !imagenAmpliada || !cerrarModal) return;
+
+    imagenes.forEach(img => {
         img.addEventListener('click', () => {
-            const modal = document.getElementById('modalImagen');
-            const imagenAmpliada = document.getElementById('imagenAmpliada');
             modal.style.display = 'block';
             imagenAmpliada.src = img.src;
             imagenAmpliada.alt = img.alt || 'Imagen ampliada';
         });
     });
 
-    document.querySelector('.cerrar-modal').addEventListener('click', () => {
-        document.getElementById('modalImagen').style.display = 'none';
+    cerrarModal.addEventListener('click', () => {
+        modal.style.display = 'none';
     });
 
     window.addEventListener('click', (event) => {
-        const modal = document.getElementById('modalImagen');
         if (event.target === modal) {
             modal.style.display = 'none';
         }
     });
+}
 
-// ---------------------- Menú móvil al cargar y cerrar con clic externo ----------------------
+// ---------------------- Atajo secreto para Dashboard ----------------------
+function initAtajoDashboard() {
+    document.addEventListener("keydown", function (event) {
+    if (event.ctrlKey && event.shiftKey && event.key === "Y") {
+        window.location.href = "/nuevopack/admin-xyz2025/login.php";
+    }
+});
+}
+
+// ---------------------- Menú móvil al cargar y cerrar con click externo ----------------------
+function initMenuMovilCargar_CerrarClickExterno(){
 window.addEventListener('load', () => {
     const menu = document.querySelector('.menu-movil');
     const hamburguesa = document.querySelector('.hamburguesa');
@@ -405,12 +471,4 @@ document.addEventListener('click', function (event) {
         menu.style.display = 'none';
     }
 });
-
-// ---------------------- Atajo secreto para Dashboard ----------------------
-document.addEventListener("keydown", function (event) {
-    if (event.ctrlKey && event.shiftKey && event.key === "Y") {
-        window.location.href = "/nuevopack/admin-xyz2025/login.php";
-    }
-});
-
-});
+}
