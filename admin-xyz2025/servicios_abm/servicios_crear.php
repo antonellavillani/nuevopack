@@ -47,25 +47,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <title>Crear Servicio</title>
     <link rel="stylesheet" href="../estilos/estilos_admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
     <div class="contenedor">
-        <h2>🛠️ Crear Nuevo Servicio</h2>
+        <h2 class="titulo-pagina icono-servicio">Crear Nuevo Servicio</h2>
 
         <?php if ($mensaje): ?>
             <p><?= $mensaje ?></p>
         <?php endif; ?>
 
-        <form action="" method="POST" enctype="multipart/form-data">
+        <form action="" method="POST" enctype="multipart/form-data" class="formulario-admin">
             <label for="nombre">Nombre del servicio:</label><br>
             <input type="text" name="nombre" id="nombre" required><br><br>
 
             <label for="foto">Imagen del servicio:</label><br>
             <input type="file" name="foto" id="foto" accept="image/*" required><br><br>
 
-            <button type="submit">Crear servicio</button>
-            <a href="../servicios.php">← Volver</a>
+            <button type="submit" class="btn-guardar">Crear servicio</button>
         </form>
+        <a href="../servicios.php" class="link-volver"><i class="fa-solid fa-arrow-left"></i> Volver</a>
     </div>
 </body>
 </html>

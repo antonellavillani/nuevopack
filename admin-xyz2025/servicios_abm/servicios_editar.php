@@ -60,16 +60,17 @@ if (!$servicio) {
     <meta charset="UTF-8">
     <title>Editar Servicio</title>
     <link rel="stylesheet" href="../estilos/estilos_admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
     <div class="contenedor">
-        <h2>✏️ Editar Servicio</h2>
+        <h2 class="titulo-pagina icono-editar">Editar Servicio</h2>
 
         <?php if (isset($error)): ?>
             <p style="color: red;"><?= $error ?></p>
         <?php endif; ?>
 
-        <form action="" method="post" enctype="multipart/form-data">
+        <form action="" method="post" enctype="multipart/form-data" class="formulario-admin">
             <label for="nombre">Nombre del servicio:</label>
             <input type="text" id="nombre" name="nombre" value="<?= htmlspecialchars($servicio['nombre']) ?>" required>
 
@@ -79,9 +80,9 @@ if (!$servicio) {
             <label for="foto">Cambiar imagen (opcional):</label>
             <input type="file" id="foto" name="foto" accept="image/*">
 
-            <button type="submit" class="boton-accion editar">Guardar cambios</button>
-            <a href="../servicios.php" class="boton-accion eliminar">Cancelar</a>
+            <button type="submit" class="btn-guardar">Guardar cambios</button>
         </form>
+        <a href="../servicios.php" class="link-volver"><i class="fa-solid fa-arrow-left"></i> Volver</a>
     </div>
 </body>
 </html>
