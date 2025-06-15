@@ -176,6 +176,16 @@ body, html {
     overflow-y: auto;
 }
 
+.mensaje-error {
+    color: #944741;
+    font-weight: bold;
+}
+
+.mensaje-exito {
+    color: #4e8050;
+    font-weight: bold;
+}
+
 /* ---------- Títulos ---------- */
 .titulo-pagina {
     font-size: 2.1rem;
@@ -606,5 +616,14 @@ body, html {
 /* ---------- Título ---------- */
 .titulo-pagina.icono-precio::before {
     content: '💲';
+    margin-right: 8px;
+}
+
+/* ---------------------------------------
+   Estilos para usuarios.php
+--------------------------------------- */
+/* ---------- Título ---------- */
+.titulo-pagina.icono-usuario::before {
+    content: '👥';
     margin-right: 8px;
 }

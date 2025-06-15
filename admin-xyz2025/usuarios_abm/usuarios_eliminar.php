@@ -14,13 +14,13 @@ if ($id) {
         $stmt = $conn->prepare("DELETE FROM usuarios_especiales WHERE id = ?");
         $stmt->execute([$id]);
 
-        header("Location: ../usuarios.php?mensaje=Usuario eliminado correctamente");
+        header("Location: ../usuarios.php?mensaje=✅ Usuario eliminado correctamente.");
         exit();
     } catch (PDOException $e) {
-        header("Location: ../usuarios.php?error=Error al eliminar usuario: " . urlencode($e->getMessage()));
+        header("Location: ../usuarios.php?error=❌ Error al eliminar usuario: " . urlencode($e->getMessage()));
         exit();
     }
 } else {
-    header("Location: ../usuarios.php?error=ID no especificado");
+    header("Location: ../usuarios.php?error=❌ ID no especificado");
     exit();
 }

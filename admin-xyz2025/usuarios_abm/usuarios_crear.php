@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         try {
             $stmt = $conn->prepare("INSERT INTO usuarios_especiales (nombre, apellido, email, telefono, password_hash) VALUES (?, ?, ?, ?, ?)");
             $stmt->execute([$nombre, $apellido, $email, $telefono, $password_hash]);
-            header("Location: ../usuarios.php?mensaje=Usuario creado correctamente");
+            header("Location: ../usuarios.php?mensaje=Usuario creado correctamente.");
             exit();
         } catch (PDOException $e) {
             $error = "Error al insertar: " . $e->getMessage();

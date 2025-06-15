@@ -8,7 +8,7 @@ if (!isset($_SESSION['admin_logged_in'])) {
 require_once '../config/config.php';
 
 // Obtener todos los usuarios especiales
-$stmt = $conn->query("SELECT id, nombre, apellido, email, telefono FROM usuarios_especiales ORDER BY id DESC");
+$stmt = $conn->query("SELECT * FROM usuarios_especiales ORDER BY id ASC");
 $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
@@ -18,10 +18,11 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <title>Administrar Usuarios</title>
     <link rel="stylesheet" href="estilos/estilos_admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-    <div class="admin-container">
-        <h2 class="titulo">Usuarios Especiales</h2>
+    <div class="contenedor">
+        <h2 class="titulo-pagina icono-usuario">Usuarios Especiales</h2>
 
         <?php if (isset($_GET['mensaje'])): ?>
             <p class="mensaje-exito"><?= htmlspecialchars($_GET['mensaje']) ?></p>
@@ -31,9 +32,11 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <p class="mensaje-error"><?= htmlspecialchars($_GET['mensaje_error']) ?></p>
         <?php endif; ?>
 
-        <a class="btn-agregar" href="usuarios_abm/usuarios_crear.php">+ Agregar Usuario</a>
+        <a href="usuarios_abm/usuarios_crear.php" class="boton-nuevo">
+            <i class="fa-solid fa-plus"></i>Agregar Usuario
+        </a>
 
-        <table class="tabla-admin">
+        <table class="tabla-bd">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -41,6 +44,7 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <th>Apellido</th>
                     <th>Email</th>
                     <th>Teléfono</th>
+                    <th>Aprobado</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -53,8 +57,12 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <td><?= htmlspecialchars($usuario['email']) ?></td>
                         <td><?= htmlspecialchars($usuario['telefono']) ?></td>
                         <td>
-                            <a class="btn-editar" href="usuarios_abm/usuarios_editar.php?id=<?= $usuario['id'] ?>">Editar</a>
-                            <a class="btn-eliminar" href="usuarios_abm/usuarios_eliminar.php?id=<?= $usuario['id'] ?>" onclick="return confirm('¿Estás seguro de que querés eliminar este usuario?')">Eliminar</a>
+                            <?= $usuario['aprobado'] ? 'Aprobado' : 'No aprobado' ?>
+                        </td>
+
+                        <td>
+                            <a href="usuarios_abm/usuarios_editar.php?id=<?= $usuario['id'] ?>" class="btn-editar-tabla">Editar</a>
+                            <a href="usuarios_abm/usuarios_eliminar.php?id=<?= $usuario['id'] ?>" onclick="return confirm('¿Estás seguro de que querés eliminar este usuario?')" class="btn-eliminar-tabla">Eliminar</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>
@@ -66,7 +74,7 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </tbody>
         </table>
         <br>
-        <a href="dashboard.php">← Volver al Dashboard</a>
+        <a href="dashboard.php" class="link-volver"><i class="fa-solid fa-arrow-left"></i> Volver al Dashboard</a>
     </div>
 </body>
 </html>

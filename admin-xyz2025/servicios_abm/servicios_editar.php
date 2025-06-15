@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Validar que no esté vacío
     if ($nombre === '') {
-        $error = "El nombre no puede estar vacío.";
+        $error = "El dato 'Nombre' no puede estar vacío.";
     } else {
         // Manejo de la nueva imagen
         if ($_FILES['foto']['name']) {

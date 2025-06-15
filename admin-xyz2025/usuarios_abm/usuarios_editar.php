@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'];
 
     if (empty($nombre) || empty($apellido) || empty($email) || empty($telefono)) {
-        $error = "Todos los campos excepto contraseña son obligatorios.";
+        $error = "Todos los campos excepto 'Contraseña' son obligatorios.";
     } else {
         try {
             if (!empty($password)) {
@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $stmt->execute([$nombre, $apellido, $email, $telefono, $id]);
             }
 
-            header("Location: ../usuarios.php?mensaje=Usuario actualizado correctamente");
+            header("Location: ../usuarios.php?mensaje=Usuario actualizado correctamente.");
             exit();
         } catch (PDOException $e) {
             $error = "Error al actualizar: " . $e->getMessage();

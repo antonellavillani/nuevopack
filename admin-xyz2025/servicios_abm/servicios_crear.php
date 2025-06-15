@@ -28,15 +28,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $stmt->bindParam(":foto", $nombre_archivo);
                 $stmt->execute();
 
-                $mensaje = "✅ Servicio creado correctamente.";
+                $mensaje = "Servicio creado correctamente.";
             } else {
-                $mensaje = "❌ Error al mover el archivo.";
+                $mensaje = "Error al mover el archivo.";
             }
         } else {
-            $mensaje = "❌ Extensión de imagen no permitida.";
+            $mensaje = "Extensión de imagen no permitida.";
         }
     } else {
-        $mensaje = "❌ Completá todos los campos.";
+        $mensaje = "Completá todos los campos.";
     }
 }
 ?>
@@ -53,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <h2>🛠️ Crear Nuevo Servicio</h2>
 
         <?php if ($mensaje): ?>
-            <p style="color: <?= strpos($mensaje, '✅') !== false ? 'green' : 'red'; ?>"><?= $mensaje ?></p>
+            <p><?= $mensaje ?></p>
         <?php endif; ?>
 
         <form action="" method="POST" enctype="multipart/form-data">
