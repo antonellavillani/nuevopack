@@ -21,7 +21,7 @@ $servicios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </head>
 <body>
     <div class="contenedor">
-        <h2 class="titulo-pagina">🛠️ Gestión de Servicios</h2>
+        <h2 class="titulo-pagina icono-servicio">Gestión de Servicios</h2>
 
         <a href="servicios_abm/servicios_crear.php" class="boton-nuevo">
             <i class="fa-solid fa-plus"></i>Nuevo Servicio
