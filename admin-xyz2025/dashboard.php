@@ -8,6 +8,7 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
 }
 
 require_once('../config/config.php');
+
 ?>
 
 <!DOCTYPE html>
@@ -92,8 +93,52 @@ require_once('../config/config.php');
         <div class="alerts">
             <h2 class="alertas-titulo titulo-seccion">Alertas</h2>
             <ul class="lista-actividad">
-                <li>2 servicios no tienen imagen</li>
-                <li>Faltan precios en algunos servicios</li>
+                <?php
+                    require_once '../config/config.php';
+                    $alertas = [];
+
+                    // 1. Servicios sin imagen o descripción
+                    $stmt = $conn->query("SELECT nombre, foto, descripcion FROM servicios");
+                    while ($s = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                        if (empty($s['foto'])) {
+                            $alertas[] = "El servicio \"{$s['nombre']}\" no tiene imagen.";
+                        }
+                        if (empty($s['descripcion'])) {
+                            $alertas[] = "El servicio \"{$s['nombre']}\" no tiene descripción.";
+                        }
+                    }
+
+                    // 2. Precios sin descripción o tipo_unidad
+                    $stmt = $conn->query("SELECT descripcion, tipo_unidad FROM precios_servicios");
+                    while ($p = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                        if (empty($p['descripcion'])) {
+                            $alertas[] = "Un precio no tiene descripción.";
+                        }
+                        if (empty($p['tipo_unidad'])) {
+                            $alertas[] = "Un precio no tiene tipo de unidad.";
+                        }
+                    }
+
+                    // 3. Usuarios especiales sin teléfono o no aprobados
+                    $stmt = $conn->query("SELECT email, telefono, aprobado FROM usuarios_especiales");
+                    while ($u = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                        if (empty($u['telefono'])) {
+                            $alertas[] = "El usuario \"{$u['email']}\" no tiene número de teléfono.";
+                        }
+                        if ((int)$u['aprobado'] === 0) {
+                            $alertas[] = "El usuario \"{$u['email']}\" aún no fue aprobado.";
+                        }
+                    }
+
+                    // Mostrar
+                    if (empty($alertas)) {
+                        echo "<li class='alerta-ok'>No hay alertas. Todo está en orden</li>";
+                    } else {
+                        foreach ($alertas as $a) {
+                            echo "<li class='alerta-item'>" . htmlspecialchars($a) . "</li>";
+                        }
+                    }
+                ?>
             </ul>
         </div>
     </div>
