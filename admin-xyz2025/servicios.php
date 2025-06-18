@@ -41,6 +41,7 @@ if (isset($_GET['accion']) && $_GET['accion'] === 'crear') {
                     <tr>
                         <th>ID</th>
                         <th>Nombre</th>
+                        <th>Descripción</th>
                         <th>Imagen</th>
                         <th>Acciones</th>
                     </tr>
@@ -50,6 +51,17 @@ if (isset($_GET['accion']) && $_GET['accion'] === 'crear') {
                         <tr>
                             <td><?= $serv['id'] ?></td>
                             <td><?= htmlspecialchars($serv['nombre']) ?></td>
+                            <td>
+                                <?php
+                                    $descripcion = htmlspecialchars($serv['descripcion']);
+                                    $resumen = strlen($descripcion) > 100 ? substr($descripcion, 0, 100) . '...' : $descripcion;
+                                ?>
+                                <?= $resumen ?>
+                                <?php if (strlen($descripcion) > 100): ?>
+                                    <button class="btn-ver-mas" onclick="mostrarModal(`<?= addslashes($descripcion) ?>`)">Ver más</button>
+                                <?php endif; ?>
+                            </td>
+
                             <td>
                                 <img src="../uploads/<?= $serv['foto'] ?>" alt="Imagen" class="img-tabla">
                             </td>
@@ -66,5 +78,35 @@ if (isset($_GET['accion']) && $_GET['accion'] === 'crear') {
         <br>
         <a href="dashboard.php" class="link-volver"><i class="fa-solid fa-arrow-left"></i> Volver al Dashboard</a>
     </div>
+
+    <!-- Modal personalizado -->
+<div id="modalDescripcion" class="modal-descripcion">
+    <div class="modal-contenido">
+        <span class="cerrar" onclick="cerrarModal()">&times;</span>
+        <p id="textoCompleto"></p>
+    </div>
+</div>
+
+<script>
+function mostrarModal(texto) {
+    const modal = document.getElementById("modalDescripcion");
+    const contenido = document.getElementById("textoCompleto");
+    contenido.textContent = texto;
+    modal.style.display = "block";
+}
+
+function cerrarModal() {
+    document.getElementById("modalDescripcion").style.display = "none";
+}
+
+// Cierra el modal si se hace clic fuera del contenido
+window.onclick = function(event) {
+    const modal = document.getElementById("modalDescripcion");
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+
 </body>
 </html>
