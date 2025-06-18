@@ -11,6 +11,7 @@ $mensaje = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nombre = $_POST["nombre"];
+    $descripcion = $_POST["descripcion"];
     $foto = $_FILES["foto"];
 
     if (!empty($nombre) && $foto["error"] === 0) {
@@ -23,12 +24,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $ruta_destino = "../../uploads/" . $nombre_archivo;
 
             if (move_uploaded_file($foto["tmp_name"], $ruta_destino)) {
-                $stmt = $conn->prepare("INSERT INTO servicios (nombre, foto) VALUES (:nombre, :foto)");
+                $stmt = $conn->prepare("INSERT INTO servicios (nombre, descripcion, foto) VALUES (:nombre, :descripcion, :foto)");
                 $stmt->bindParam(":nombre", $nombre);
+                $stmt->bindParam(":descripcion", $descripcion);
                 $stmt->bindParam(":foto", $nombre_archivo);
                 $stmt->execute();
 
                 $mensaje = "Servicio creado correctamente.";
+
             } else {
                 $mensaje = "Error al mover el archivo.";
             }
@@ -62,7 +65,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="text" name="nombre" id="nombre" required><br><br>
 
             <label for="foto">Imagen del servicio:</label><br>
-            <input type="file" name="foto" id="foto" accept="image/*" required><br><br>
+            <input type="file" name="foto" id="foto" accept="image/*"><br><br>
+
+            <label for="descripcion">Descripción del servicio:</label><br>
+            <textarea name="descripcion" id="descripcion" rows="4"></textarea><br><br>
 
             <button type="submit" class="btn-guardar">Crear servicio</button>
         </form>

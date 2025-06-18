@@ -18,6 +18,7 @@ $id = $_GET['id'];
 // Si se envió el formulario
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nombre = trim($_POST['nombre']);
+    $descripcion = trim($_POST['descripcion']);
 
     // Validar que no esté vacío
     if ($nombre === '') {
@@ -30,12 +31,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             move_uploaded_file($_FILES['foto']['tmp_name'], $ruta_destino);
 
             // Actualizar con imagen nueva
-            $stmt = $conn->prepare("UPDATE servicios SET nombre = ?, foto = ? WHERE id = ?");
-            $stmt->execute([$nombre, $foto_nombre, $id]);
+            $stmt = $conn->prepare("UPDATE servicios SET nombre = ?, descripcion = ?, foto = ? WHERE id = ?");
+            $stmt->execute([$nombre, $descripcion, $foto_nombre, $id]);
         } else {
             // Actualizar sin cambiar imagen
-            $stmt = $conn->prepare("UPDATE servicios SET nombre = ? WHERE id = ?");
-            $stmt->execute([$nombre, $id]);
+            $stmt = $conn->prepare("UPDATE servicios SET nombre = ?, descripcion = ? WHERE id = ?");
+            $stmt->execute([$nombre, $descripcion, $id]);
         }
 
         header("Location: ../servicios.php");
@@ -79,6 +80,9 @@ if (!$servicio) {
 
             <label for="foto">Cambiar imagen (opcional):</label>
             <input type="file" id="foto" name="foto" accept="image/*">
+
+            <label for="descripcion">Descripción del servicio:</label>
+            <textarea id="descripcion" name="descripcion" rows="4"><?= htmlspecialchars($servicio['descripcion']) ?></textarea>
 
             <button type="submit" class="btn-guardar">Guardar cambios</button>
         </form>
