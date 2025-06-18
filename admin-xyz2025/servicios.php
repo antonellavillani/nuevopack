@@ -9,6 +9,12 @@ require_once '../config/config.php';
 
 $stmt = $conn->query("SELECT * FROM servicios ORDER BY id ASC");
 $servicios = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+if (isset($_GET['accion']) && $_GET['accion'] === 'crear') {
+    header('Location: servicios_abm/servicios_crear.php');
+    exit();
+}
+
 ?>
 
 <!DOCTYPE html>

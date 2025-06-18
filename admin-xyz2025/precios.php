@@ -16,6 +16,12 @@ $stmt = $conn->prepare("
 ");
 $stmt->execute();
 $precios = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+if (isset($_GET['accion']) && $_GET['accion'] === 'crear') {
+    header('Location: precios_abm/precios_crear.php');
+    exit();
+}
+
 ?>
 
 <!DOCTYPE html>

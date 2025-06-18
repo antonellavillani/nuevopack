@@ -75,7 +75,6 @@ require_once('../config/config.php');
                 <button onclick="window.location.href='usuarios.php?accion=crear'" class="boton-acceso">
                     <i class="fa-solid fa-plus"></i>Nuevo Usuario
                 </button>
-                
             </div>        
         </div>
 
