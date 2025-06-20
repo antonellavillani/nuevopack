@@ -9,6 +9,13 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
 
 require_once('../config/config.php');
 
+// Mostrar máx. 5 actividades recientes
+$stmt = $conn->query("SELECT descripcion, fecha FROM actividad_admin ORDER BY fecha DESC LIMIT 5");
+$actividades = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+foreach ($actividades as $actividad) {
+    echo '<li>' . htmlspecialchars($actividad['descripcion']) . '</li>';
+}
 ?>
 
 <!DOCTYPE html>
