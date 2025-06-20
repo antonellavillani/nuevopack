@@ -26,6 +26,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt = $conn->prepare("INSERT INTO usuarios_especiales (nombre, apellido, email, telefono, password_hash) VALUES (?, ?, ?, ?, ?)");
             $stmt->execute([$nombre, $apellido, $email, $telefono, $password_hash]);
             header("Location: ../usuarios.php?mensaje=Usuario creado correctamente.");
+            
+            // Registrar actividad en la tabla actividad_admin
+            $descripcionActividad = 'Nuevo usuario "' . htmlspecialchars($email) . '" creado';
+            $stmtActividad = $conn->prepare("INSERT INTO actividad_admin (tipo, descripcion) VALUES (?, ?)");
+            $stmtActividad->execute(['usuario', $descripcionActividad]);
+
             exit();
         } catch (PDOException $e) {
             $error = "Error al insertar: " . $e->getMessage();

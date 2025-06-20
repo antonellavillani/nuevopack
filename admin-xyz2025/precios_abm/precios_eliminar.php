@@ -28,6 +28,11 @@ if (!$precio) {
 $stmt = $conn->prepare("DELETE FROM precios_servicios WHERE id = ?");
 $stmt->execute([$id]);
 
+// Registrar actividad
+$descripcionActividad = 'Precio ID ' . $id . ' eliminado';
+$stmtActividad = $conn->prepare("INSERT INTO actividad_admin (tipo, descripcion) VALUES (?, ?)");
+$stmtActividad->execute(['precio', $descripcionActividad]);
+
 header("Location: ../precios.php?mensaje=Precio eliminado correctamente.");
 exit();
 ?>

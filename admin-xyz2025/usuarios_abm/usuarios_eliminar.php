@@ -14,6 +14,11 @@ if ($id) {
         $stmt = $conn->prepare("DELETE FROM usuarios_especiales WHERE id = ?");
         $stmt->execute([$id]);
 
+        // Registrar actividad
+        $descripcionActividad = 'Usuario ID ' . $id . ' eliminado';
+        $stmtActividad = $conn->prepare("INSERT INTO actividad_admin (tipo, descripcion) VALUES (?, ?)");
+        $stmtActividad->execute(['usuario', $descripcionActividad]);
+
         header("Location: ../usuarios.php?mensaje=✅ Usuario eliminado correctamente.");
         exit();
     } catch (PDOException $e) {

@@ -32,6 +32,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 $mensaje = "Servicio creado correctamente.";
 
+                // Registrar actividad en la tabla actividad_admin
+                $descripcionActividad = 'Nuevo servicio "' . htmlspecialchars($nombre) . '" creado';
+                $stmtActividad = $conn->prepare("INSERT INTO actividad_admin (tipo, descripcion) VALUES (?, ?)");
+                $stmtActividad->execute(['servicio', $descripcionActividad]);
+                
             } else {
                 $mensaje = "Error al mover el archivo.";
             }

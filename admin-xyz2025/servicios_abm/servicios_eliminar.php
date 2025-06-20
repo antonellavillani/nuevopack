@@ -34,6 +34,11 @@ if ($servicio) {
     }
 }
 
+// Registrar actividad
+$descripcionActividad = 'Servicio ID ' . $id . ' eliminado';
+$stmtActividad = $conn->prepare("INSERT INTO actividad_admin (tipo, descripcion) VALUES (?, ?)");
+$stmtActividad->execute(['servicio', $descripcionActividad]);
+
 header("Location: ../servicios.php");
 exit();
 ?>

@@ -25,10 +25,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt = $conn->prepare("INSERT INTO precios_servicios (servicio_id, descripcion, tipo_unidad, precio) VALUES (?, ?, ?, ?)");
         $stmt->execute([$servicio_id, $descripcion, $tipo_unidad, $precio]);
         $exito = "Precio agregado correctamente.";
+
+        // Registrar actividad en la tabla actividad_admin
+        $descripcionActividad = 'Nuevo precio agregado para "' . htmlspecialchars($descripcion) . '"';
+        $stmtActividad = $conn->prepare("INSERT INTO actividad_admin (tipo, descripcion) VALUES (?, ?)");
+        $stmtActividad->execute(['precio', $descripcionActividad]);
+
     } else {
         $error = "Por favor, completá todos los campos correctamente.";
     }
 }
+
 ?>
 
 <!DOCTYPE html>

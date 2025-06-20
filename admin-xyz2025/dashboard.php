@@ -82,9 +82,21 @@ require_once('../config/config.php');
         <div class="activity-log">
             <h2 class="actividad-titulo titulo-seccion">Actividad Reciente</h2>
             <ul class="lista-actividad">
-                <li>Servicio “Tarjetas personales” actualizado ayer</li>
-                <li>Nuevo usuario “lucas@example.com” creado el lunes</li>
-                <li>Precio actualizado para “Bolsas impresas”</li>
+                <?php
+                require_once '../config/config.php';
+
+                $stmt = $conn->query("SELECT descripcion, fecha FROM actividad_admin ORDER BY fecha DESC LIMIT 10");
+                $actividades = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                if (count($actividades) === 0) {
+                    echo "<li class='actividad-ok'>Sin actividad reciente.</li>";
+                } else {
+                    foreach ($actividades as $act) {
+                        $fechaFormateada = date("d/m/Y H:i", strtotime($act['fecha']));
+                        echo "<li>" . htmlspecialchars($act['descripcion']) . " <span class='fecha-actividad'>(" . $fechaFormateada . ")</span></li>";
+                    }
+                }
+                ?>
             </ul>
         </div>
 
