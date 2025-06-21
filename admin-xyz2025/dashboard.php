@@ -13,9 +13,6 @@ require_once('../config/config.php');
 $stmt = $conn->query("SELECT descripcion, fecha FROM actividad_admin ORDER BY fecha DESC LIMIT 5");
 $actividades = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-foreach ($actividades as $actividad) {
-    echo '<li>' . htmlspecialchars($actividad['descripcion']) . '</li>';
-}
 ?>
 
 <!DOCTYPE html>
@@ -99,8 +96,14 @@ foreach ($actividades as $actividad) {
                     echo "<li class='actividad-ok'>Sin actividad reciente.</li>";
                 } else {
                     foreach ($actividades as $act) {
+                        $descripcion = htmlspecialchars($act['descripcion']);
                         $fechaFormateada = date("d/m/Y H:i", strtotime($act['fecha']));
-                        echo "<li>" . htmlspecialchars($act['descripcion']) . " <span class='fecha-actividad'>(" . $fechaFormateada . ")</span></li>";
+                        echo "<li>$descripcion <span class='fecha-actividad'>($fechaFormateada)</span>
+                            <form action='eliminar_actividad.php' method='POST' style='display:inline; margin-left:10px;'>
+                                <input type='hidden' name='descripcion' value='" . htmlspecialchars($act['descripcion'], ENT_QUOTES) . "'>
+                                <button type='submit' class='btn-eliminar-actividad' title='Eliminar esta actividad'>🗑️</button>
+                            </form>
+                        </li>";
                     }
                 }
                 ?>
