@@ -35,6 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = trim($_POST['email']);
     $telefono = trim($_POST['telefono']);
     $password = $_POST['password'];
+    $aprobado = isset($_POST['aprobado']) ? 1 : 0;
 
     if (empty($nombre) || empty($apellido) || empty($email) || empty($telefono)) {
         $error = "Todos los campos excepto 'Contraseña' son obligatorios.";
@@ -42,11 +43,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         try {
             if (!empty($password)) {
                 $password_hash = password_hash($password, PASSWORD_DEFAULT);
-                $stmt = $conn->prepare("UPDATE usuarios_especiales SET nombre = ?, apellido = ?, email = ?, telefono = ?, password_hash = ? WHERE id = ?");
-                $stmt->execute([$nombre, $apellido, $email, $telefono, $password_hash, $id]);
+                $stmt = $conn->prepare("UPDATE usuarios_especiales SET nombre = ?, apellido = ?, email = ?, telefono = ?, password_hash = ?, aprobado = ? WHERE id = ?");
+                $stmt->execute([$nombre, $apellido, $email, $telefono, $password_hash, $aprobado, $id]);
             } else {
-                $stmt = $conn->prepare("UPDATE usuarios_especiales SET nombre = ?, apellido = ?, email = ?, telefono = ? WHERE id = ?");
-                $stmt->execute([$nombre, $apellido, $email, $telefono, $id]);
+                $stmt = $conn->prepare("UPDATE usuarios_especiales SET nombre = ?, apellido = ?, email = ?, telefono = ?, aprobado = ? WHERE id = ?");
+                $stmt->execute([$nombre, $apellido, $email, $telefono, $aprobado, $id]);
             }
 
             // Registrar actividad
@@ -92,8 +93,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <label>Teléfono:</label>
             <input type="text" name="telefono" value="<?= htmlspecialchars($usuario['telefono']) ?>" required>
 
-            <label>Nueva Contraseña (opcional):</label>
+            <label>Nueva contraseña (opcional):</label>
             <input type="password" name="password">
+
+            <label>
+                <input type="checkbox" name="aprobado" <?= $usuario['aprobado'] ? 'checked' : '' ?>>
+                Usuario aprobado
+            </label>
+            <small id="usuario-aprobado">
+                Si esta opción está marcada, el usuario podrá ingresar al sistema. Si no, quedará deshabilitado.
+            </small>
 
             <div class="form-botones">
                 <button type="submit" class="btn-guardar">Actualizar</button>
