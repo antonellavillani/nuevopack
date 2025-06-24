@@ -751,30 +751,54 @@ body, html {
 
 .formulario-admin label {
     display: block;
-    margin-top: 12px;
-    font-weight: bold;
+    margin-top: 10px;
+    font-weight: 600;
     color: #4E5735;
     font-size: 0.95rem;
 }
 
 .formulario-admin input[type="text"],
+.formulario-admin input[type="email"],
+.formulario-admin input[type="password"],
 .formulario-admin input[type="number"],
-.formulario-admin select {
+.formulario-admin select,
+.formulario-admin textarea {
     width: 100%;
-    padding: 10px;
+    padding: 8px;
     margin-top: 5px;
-    font-size: 0.9rem;
-    border: 1px solid #ccc;
     border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 0.95rem;
     background-color: #fff;
     box-sizing: border-box;
     transition: border-color 0.2s ease;
+    font-family: 'Poppins', sans-serif;
+    color: #555;
 }
 
 .formulario-admin input:focus,
-.formulario-admin select:focus {
-    border-color: #6A7348;
-    outline: none;
+.formulario-admin select:focus,
+.formulario-admin textarea:focus {
+  border-color: #6A7348;
+  outline: none;
+}
+
+.formulario-admin input[type="checkbox"],
+.formulario-admin input[type="radio"] {
+  accent-color: #6A7348;
+  transform: scale(1.1);
+  margin-right: 6px;
+}
+
+.formulario-admin textarea {
+  resize: none;
+}
+
+#usuario-aprobado{
+    display: block; 
+    margin-top: 4px;
+    margin-bottom: 10px; 
+    color: #666;
 }
 
 /* ---------- Botones ---------- */
