@@ -49,6 +49,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $stmt->execute([$nombre, $apellido, $email, $telefono, $id]);
             }
 
+            // Registrar actividad
+            $descripcionActividad = 'Usuario "' . htmlspecialchars($nombre) . ' ' . htmlspecialchars($apellido) . '" editado (' . htmlspecialchars($email) . ')';
+            $stmtActividad = $conn->prepare("INSERT INTO actividad_admin (tipo, descripcion) VALUES (?, ?)");
+            $stmtActividad->execute(['usuario', $descripcionActividad]);
+
             header("Location: ../usuarios.php?mensaje=Usuario actualizado correctamente.");
             exit();
         } catch (PDOException $e) {

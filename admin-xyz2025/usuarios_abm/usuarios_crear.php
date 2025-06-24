@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             header("Location: ../usuarios.php?mensaje=Usuario creado correctamente.");
             
             // Registrar actividad en la tabla actividad_admin
-            $descripcionActividad = 'Nuevo usuario "' . htmlspecialchars($email) . '" creado';
+            $descripcionActividad = 'Nuevo usuario "' . htmlspecialchars($nombre) . ' ' . htmlspecialchars($apellido) . '" creado (' . htmlspecialchars($email) . ')';
             $stmtActividad = $conn->prepare("INSERT INTO actividad_admin (tipo, descripcion) VALUES (?, ?)");
             $stmtActividad->execute(['usuario', $descripcionActividad]);
 
