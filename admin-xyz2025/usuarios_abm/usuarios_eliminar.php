@@ -11,14 +11,24 @@ $id = $_GET['id'] ?? null;
 
 if ($id) {
     try {
-        $stmt = $conn->prepare("DELETE FROM usuarios_especiales WHERE id = ?");
+        // Obtener datos del usuario
+        $stmt = $conn->prepare("SELECT nombre, email FROM usuarios_especiales WHERE id = ?");
         $stmt->execute([$id]);
+        $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        // Registrar actividad
-        $descripcionActividad = 'Usuario ID ' . $id . ' eliminado';
-        $stmtActividad = $conn->prepare("INSERT INTO actividad_admin (tipo, descripcion) VALUES (?, ?)");
-        $stmtActividad->execute(['usuario', $descripcionActividad]);
+        if ($usuario) {
+            $nombreUsuario = $usuario['nombre'];
+            $emailUsuario = $usuario['email'];
 
+            // Eliminar usuario
+            $stmt = $conn->prepare("DELETE FROM usuarios_especiales WHERE id = ?");
+            $stmt->execute([$id]);
+
+            // Registrar actividad
+            $descripcionActividad = 'Usuario "' . htmlspecialchars($nombreUsuario) . '" eliminado (' . htmlspecialchars($emailUsuario) . ')';
+            $stmtActividad = $conn->prepare("INSERT INTO actividad_admin (tipo, descripcion) VALUES (?, ?)");
+            $stmtActividad->execute(['usuario', $descripcionActividad]);
+        }
         header("Location: ../usuarios.php?mensaje=✅ Usuario eliminado correctamente.");
         exit();
     } catch (PDOException $e) {
