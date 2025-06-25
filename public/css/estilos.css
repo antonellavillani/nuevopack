@@ -135,6 +135,13 @@ header .nuevoPack .pack {
     filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.5)); /* Mayor sombra en hover */
 }
 
+/* Margen en Mobile */
+@media (max-width: 768px) {
+  .logo {
+    padding-left: 15px;
+  }
+}
+
 /* ---------------------------------------
    Barra de Búsqueda
 --------------------------------------- */
@@ -214,6 +221,13 @@ header .nuevoPack .pack {
     background-color: #f0f0f0;
     color: #000;
     cursor: pointer;
+}
+
+/* Centrar en Mobile */
+@media (max-width: 768px) {
+  .barra-busqueda {
+    padding-right: 10px;
+  }
 }
 
 /* ---------------------------------------
