@@ -21,7 +21,7 @@ if (isset($_GET['accion']) && $_GET['accion'] === 'crear') {
 <html lang="es">    
 <head>
     <meta charset="UTF-8">
-    <title>Servicios | NuevoPack Dashboard</title>
+    <title>Servicios | Panel de Administración NuevoPack</title>
     <link rel="stylesheet" href="estilos/estilos_admin.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>

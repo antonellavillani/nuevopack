@@ -47,7 +47,7 @@ if (!isset($_GET['code'])) {
                 <head>
                     <meta charset="UTF-8">
                     <link rel="stylesheet" href="estilos/estilos_admin.css">
-                    <title>Acceso pendiente</title>
+                    <title>Acceso pendiente | Panel de Administración NuevoPack</title>
                 </head>
                 <body class="body-login">
                     <div class="mensaje-container">
@@ -67,7 +67,7 @@ if (!isset($_GET['code'])) {
                 <head>
                     <meta charset="UTF-8">
                     <link rel="stylesheet" href="estilos/estilos_admin.css">
-                    <title>Acceso pendiente</title>
+                    <title>Acceso pendiente | Panel de Administración NuevoPack</title>
                 </head>
                 <body class="body-login">
                     <div class="mensaje-container">

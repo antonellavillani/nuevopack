@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar Sesión - NuevoPack Admin</title>
+    <title>Iniciar Sesión | Panel de Administración NuevoPack</title>
     <link rel="stylesheet" href="estilos/estilos_admin.css">
 </head>
 <body class="body-login">
