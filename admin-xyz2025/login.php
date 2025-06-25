@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <form method="post" class="form-login">
             <input type="email" name="email" placeholder="Email" required>
             <input type="password" name="password" placeholder="Contraseña" required>
-            <a href="#" class="link-olvido">¿Olvidaste tu contraseña?</a>
+            <a href="recuperacion/recuperar_password.php" class="link-olvido">¿Olvidaste tu contraseña?</a>
             <button type="submit" class="btn-ingresar">Ingresar</button>
         </form>
 

@@ -816,6 +816,10 @@ body, html {
     margin: 20px auto;
     display: block;
     letter-spacing: 0.8px;
+    text-decoration: none;
+    text-align: center;
+    width: fit-content;
+    max-width: 100%;
 }
 
 .btn-guardar:hover {
