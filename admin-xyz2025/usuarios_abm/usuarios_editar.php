@@ -6,6 +6,14 @@ if (!isset($_SESSION['admin_logged_in'])) {
 }
 
 require_once '../../config/config.php';
+require_once '../../admin-xyz2025/config_secrets.php';
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require '../../backend/PHPMailer-master/PHPMailer-master/src/Exception.php';
+require '../../backend/PHPMailer-master/PHPMailer-master/src/PHPMailer.php';
+require '../../backend/PHPMailer-master/PHPMailer-master/src/SMTP.php';
 
 $id = $_GET['id'] ?? null;
 if (!$id) {
@@ -30,35 +38,79 @@ try {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $nombre = trim($_POST['nombre']);
-    $apellido = trim($_POST['apellido']);
-    $email = trim($_POST['email']);
-    $telefono = trim($_POST['telefono']);
-    $password = $_POST['password'];
-    $aprobado = isset($_POST['aprobado']) ? 1 : 0;
+    if (isset($_POST['enviar_link_password'])) {
+        // Generar token y guardar en la BD
+        $token = bin2hex(random_bytes(32));
+        $expiracion = date("Y-m-d H:i:s", strtotime('+1 hour'));
+        $stmt = $conn->prepare("UPDATE usuarios_especiales SET token_recuperacion = ?, token_expiracion = ? WHERE id = ?");
+        $stmt->execute([$token, $expiracion, $id]);
 
-    if (empty($nombre) || empty($apellido) || empty($email) || empty($telefono)) {
-        $error = "Todos los campos excepto 'Contraseña' son obligatorios.";
-    } else {
+        // Enviar correo con PHPMailer
+        $mail = new PHPMailer(true);
         try {
-            if (!empty($password)) {
-                $password_hash = password_hash($password, PASSWORD_DEFAULT);
-                $stmt = $conn->prepare("UPDATE usuarios_especiales SET nombre = ?, apellido = ?, email = ?, telefono = ?, password_hash = ?, aprobado = ? WHERE id = ?");
-                $stmt->execute([$nombre, $apellido, $email, $telefono, $password_hash, $aprobado, $id]);
-            } else {
+            $mail->CharSet = 'UTF-8';
+            $mail->isSMTP();
+            $mail->Host = SMTP_HOST;
+            $mail->SMTPAuth = true;
+            $mail->Username = SMTP_USER;
+            $mail->Password = SMTP_PASSWORD;
+            $mail->SMTPSecure = 'tls';
+            $mail->Port = SMTP_PORT;
+
+            $mail->setFrom(SMTP_USER, 'NuevoPack');
+            $mail->addAddress($usuario['email']);
+
+            $mail->isHTML(true);
+            $mail->Subject = 'Restablecer contraseña - NuevoPack';
+
+            $enlace = "http://localhost/nuevopack/admin-xyz2025/recuperacion/resetear_password.php?token=$token&origen=admin";
+
+            $cuerpo = "
+                <div style='font-family: Arial, sans-serif; background-color: #f9f9f9; padding: 20px;'>
+                  <div style='max-width: 600px; margin: auto; background-color: #ffffff; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);'>
+                    <h2 style='color: #333333;'>🔐 Restablecer contraseña</h2>
+                    <p>Hola <strong>" . htmlspecialchars($usuario['nombre']) . "</strong>,</p>
+                    <p>Para restablecer la contraseña, hacé clic en el siguiente enlace:</p>
+                    <p><a href='$enlace' style='color: #6A7348;'>Restablecer contraseña</a></p>
+                    <p>Este enlace será válido por <strong>1 hora</strong>.</p>
+                    <p>Si no solicitaste esto, podés ignorar este mensaje.</p>
+                  </div>
+                </div>
+            ";
+
+            $mail->Body = $cuerpo;
+            $mail->send();
+
+            $mensaje = "Se envió el enlace para restablecer la contraseña al email del usuario.";
+
+        } catch (Exception $e) {
+            $error = "Error al enviar correo: " . $mail->ErrorInfo;
+        }
+
+    } elseif (isset($_POST['actualizar'])) {
+        $nombre = trim($_POST['nombre']);
+        $apellido = trim($_POST['apellido']);
+        $email = trim($_POST['email']);
+        $telefono = trim($_POST['telefono']);
+        $aprobado = isset($_POST['aprobado']) ? 1 : 0;
+
+        if (empty($nombre) || empty($apellido) || empty($email) || empty($telefono)) {
+            $error = "Todos los campos son obligatorios.";
+        } else {
+            try {
                 $stmt = $conn->prepare("UPDATE usuarios_especiales SET nombre = ?, apellido = ?, email = ?, telefono = ?, aprobado = ? WHERE id = ?");
                 $stmt->execute([$nombre, $apellido, $email, $telefono, $aprobado, $id]);
+
+                // Registrar actividad
+                $descripcionActividad = 'Usuario "' . htmlspecialchars($nombre) . ' ' . htmlspecialchars($apellido) . '" editado (' . htmlspecialchars($email) . ')';
+                $stmtActividad = $conn->prepare("INSERT INTO actividad_admin (tipo, descripcion) VALUES (?, ?)");
+                $stmtActividad->execute(['usuario', $descripcionActividad]);
+
+                header("Location: ../usuarios.php?mensaje=Usuario actualizado correctamente.");
+                exit();
+            } catch (PDOException $e) {
+                $error = "Error al actualizar: " . $e->getMessage();
             }
-
-            // Registrar actividad
-            $descripcionActividad = 'Usuario "' . htmlspecialchars($nombre) . ' ' . htmlspecialchars($apellido) . '" editado (' . htmlspecialchars($email) . ')';
-            $stmtActividad = $conn->prepare("INSERT INTO actividad_admin (tipo, descripcion) VALUES (?, ?)");
-            $stmtActividad->execute(['usuario', $descripcionActividad]);
-
-            header("Location: ../usuarios.php?mensaje=Usuario actualizado correctamente.");
-            exit();
-        } catch (PDOException $e) {
-            $error = "Error al actualizar: " . $e->getMessage();
         }
     }
 }
@@ -93,9 +145,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <label>Teléfono:</label>
             <input type="text" name="telefono" value="<?= htmlspecialchars($usuario['telefono']) ?>" required>
 
-            <label>Nueva contraseña (opcional):</label>
-            <input type="password" name="password">
-
             <label>
                 <input type="checkbox" name="aprobado" <?= $usuario['aprobado'] ? 'checked' : '' ?>>
                 Usuario aprobado
@@ -104,8 +153,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 Si esta opción está marcada, el usuario podrá ingresar al sistema. Si no, quedará deshabilitado.
             </small>
 
+            <button type="submit" name="enviar_link_password" class="btn-guardar">Restablecer contraseña con link</button>
+
+            <?php if ($mensaje): ?>
+                <div class="mensaje-ok">
+                    <?= htmlspecialchars($mensaje) ?>
+                    <div id="mensaje-aclaracion">Si esta no es tu cuenta, recomendale al usuario que revise su correo para continuar con el cambio de contraseña.</div>
+                </div>
+            <?php endif; ?>
+
             <div class="form-botones">
-                <button type="submit" class="btn-guardar">Actualizar</button>
+                <button type="submit" name="actualizar" class="btn-guardar">Actualizar</button>
             </div>
         </form>
         <a href="../usuarios.php" class="link-volver"><i class="fa-solid fa-arrow-left"></i> Volver</a>

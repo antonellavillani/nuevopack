@@ -27,10 +27,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif ($password !== $confirmar) {
         $error = "Las contraseñas no coinciden.";
     } else {
+        $origen = $_GET['origen'] ?? null;
         $hash = password_hash($password, PASSWORD_DEFAULT);
         $stmt = $conn->prepare("UPDATE usuarios_especiales SET password_hash = ?, token_recuperacion = NULL, token_expiracion = NULL WHERE id = ?");
         $stmt->execute([$hash, $usuario['id']]);
         $mensaje = "Tu contraseña fue restablecida correctamente.";
+        if ($origen === 'admin') {
+            header("Location: ../usuarios.php?mensaje=Contraseña actualizada correctamente.");
+        } else {
+            header("Location: ../login.php?mensaje=Contraseña actualizada correctamente.");
+        }
+        exit();
     }
 }
 ?>

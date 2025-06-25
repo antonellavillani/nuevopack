@@ -730,6 +730,20 @@ body, html {
     content: '👥';
     margin-right: 8px;
 }
+/* Mensaje para restablecer contraseña en usuarios_editar.php */
+.mensaje-ok {
+    color: #3c763d;
+    padding: 2px 16px;
+    margin-bottom: 16px;
+    font-size: 0.95rem;
+    text-align: center;
+}
+
+#mensaje-aclaracion {
+    font-size: 0.70rem;
+    color: #555;
+    text-align: center;
+}
 
 /* ---------------------------------------
    Estilos para los formularios
