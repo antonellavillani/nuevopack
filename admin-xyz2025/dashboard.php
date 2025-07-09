@@ -10,7 +10,7 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
 require_once('../config/config.php');
 
 // Mostrar máx. 5 actividades recientes
-$stmt = $conn->query("SELECT descripcion, fecha FROM actividad_admin ORDER BY fecha DESC LIMIT 5");
+$stmt = $pdo->query("SELECT descripcion, fecha FROM actividad_admin ORDER BY fecha DESC LIMIT 5");
 $actividades = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
@@ -46,21 +46,21 @@ $actividades = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <div class="card">
                 <h3>Servicios</h3>
                 <p><?php
-                    $stmt = $conn->query("SELECT COUNT(*) FROM servicios");
+                    $stmt = $pdo->query("SELECT COUNT(*) FROM servicios");
                     echo $stmt->fetchColumn() . " cargados";
                 ?></p>
             </div>
             <div class="card">
                 <h3>Precios</h3>
                 <p><?php
-                    $stmt = $conn->query("SELECT COUNT(*) FROM precios_servicios");
+                    $stmt = $pdo->query("SELECT COUNT(*) FROM precios_servicios");
                     echo $stmt->fetchColumn() . " registrados";
                 ?></p>
             </div>
             <div class="card">
                 <h3>Usuarios</h3>
                 <p><?php
-                    $stmt = $conn->query("SELECT COUNT(*) FROM usuarios_especiales");
+                    $stmt = $pdo->query("SELECT COUNT(*) FROM usuarios_especiales");
                     echo $stmt->fetchColumn() . " activos";
                 ?></p>
             </div>
@@ -89,7 +89,7 @@ $actividades = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <?php
                 require_once '../config/config.php';
 
-                $stmt = $conn->query("SELECT descripcion, fecha FROM actividad_admin ORDER BY fecha DESC LIMIT 10");
+                $stmt = $pdo->query("SELECT descripcion, fecha FROM actividad_admin ORDER BY fecha DESC LIMIT 10");
                 $actividades = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                 if (count($actividades) === 0) {
@@ -119,7 +119,7 @@ $actividades = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     $alertas = [];
 
                     // 1. Servicios sin imagen o descripción
-                    $stmt = $conn->query("SELECT nombre, foto, descripcion FROM servicios");
+                    $stmt = $pdo->query("SELECT nombre, foto, descripcion FROM servicios");
                     while ($s = $stmt->fetch(PDO::FETCH_ASSOC)) {
                         if (empty($s['foto'])) {
                             $alertas[] = "El servicio \"{$s['nombre']}\" no tiene imagen.";
@@ -130,7 +130,7 @@ $actividades = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     }
 
                     // 2. Precios sin descripción o tipo_unidad
-                    $stmt = $conn->query("SELECT descripcion, tipo_unidad FROM precios_servicios");
+                    $stmt = $pdo->query("SELECT descripcion, tipo_unidad FROM precios_servicios");
                     while ($p = $stmt->fetch(PDO::FETCH_ASSOC)) {
                         if (empty($p['descripcion'])) {
                             $alertas[] = "Un precio no tiene descripción.";
@@ -141,7 +141,7 @@ $actividades = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     }
 
                     // 3. Usuarios especiales sin teléfono o no aprobados
-                    $stmt = $conn->query("SELECT email, telefono, aprobado FROM usuarios_especiales");
+                    $stmt = $pdo->query("SELECT email, telefono, aprobado FROM usuarios_especiales");
                     while ($u = $stmt->fetch(PDO::FETCH_ASSOC)) {
                         if (empty($u['telefono'])) {
                             $alertas[] = "El usuario \"{$u['email']}\" no tiene número de teléfono.";

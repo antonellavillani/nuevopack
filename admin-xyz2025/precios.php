@@ -8,7 +8,7 @@ if (!isset($_SESSION['admin_logged_in'])) {
 require_once '../config/config.php';
 
 // Obtener precios con nombre del servicio
-$stmt = $conn->prepare("
+$stmt = $pdo->prepare("
     SELECT ps.id, ps.descripcion, ps.tipo_unidad, ps.precio, s.nombre AS servicio_nombre
     FROM precios_servicios ps
     INNER JOIN servicios s ON ps.servicio_id = s.id

@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($email)) {
         $error = "Por favor, ingresá tu email.";
     } else {
-        $stmt = $conn->prepare("SELECT * FROM usuarios_especiales WHERE email = ?");
+        $stmt = $pdo->prepare("SELECT * FROM usuarios_especiales WHERE email = ?");
         $stmt->execute([$email]);
         $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $expiracion = date("Y-m-d H:i:s", strtotime('+1 hour'));
 
             // Guardar token en la base de datos
-            $stmt = $conn->prepare("UPDATE usuarios_especiales SET token_recuperacion = ?, token_expiracion = ? WHERE email = ?");
+            $stmt = $pdo->prepare("UPDATE usuarios_especiales SET token_recuperacion = ?, token_expiracion = ? WHERE email = ?");
             $stmt->execute([$token, $expiracion, $email]);
 
             // Enviar email

@@ -17,7 +17,7 @@ $mensaje = "";
 $mensaje_error = "";
 
 // Obtener datos del precio
-$stmt = $conn->prepare("SELECT * FROM precios_servicios WHERE id = ?");
+$stmt = $pdo->prepare("SELECT * FROM precios_servicios WHERE id = ?");
 $stmt->execute([$id]);
 $precio = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -25,7 +25,7 @@ if (!$precio) {
     $mensaje_error = "El precio no existe.";
 } else {
     // Obtener servicios para el select
-    $stmt = $conn->prepare("SELECT id, nombre FROM servicios ORDER BY nombre ASC");
+    $stmt = $pdo->prepare("SELECT id, nombre FROM servicios ORDER BY nombre ASC");
     $stmt->execute();
     $servicios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -36,7 +36,7 @@ if (!$precio) {
         $valor = $_POST['precio'];
 
         if ($servicio_id && $descripcion && $tipo_unidad && is_numeric($valor)) {
-            $stmt = $conn->prepare("UPDATE precios_servicios SET servicio_id = ?, descripcion = ?, tipo_unidad = ?, precio = ? WHERE id = ?");
+            $stmt = $pdo->prepare("UPDATE precios_servicios SET servicio_id = ?, descripcion = ?, tipo_unidad = ?, precio = ? WHERE id = ?");
             $stmt->execute([$servicio_id, $descripcion, $tipo_unidad, $valor, $id]);
             $mensaje = "Precio actualizado correctamente.";
         } else {

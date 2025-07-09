@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST["password"];
 
     try {
-        $stmt = $conn->prepare("SELECT * FROM usuarios_especiales WHERE email = ?");
+        $stmt = $pdo->prepare("SELECT * FROM usuarios_especiales WHERE email = ?");
         $stmt->execute([$email]);
         $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 

@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $ruta_destino = "../../uploads/" . $nombre_archivo;
 
             if (move_uploaded_file($foto["tmp_name"], $ruta_destino)) {
-                $stmt = $conn->prepare("INSERT INTO servicios (nombre, descripcion, foto) VALUES (:nombre, :descripcion, :foto)");
+                $stmt = $pdo->prepare("INSERT INTO servicios (nombre, descripcion, foto) VALUES (:nombre, :descripcion, :foto)");
                 $stmt->bindParam(":nombre", $nombre);
                 $stmt->bindParam(":descripcion", $descripcion);
                 $stmt->bindParam(":foto", $nombre_archivo);
@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 // Registrar actividad en la tabla actividad_admin
                 $descripcionActividad = 'Nuevo servicio "' . htmlspecialchars($nombre) . '" creado';
-                $stmtActividad = $conn->prepare("INSERT INTO actividad_admin (tipo, descripcion) VALUES (?, ?)");
+                $stmtActividad = $pdo->prepare("INSERT INTO actividad_admin (tipo, descripcion) VALUES (?, ?)");
                 $stmtActividad->execute(['servicio', $descripcionActividad]);
                 
             } else {

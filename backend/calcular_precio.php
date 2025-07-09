@@ -5,7 +5,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Obtener la tabla de precios desde la base de datos
     $queryPrecios = "SELECT * FROM precios_servicios";
-    $stmtPrecios = $conn->prepare($queryPrecios);
+    $stmtPrecios = $pdo->prepare($queryPrecios);
     $stmtPrecios->execute();
     $precios = $stmtPrecios->fetchAll(PDO::FETCH_ASSOC);
 

@@ -30,7 +30,7 @@ if (!isset($_GET['code'])) {
 
     // Verificar si el usuario existe y está aprobado
     try {
-        $stmt = $conn->prepare("SELECT * FROM usuarios_especiales WHERE email = ?");
+        $stmt = $pdo->prepare("SELECT * FROM usuarios_especiales WHERE email = ?");
         $stmt->execute([$email]);
         $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -59,7 +59,7 @@ if (!isset($_GET['code'])) {
                 </html>';
         } else {
             // Insertar nuevo usuario pendiente de aprobación
-            $stmt = $conn->prepare("INSERT INTO usuarios_especiales (nombre, apellido, email, aprobado) VALUES (?, ?, ?, 0)");
+            $stmt = $pdo->prepare("INSERT INTO usuarios_especiales (nombre, apellido, email, aprobado) VALUES (?, ?, ?, 0)");
             $stmt->execute([$nombre, $apellido, $email]);
             echo '
                 <!DOCTYPE html>

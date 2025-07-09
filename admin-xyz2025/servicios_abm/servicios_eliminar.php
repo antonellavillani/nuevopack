@@ -16,7 +16,7 @@ if (!isset($_GET['id'])) {
 $id = $_GET['id'];
 
 // Obtener nombre del archivo para eliminar la imagen del servidor
-$stmt = $conn->prepare("SELECT foto FROM servicios WHERE id = ?");
+$stmt = $pdo->prepare("SELECT foto FROM servicios WHERE id = ?");
 $stmt->execute([$id]);
 $servicio = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -24,7 +24,7 @@ if ($servicio) {
     $foto = $servicio['foto'];
     
     // Eliminar de la base de datos
-    $stmt = $conn->prepare("DELETE FROM servicios WHERE id = ?");
+    $stmt = $pdo->prepare("DELETE FROM servicios WHERE id = ?");
     $stmt->execute([$id]);
 
     // Eliminar imagen del servidor
@@ -36,7 +36,7 @@ if ($servicio) {
 
 // Registrar actividad
 $descripcionActividad = 'Servicio ID ' . $id . ' eliminado';
-$stmtActividad = $conn->prepare("INSERT INTO actividad_admin (tipo, descripcion) VALUES (?, ?)");
+$stmtActividad = $pdo->prepare("INSERT INTO actividad_admin (tipo, descripcion) VALUES (?, ?)");
 $stmtActividad->execute(['servicio', $descripcionActividad]);
 
 header("Location: ../servicios.php");

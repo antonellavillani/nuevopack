@@ -3,14 +3,14 @@
 require_once 'config/config.php';
 
 // Verificar si la conexión a la base de datos está configurada
-if (!isset($conn)) {
+if (!isset($pdo)) {
     die("Error: La conexión a la base de datos no está configurada.");
 }
 
 // Consulta para obtener los nombres de los productos
 try {
     $query = "SELECT id, nombre FROM servicios";
-    $stmt = $conn->prepare($query);
+    $stmt = $pdo->prepare($query);
     $stmt->execute();
     $servicios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 

@@ -7,7 +7,7 @@ if (!isset($_SESSION['admin_logged_in'])) {
 
 require_once '../config/config.php';
 
-$stmt = $conn->query("SELECT * FROM servicios ORDER BY id ASC");
+$stmt = $pdo->query("SELECT * FROM servicios ORDER BY id ASC");
 $servicios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 if (isset($_GET['accion']) && $_GET['accion'] === 'crear') {

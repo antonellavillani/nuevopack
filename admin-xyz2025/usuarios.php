@@ -8,7 +8,7 @@ if (!isset($_SESSION['admin_logged_in'])) {
 require_once '../config/config.php';
 
 // Obtener todos los usuarios especiales
-$stmt = $conn->query("SELECT * FROM usuarios_especiales ORDER BY id ASC");
+$stmt = $pdo->query("SELECT * FROM usuarios_especiales ORDER BY id ASC");
 $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 if (isset($_GET['accion']) && $_GET['accion'] === 'crear') {

@@ -31,11 +31,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             move_uploaded_file($_FILES['foto']['tmp_name'], $ruta_destino);
 
             // Actualizar con imagen nueva
-            $stmt = $conn->prepare("UPDATE servicios SET nombre = ?, descripcion = ?, foto = ? WHERE id = ?");
+            $stmt = $pdo->prepare("UPDATE servicios SET nombre = ?, descripcion = ?, foto = ? WHERE id = ?");
             $stmt->execute([$nombre, $descripcion, $foto_nombre, $id]);
         } else {
             // Actualizar sin cambiar imagen
-            $stmt = $conn->prepare("UPDATE servicios SET nombre = ?, descripcion = ? WHERE id = ?");
+            $stmt = $pdo->prepare("UPDATE servicios SET nombre = ?, descripcion = ? WHERE id = ?");
             $stmt->execute([$nombre, $descripcion, $id]);
         }
 
@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 // Traer los datos actuales del servicio
-$stmt = $conn->prepare("SELECT * FROM servicios WHERE id = ?");
+$stmt = $pdo->prepare("SELECT * FROM servicios WHERE id = ?");
 $stmt->execute([$id]);
 $servicio = $stmt->fetch(PDO::FETCH_ASSOC);
 

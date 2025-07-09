@@ -12,7 +12,7 @@ if (isset($_GET['term'])) {
     }
 
     $query = "SELECT id, nombre FROM servicios WHERE LOWER(nombre) LIKE :term";
-    $stmt = $conn->prepare($query);
+    $stmt = $pdo->prepare($query);
     $stmt->execute([':term' => "%$term%"]);
     $servicios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 

@@ -10,14 +10,14 @@ $idServicio = $_GET['idServicio'] ?? '';
 
 // Consulta para obtener la información del servicio
 $query = "SELECT * FROM servicios WHERE id = :idServicio";
-$stmt = $conn->prepare($query);
+$stmt = $pdo->prepare($query);
 $stmt->bindParam(':idServicio', $idServicio, PDO::PARAM_INT);
 $stmt->execute();
 $servicio = $stmt->fetch(PDO::FETCH_ASSOC);
 
 // Consulta para obtener la tabla de precios
 $queryPrecios = "SELECT * FROM precios_servicios";
-$stmtPrecios = $conn->prepare($queryPrecios);
+$stmtPrecios = $pdo->prepare($queryPrecios);
 $stmtPrecios->execute();
 $precios = $stmtPrecios->fetchAll(PDO::FETCH_ASSOC);
 

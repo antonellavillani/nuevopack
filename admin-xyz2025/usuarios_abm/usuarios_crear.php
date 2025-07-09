@@ -23,13 +23,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $password_hash = password_hash($password, PASSWORD_DEFAULT);
 
         try {
-            $stmt = $conn->prepare("INSERT INTO usuarios_especiales (nombre, apellido, email, telefono, password_hash) VALUES (?, ?, ?, ?, ?)");
+            $stmt = $pdo->prepare("INSERT INTO usuarios_especiales (nombre, apellido, email, telefono, password_hash) VALUES (?, ?, ?, ?, ?)");
             $stmt->execute([$nombre, $apellido, $email, $telefono, $password_hash]);
             header("Location: ../usuarios.php?mensaje=Usuario creado correctamente.");
             
             // Registrar actividad en la tabla actividad_admin
             $descripcionActividad = 'Nuevo usuario "' . htmlspecialchars($nombre) . ' ' . htmlspecialchars($apellido) . '" creado (' . htmlspecialchars($email) . ')';
-            $stmtActividad = $conn->prepare("INSERT INTO actividad_admin (tipo, descripcion) VALUES (?, ?)");
+            $stmtActividad = $pdo->prepare("INSERT INTO actividad_admin (tipo, descripcion) VALUES (?, ?)");
             $stmtActividad->execute(['usuario', $descripcionActividad]);
 
             exit();

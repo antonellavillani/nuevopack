@@ -25,7 +25,7 @@ $error = '';
 $mensaje = '';
 
 try {
-    $stmt = $conn->prepare("SELECT * FROM usuarios_especiales WHERE id = ?");
+    $stmt = $pdo->prepare("SELECT * FROM usuarios_especiales WHERE id = ?");
     $stmt->execute([$id]);
     $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Generar token y guardar en la BD
         $token = bin2hex(random_bytes(32));
         $expiracion = date("Y-m-d H:i:s", strtotime('+1 hour'));
-        $stmt = $conn->prepare("UPDATE usuarios_especiales SET token_recuperacion = ?, token_expiracion = ? WHERE id = ?");
+        $stmt = $copdonn->prepare("UPDATE usuarios_especiales SET token_recuperacion = ?, token_expiracion = ? WHERE id = ?");
         $stmt->execute([$token, $expiracion, $id]);
 
         // Enviar correo con PHPMailer
@@ -98,12 +98,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $error = "Todos los campos son obligatorios.";
         } else {
             try {
-                $stmt = $conn->prepare("UPDATE usuarios_especiales SET nombre = ?, apellido = ?, email = ?, telefono = ?, aprobado = ? WHERE id = ?");
+                $stmt = $pdo->prepare("UPDATE usuarios_especiales SET nombre = ?, apellido = ?, email = ?, telefono = ?, aprobado = ? WHERE id = ?");
                 $stmt->execute([$nombre, $apellido, $email, $telefono, $aprobado, $id]);
 
                 // Registrar actividad
                 $descripcionActividad = 'Usuario "' . htmlspecialchars($nombre) . ' ' . htmlspecialchars($apellido) . '" editado (' . htmlspecialchars($email) . ')';
-                $stmtActividad = $conn->prepare("INSERT INTO actividad_admin (tipo, descripcion) VALUES (?, ?)");
+                $stmtActividad = $pdo->prepare("INSERT INTO actividad_admin (tipo, descripcion) VALUES (?, ?)");
                 $stmtActividad->execute(['usuario', $descripcionActividad]);
 
                 header("Location: ../usuarios.php?mensaje=Usuario actualizado correctamente.");

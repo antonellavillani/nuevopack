@@ -8,7 +8,7 @@ if (!isset($_SESSION['admin_logged_in'])) {
 require_once '../../config/config.php';
 
 // Obtener lista de servicios
-$stmt = $conn->prepare("SELECT id, nombre FROM servicios ORDER BY nombre ASC");
+$stmt = $pdo->prepare("SELECT id, nombre FROM servicios ORDER BY nombre ASC");
 $stmt->execute();
 $servicios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -22,13 +22,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $precio = $_POST['precio'];
 
     if ($servicio_id && $descripcion && $tipo_unidad && is_numeric($precio)) {
-        $stmt = $conn->prepare("INSERT INTO precios_servicios (servicio_id, descripcion, tipo_unidad, precio) VALUES (?, ?, ?, ?)");
+        $stmt = $pdo->prepare("INSERT INTO precios_servicios (servicio_id, descripcion, tipo_unidad, precio) VALUES (?, ?, ?, ?)");
         $stmt->execute([$servicio_id, $descripcion, $tipo_unidad, $precio]);
         $exito = "Precio agregado correctamente.";
 
         // Registrar actividad en la tabla actividad_admin
         $descripcionActividad = 'Nuevo precio agregado para "' . htmlspecialchars($descripcion) . '"';
-        $stmtActividad = $conn->prepare("INSERT INTO actividad_admin (tipo, descripcion) VALUES (?, ?)");
+        $stmtActividad = $pdo->prepare("INSERT INTO actividad_admin (tipo, descripcion) VALUES (?, ?)");
         $stmtActividad->execute(['precio', $descripcionActividad]);
 
     } else {
