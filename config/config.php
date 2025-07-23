@@ -22,5 +22,8 @@ try {
     echo json_encode(["error" => "Error de conexión: " . $e->getMessage()]);
     exit;
 }
+class ApiConfig {
+    const BASE_URL = "https://0777ff5ac4ca.ngrok-free.app/nuevopack/";
+}
 
 ?>
