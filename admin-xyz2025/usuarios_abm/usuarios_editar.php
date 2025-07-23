@@ -23,6 +23,7 @@ if (!$id) {
 
 $error = '';
 $mensaje = '';
+$origen = $_GET['origen'] ?? 'admin';
 
 try {
     $stmt = $pdo->prepare("SELECT * FROM usuarios_especiales WHERE id = ?");
@@ -42,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Generar token y guardar en la BD
         $token = bin2hex(random_bytes(32));
         $expiracion = date("Y-m-d H:i:s", strtotime('+1 hour'));
-        $stmt = $copdonn->prepare("UPDATE usuarios_especiales SET token_recuperacion = ?, token_expiracion = ? WHERE id = ?");
+        $stmt = $pdo->prepare("UPDATE usuarios_especiales SET token_recuperacion = ?, token_expiracion = ? WHERE id = ?");
         $stmt->execute([$token, $expiracion, $id]);
 
         // Enviar correo con PHPMailer
@@ -133,6 +134,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <?php endif; ?>
 
         <form method="POST" class="formulario-admin">
+            <input type="hidden" name="origen" value="<?= htmlspecialchars($_GET['origen'] ?? '') ?>">
             <label>Nombre:</label>
             <input type="text" name="nombre" value="<?= htmlspecialchars($usuario['nombre']) ?>" required>
 

@@ -5,7 +5,7 @@ require_once '../../config/config.php';
 $error = '';
 $mensaje = '';
 $token = $_GET['token'] ?? null;
-$origen = $_GET['origen'] ?? null;
+$origen = $_POST['origen'] ?? $_GET['origen'] ?? null;
 
 // Definir a dónde volver según el origen
 if ($origen === 'admin') {
@@ -48,43 +48,61 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="html_resetear_password">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Restablecer contraseña | NuevoPack</title>
     <link rel="stylesheet" href="../estilos/estilos_admin.css">
 </head>
-<body>
-    <div class="contenedor">
-        <h2 class="titulo-pagina">Nueva Contraseña</h2>
+<body class="body_resetear_password">
+    <div class="contenedor_resetear_password">
+        <h2 class="titulo_pagina_resetear_password">Nueva Contraseña</h2>
 
         <?php if ($error): ?>
-            <p class="mensaje-error"><?= htmlspecialchars($error) ?></p>
+            <p class="mensaje-error_resetear_password"><?= htmlspecialchars($error) ?></p>
         <?php endif; ?>
 
         <?php if ($mensaje): ?>
-            <p class="mensaje-ok"><?= htmlspecialchars($mensaje) ?></p>
-            <a href="<?= $volverURL ?>" class="btn-guardar"><?= $volverTexto ?></a>
-        <?php else: ?>
+            <p class="mensaje-ok_resetear_password"><?= htmlspecialchars($mensaje) ?></p>
+            
+            <?php if ($origen === 'android'): ?>
+                <a id="volver-app-btn" href="nuevopack://com.nuevopack.admin?mensaje=ok">Volver a la app</a>
+            <?php else: ?>
+                <a href="<?= $volverURL ?>" class="btn_guardar_resetear_password"><?= $volverTexto ?></a>
+            <?php endif; ?>
 
-            <form method="POST" class="formulario-admin">
+        <?php endif; ?>
+
+        <?php if (!$mensaje): ?>
+            <form method="POST" class="formulario-admin_resetear_password" novalidate>
                 <label>Nueva contraseña:</label>
-                <input type="password" name="password" required>
+                <input type="password" name="password" required autocomplete="new-password" aria-required="true" />
+
                 <label>Confirmar contraseña:</label>
-                <input type="password" name="confirmar" required>
-                <button type="submit" class="btn-guardar">Restablecer</button>
+                <input type="password" name="confirmar" required autocomplete="new-password" aria-required="true" />
+
+                <input type="hidden" name="origen" value="<?= htmlspecialchars($origen) ?>">
+
+                <button type="submit" class="btn_guardar_resetear_password">Restablecer</button>
             </form>
         <?php endif; ?>
     </div>
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-    const form = document.querySelector('.formulario-admin');
+    const form = document.querySelector('.formulario-admin_resetear_password');
+    if (!form) return;
+
     const passwordInput = form.querySelector('input[name="password"]');
     const confirmarInput = form.querySelector('input[name="confirmar"]');
-    const errorContainer = document.createElement('p');
-    errorContainer.classList.add('mensaje-error');
-    form.insertBefore(errorContainer, form.firstChild);
+    let errorContainer = document.querySelector('.mensaje-error');
+
+    if (!errorContainer) {
+        errorContainer = document.createElement('p');
+        errorContainer.classList.add('mensaje-error');
+        form.insertBefore(errorContainer, form.firstChild);
+    }
 
     form.addEventListener('submit', function (e) {
         const password = passwordInput.value;

@@ -745,6 +745,131 @@ body, html {
     text-align: center;
 }
 
+/* ---------- resetear_password.php ---------- */
+.body_resetear_password, .html_resetear_password {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #fafafa;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.body_resetear_password {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.contenedor_resetear_password {
+    width: 100%;
+    max-width: 500px;
+    padding: 25px 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    box-sizing: border-box;
+    margin: 20px;
+    overflow: hidden;
+}
+
+.titulo_pagina_resetear_password {
+    font-size: 1.8rem;
+    color: #4E5735;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.formulario-admin_resetear_password {
+    display: flex;
+    flex-direction: column;
+}
+
+.formulario-admin_resetear_password label {
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #4E5735;
+    font-size: 0.95rem;
+}
+
+.formulario-admin_resetear_password input[type="password"] {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+ .btn_guardar_resetear_password {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #6A7348;
+    color: white;
+    font-weight: bold;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-bottom: 12px;
+    text-decoration: none;
+}
+
+.btn_guardar_resetear_password:hover {
+    background-color: #4E5435;
+}
+
+.mensaje-error_resetear_password {
+    color: #944741;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.mensaje-ok_resetear_password {
+    color: #3c763d;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* Botón "Volver a la app" para móviles */
+#volver-app-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #6A7348;
+    color: white;
+    font-weight: bold;
+    padding: 12px;
+    border-radius: 6px;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#volver-app-btn:hover {
+    background-color: #4E5435;
+    transform: scale(1.05);
+}
+
+/* Responsive para pantallas muy pequeñas */
+@media (max-width: 420px) {
+    .contenedor_resetear_password {
+        margin: 20px 15px;
+        padding: 20px 15px;
+    }
+
+    .titulo_pagina_resetear_password {
+        font-size: 1.5rem;
+    }
+}
+
 /* ---------------------------------------
    Estilos para los formularios
 --------------------------------------- */
