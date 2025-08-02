@@ -24,6 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($usuario) {
+            $origen = $_POST['origen'] ?? $_GET['origen'] ?? 'admin';
             $token = bin2hex(random_bytes(32));
             $expiracion = date("Y-m-d H:i:s", strtotime('+1 hour'));
 
@@ -32,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->execute([$token, $expiracion, $email]);
 
             // Enviar email
-            $enlace = "http://localhost/nuevopack/admin-xyz2025/recuperacion/resetear_password.php?token=$token";
+            $enlace = ApiConfig::BASE_URL . "admin-xyz2025/recuperacion/resetear_password.php?token=$token&origen=" . urlencode($origen);
             $asunto = "Recuperación de contraseña - NuevoPack";
 
             $cuerpo = '
@@ -76,31 +77,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
-
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Recuperar contraseña | NuevoPack Admin</title>
-    <link rel="stylesheet" href="../estilos/estilos_admin.css">
-</head>
-<body>
-    <div class="contenedor">
-        <h2 class="titulo-pagina">Recuperar Contraseña</h2>
-        <?php if ($error): ?>
-            <p class="mensaje-error"><?= htmlspecialchars($error) ?></p>
-        <?php endif; ?>
-        <?php if ($mensaje): ?>
-            <p class="mensaje-ok"><?= htmlspecialchars($mensaje) ?></p>
-        <?php endif; ?>
-        <form method="POST" class="formulario-admin">
-            <label>Email asociado a tu cuenta:</label>
-            <input type="email" name="email" required>
-            <div class="form-botones">
-                <button type="submit" class="btn-guardar">Enviar enlace</button>
-            </div>
-        </form>
-        <a href="../login.php" class="link-volver">Volver al inicio</a>
-    </div>
-</body>
-</html>
