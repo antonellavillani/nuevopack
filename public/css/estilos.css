@@ -448,10 +448,60 @@ header .nuevoPack .pack {
 /* ---------------------------------------
    Estilos para Footer
 --------------------------------------- */
+.mapa-sitio {
+    text-align: left;
+    margin-left: 20px;
+}
+
+.mapa-sitio > li {
+    margin-bottom: 10px;
+}
+
+.mapa-sitio > li > a:hover {
+    color: #333724;
+    background-color: #F2F2F2;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.mapa-sitio a {
+    text-decoration: none;
+}
+
+.sublista-servicios {
+    margin-left: 15px;
+    margin-top: 5px;
+    border-left: 2px solid #F2F2F2;
+    padding-left: 10px;
+}
+
+.sublista-servicios a {
+    border-left: 2px solid transparent;
+    background-image: linear-gradient(to right, rgba(242, 242, 242, 0.2), transparent);
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: 2px 100%;
+    padding-left: 10px;
+    transition: all 0.2s ease-in-out;
+}
+
+.sublista-servicios li a:hover {
+    color: #c663a1 !important;
+    transform: translateX(5px);
+    background-color: #F2F2F2;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.sublista-servicios li {
+    margin-bottom: 6px;
+    margin-top: 6px;
+}
+
 footer {
     background-color: #4E5735;
     color: #F2F2F2;
-    padding: 20px 0;
+    padding: 10px 0;
     text-align: center;
 }
 
@@ -459,7 +509,7 @@ footer {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    padding: 20px;
+    padding: 5px;
 }
 
 .footer-content div {
@@ -472,13 +522,13 @@ footer {
 }
 
 .footer-content a {
-    color: #F2F2F2;
-    text-decoration: none;
-    font-size: 0.9em;
+    transition: all 0.2s ease-in-out;
+    display: inline-block;
 }
 
 .footer-content a:hover {
     color: #ffffff;
+    transform: translateX(3px);
     text-decoration: underline;
 }
 
@@ -497,6 +547,20 @@ footer {
 .informacion-contacto{
     margin-top: 40px;
     font-size: 16px;
+}
+
+.mapa-sitio span,
+.mapa-sitio a {
+    color: #F2F2F2;
+}
+
+.footer-left,
+.footer-right {
+    flex: 1 1 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 /* ---------------------------------------
