@@ -52,7 +52,7 @@ if (!isset($_GET['code'])) {
                 <body class="body-login">
                     <div class="mensaje-container">
                         <h2>Acceso pendiente</h2>
-                        <p>Tu cuenta está pendiente de aprobación.</p>
+                        <p>Tu cuenta está pendiente de aprobación.<br>Por favor, comunicarse con NuevoPack.</p>
                         <a href="../index.php" class="btn-volver-login">Volver al inicio</a>
                     </div>
                 </body>
@@ -72,7 +72,7 @@ if (!isset($_GET['code'])) {
                 <body class="body-login">
                     <div class="mensaje-container">
                         <h2>Acceso pendiente</h2>
-                        <p>Tu cuenta fue registrada pero necesita aprobación del administrador.</p>
+                        <p>Tu cuenta fue registrada pero necesita ser aprobada.<br>Por favor, comunicarse con NuevoPack.</p>
                         <a href="../index.php" class="btn-volver-login">Volver al inicio</a>
                     </div>
                 </body>
