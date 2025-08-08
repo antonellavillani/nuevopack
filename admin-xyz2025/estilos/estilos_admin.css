@@ -730,6 +730,19 @@ body, html {
     content: '👥';
     margin-right: 8px;
 }
+
+#cursor-not-allowed {
+    cursor: not-allowed;
+}
+
+.reglas-password {
+    font-size: 0.9em;
+    margin: 5px 0 15px;
+}
+.reglas-password p {
+    margin: 3px 0;
+}
+
 /* Mensaje para restablecer contraseña en usuarios_editar.php */
 .mensaje-ok {
     color: #3c763d;
@@ -743,6 +756,12 @@ body, html {
     font-size: 0.70rem;
     color: #555;
     text-align: center;
+}
+
+.contrasena_no_coincide {
+    color:red; 
+    font-size:0.9em; 
+    display:none;
 }
 
 /* ---------- resetear_password.php ---------- */
