@@ -10,6 +10,11 @@ require_once '../../config/config.php';
 $error = '';
 $mensaje = '';
 
+function esPasswordSegura($password) {
+    // Al menos 8 caracteres, una mayúscula, una minúscula, un número y un carácter especial
+    return preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+={}[\]:;"\'<>,.?\/]).{8,}$/', $password);
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nombre = trim($_POST['nombre']);
     $apellido = trim($_POST['apellido']);
@@ -20,6 +25,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($nombre) || empty($apellido) || empty($email) || empty($telefono) || empty($password)) {
         $error = "Todos los campos son obligatorios.";
     } else {
+        if (!esPasswordSegura($password)) {
+        $error = "La contraseña no cumple con los requisitos mínimos.";
+        } else {
         $password_hash = password_hash($password, PASSWORD_DEFAULT);
 
         try {
@@ -35,6 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit();
         } catch (PDOException $e) {
             $error = "Error al insertar: " . $e->getMessage();
+        }
         }
     }
 }
@@ -67,10 +76,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input type="email" name="email" required>
 
             <label>Teléfono:</label>
-            <input type="text" name="telefono" required>
+            <input type="text" name="telefono">
 
             <label>Contraseña:</label>
-            <input type="password" name="password" required>
+            <input type="password" name="password" id="password" required>
+
+            <div class="reglas-password">
+                <p id="ruleLength">❌ Mínimo 8 caracteres</p>
+                <p id="ruleMayuscula">❌ Al menos una mayúscula</p>
+                <p id="ruleMinuscula">❌ Al menos una minúscula</p>
+                <p id="ruleNumero">❌ Al menos un número</p>
+                <p id="ruleEspecial">❌ Al menos un carácter especial</p>
+            </div>
+
+            <label>Repetir Contraseña:</label>
+            <input type="password" name="repetir_password" id="repetir_password" required>
+            <p id="errorCoincidencia" class="contrasena_no_coincide">
+                Las contraseñas no coinciden.
+            </p>
 
             <div class="form-botones">
                 <button type="submit" class="btn-guardar">Guardar</button>
@@ -78,5 +101,57 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </form>
         <a href="../usuarios.php" class="link-volver"><i class="fa-solid fa-arrow-left"></i> Volver</a>
     </div>
+
+    <script>
+        const inputPassword = document.getElementById('password');
+        const inputRepetir = document.getElementById('repetir_password');
+        const errorCoincidencia = document.getElementById('errorCoincidencia');
+
+        const reglas = {
+            ruleLength:      pass => pass.length >= 8,
+            ruleMayuscula:   pass => /[A-Z]/.test(pass),
+            ruleMinuscula:   pass => /[a-z]/.test(pass),
+            ruleNumero:      pass => /\d/.test(pass),
+            ruleEspecial:    pass => /[!@#$%^&*()_\-+={}[\]:;"'<>,.?/]/.test(pass)
+        };
+
+        function actualizarEstado(id, cumplido) {
+            const elem = document.getElementById(id);
+            const textoBase = elem.textContent.replace(/^✅ |^❌ /, "");
+            elem.textContent = (cumplido ? "✅ " : "❌ ") + textoBase;
+            elem.style.color = cumplido ? "green" : "gray";
+            elem.style.fontWeight = cumplido ? "bold" : "normal";
+        }
+
+        inputPassword.addEventListener('input', () => {
+            const pass = inputPassword.value;
+            for (const id in reglas) {
+                actualizarEstado(id, reglas[id](pass));
+            }
+        });
+
+        inputRepetir.addEventListener('input', () => {
+            if (inputRepetir.value && inputPassword.value !== inputRepetir.value) {
+                errorCoincidencia.style.display = 'block';
+            } else {
+                errorCoincidencia.style.display = 'none';
+            }
+        });
+
+        document.querySelector('.formulario-admin').addEventListener('submit', (e) => {
+            const pass = inputPassword.value;
+            const repetir = inputRepetir.value;
+            const cumpleTodo = Object.values(reglas).every(fn => fn(pass));
+
+            if (!cumpleTodo) {
+                alert("La contraseña no cumple con los requisitos.");
+                e.preventDefault();
+            } else if (pass !== repetir) {
+                errorCoincidencia.style.display = 'block';
+                e.preventDefault();
+            }
+        });
+    </script>
+
 </body>
 </html>
