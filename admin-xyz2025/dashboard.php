@@ -34,7 +34,20 @@ $actividades = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <div class="nav-item"><a href="servicios.php" class="servicios">Servicios</a></div>
         <div class="nav-item"><a href="precios.php" class="precios">Precios</a></div>
         <div class="nav-item"><a href="usuarios.php" class="usuarios">Usuarios</a></div>
-        <div class="nav-item"><a href="logout.php" class="logout">Cerrar Sesión</a></div>
+        <div class="nav-item">
+            <a href="#" id="btn-mi-cuenta" class="mi-cuenta">Mi cuenta</a>
+        </div>
+    </div>
+
+    <!-- Modal Mi Cuenta -->
+    <div id="modal-mi-cuenta" class="modal">
+        <div class="modal-content">
+            <span id="cerrar-modal" class="close">&times;</span>
+            <i class="fa-duotone fa-solid fa-circle-user" id="modal-mi-cuenta-icono"></i>
+            <h2 id="titulo-modal"><?= htmlspecialchars($_SESSION['nombre']) . ' ' . htmlspecialchars($_SESSION['apellido']) ?></h2>
+            <p id="email-modal"><?= htmlspecialchars($_SESSION['email']) ?></p>
+            <button id="btn-logout" class="btn-cerrar-sesion">Cerrar sesión</button>
+        </div>
     </div>
 
     <!-- Contenido principal -->
@@ -164,6 +177,35 @@ $actividades = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
 </div>
+
+<script>
+  const btnMiCuenta = document.getElementById('btn-mi-cuenta');
+  const modal = document.getElementById('modal-mi-cuenta');
+  const cerrarModal = document.getElementById('cerrar-modal');
+  const btnLogout = document.getElementById('btn-logout');
+
+  btnMiCuenta.addEventListener('click', e => {
+    e.preventDefault();
+    modal.style.display = 'block';
+  });
+
+  cerrarModal.addEventListener('click', () => {
+    modal.style.display = 'none';
+  });
+
+  window.addEventListener('click', e => {
+    if (e.target == modal) {
+      modal.style.display = 'none';
+    }
+  });
+
+  btnLogout.addEventListener('click', () => {
+    if (confirm('¿Estás seguro que querés cerrar sesión?')) {
+      window.location.href = 'logout.php';
+    }
+  });
+</script>
+
 
 </body>
 </html>
