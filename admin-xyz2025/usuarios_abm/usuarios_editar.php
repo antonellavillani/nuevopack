@@ -95,12 +95,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $telefono = trim($_POST['telefono']);
         $aprobado = isset($_POST['aprobado']) ? 1 : 0;
 
-        if (empty($nombre) || empty($apellido) || empty($email) || empty($telefono)) {
-            $error = "Todos los campos son obligatorios.";
+        if (empty($nombre) || empty($apellido) || empty($email)) {
+            $error = "Nombre, apellido y email son obligatorios.";
         } else {
             try {
+                // Si $telefono es vacío, insertar NULL para la BD
+                $telefonoBD = $telefono === '' ? null : $telefono;
+
                 $stmt = $pdo->prepare("UPDATE usuarios_especiales SET nombre = ?, apellido = ?, email = ?, telefono = ?, aprobado = ? WHERE id = ?");
-                $stmt->execute([$nombre, $apellido, $email, $telefono, $aprobado, $id]);
+                $stmt->execute([$nombre, $apellido, $email, $telefonoBD, $aprobado, $id]);
 
                 // Registrar actividad
                 $descripcionActividad = 'Usuario "' . htmlspecialchars($nombre) . ' ' . htmlspecialchars($apellido) . '" editado (' . htmlspecialchars($email) . ')';
@@ -145,7 +148,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input id="cursor-not-allowed" type="email" name="email" value="<?= htmlspecialchars($usuario['email']) ?>" readonly>
 
             <label>Teléfono:</label>
-            <input type="text" name="telefono" value="<?= htmlspecialchars($usuario['telefono']) ?>" required>
+            <input type="text" name="telefono" value="<?= htmlspecialchars($usuario['telefono']) ?>">
 
             <label>
                 <input type="checkbox" name="aprobado" <?= $usuario['aprobado'] ? 'checked' : '' ?>>
