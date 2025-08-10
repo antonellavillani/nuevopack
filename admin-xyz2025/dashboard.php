@@ -37,6 +37,7 @@ $actividades = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <div class="nav-item">
             <a href="#" id="btn-mi-cuenta" class="mi-cuenta">Mi cuenta</a>
         </div>
+        <div class="nav-item"><a href="soporte.php" class="soporte">Soporte</a></div>
     </div>
 
     <!-- Modal Mi Cuenta -->
