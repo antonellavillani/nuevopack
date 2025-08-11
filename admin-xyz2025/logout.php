@@ -1,6 +1,8 @@
 <?php
 session_start();
-session_destroy();
+require_once '../config/config.php';
+require_once 'auth.php';
+
+cerrarSesionAdmin();
 header("Location: ../index.php");
 exit();
-?>

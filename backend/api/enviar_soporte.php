@@ -14,7 +14,7 @@ header('Content-Type: application/json');
 $input = json_decode(file_get_contents('php://input'), true);
 $asunto  = $input['asunto'] ?? '';
 $mensaje = $input['mensaje'] ?? '';
-$imagen  = $input['imagen'] ?? ''; 
+$imagenes = $input['imagenes'] ?? [];
 
 if(!$asunto || !$mensaje){
     echo json_encode(['ok' => false, 'msg' => 'Faltan campos']);
@@ -37,12 +37,13 @@ try {
     $mail->Body = $mensaje;
 
     // Si se adjunta foto
-    if($imagen){
-        $base64 = $imagen;
-        $data = base64_decode($base64);
-        $temp = tempnam(sys_get_temp_dir(), 'img_').'.jpg';
-        file_put_contents($temp, $data);
-        $mail->addAttachment($temp, 'captura.jpg');
+    if (is_array($imagenes)) {
+        foreach ($imagenes as $index => $base64) {
+            $data = base64_decode($base64);
+            $temp = tempnam(sys_get_temp_dir(), 'img_') . ".jpg";
+            file_put_contents($temp, $data);
+            $mail->addAttachment($temp, "imagen_$index.jpg");
+        }
     }
 
     $mail->send();

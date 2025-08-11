@@ -38,7 +38,8 @@ body, html {
     color: #333;
 }
 
-.form-login input {
+.form-login input[type="email"],
+.form-login input[type="password"] {
     width: 100%;
     padding: 12px;
     margin: 10px 0;
@@ -159,6 +160,21 @@ body, html {
 
 .btn-volver-login:hover {
     background-color: #4E5433;
+}
+
+.checkbox-recordar-usuario{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 8px;
+    font-size: 0.9em;
+    color: #555;
+    justify-content: center;
+}
+
+.checkbox-recordar-usuario input[type="checkbox"] {
+    vertical-align: middle; 
+    margin: 0; 
 }
 
 /* ---------------------------------------

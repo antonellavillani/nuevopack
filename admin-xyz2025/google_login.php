@@ -1,10 +1,11 @@
 <?php
+session_start();
 require_once __DIR__ . '/config_secrets.php';
 require_once '../vendor/autoload.php';
 use Google\Client as Google_Client;
 use Google\Service\Oauth2 as Google_Service_Oauth2;
 require_once '../config/config.php';
-session_start();
+require_once 'auth.php';
 
 $client = new Google_Client();
 $client->setClientId(GOOGLE_CLIENT_ID);
@@ -35,11 +36,7 @@ if (!isset($_GET['code'])) {
         $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($usuario && $usuario['aprobado']) {
-            $_SESSION['admin_logged_in'] = true;
-            $_SESSION['nombre'] = $usuario['nombre'];
-            $_SESSION['apellido'] = $usuario['apellido'];
-            $_SESSION['email'] = $usuario['email'];
-            $_SESSION['admin_id'] = $usuario['id'];
+            iniciarSesionAdmin($usuario, true);
             header("Location: dashboard.php");
             exit();
         } elseif ($usuario && !$usuario['aprobado']) {

@@ -1,16 +1,18 @@
 <?php
 session_start();
-if (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true) {
+require_once '../config/config.php';
+require_once 'auth.php';
+
+if (verificarSesionAdmin()) {
     header("Location: dashboard.php");
     exit();
 }
-
-require_once '../config/config.php';
 
 $error = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = trim($_POST["email"]);
     $password = $_POST["password"];
+    $recordar = isset($_POST["recordar_usuario"]);
 
     try {
         $stmt = $pdo->prepare("SELECT * FROM usuarios_especiales WHERE email = ?");
@@ -18,11 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($usuario && password_verify($password, $usuario['password_hash'])) {
-            $_SESSION['admin_logged_in'] = true;
-            $_SESSION['nombre'] = $usuario['nombre'];
-            $_SESSION['apellido'] = $usuario['apellido'];
-            $_SESSION['email'] = $usuario['email'];
-            $_SESSION['admin_id'] = $usuario['id'];
+            iniciarSesionAdmin($usuario, $recordar);
             header("Location: dashboard.php");
             exit();
         } else {
@@ -49,6 +47,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="email" name="email" placeholder="Email" required>
             <input type="password" name="password" placeholder="Contraseña" required>
             <a href="recuperacion/recuperar_password.php" class="link-olvido">¿Olvidaste tu contraseña?</a>
+            <label class="checkbox-recordar-usuario">
+                <input type="checkbox" name="recordar_usuario">
+                Mantener sesión iniciada
+            </label>
             <button type="submit" class="btn-ingresar">Ingresar</button>
         </form>
 
