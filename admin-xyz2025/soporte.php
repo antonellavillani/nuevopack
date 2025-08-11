@@ -11,7 +11,7 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
 <head>
     <meta charset="UTF-8" />
     <title>Soporte | Panel de Administración NuevoPack</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Poppins:wght@700&display=swap" rel="stylesheet" />    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <link rel="stylesheet" href="estilos/estilos_admin.css" />
 </head>
@@ -29,10 +29,19 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
 
         <div class="file-input-wrapper">
             <label for="imagen">Adjuntar imagen (opcional)</label>
-            <input type="file" id="imagen" name="imagen" accept="image/*" />
+            <input type="file" id="imagen" name="imagen[]" accept="image/*" multiple/>
         </div>
 
-        <img id="previewImg" class="previewImg" alt="Imagen adjunta" />
+        <div id="previewBox" class="previewBox" aria-hidden="true">
+            <img id="previewImg" class="previewImg" alt="Imagen adjunta" />
+            <span id="imageCount" class="imageCount"></span>
+        </div>
+
+        <!-- Modal para mostrar todas -->
+        <div id="imageModal" class="imageModal" aria-hidden="true">
+            <button type="button" id="closeModal" class="closeModal">Cerrar</button>
+            <div id="modalImages" class="modalImages"></div>
+        </div>
 
         <button type="submit" class="btn-guardar">Enviar</button>
 
@@ -71,6 +80,60 @@ inputImagen.addEventListener('change', function() {
     }
 });
 
+const previewBox = document.getElementById('previewBox');
+const imageCount = document.getElementById('imageCount');
+const imageModal = document.getElementById('imageModal');
+const modalImages = document.getElementById('modalImages');
+const closeModal = document.getElementById('closeModal');
+
+let allImageUrls = [];
+
+inputImagen.addEventListener('change', function() {
+    const files = Array.from(this.files);
+    allImageUrls = [];
+
+    if (files.length > 0) {
+        // Mostrar la primera imagen en preview
+        const firstFile = files[0];
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            previewImg.src = e.target.result;
+            previewBox.style.display = 'block';
+        }
+        reader.readAsDataURL(firstFile);
+
+        // Guardar todas las imágenes en array de URLs
+        files.forEach(file => {
+            const fr = new FileReader();
+            fr.onload = e => allImageUrls.push(e.target.result);
+            fr.readAsDataURL(file);
+        });
+
+        // Mostrar contador si hay más de 1
+        imageCount.textContent = files.length > 1 ? `+${files.length - 1}` : '';
+    } else {
+        previewBox.style.display = 'none';
+    }
+});
+
+// Abrir modal al hacer click en el preview
+previewBox.addEventListener('click', () => {
+    modalImages.innerHTML = '';
+    allImageUrls.forEach(url => {
+        const img = document.createElement('img');
+        img.src = url;
+        img.style.width = '200px';
+        img.style.borderRadius = '6px';
+        modalImages.appendChild(img);
+    });
+    imageModal.style.display = 'block';
+});
+
+// Cerrar modal
+closeModal.addEventListener('click', () => {
+    imageModal.style.display = 'none';
+});
+
 const spinner = document.getElementById('spinner');
 const form = document.getElementById('formSoporte');
 
@@ -93,6 +156,7 @@ form.addEventListener('submit', function(e){
             rta.textContent = '✅ Tu mensaje fue enviado con éxito. Nos pondremos en contacto pronto.';
             form.reset();
             previewImg.style.display = 'none';
+            previewBox.style.display = 'none';
         } else {
             rta.style.color = 'red';
             rta.textContent = '❌ ' + data.msg;

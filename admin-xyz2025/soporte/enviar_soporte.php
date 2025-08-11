@@ -58,8 +58,25 @@ try {
         "Mensaje:\n$mensaje";
 
     // Si se adjunta imagen
-    if (!empty($_FILES['imagen']['tmp_name']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
-        $mail->addAttachment($_FILES['imagen']['tmp_name'], $_FILES['imagen']['name']);
+    if (isset($_FILES['imagen']) && !empty($_FILES['imagen']['tmp_name'])) {
+        if (is_array($_FILES['imagen']['tmp_name'])) {
+            // Varios archivos
+            $numFiles = count($_FILES['imagen']['tmp_name']);
+            for ($i = 0; $i < $numFiles; $i++) {
+                if ($_FILES['imagen']['error'][$i] === UPLOAD_ERR_OK) {
+                    $tmpName = $_FILES['imagen']['tmp_name'][$i];
+                    $name = $_FILES['imagen']['name'][$i];
+                    $mail->addAttachment($tmpName, $name);
+                }
+            }
+        } else {
+            // Solo un archivo
+            if ($_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
+                $tmpName = $_FILES['imagen']['tmp_name'];
+                $name = $_FILES['imagen']['name'];
+                $mail->addAttachment($tmpName, $name);
+            }
+        }
     }
 
     $mail->send();

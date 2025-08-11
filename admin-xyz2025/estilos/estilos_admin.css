@@ -952,6 +952,18 @@ body, html {
 .texto-soporte {
     color: #555;
 }
+
+.previewBox{
+    display: none; 
+    position: relative; 
+    width: 120px;
+    height: 80px; 
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
 .previewImg {
     max-width: 300px;
     max-height: 200px;
@@ -960,7 +972,87 @@ body, html {
     border-radius: 6px;
     border: 1px solid #ccc;
     object-fit: contain;
+    position: relative;
+    cursor: pointer;
+    width: 100%;
 }
+
+.previewBox img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.previewBox::after {
+    content: '🔍 Expandir';
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+}
+
+.previewBox:hover::after {
+    opacity: 1;
+}
+
+.imageCount{
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+    background: rgba(0,0,0,0.6);
+    color: white;
+    font-size: 0.8rem;
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
+.imageModal{
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.8);
+    z-index: 9999;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.closeModal{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.modalImages{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.modalImages img {
+    width: 320px;
+    max-width: calc(100vw - 80px);
+    height: auto;
+    border-radius: 8px;
+    object-fit: contain;
+}
+
 .file-input-wrapper {
     display: flex;
     flex-direction: column;
