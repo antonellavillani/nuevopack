@@ -4,17 +4,10 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
     header("Location: ../index.php");
     exit();
 }
+
+include ("includes/header.php");
 ?>
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8" />
-    <title>Soporte | Panel de Administración NuevoPack</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <link rel="stylesheet" href="estilos/estilos_admin.css" />
-</head>
 <body>
 <div class="contenedor">
     <h1 class="titulo-pagina icono-soporte">Soporte</h1>
@@ -63,113 +56,7 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
 
 </div>
 
-<script>
-const inputImagen = document.getElementById('imagen');
-const previewImg = document.getElementById('previewImg');
-inputImagen.addEventListener('change', function() {
-    const file = this.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            previewImg.src = e.target.result;
-            previewImg.style.display = 'block';
-        }
-        reader.readAsDataURL(file);
-    } else {
-        previewImg.style.display = 'none';
-    }
-});
-
-const previewBox = document.getElementById('previewBox');
-const imageCount = document.getElementById('imageCount');
-const imageModal = document.getElementById('imageModal');
-const modalImages = document.getElementById('modalImages');
-const closeModal = document.getElementById('closeModal');
-
-let allImageUrls = [];
-
-inputImagen.addEventListener('change', function() {
-    const files = Array.from(this.files);
-    allImageUrls = [];
-
-    if (files.length > 0) {
-        // Mostrar la primera imagen en preview
-        const firstFile = files[0];
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            previewImg.src = e.target.result;
-            previewBox.style.display = 'block';
-        }
-        reader.readAsDataURL(firstFile);
-
-        // Guardar todas las imágenes en array de URLs
-        files.forEach(file => {
-            const fr = new FileReader();
-            fr.onload = e => allImageUrls.push(e.target.result);
-            fr.readAsDataURL(file);
-        });
-
-        // Mostrar contador si hay más de 1
-        imageCount.textContent = files.length > 1 ? `+${files.length - 1}` : '';
-    } else {
-        previewBox.style.display = 'none';
-    }
-});
-
-// Abrir modal al hacer click en el preview
-previewBox.addEventListener('click', () => {
-    modalImages.innerHTML = '';
-    allImageUrls.forEach(url => {
-        const img = document.createElement('img');
-        img.src = url;
-        img.style.width = '200px';
-        img.style.borderRadius = '6px';
-        modalImages.appendChild(img);
-    });
-    imageModal.style.display = 'block';
-});
-
-// Cerrar modal
-closeModal.addEventListener('click', () => {
-    imageModal.style.display = 'none';
-});
-
-const spinner = document.getElementById('spinner');
-const form = document.getElementById('formSoporte');
-
-form.addEventListener('submit', function(e){
-    e.preventDefault();
-    spinner.style.display = 'block';
-    const rta = document.getElementById('respuesta');
-    rta.textContent = '';
-
-    const formData = new FormData(this);
-    fetch('./soporte/enviar_soporte.php', {
-        method: 'POST',
-        body: formData
-    })
-    .then(r => r.json())
-    .then(data => {
-        spinner.style.display = 'none';
-        if(data.ok){
-            rta.style.color = 'green';
-            rta.textContent = '✅ Tu mensaje fue enviado con éxito. Nos pondremos en contacto pronto.';
-            form.reset();
-            previewImg.style.display = 'none';
-            previewBox.style.display = 'none';
-        } else {
-            rta.style.color = 'red';
-            rta.textContent = '❌ ' + data.msg;
-        }
-    })
-    .catch(err => {
-        spinner.style.display = 'none';
-        rta.style.color = 'red';
-        rta.textContent = '❌ Error al enviar el mensaje';
-        console.error(err);
-    });
-});
-</script>
-
+<!-- JavaScript -->
+<script src="js/script.js"></script>
 </body>
 </html>

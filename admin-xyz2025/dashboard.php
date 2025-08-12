@@ -13,17 +13,8 @@ require_once('../config/config.php');
 $stmt = $pdo->query("SELECT descripcion, fecha FROM actividad_admin ORDER BY fecha DESC LIMIT 5");
 $actividades = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+include ("includes/header.php");
 ?>
-
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Panel de Administración | NuevoPack</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Poppins:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="estilos/estilos_admin.css">
-</head>
 <body>
 
 <div class="container">
@@ -179,34 +170,7 @@ $actividades = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
 </div>
 
-<script>
-  const btnMiCuenta = document.getElementById('btn-mi-cuenta');
-  const modal = document.getElementById('modal-mi-cuenta');
-  const cerrarModal = document.getElementById('cerrar-modal');
-  const btnLogout = document.getElementById('btn-logout');
-
-  btnMiCuenta.addEventListener('click', e => {
-    e.preventDefault();
-    modal.style.display = 'block';
-  });
-
-  cerrarModal.addEventListener('click', () => {
-    modal.style.display = 'none';
-  });
-
-  window.addEventListener('click', e => {
-    if (e.target == modal) {
-      modal.style.display = 'none';
-    }
-  });
-
-  btnLogout.addEventListener('click', () => {
-    if (confirm('¿Estás seguro que querés cerrar sesión?')) {
-      window.location.href = 'logout.php';
-    }
-  });
-</script>
-
-
+<!-- JavaScript -->
+<script src="js/script.js"></script>
 </body>
 </html>

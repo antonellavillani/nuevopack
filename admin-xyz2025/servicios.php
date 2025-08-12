@@ -15,16 +15,9 @@ if (isset($_GET['accion']) && $_GET['accion'] === 'crear') {
     exit();
 }
 
+include ("includes/header.php");
 ?>
 
-<!DOCTYPE html>
-<html lang="es">    
-<head>
-    <meta charset="UTF-8">
-    <title>Servicios | Panel de Administración NuevoPack</title>
-    <link rel="stylesheet" href="estilos/estilos_admin.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-</head>
 <body>
     <div class="contenedor">
         <h2 class="titulo-pagina icono-servicio">Gestión de Servicios</h2>
@@ -87,26 +80,7 @@ if (isset($_GET['accion']) && $_GET['accion'] === 'crear') {
     </div>
 </div>
 
-<script>
-function mostrarModal(texto) {
-    const modal = document.getElementById("modalDescripcion");
-    const contenido = document.getElementById("textoCompleto");
-    contenido.textContent = texto;
-    modal.style.display = "block";
-}
-
-function cerrarModal() {
-    document.getElementById("modalDescripcion").style.display = "none";
-}
-
-// Cierra el modal si se hace clic fuera del contenido
-window.onclick = function(event) {
-    const modal = document.getElementById("modalDescripcion");
-    if (event.target === modal) {
-        modal.style.display = "none";
-    }
-}
-</script>
-
+<!-- JavaScript -->
+<script src="js/script.js"></script>
 </body>
 </html>

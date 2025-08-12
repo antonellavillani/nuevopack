@@ -89,42 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <?php endif; ?>
     </div>
 
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    const form = document.querySelector('.formulario-admin_resetear_password');
-    if (!form) return;
-
-    const passwordInput = form.querySelector('input[name="password"]');
-    const confirmarInput = form.querySelector('input[name="confirmar"]');
-    let errorContainer = document.querySelector('.mensaje-error');
-
-    if (!errorContainer) {
-        errorContainer = document.createElement('p');
-        errorContainer.classList.add('mensaje-error');
-        form.insertBefore(errorContainer, form.firstChild);
-    }
-
-    form.addEventListener('submit', function (e) {
-        const password = passwordInput.value;
-        const confirmar = confirmarInput.value;
-
-        const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
-
-        if (!password || !confirmar) {
-            e.preventDefault();
-            errorContainer.textContent = "Ambos campos son obligatorios.";
-        } else if (password !== confirmar) {
-            e.preventDefault();
-            errorContainer.textContent = "Las contraseñas no coinciden.";
-        } else if (!regex.test(password)) {
-            e.preventDefault();
-            errorContainer.textContent = "La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula, un número y un símbolo.";
-        } else {
-            errorContainer.textContent = '';
-        }
-    });
-});
-</script>
-
+<!-- JavaScript -->
+<script src="../js/script.js"></script>
 </body>
 </html>

@@ -102,56 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <a href="../usuarios.php" class="link-volver"><i class="fa-solid fa-arrow-left"></i> Volver</a>
     </div>
 
-    <script>
-        const inputPassword = document.getElementById('password');
-        const inputRepetir = document.getElementById('repetir_password');
-        const errorCoincidencia = document.getElementById('errorCoincidencia');
-
-        const reglas = {
-            ruleLength:      pass => pass.length >= 8,
-            ruleMayuscula:   pass => /[A-Z]/.test(pass),
-            ruleMinuscula:   pass => /[a-z]/.test(pass),
-            ruleNumero:      pass => /\d/.test(pass),
-            ruleEspecial:    pass => /[!@#$%^&*()_\-+={}[\]:;"'<>,.?/]/.test(pass)
-        };
-
-        function actualizarEstado(id, cumplido) {
-            const elem = document.getElementById(id);
-            const textoBase = elem.textContent.replace(/^✅ |^❌ /, "");
-            elem.textContent = (cumplido ? "✅ " : "❌ ") + textoBase;
-            elem.style.color = cumplido ? "green" : "gray";
-            elem.style.fontWeight = cumplido ? "bold" : "normal";
-        }
-
-        inputPassword.addEventListener('input', () => {
-            const pass = inputPassword.value;
-            for (const id in reglas) {
-                actualizarEstado(id, reglas[id](pass));
-            }
-        });
-
-        inputRepetir.addEventListener('input', () => {
-            if (inputRepetir.value && inputPassword.value !== inputRepetir.value) {
-                errorCoincidencia.style.display = 'block';
-            } else {
-                errorCoincidencia.style.display = 'none';
-            }
-        });
-
-        document.querySelector('.formulario-admin').addEventListener('submit', (e) => {
-            const pass = inputPassword.value;
-            const repetir = inputRepetir.value;
-            const cumpleTodo = Object.values(reglas).every(fn => fn(pass));
-
-            if (!cumpleTodo) {
-                alert("La contraseña no cumple con los requisitos.");
-                e.preventDefault();
-            } else if (pass !== repetir) {
-                errorCoincidencia.style.display = 'block';
-                e.preventDefault();
-            }
-        });
-    </script>
-
+<!-- JavaScript -->
+<script src="../js/script.js"></script>
 </body>
 </html>

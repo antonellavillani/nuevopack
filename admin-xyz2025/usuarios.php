@@ -16,16 +16,9 @@ if (isset($_GET['accion']) && $_GET['accion'] === 'crear') {
     exit();
 }
 
+include ("includes/header.php");
 ?>
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Usuarios | Panel de Administración NuevoPack</title>
-    <link rel="stylesheet" href="estilos/estilos_admin.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-</head>
 <body>
     <div class="contenedor">
         <h2 class="titulo-pagina icono-usuario">Usuarios Especiales</h2>
