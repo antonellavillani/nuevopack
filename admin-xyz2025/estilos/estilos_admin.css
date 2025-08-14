@@ -271,7 +271,7 @@ body, html {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 0px;
 }
 
 .sidebar-title {
@@ -319,6 +319,7 @@ body, html {
 .nav-item a.usuarios::before { content: '👥'; }
 .nav-item a.mi-cuenta::before { content: '🧑‍💼'; }
 .nav-item a.soporte::before { content: '💬'; }
+.nav-item a.volver-pagina::before { content: '🏠'; }
 
 .nav-item a:hover {
     background-color: #B5BF69;
