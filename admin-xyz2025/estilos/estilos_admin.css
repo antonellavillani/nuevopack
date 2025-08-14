@@ -327,7 +327,7 @@ body, html {
     color: #555;
 }
 
-/* Modal 'Mi cuenta' */
+/* ---------- Modal 'Mi cuenta' ---------- */
 .modal {
     display:none;
     position: fixed; 
@@ -378,6 +378,50 @@ body, html {
 #titulo-modal, #email-modal {
     color: #555;
 }
+
+/* ---------- Modal logout ---------- */
+#modal-logout .modal-content {
+  background-color: #f2f2f2;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 400px;
+  margin: 100px auto;
+  position: relative;
+  text-align: center;
+}
+
+#modal-logout .modal-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+#modal-logout .btn-cancelar,
+#modal-logout .btn-confirmar {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#modal-logout .btn-cancelar {
+  background-color: #ccc;
+  color: #000;
+}
+
+#modal-logout .btn-confirmar {
+  background-color: #6A7348;
+  color: #fff;
+}
+
+#modal-logout .close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
 /* ---------- Datos cargados en bd ---------- */
 .card-container {
     display: flex;
@@ -576,7 +620,7 @@ body, html {
     margin-left: 6px;
     font-size: 1rem;
 }
-
+ /* Modal 
 /* ---------------------------------------
    Estilos para servicios.php
 --------------------------------------- */

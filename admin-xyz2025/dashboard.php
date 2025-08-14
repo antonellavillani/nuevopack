@@ -38,7 +38,20 @@ include ("includes/header.php");
             <i class="fa-duotone fa-solid fa-circle-user" id="modal-mi-cuenta-icono"></i>
             <h2 id="titulo-modal"><?= htmlspecialchars($_SESSION['nombre']) . ' ' . htmlspecialchars($_SESSION['apellido']) ?></h2>
             <p id="email-modal"><?= htmlspecialchars($_SESSION['email']) ?></p>
-            <button id="btn-logout" class="btn-cerrar-sesion">Cerrar sesión</button>
+            <button type="button" id="btn-logout" class="btn-cerrar-sesion">Cerrar sesión</button>
+        </div>
+    </div>
+
+    <!-- Modal Cerrar Sesión -->
+    <div id="modal-logout" class="modal">
+        <div class="modal-content">
+            <span id="cerrar-logout" class="close">&times;</span>
+            <h2>¿Cerrar sesión?</h2>
+            <p>¿Estás seguro que querés cerrar sesión?</p>
+            <div class="modal-buttons">
+            <button id="cancel-logout" class="btn-cancelar">Cancelar</button>
+            <button id="confirm-logout" class="btn-confirmar">Cerrar sesión</button>
+            </div>
         </div>
     </div>
 

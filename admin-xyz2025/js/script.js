@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
     initModalDescripcion(); // Modal Descripción de Servicios
     initFormularioResetPassword(); // Form Resetear Contraseña
     initFormularioResetPassword(); // Form Editar Usuario + spinner
+    initLogoutModal(); // Modal para cerrar sesión
 });
 
 // ---------------------- Modal 'Mi Cuenta' ----------------------
@@ -34,11 +35,42 @@ function initModalMiCuenta() {
       modal.style.display = 'none';
     }
   });
+}
 
+// ---------------------- Modal logout ----------------------
+function initLogoutModal() {
+  const btnLogout = document.getElementById('btn-logout');
+  const modalLogout = document.getElementById('modal-logout');
+  const cerrarLogout = document.getElementById('cerrar-logout');
+  const cancelLogout = document.getElementById('cancel-logout');
+  const confirmLogout = document.getElementById('confirm-logout');
+
+  if (!btnLogout || !modalLogout) return;
+
+  // Abrir modal al tocar el botón
   btnLogout.addEventListener('click', () => {
-    if (confirm('¿Estás seguro que querés cerrar sesión?')) {
-      window.location.href = 'logout.php';
+    modalLogout.style.display = 'block';
+  });
+
+  // Cerrar modal
+  cerrarLogout.addEventListener('click', () => {
+    modalLogout.style.display = 'none';
+  });
+
+  cancelLogout.addEventListener('click', () => {
+    modalLogout.style.display = 'none';
+  });
+
+  // Cerrar al hacer clic fuera del modal
+  window.addEventListener('click', (e) => {
+    if (e.target === modalLogout) {
+      modalLogout.style.display = 'none';
     }
+  });
+
+  // Confirmar logout
+  confirmLogout.addEventListener('click', () => {
+    window.location.href = 'logout.php';
   });
 }
 
