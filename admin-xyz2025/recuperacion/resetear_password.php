@@ -9,8 +9,8 @@ $origen = $_POST['origen'] ?? $_GET['origen'] ?? null;
 
 // Definir a dónde volver según el origen
 if ($origen === 'admin') {
-    $volverURL = "../usuarios.php";
-    $volverTexto = "Volver al panel de usuarios";
+    $volverURL = "../dashboard.php";
+    $volverTexto = "Volver al panel de administrador";
 } else {
     $volverURL = "../login.php";
     $volverTexto = "Iniciar sesión";
@@ -42,6 +42,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $hash = password_hash($password, PASSWORD_DEFAULT);
         $stmt = $pdo->prepare("UPDATE usuarios_especiales SET password_hash = ?, token_recuperacion = NULL, token_expiracion = NULL WHERE id = ?");
         $stmt->execute([$hash, $usuario['id']]);
+
+        // Iniciar sesión automática si el origen es admin
+        if ($origen === 'admin') {
+            $_SESSION['admin_logged_in'] = true;
+            $_SESSION['admin_id'] = $usuario['id'];
+            $_SESSION['nombre'] = $usuario['nombre'];
+            $_SESSION['apellido'] = $usuario['apellido'];
+            $_SESSION['email'] = $usuario['email'];
+        }
+
         $mensaje = "Tu contraseña fue restablecida correctamente."; 
     }
 }
