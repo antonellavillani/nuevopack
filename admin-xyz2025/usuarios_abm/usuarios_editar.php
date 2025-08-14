@@ -114,7 +114,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 Si esta opción está marcada, el usuario podrá ingresar al sistema. Si no, quedará deshabilitado.
             </small>
 
-            <button type="submit" name="enviar_link_password" class="btn-guardar">Restablecer contraseña con link</button>
+            <button type="button" name="enviar_link_password" id="btn-reset-password" class="btn-guardar" data-id="<?= htmlspecialchars($usuario['id']) ?>" data-origen="<?= htmlspecialchars($origen) ?>">Restablecer contraseña con link</button>
+
+            <div id="spinner" class="dot-spinner" style="display: none; margin: 20px auto;">
+                <div class="dot-spinner__dot"></div>
+                <div class="dot-spinner__dot"></div>
+                <div class="dot-spinner__dot"></div>
+                <div class="dot-spinner__dot"></div>
+                <div class="dot-spinner__dot"></div>
+                <div class="dot-spinner__dot"></div>
+                <div class="dot-spinner__dot"></div>
+                <div class="dot-spinner__dot"></div>
+            </div>
+
+            <div id="respuesta-reset" style="margin-top: 10px;"></div>
 
             <?php if ($mensaje): ?>
                 <div class="mensaje-ok">
@@ -129,5 +142,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </form>
         <a href="../usuarios.php" class="link-volver"><i class="fa-solid fa-arrow-left"></i> Volver</a>
     </div>
+    
+<!-- JavaScript -->
+<script src="../js/script.js"></script>
 </body>
 </html>

@@ -7,8 +7,8 @@ document.addEventListener("DOMContentLoaded", function () {
     initSoporteImagenes(); // Modal para imágenes adjuntas en Soporte
     initSoporteFormulario(); // Envío AJAX del formulario de soporte con spinner y mensajes
     initModalDescripcion(); // Modal Descripción de Servicios
-    //initValidacionPassword(); // Validar contraseñas al crear usuario
     initFormularioResetPassword(); // Form Resetear Contraseña
+    initFormularioResetPassword(); // Form Editar Usuario + spinner
 });
 
 // ---------------------- Modal 'Mi Cuenta' ----------------------
@@ -267,5 +267,50 @@ function initFormularioResetPassword() {
         } else {
             errorContainer.textContent = '';
         }
+    });
+}
+
+// -------- Spinner para resetear contraseña --------
+function initFormularioResetPassword() {
+    const btn = document.getElementById('btn-reset-password');
+    const spinner = document.getElementById('spinner');
+    const rta = document.getElementById('respuesta-reset');
+
+    if (!btn || !spinner || !rta) return;
+
+    btn.addEventListener('click', function () {
+        const id = btn.dataset.id;
+        const origen = btn.dataset.origen;
+
+        spinner.style.display = 'block';
+        rta.textContent = '';
+        rta.style.color = '';
+
+        const formData = new FormData();
+        formData.append('id', id);
+        formData.append('origen', origen);
+
+        fetch('../recuperacion/enviar_link_password.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(res => res.json())
+        .then(data => {
+            spinner.style.display = 'none';
+            if (data.ok) {
+              rta.innerHTML = `
+                  <div class="mensaje-ok">
+                      ${data.msg}
+                      <div id="mensaje-aclaracion">
+                          Si esta no es tu cuenta, recomendale al usuario que revise su correo para continuar con el cambio de contraseña.
+                      </div>
+                  </div>
+              `;
+              rta.style.color = '';
+          } else {
+              rta.textContent = data.msg;
+              rta.style.color = 'red';
+          }
+        });
     });
 }
