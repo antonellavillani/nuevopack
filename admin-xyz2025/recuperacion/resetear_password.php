@@ -2,6 +2,11 @@
 session_start();
 require_once '../../config/config.php';
 
+function esPasswordSegura($password) {
+    // Al menos 8 caracteres, una mayúscula, una minúscula, un número y un carácter especial
+    return preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+={}[\]:;"\'<>,.?\/]).{8,}$/', $password);
+}
+
 $error = '';
 $mensaje = '';
 $token = $_GET['token'] ?? null;
@@ -36,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = "Ambos campos son obligatorios.";
     } elseif ($password !== $confirmar) {
         $error = "Las contraseñas no coinciden.";
-    } elseif (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/', $password)) {
+    } elseif (!esPasswordSegura($password)) {
         $error = "La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula, un número y un símbolo.";
     } else {
         $hash = password_hash($password, PASSWORD_DEFAULT);
@@ -87,10 +92,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <?php if (!$mensaje): ?>
             <form method="POST" class="formulario-admin_resetear_password" novalidate>
                 <label>Nueva contraseña:</label>
-                <input type="password" name="password" required autocomplete="new-password" aria-required="true" />
+                <input id="password" type="password" name="password" required autocomplete="new-password" aria-required="true" />
+
+                <div class="reglas-password">
+                    <p id="ruleLength">❌ Mínimo 8 caracteres</p>
+                    <p id="ruleMayuscula">❌ Al menos una mayúscula</p>
+                    <p id="ruleMinuscula">❌ Al menos una minúscula</p>
+                    <p id="ruleNumero">❌ Al menos un número</p>
+                    <p id="ruleEspecial">❌ Al menos un carácter especial</p>
+                </div>
 
                 <label>Confirmar contraseña:</label>
-                <input type="password" name="confirmar" required autocomplete="new-password" aria-required="true" />
+                <input id="repetir_password" type="password" name="confirmar" required autocomplete="new-password" aria-required="true" />
+                
+                <p id="errorCoincidencia" style="display:none;color:red;">Las contraseñas no coinciden.</p>
 
                 <input type="hidden" name="origen" value="<?= htmlspecialchars($origen) ?>">
 
@@ -101,5 +116,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <!-- JavaScript -->
 <script src="../js/script.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    initValidacionPassword(".formulario-admin_resetear_password");
+});
+</script>
 </body>
 </html>

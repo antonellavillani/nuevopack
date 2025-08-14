@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     initSoporteImagenes(); // Modal para imágenes adjuntas en Soporte
     initSoporteFormulario(); // Envío AJAX del formulario de soporte con spinner y mensajes
     initModalDescripcion(); // Modal Descripción de Servicios
-    initValidacionPassword(); // Validar contraseñas al crear usuario
+    //initValidacionPassword(); // Validar contraseñas al crear usuario
     initFormularioResetPassword(); // Form Resetear Contraseña
 });
 
@@ -177,8 +177,8 @@ function initModalDescripcion() {
   };
 }
 
-// ---------------------- Validar contraseñas al crear usuario ----------------------
-function initValidacionPassword() {
+// -------- Validar contraseñas al crear usuario o modificar contraseña existente ------------
+function initValidacionPassword(selectorFormulario) {
     const inputPassword = document.getElementById('password');
     const inputRepetir = document.getElementById('repetir_password');
     const errorCoincidencia = document.getElementById('errorCoincidencia');
@@ -217,7 +217,7 @@ function initValidacionPassword() {
                 : 'none';
     });
 
-    document.querySelector('.formulario-admin')?.addEventListener('submit', (e) => {
+    document.querySelector(selectorFormulario)?.addEventListener('submit', (e) => {
         const pass = inputPassword.value;
         const repetir = inputRepetir.value;
         const cumpleTodo = Object.values(reglas).every(fn => fn(pass));
