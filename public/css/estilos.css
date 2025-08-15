@@ -1968,7 +1968,12 @@ main.contacto-page h1 {
     text-align: center;
 }
 
-#mapa iframe {
+.mapa-google{
+    width:100%; 
+    height:300px;
+}
+
+/*#mapa iframe {
     border-radius: 10px;
     margin-top: 10px;
     flex-grow: 1;
@@ -1981,7 +1986,7 @@ main.contacto-page h1 {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-}
+}*/
 
 .contact-info {
     margin-top: 40px;

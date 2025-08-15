@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
     initModalImagenAlmanaques(); // Abrir imágenes de almanaques (ficha_servicio.php)
     initAtajoDashboard(); // Atajo secreto para Dashboard
     initMenuMovilCargar_CerrarClickExterno(); // Menú móvil al cargar y cerrar con click externo
+    initMap(); // API Google Maps
 });
 
 // ---------------------- AOS Animation ----------------------
@@ -471,4 +472,23 @@ document.addEventListener('click', function (event) {
         menu.style.display = 'none';
     }
 });
+}
+
+// ---------------------- API Google Maps para la página de Contacto ----------------------
+function initMap() {
+    // Coordenadas de la ubicación
+    const ubicacion = { lat: -34.730329, lng: -58.297361 };
+
+    // Crear mapa
+    const mapa = new google.maps.Map(document.getElementById("mapa"), {
+        zoom: 16,
+        center: ubicacion
+    });
+
+    // Agregar marcador
+    new google.maps.Marker({
+        position: ubicacion,
+        map: mapa,
+        title: "NuevoPack"
+    });
 }
