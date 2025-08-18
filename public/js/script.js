@@ -51,6 +51,14 @@ function initFormularioConsultaContacto() {
             if (mensajeEnvio) mensajeEnvio.textContent = data;
             if (spinner) spinner.style.display = 'none';
             if (data.includes('Mensaje enviado correctamente.')) {
+                // Evento GA4
+                if (typeof gtag === 'function') {
+                    gtag('event', 'form_submit', {
+                        'event_category': 'Formulario',
+                        'event_label': 'Contacto'
+                    });
+                    console.log('Evento GA4 calculadora enviado');
+                }
                 this.reset();
             }
         })
@@ -206,6 +214,7 @@ function initCalculadoraPrecios() {
             });
         }
     });
+
 }
 
 // ---------------------- Llenar formulario de contacto según datos de la calculadora ----------
@@ -247,6 +256,15 @@ function initFormularioDesdeCalculadora() {
             .then(response => response.text())
             .then(html => {
                 resultadoDiv.innerHTML = html;
+
+            // GA4
+            if (typeof gtag === 'function') {
+                gtag('event', 'price_calc', {
+                    'event_category': 'Interacción',
+                    'event_label': 'Calculadora de Precios'
+                });
+                console.log('Evento GA4 calculadora enviado');
+            }
 
                 const contenedor = document.querySelector('.calculadora');
                 const objetivo = document.getElementById('resultado-precio');
@@ -397,6 +415,15 @@ function initFormularioContactoServicio() {
                     if (mensaje) mensaje.textContent = data;
                     if (spinner) spinner.style.display = 'none';
                     if (data.includes('Mensaje enviado correctamente')) {
+                        // Evento GA4
+                        if (typeof gtag === 'function') {
+                            gtag('event', 'form_submit', {
+                                'event_category': 'Formulario',
+                                'event_label': 'Ficha Servicio'
+                            });
+                            console.log('Evento GA4 calculadora enviado');
+                        }
+
                         this.reset();
                         const archivoNombre = document.getElementById('archivo-nombre');
                         if (archivoNombre) archivoNombre.textContent = '';

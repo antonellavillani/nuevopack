@@ -4,6 +4,7 @@
         "firebase/php-jwt": "^6.0",
         "guzzlehttp/guzzle": "^7.5",
         "guzzlehttp/psr7": "^2.5",
-        "google/apiclient-services": "^0.398.0"
+        "google/apiclient-services": "^0.398.0",
+        "google/analytics-data": "0.18"
     }
 }

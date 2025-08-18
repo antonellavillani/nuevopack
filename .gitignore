@@ -1,2 +1,10 @@
+# Dependencias
 /vendor/
-admin-xyz2025/config_secrets.php
+/vendor_backup/
+
+# Configuración sensible
+/admin-xyz2025/config_secrets.php
+/analytics/keys/*.json
+
+# Logs y caché
+*.log

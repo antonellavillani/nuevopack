@@ -444,10 +444,6 @@ body, html {
     color: #333;
 }
 
-.card:hover {
-  background-color: #ececec;
-}
-
 .card h3 {
     margin-bottom: 10px;
     color: #2c2c2c;
@@ -458,6 +454,51 @@ body, html {
 .card p {
     color: #2c2c2c;
     font-size: 0.9rem;
+}
+
+/* ---------- Google Analytics ---------- */
+.analytics-section {
+    margin-top: 30px;
+}
+.analytics-section .card-analytics {
+    background: #f8f9ff;
+    border-left: 4px solid #4285f4;
+    padding: 20px;
+    border-radius: 6px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    transition: background-color 0.2s ease;
+    flex: 1 1 200px;
+    min-width: 200px;
+    color: #333;
+}
+
+.card-analytics h3 {
+    margin-bottom: 10px;
+    color: #2c2c2c;
+    font-size: 1.2rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.card-analytics p {
+    color: #2c2c2c;
+    font-size: 0.9rem;
+}
+
+.analytics-section h2 {
+    font-size: 20px;
+    color: #2c2c2c;
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 28px;
+}
+
+.analytics-section h2::before {
+    content: "📊";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.9em;
 }
 
 /* ---------- Acciones rápidas ---------- */
