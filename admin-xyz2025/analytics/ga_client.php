@@ -9,6 +9,7 @@ use Google\Analytics\Data\V1beta\Dimension;
 
 class GAClient {
     private BetaAnalyticsDataClient $client;
+    private string $property;
 
     public function __construct() {
         $this->client = new BetaAnalyticsDataClient([

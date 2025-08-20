@@ -96,7 +96,11 @@ $rtUsers       = $ga->realtimeActiveUsers();
 
         <!-- Analytics -->
         <div class="analytics-section">
-            <h2 class="titulo-seccion">Estadísticas del Sitio</h2>
+                <h2 class="titulo-seccion">Estadísticas del Sitio</h2>
+                <div class="titulo-con-boton">
+                <button onclick="location.reload();" class="btn-refrescar">🔄</button>
+                <span class="subtitulo">Para actualizar los datos, hacé clic en el botón</span>
+            </div>
             
             <div class="card-container">
                 <div class="card-analytics">

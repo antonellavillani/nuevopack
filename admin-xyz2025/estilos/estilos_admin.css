@@ -457,6 +457,24 @@ body, html {
 }
 
 /* ---------- Google Analytics ---------- */
+.titulo-con-boton {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.btn-refrescar {
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+}
+
+.subtitulo {
+  font-size: 0.9rem;
+  color: #666;
+}
+
 .analytics-section {
     margin-top: 30px;
 }
