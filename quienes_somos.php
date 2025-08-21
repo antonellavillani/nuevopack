@@ -50,7 +50,7 @@ include('includes/header.php');
             <h2>Logros y Datos Clave</h2>
             <ul>
                 <li><strong>+1,500 proyectos entregados:</strong> Con soluciones que combinan calidad y creatividad.</li>
-                <li><strong>Presencia en todo el país:</strong> Ampliando nuestro alcance gracias a nuestra plataforma online.</li>
+                <li><strong>Presencia en CABA y Gran Buenos Aires:</strong> Presencia en CABA y Gran Buenos Aires</li>
                 <li><strong>Compromiso sostenible:</strong> Implementando procesos que respetan el medio ambiente.</li>
                 <li><strong>100% de clientes satisfechos:</strong> Gracias a nuestra atención personalizada y resultados excepcionales.</li>
             </ul>
