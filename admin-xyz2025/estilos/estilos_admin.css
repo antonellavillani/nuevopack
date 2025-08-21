@@ -8,6 +8,61 @@ body, html {
     overflow-x: hidden;
 }
 
+/* ---------- Modal de confirmación ---------- */
+#modal-confirm .modal-content {
+  background-color: #f2f2f2;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 400px;
+  margin: 100px auto;
+  position: relative;
+  text-align: center;
+}
+
+#modal-confirm .modal-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+#modal-confirm .btn-cancelar,
+#modal-confirm .btn-confirmar {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#modal-confirm .btn-cancelar {
+  background-color: #ccc;
+  color: #000;
+}
+
+#modal-confirm .btn-confirmar {
+  background-color: #6A7348;
+  color: #fff;
+}
+
+#modal-confirm .close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+#modal-confirm.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5);
+}
+
 /* ---------------------------------------
    Estilos para el login
 --------------------------------------- */
@@ -680,7 +735,7 @@ body, html {
     margin-left: 6px;
     font-size: 1rem;
 }
- /* Modal 
+
 /* ---------------------------------------
    Estilos para servicios.php
 --------------------------------------- */

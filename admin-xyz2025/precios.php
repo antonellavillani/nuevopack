@@ -51,7 +51,8 @@ include ("includes/header.php");
                     <td>$<?php echo number_format($precio['precio'], 2); ?></td>
                     <td>
                         <a href="precios_abm/precios_editar.php?id=<?php echo $precio['id']; ?>" class="btn-editar-tabla">Editar</a>
-                        <a href="precios_abm/precios_eliminar.php?id=<?php echo $precio['id']; ?>" class="btn-eliminar-tabla" onclick="return confirm('¿Estás seguro de que querés eliminar este precio?');">Eliminar</a>
+                        <a href="precios_abm/precios_eliminar.php?id=<?php echo $precio['id']; ?>" class="btn-eliminar-tabla" data-nombre="<?= htmlspecialchars($precio['descripcion']) ?>" 
+                            data-servicio="<?= htmlspecialchars($precio['servicio_nombre']) ?>">Eliminar</a>
                     </td>
                 </tr>
                 <?php endforeach; ?>
@@ -59,5 +60,21 @@ include ("includes/header.php");
         </table>
         <a href="dashboard.php" class="link-volver"><i class="fa-solid fa-arrow-left"></i> Volver al Dashboard</a>
     </div>
+
+    <!-- Modal de confirmación -->
+<div id="modal-confirm" class="modal">
+  <div class="modal-content">
+    <span id="cerrar-modal-confirm" class="close">&times;</span>
+    <h2 id="modal-titulo">Confirmación</h2>
+    <p id="modal-mensaje">¿Estás seguro?</p>
+    <div class="modal-buttons">
+      <button id="modal-cancelar" class="btn-cancelar">Cancelar</button>
+      <button id="modal-confirmar" class="btn-confirmar">Confirmar</button>
+    </div>
+  </div>
+</div>
+
+<!-- JavaScript -->
+<script src="js/script.js"></script>
 </body>
 </html>

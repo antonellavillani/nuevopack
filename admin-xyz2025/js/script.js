@@ -11,6 +11,28 @@ document.addEventListener("DOMContentLoaded", function () {
     initFormularioResetPassword(); // Form Editar Usuario + spinner
     initLogoutModal(); // Modal para cerrar sesión
     initRecuperarPassword() // Envío AJAX para recuperar contraseña
+
+    // Inicializar modal de eliminación
+    document.querySelectorAll('.btn-eliminar-tabla').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault(); // evitar navegación inmediata
+            const url = this.href;
+            const nombre = this.dataset.nombre;
+            const servicio = this.dataset.servicio;
+            const email = this.dataset.email;
+            let mensaje;
+
+            if (servicio) {
+              mensaje = `¿Eliminar el precio de "${servicio}" (${nombre})?`;
+            } else if (email) {
+              mensaje = `¿Eliminar el usuario "${email}"?`;
+            } else {
+                mensaje = `¿Eliminar el servicio "${nombre}"?`;
+            }
+
+            abrirModalEliminar(url, mensaje);
+        });
+    });
 });
 
 // ---------------------- Modal 'Mi Cuenta' ----------------------
@@ -390,4 +412,38 @@ function initRecuperarPassword() {
       console.error(err);
     });
   });
+}
+
+// ------------------ Modal de confirmación para eliminar un elemento -----------------
+function abrirModalEliminar(url, mensaje) {
+    const modalEliminar = document.getElementById('modal-confirm');
+    const modalMensaje = document.getElementById('modal-mensaje');
+    const btnCancelar = document.getElementById('modal-cancelar');
+    const btnConfirmar = document.getElementById('modal-confirmar');
+    const spanCerrar = document.getElementById('cerrar-modal-confirm');
+
+    let urlEliminarActual = url;
+
+    modalMensaje.textContent = mensaje;
+    modalEliminar.style.display = 'block';
+
+    function cerrarModal() {
+        modalEliminar.style.display = 'none';
+        urlEliminarActual = null;
+        // Quitamos listeners para no duplicarlos
+        btnConfirmar.removeEventListener('click', confirmar);
+        btnCancelar.removeEventListener('click', cerrarModal);
+        spanCerrar.removeEventListener('click', cerrarModal);
+    }
+
+    function confirmar() {
+        if (urlEliminarActual) window.location.href = urlEliminarActual;
+    }
+
+    btnCancelar.addEventListener('click', cerrarModal);
+    spanCerrar.addEventListener('click', cerrarModal);
+    btnConfirmar.addEventListener('click', confirmar);
+    window.addEventListener('click', function(e) {
+        if (e.target == modalEliminar) cerrarModal();
+    });
 }

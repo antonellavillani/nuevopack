@@ -60,7 +60,7 @@ include ("includes/header.php");
                             </td>
                             <td>
                                 <a href="servicios_abm/servicios_editar.php?id=<?= $serv['id'] ?>" class="btn-editar-tabla">Editar</a>
-                                <a href="servicios_abm/servicios_eliminar.php?id=<?= $serv['id'] ?>" class="btn-eliminar-tabla" onclick="return confirm('¿Estás seguro que querés eliminar este servicio?')">Eliminar</a>
+                                <a href="servicios_abm/servicios_eliminar.php?id=<?= $serv['id'] ?>" class="btn-eliminar-tabla" data-nombre="<?= htmlspecialchars($serv['nombre']) ?>">Eliminar</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -78,6 +78,19 @@ include ("includes/header.php");
         <span class="cerrar" onclick="cerrarModal()">&times;</span>
         <p id="textoCompleto"></p>
     </div>
+</div>
+
+<!-- Modal de confirmación -->
+<div id="modal-confirm" class="modal">
+  <div class="modal-content">
+    <span id="cerrar-modal-confirm" class="close">&times;</span>
+    <h2 id="modal-titulo">Confirmación</h2>
+    <p id="modal-mensaje">¿Estás seguro?</p>
+    <div class="modal-buttons">
+      <button id="modal-cancelar" class="btn-cancelar">Cancelar</button>
+      <button id="modal-confirmar" class="btn-confirmar">Confirmar</button>
+    </div>
+  </div>
 </div>
 
 <!-- JavaScript -->

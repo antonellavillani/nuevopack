@@ -61,7 +61,7 @@ include ("includes/header.php");
 
                         <td>
                             <a href="usuarios_abm/usuarios_editar.php?id=<?= $usuario['id'] ?>" class="btn-editar-tabla">Editar</a>
-                            <a href="usuarios_abm/usuarios_eliminar.php?id=<?= $usuario['id'] ?>" onclick="return confirm('¿Estás seguro de que querés eliminar este usuario?')" class="btn-eliminar-tabla">Eliminar</a>
+                            <a href="usuarios_abm/usuarios_eliminar.php?id=<?= $usuario['id'] ?>" class="btn-eliminar-tabla" data-email="<?= htmlspecialchars($usuario['email']) ?>">Eliminar</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>
@@ -75,5 +75,21 @@ include ("includes/header.php");
         <br>
         <a href="dashboard.php" class="link-volver"><i class="fa-solid fa-arrow-left"></i> Volver al Dashboard</a>
     </div>
+
+    <!-- Modal de confirmación -->
+<div id="modal-confirm" class="modal">
+  <div class="modal-content">
+    <span id="cerrar-modal-confirm" class="close">&times;</span>
+    <h2 id="modal-titulo">Confirmación</h2>
+    <p id="modal-mensaje">¿Estás seguro?</p>
+    <div class="modal-buttons">
+      <button id="modal-cancelar" class="btn-cancelar">Cancelar</button>
+      <button id="modal-confirmar" class="btn-confirmar">Confirmar</button>
+    </div>
+  </div>
+</div>
+
+<!-- JavaScript -->
+<script src="js/script.js"></script>
 </body>
 </html>
