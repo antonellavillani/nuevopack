@@ -54,7 +54,7 @@
     <section class="important-info" data-aos="fade-up">
         <div class="info-box">
             <h3>Todo lo que Necesitás Saber Antes de Realizar tu Pedido</h3>
-            <p>Realizamos envíos a todo el país con diferentes opciones de mensajería. Consultá costos y tiempos de entrega según tu ubicación.</p>
+            <p>Realizamos envíos en CABA y Gran Buenos Aires. Consultá por costos y tiempos de entrega según tu ubicación.</p>
         </div>
     </section>
 

@@ -4,7 +4,12 @@
         <div class="informacion-contacto footer-left">
             <h4>Contacto</h4>
             <p>Teléfono: 11 3932-7709 (Daniel)</p>
-            <p>Email: nuevopack@gmail.com</p>
+            <p>
+            Email: 
+            <a id="link-email" href="mailto:nuevopack@gmail.com?subject=Consulta%20desde%20la%20web&body=Hola%20NuevoPack,%20quiero%20hacer%20una%20consulta...">
+                nuevopack@gmail.com
+            </a>
+            </p>
             <p>Horario: Lunes a Viernes, 9:00 a 18:00. Sábados, 9:00 a 13:00.</p>
         </div>
 
@@ -16,11 +21,11 @@
                 <li><i class="fa-duotone fa-solid fa-list"></i>
                     <span>Servicios</span>
                     <ul class="sublista-servicios liststyle_none">
-                        <li><a href="ficha_servicio.php?id=1"><i class="fa-duotone fa-solid fa-print"></i>Impresión</a></li>
-                        <li><a href="ficha_servicio.php?id=2"><i class="fa-duotone fa-solid fa-paint-roller"></i>Barniz</a></li>
-                        <li><a href="ficha_servicio.php?id=3"><i class="fa-duotone fa-solid fa-scissors"></i>Troquelado</a></li>
-                        <li><a href="ficha_servicio.php?id=4"><i class="fa-duotone fa-solid fa-box"></i>Pegado de estuches</a></li>
-                        <li><a href="ficha_servicio.php?id=5"><i class="fa-duotone fa-solid fa-calendar"></i>Almanaques</a></li>
+                        <li><a href="ficha_servicio.php?idServicio=1"><i class="fa-duotone fa-solid fa-print"></i>Impresión</a></li>
+                        <li><a href="ficha_servicio.php?idServicio=2"><i class="fa-duotone fa-solid fa-paint-roller"></i>Barniz</a></li>
+                        <li><a href="ficha_servicio.php?idServicio=3"><i class="fa-duotone fa-solid fa-scissors"></i>Troquelado</a></li>
+                        <li><a href="ficha_servicio.php?idServicio=4"><i class="fa-duotone fa-solid fa-box"></i>Pegado de estuches</a></li>
+                        <li><a href="ficha_servicio.php?idServicio=5"><i class="fa-duotone fa-solid fa-calendar"></i>Almanaques</a></li>
                     </ul>
                 </li>
                 <li><a href="quienes_somos.php"><i class="fa-duotone fa-solid fa-user-group"></i>Quiénes Somos</a></li>
