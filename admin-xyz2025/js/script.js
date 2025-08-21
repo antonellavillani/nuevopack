@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
     initFormularioResetPassword(); // Form Resetear Contraseña
     initFormularioResetPassword(); // Form Editar Usuario + spinner
     initLogoutModal(); // Modal para cerrar sesión
+    initRecuperarPassword() // Envío AJAX para recuperar contraseña
 });
 
 // ---------------------- Modal 'Mi Cuenta' ----------------------
@@ -345,4 +346,48 @@ function initFormularioResetPassword() {
           }
         });
     });
+}
+
+// ------------------ Envío AJAX para recuperar contraseña -----------------
+function initRecuperarPassword() {
+  const form = document.getElementById('formRecuperar');
+  const spinner = document.getElementById('spinner');
+  const rta = document.getElementById('respuesta');
+
+  if (!form) return;
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    spinner.style.display = 'block';
+    rta.textContent = '';
+    rta.style.color = '';
+
+    const formData = new FormData(this);
+
+    fetch('./recuperar_password.php', {
+      method: 'POST',
+      body: formData
+    })
+    .then(r => r.text())
+    .then(html => {
+      spinner.style.display = 'none';
+      if (html.includes("Revisá tu correo electrónico")) {
+        rta.style.color = 'green';
+        rta.textContent = '✅ Revisá tu correo electrónico para continuar con la recuperación.';
+        form.reset();
+      } else if (html.includes("registrado") || html.includes("No se pudo")) {
+        rta.style.color = 'red';
+        rta.textContent = '❌ ' + html.replace(/<[^>]*>?/gm, ''); // limpia etiquetas si hubiera
+      } else {
+        rta.style.color = 'red';
+        rta.textContent = '❌ Ocurrió un error inesperado.';
+      }
+    })
+    .catch(err => {
+      spinner.style.display = 'none';
+      rta.style.color = 'red';
+      rta.textContent = '❌ Error al enviar la solicitud';
+      console.error(err);
+    });
+  });
 }
