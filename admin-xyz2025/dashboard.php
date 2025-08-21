@@ -38,7 +38,7 @@ $rtUsers       = $ga->realtimeActiveUsers();
             <a href="#" id="btn-mi-cuenta" class="mi-cuenta">Mi cuenta</a>
         </div>
         <div class="nav-item"><a href="soporte.php" class="soporte">Soporte</a></div>
-        <div class="nav-item"><a href="../index.php" class="volver-pagina">Volver a la web</a></div>
+        <div class="nav-item"><a href="logout.php?volver_web=1" class="volver-pagina">Volver a la web</a></div>
     </div>
 
     <!-- Modal Mi Cuenta -->

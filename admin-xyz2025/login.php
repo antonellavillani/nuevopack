@@ -59,7 +59,7 @@ include ("includes/header.php");
             <p class="mensaje-error"><?php echo htmlspecialchars($error); ?></p>
         <?php endif; ?>
 
-        <a href="../index.php" class="link-volver">← Volver al Inicio</a>
+        <a href="../index.php" class="link-volver">← Volver a la web</a>
 
     </div>
 </body>
