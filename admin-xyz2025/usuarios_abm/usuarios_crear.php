@@ -67,13 +67,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <form method="POST" class="formulario-admin">
             <label>Nombre:</label>
-            <input type="text" name="nombre" required>
+            <input type="text" name="nombre" placeholder="Ej: Juan" required>
 
             <label>Apellido:</label>
-            <input type="text" name="apellido" required>
+            <input type="text" name="apellido" placeholder="Ej: Pérez" required>
 
             <label>Email:</label>
-            <input type="email" name="email" required>
+            <input type="email" name="email" placeholder="Ej: correo@ejemplo.com" required>
 
             <label>Teléfono:</label>
             <input type="text" name="telefono" oninput="this.value=this.value.replace(/[^0-9]/g,'')" placeholder="011 2233 4455">

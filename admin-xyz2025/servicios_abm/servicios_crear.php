@@ -79,13 +79,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <form action="" method="POST" enctype="multipart/form-data" class="formulario-admin">
             <label for="nombre">Nombre del servicio:</label><br>
-            <input type="text" name="nombre" id="nombre" required><br><br>
+            <input type="text" name="nombre" id="nombre" placeholder="Folletos, tarjetas, etiquetas..." required><br><br>
 
             <label for="foto">Imagen del servicio:</label><br>
             <input type="file" name="foto" id="foto" accept="image/*"><br><br>
 
             <label for="descripcion">Descripción del servicio:</label><br>
-            <textarea name="descripcion" id="descripcion" rows="4"></textarea><br><br>
+            <textarea name="descripcion" id="descripcion" rows="4" placeholder="Descripción breve del servicio."></textarea><br><br>
 
             <button type="submit" class="btn-guardar">Crear servicio</button>
         </form>

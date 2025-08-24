@@ -70,13 +70,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </select>
 
             <label>Descripción del precio:</label>
-            <input type="text" name="descripcion" required>
+            <input type="text" name="descripcion" placeholder="Millar, postura, bocas..." required>
 
             <label>Tipo de unidad:</label>
             <input type="text" name="tipo_unidad" placeholder="Ej: unidad, metro, caja..." required>
 
             <label>Precio ($):</label>
-            <input type="number" name="precio" step="0.01" min="0" required>
+            <input type="number" name="precio" step="0.01" min="0" placeholder="(Solo números)" required>
 
             <button type="submit" class="btn-guardar">Guardar</button>
         </form>
