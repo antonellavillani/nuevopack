@@ -14,7 +14,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $descripcion = $_POST["descripcion"];
     $foto = $_FILES["foto"];
 
-    if (!empty($nombre) && $foto["error"] === 0) {
+    if (!empty($nombre) && !empty($descripcion)) {
+        $nombre_archivo = null;
+
+        // Si el usuario subió una foto
+        if ($foto["error"] === 0) {
         $extensiones_permitidas = ['jpg', 'jpeg', 'png', 'webp'];
         $nombre_original = $foto["name"];
         $extension = strtolower(pathinfo($nombre_original, PATHINFO_EXTENSION));
@@ -23,30 +27,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $nombre_archivo = uniqid("serv_", true) . "." . $extension;
             $ruta_destino = "../../uploads/" . $nombre_archivo;
 
-            if (move_uploaded_file($foto["tmp_name"], $ruta_destino)) {
-                $stmt = $pdo->prepare("INSERT INTO servicios (nombre, descripcion, foto) VALUES (:nombre, :descripcion, :foto)");
-                $stmt->bindParam(":nombre", $nombre);
-                $stmt->bindParam(":descripcion", $descripcion);
-                $stmt->bindParam(":foto", $nombre_archivo);
-                $stmt->execute();
-
-                $mensaje = "Servicio creado correctamente.";
-
-                // Registrar actividad en la tabla actividad_admin
-                $descripcionActividad = 'Nuevo servicio "' . htmlspecialchars($nombre) . '" creado';
-                $stmtActividad = $pdo->prepare("INSERT INTO actividad_admin (tipo, descripcion) VALUES (?, ?)");
-                $stmtActividad->execute(['servicio', $descripcionActividad]);
-                
-            } else {
+            if (!move_uploaded_file($foto["tmp_name"], $ruta_destino)) {
                 $mensaje = "Error al mover el archivo.";
+                $nombre_archivo = null; // no guardar ruta inválida
+
             }
         } else {
             $mensaje = "Extensión de imagen no permitida.";
+            $nombre_archivo = null;
+            }
         }
-    } else {
-        $mensaje = "Completá todos los campos.";
+
+        // Insertar en la BD
+        $stmt = $pdo->prepare("INSERT INTO servicios (nombre, descripcion, foto) VALUES (:nombre, :descripcion, :foto)");
+        $stmt->bindParam(":nombre", $nombre);
+        $stmt->bindParam(":descripcion", $descripcion);
+        $stmt->bindParam(":foto", $nombre_archivo);
+        $stmt->execute();
+
+        $mensaje = "Servicio creado correctamente.";
+
+        // Registrar actividad en la tabla actividad_admin
+        $descripcionActividad = 'Nuevo servicio "' . htmlspecialchars($nombre) . '" creado';
+        $stmtActividad = $pdo->prepare("INSERT INTO actividad_admin (tipo, descripcion) VALUES (?, ?)");
+        $stmtActividad->execute(['servicio', $descripcionActividad]);
+                
+        } else {
+            $mensaje = "Completá nombre y descripción obligatoriamente.";
+        }
     }
-}
 ?>
 
 <!DOCTYPE html>
