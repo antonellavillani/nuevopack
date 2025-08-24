@@ -69,7 +69,11 @@ include ("includes/header.php");
                             </td>
 
                             <td>
-                                <img src="../uploads/<?= $serv['foto'] ?>" alt="Imagen" class="img-tabla">
+                                <img 
+                                    src="../uploads/<?= $serv['foto'] ? $serv['foto'] : 'placeholder-servicio.png' ?>" 
+                                    alt="Imagen" 
+                                    class="img-tabla"
+                                >
                             </td>
                             <td>
                                 <a href="servicios_abm/servicios_editar.php?id=<?= $serv['id'] ?>" class="btn-editar-tabla">Editar</a>
