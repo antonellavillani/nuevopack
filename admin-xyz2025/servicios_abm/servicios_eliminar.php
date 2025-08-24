@@ -15,7 +15,18 @@ if (!isset($_GET['id'])) {
 
 $id = $_GET['id'];
 
-// Obtener nombre del archivo para eliminar la imagen del servidor
+// Verificar si el servicio tiene precios asociados
+$stmtCheck = $pdo->prepare("SELECT COUNT(*) FROM precios_servicios WHERE servicio_id = ?");
+$stmtCheck->execute([$id]);
+$tienePrecios = $stmtCheck->fetchColumn();
+
+if ($tienePrecios > 0) {
+    $_SESSION['error'] = "El servicio no puede eliminarse porque tiene precios asociados. Eliminalos primero o desvincúlalos.";
+    header("Location: ../servicios.php");
+    exit();
+}
+
+// Obtener nombre de la foto
 $stmt = $pdo->prepare("SELECT foto FROM servicios WHERE id = ?");
 $stmt->execute([$id]);
 $servicio = $stmt->fetch(PDO::FETCH_ASSOC);

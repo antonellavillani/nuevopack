@@ -25,7 +25,7 @@
                         <li><a href="ficha_servicio.php?idServicio=2"><i class="fa-duotone fa-solid fa-paint-roller"></i>Barniz</a></li>
                         <li><a href="ficha_servicio.php?idServicio=3"><i class="fa-duotone fa-solid fa-scissors"></i>Troquelado</a></li>
                         <li><a href="ficha_servicio.php?idServicio=4"><i class="fa-duotone fa-solid fa-box"></i>Pegado de estuches</a></li>
-                        <li><a href="ficha_servicio.php?idServicio=5"><i class="fa-duotone fa-solid fa-calendar"></i>Almanaques</a></li>
+                        <li><a href="ficha_servicio.php?idServicio=17"><i class="fa-duotone fa-solid fa-calendar"></i>Almanaques</a></li>
                     </ul>
                 </li>
                 <li><a href="quienes_somos.php"><i class="fa-duotone fa-solid fa-user-group"></i>Quiénes Somos</a></li>

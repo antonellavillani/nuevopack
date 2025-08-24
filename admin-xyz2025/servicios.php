@@ -26,6 +26,19 @@ include ("includes/header.php");
             <i class="fa-solid fa-plus"></i>Nuevo Servicio
         </a>
 
+        <?php if (isset($_SESSION['error'])): ?>
+            <div class="alerta error">
+                <?= $_SESSION['error']; unset($_SESSION['error']); ?>
+            </div>
+        <?php endif; ?>
+
+        <?php if (isset($_SESSION['success'])): ?>
+            <div class="alerta success">
+                <?= $_SESSION['success']; unset($_SESSION['success']); ?>
+            </div>
+        <?php endif; ?>
+
+
         <?php if (count($servicios) === 0): ?>
             <p>No hay servicios cargados aún.</p>
         <?php else: ?>
