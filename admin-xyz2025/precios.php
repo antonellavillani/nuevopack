@@ -32,6 +32,16 @@ include ("includes/header.php");
             <i class="fa-solid fa-plus"></i>Nuevo Precio
         </a>
 
+        <?php if (isset($_SESSION['success'])): ?>
+            <p class="mensaje-exito"><?= $_SESSION['success'] ?></p>
+            <?php unset($_SESSION['success']); ?>
+        <?php endif; ?>
+
+        <?php if (isset($_SESSION['error'])): ?>
+            <p class="mensaje-error"><?= $_SESSION['error'] ?></p>
+            <?php unset($_SESSION['error']); ?>
+        <?php endif; ?>
+
         <table class="tabla-bd">
             <thead>
                 <tr>

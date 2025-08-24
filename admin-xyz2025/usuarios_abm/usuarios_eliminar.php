@@ -29,7 +29,7 @@ if ($id) {
             $stmtActividad = $pdo->prepare("INSERT INTO actividad_admin (tipo, descripcion) VALUES (?, ?)");
             $stmtActividad->execute(['usuario', $descripcionActividad]);
         }
-        header("Location: ../usuarios.php?mensaje=✅ Usuario eliminado correctamente.");
+        header("Location: ../usuarios.php?mensaje=Usuario eliminado correctamente.");
         exit();
     } catch (PDOException $e) {
         header("Location: ../usuarios.php?error=❌ Error al eliminar usuario: " . urlencode($e->getMessage()));

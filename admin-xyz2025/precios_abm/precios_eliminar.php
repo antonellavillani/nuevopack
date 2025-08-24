@@ -14,7 +14,7 @@ if (!isset($_GET['id'])) {
 
 $id = $_GET['id'];
 
-// Verificamos que exista
+// Verificar si existe
 $stmt = $pdo->prepare("SELECT * FROM precios_servicios WHERE id = ?");
 $stmt->execute([$id]);
 $precio = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -24,7 +24,7 @@ if (!$precio) {
     exit();
 }
 
-// Eliminamos
+// Eliminar
 $stmt = $pdo->prepare("DELETE FROM precios_servicios WHERE id = ?");
 $stmt->execute([$id]);
 
@@ -33,6 +33,9 @@ $descripcionActividad = 'Precio ID ' . $id . ' eliminado';
 $stmtActividad = $pdo->prepare("INSERT INTO actividad_admin (tipo, descripcion) VALUES (?, ?)");
 $stmtActividad->execute(['precio', $descripcionActividad]);
 
-header("Location: ../precios.php?mensaje=Precio eliminado correctamente.");
+// Mensaje de confirmación
+$_SESSION['success'] = "Precio eliminado correctamente.";
+
+header("Location: ../precios.php");
 exit();
 ?>

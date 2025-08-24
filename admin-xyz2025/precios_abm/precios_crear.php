@@ -24,12 +24,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($servicio_id && $descripcion && $tipo_unidad && is_numeric($precio)) {
         $stmt = $pdo->prepare("INSERT INTO precios_servicios (servicio_id, descripcion, tipo_unidad, precio) VALUES (?, ?, ?, ?)");
         $stmt->execute([$servicio_id, $descripcion, $tipo_unidad, $precio]);
-        $exito = "Precio agregado correctamente.";
 
-        // Registrar actividad en la tabla actividad_admin
+        // Registrar actividad
         $descripcionActividad = 'Nuevo precio agregado para "' . htmlspecialchars($descripcion) . '"';
         $stmtActividad = $pdo->prepare("INSERT INTO actividad_admin (tipo, descripcion) VALUES (?, ?)");
         $stmtActividad->execute(['precio', $descripcionActividad]);
+
+        // Guardar mensaje en sesión y redirigir
+        $_SESSION['success'] = "Precio agregado correctamente.";
+        header("Location: ../precios.php");
+        exit();
 
     } else {
         $error = "Por favor, completá todos los campos correctamente.";

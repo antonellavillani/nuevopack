@@ -45,13 +45,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bindParam(":foto", $nombre_archivo);
         $stmt->execute();
 
-        $mensaje = "Servicio creado correctamente.";
-
         // Registrar actividad en la tabla actividad_admin
         $descripcionActividad = 'Nuevo servicio "' . htmlspecialchars($nombre) . '" creado';
         $stmtActividad = $pdo->prepare("INSERT INTO actividad_admin (tipo, descripcion) VALUES (?, ?)");
         $stmtActividad->execute(['servicio', $descripcionActividad]);
-                
+        
+        // Guardar mensaje en sesión y redirigir
+        $_SESSION['success'] = "Servicio creado correctamente.";
+        header("Location: ../servicios.php");
+        exit();
+
         } else {
             $mensaje = "Completá nombre y descripción obligatoriamente.";
         }

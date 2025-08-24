@@ -43,6 +43,9 @@ if ($servicio) {
     if (file_exists($ruta_imagen)) {
         unlink($ruta_imagen);
     }
+
+    // Mensaje de éxito
+    $_SESSION['success'] = "El servicio se eliminó correctamente.";
 }
 
 // Registrar actividad

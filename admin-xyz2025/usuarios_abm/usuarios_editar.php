@@ -104,7 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input id="cursor-not-allowed" type="email" name="email" value="<?= htmlspecialchars($usuario['email']) ?>" readonly>
 
             <label>Teléfono:</label>
-            <input type="text" name="telefono" value="<?= htmlspecialchars($usuario['telefono']) ?>">
+            <input type="text" name="telefono" value="<?= htmlspecialchars($usuario['telefono']) ?>" oninput="this.value=this.value.replace(/[^0-9]/g,'')">
 
             <label>
                 <input type="checkbox" name="aprobado" <?= $usuario['aprobado'] ? 'checked' : '' ?>>

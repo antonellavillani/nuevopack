@@ -76,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input type="email" name="email" required>
 
             <label>Teléfono:</label>
-            <input type="text" name="telefono">
+            <input type="text" name="telefono" oninput="this.value=this.value.replace(/[^0-9]/g,'')" placeholder="011 2233 4455">
 
             <label>Contraseña:</label>
             <input type="password" name="password" id="password" required>

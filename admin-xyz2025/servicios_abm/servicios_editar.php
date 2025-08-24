@@ -39,6 +39,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->execute([$nombre, $descripcion, $id]);
         }
 
+        // Mensaje de éxito
+        $_SESSION['success'] = "Servicio actualizado correctamente.";
+
+        // Registrar actividad
+        $descripcionActividad = 'Servicio "' . htmlspecialchars($nombre) . '" (ID ' . $id . ') actualizado';
+        $stmtActividad = $pdo->prepare("INSERT INTO actividad_admin (tipo, descripcion) VALUES (?, ?)");
+        $stmtActividad->execute(['servicio', $descripcionActividad]);
+        
         header("Location: ../servicios.php");
         exit();
     }

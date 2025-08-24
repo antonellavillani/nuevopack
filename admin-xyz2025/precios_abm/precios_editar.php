@@ -38,7 +38,12 @@ if (!$precio) {
         if ($servicio_id && $descripcion && $tipo_unidad && is_numeric($valor)) {
             $stmt = $pdo->prepare("UPDATE precios_servicios SET servicio_id = ?, descripcion = ?, tipo_unidad = ?, precio = ? WHERE id = ?");
             $stmt->execute([$servicio_id, $descripcion, $tipo_unidad, $valor, $id]);
-            $mensaje = "Precio actualizado correctamente.";
+            
+        // Mensaje de éxito y redirigir
+        $_SESSION['success'] = "Precio actualizado correctamente.";
+        header("Location: ../precios.php");
+        exit();
+
         } else {
             $mensaje_error = "Todos los campos son obligatorios y deben tener formato válido.";
         }

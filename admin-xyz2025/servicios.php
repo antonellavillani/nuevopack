@@ -27,13 +27,13 @@ include ("includes/header.php");
         </a>
 
         <?php if (isset($_SESSION['error'])): ?>
-            <div class="alerta error">
+            <div class="mensaje-error">
                 <?= $_SESSION['error']; unset($_SESSION['error']); ?>
             </div>
         <?php endif; ?>
 
         <?php if (isset($_SESSION['success'])): ?>
-            <div class="alerta success">
+            <div class="mensaje-exito">
                 <?= $_SESSION['success']; unset($_SESSION['success']); ?>
             </div>
         <?php endif; ?>
