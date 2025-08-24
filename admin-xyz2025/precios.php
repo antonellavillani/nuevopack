@@ -26,6 +26,9 @@ include ("includes/header.php");
 ?>
 
 <body>
+    <!-- Navbar -->
+    <?php include 'includes/navbar.php'; ?>
+    
     <div class="contenedor">
         <h2 class="titulo-pagina icono-precio">Lista de Precios por Servicio</h2>
         <a href="precios_abm/precios_crear.php" class="boton-nuevo">

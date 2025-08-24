@@ -9,6 +9,9 @@ include ("includes/header.php");
 ?>
 
 <body>
+    <!-- Navbar -->
+    <?php include 'includes/navbar.php'; ?>
+    
 <div class="contenedor">
     <h1 class="titulo-pagina icono-soporte">Soporte</h1>
     <p class="texto-soporte">¿Tenés algún problema o consulta? Mandanos un mensaje y te ayudamos.</p>

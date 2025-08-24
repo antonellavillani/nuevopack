@@ -20,6 +20,9 @@ include ("includes/header.php");
 ?>
 
 <body>
+    <!-- Navbar -->
+    <?php include 'includes/navbar.php'; ?>
+    
     <div class="contenedor">
         <h2 class="titulo-pagina icono-usuario">Usuarios Especiales</h2>
 

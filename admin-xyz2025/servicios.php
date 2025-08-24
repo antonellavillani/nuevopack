@@ -19,6 +19,9 @@ include ("includes/header.php");
 ?>
 
 <body>
+    <!-- Navbar -->
+    <?php include 'includes/navbar.php'; ?>
+
     <div class="contenedor">
         <h2 class="titulo-pagina icono-servicio">Gestión de Servicios</h2>
 
@@ -89,7 +92,7 @@ include ("includes/header.php");
         <a href="dashboard.php" class="link-volver"><i class="fa-solid fa-arrow-left"></i> Volver al Dashboard</a>
     </div>
 
-    <!-- Modal personalizado -->
+<!-- Modal personalizado -->
 <div id="modalDescripcion" class="modal-descripcion">
     <div class="modal-contenido">
         <span class="cerrar" onclick="cerrarModal()">&times;</span>

@@ -8,6 +8,74 @@ body, html {
     overflow-x: hidden;
 }
 
+/* ---------- Sidebar adaptado a navbar ---------- */
+.navbar {
+    display: flex;
+    justify-content: center;
+    background-color: #6A7348;
+    padding: 10px;
+    gap: 15px;
+}
+
+.nav-link {
+    background-color: #4E5735;
+    color: #fff;
+    text-decoration: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    font-size: 1.3rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.nav-link::before {
+    content: '📁'; /* default */
+}
+
+.nav-link.inicio::before { content: '📊'; }
+.nav-link.precios::before { content: '💲'; }
+.nav-link.servicios::before { content: '🛠️'; }
+.nav-link.usuarios::before { content: '👥'; }
+.nav-link.mi-cuenta::before { content: '🧑‍💼'; }
+.nav-link.soporte::before { content: '💬'; }
+.nav-link.volver-pagina::before { content: '🏠'; }
+
+.nav-link:hover {
+    background-color: #B5BF69;
+    transform: scale(1.1);
+    color: #333;
+}
+
+.nav-link::after {
+    content: attr(data-title);
+    position: absolute;
+    bottom: -35px;
+    background-color: #333;
+    color: #fff;
+    padding: 5px 8px;
+    border-radius: 6px;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateY(5px);
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    font-size: 0.8rem;
+}
+
+.nav-link:hover::after {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.nav-link.active {
+    background-color: #B5BF69;
+    color: #333;
+}
+
 /* ---------- Modal de confirmación ---------- */
 #modal-confirm .modal-content {
   background-color: #f2f2f2;
