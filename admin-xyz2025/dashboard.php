@@ -15,14 +15,6 @@ $actividades = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 include ("includes/header.php");
 
-require_once __DIR__ . '/analytics/ga_client.php';
-
-$ga = new GAClient();
-$gaSummary = $ga->summaryLast7Days();
-$formSubmits7d = $ga->eventCountLast7Days('form_submit');
-$calcUses7d    = $ga->eventCountLast7Days('price_calc');
-$rtUsers       = $ga->realtimeActiveUsers();
-
 ?>
 <body>
 
@@ -105,23 +97,23 @@ $rtUsers       = $ga->realtimeActiveUsers();
             <div class="card-container">
                 <div class="card-analytics">
                     <h3>Usuarios últimos 7 días</h3>
-                    <p><?= htmlspecialchars($gaSummary['users'] ?? '0') ?></p>
+                    <p id="users7d"><span class="loader"></span></p>
                 </div>
                 <div class="card-analytics">
                     <h3>Sesiones últimos 7 días</h3>
-                    <p><?= htmlspecialchars($gaSummary['sessions'] ?? '0') ?></p>
+                    <p id="sessions7d"><span class="loader"></span></p>
                 </div>
                 <div class="card-analytics">
                     <h3>Usuarios en tiempo real</h3>
-                    <p><?= htmlspecialchars($rtUsers ?? '0') ?></p>
+                    <p id="rtUsers"><span class="loader"></span></p>
                 </div>
                 <div class="card-analytics">
                     <h3>Formularios enviados</h3>
-                    <p><?= htmlspecialchars($formSubmits7d ?? '0') ?></p>
+                    <p id="formSubmits"><span class="loader"></span></p>
                 </div>
                 <div class="card-analytics">
                     <h3>Uso de la Calculadora</h3>
-                    <p><?= htmlspecialchars($calcUses7d ?? '0') ?></p>
+                    <p id="calcUses"><span class="loader"></span></p>
                 </div>
             </div>
         </div>

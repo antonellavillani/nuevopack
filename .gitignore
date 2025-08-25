@@ -5,7 +5,8 @@
 # Configuración sensible
 /admin-xyz2025/config_secrets.php
 /analytics/keys/*.json
+admin-xyz2025/analytics/keys/nuevopack-545bc92e6f19.json
 
 # Logs y caché
 *.log
-admin-xyz2025/analytics/keys/nuevopack-545bc92e6f19.json
+admin-xyz2025/cache/ga.json

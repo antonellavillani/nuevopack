@@ -35,6 +35,24 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+// GA Client
+ fetch("backend/analytics_cache.php", { credentials: "same-origin" })
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById("users7d").textContent = data.users;
+      document.getElementById("sessions7d").textContent = data.sessions;
+      document.getElementById("rtUsers").textContent = data.rtUsers;
+      document.getElementById("formSubmits").textContent = data.formSubmits;
+      document.getElementById("calcUses").textContent = data.calcUses;
+    })
+    .catch(() => {
+      document.getElementById("users7d").textContent = "Error";
+      document.getElementById("sessions7d").textContent = "Error";
+      document.getElementById("rtUsers").textContent = "Error";
+      document.getElementById("formSubmits").textContent = "Error";
+      document.getElementById("calcUses").textContent = "Error";
+    });
+
 // ---------------------- Modal 'Mi Cuenta' ----------------------
 function initModalMiCuenta() {
   const btnMiCuenta = document.getElementById('btn-mi-cuenta');
