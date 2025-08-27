@@ -1009,6 +1009,13 @@ select, input[type="number"] {
 }
 
 /* ----- Calculadora de Precios -----*/
+.error-grupo {
+  display: none;
+  color: #d9534f;
+  font-size: 13px;
+  margin-top: 6px;
+}
+
 .resultado {
     margin-top: 20px;
     text-align: center;
@@ -1401,6 +1408,46 @@ button:hover {
     margin-top: 4px;
 }
 
+.textarea-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.textarea-wrapper textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    padding-bottom: 28px;
+    resize: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.textarea-wrapper .contador-caracteres {
+    position: absolute;
+    bottom: 25px;
+    right: 50px;
+    font-size: 12px;
+    color: #666;
+    pointer-events: none;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+    .textarea-wrapper .contador-caracteres {
+        right: 30px;
+    }
+}
+
+/* Móvil */
+@media (max-width: 767px) {
+    .textarea-wrapper .contador-caracteres {
+        right: 10px;
+    }
+}
+
 /* Estilo para fieldset y etiquetas */
 .formulario-contacto fieldset {
     border: none;
@@ -1449,7 +1496,7 @@ button:hover {
     color: #555;
 }
 
-#nombre-archivo{
+.nombre-archivo{
     font-size: 14px; 
     color: #444; 
     margin-top: 5px;
@@ -1545,8 +1592,6 @@ button:hover {
   }
   .radio-input .label input[type="radio"]:checked {
     background-color: #6A7348;
-    /*-webkit-animation: puls 0.7s forwards;
-    animation: pulse 0.7s forwards;*/
     box-shadow: 0 0 0 3px #dce2c6;
   }
   
@@ -1564,7 +1609,6 @@ button:hover {
   }
   
   .radio-input .label input[type="radio"]:checked::before {
-    /*transform: scale(1);*/
     opacity: 1;
   }
 

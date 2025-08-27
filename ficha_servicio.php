@@ -88,6 +88,7 @@ foreach ($precios as $precio) {
                     <label for="millar_impresion">Millares</label>
                     <input type="number" name="millar_impresion" id="millar_impresion" placeholder="Ingrese la cantidad de millares">
                 </div>
+                <p class="error-grupo" data-grupo="impresion"></p>
 
                 <!-- Troquelado -->
                 <h3><input type="checkbox" name="troquelado_toggle" id="troquelado_toggle"> Troquelado</h3>
@@ -95,11 +96,14 @@ foreach ($precios as $precio) {
                     <div class="grupo-campo">
                         <label for="bocas">Cantidad de bocas (simple)</label>
                         <input type="number" name="bocas" id="bocas" placeholder="Ingrese la cantidad de bocas">
+                        <p class="error-grupo"></p>
                     </div>
                     <div class="grupo-campo">
                         <label for="millar_troquelado">Millares</label>
                         <input type="number" name="millar_troquelado" id="millar_troquelado" placeholder="Ingrese la cantidad de millares">
+                        <p class="error-grupo"></p>
                     </div>
+                    <p class="error-grupo" data-grupo="troquelado"></p>
                 </div>
 
                 <!-- Barniz -->
@@ -108,11 +112,14 @@ foreach ($precios as $precio) {
                     <div class="grupo-campo">
                         <label for="postura_barniz">Postura</label>
                         <input type="number" name="postura_barniz" id="postura_barniz" placeholder="Ingrese la cantidad de posturas">
+                        <p class="error-grupo"></p>
                     </div>
                     <div class="grupo-campo">
                         <label for="millar_barniz">Millar</label>
                         <input type="number" name="millar_barniz" id="millar_barniz" placeholder="Ingrese la cantidad de millares">
+                        <p class="error-grupo"></p>
                     </div>
+                    <p class="error-grupo" data-grupo="barniz"></p>
                 </div>
 
                 <!-- Pegado de estuches -->
@@ -123,11 +130,14 @@ foreach ($precios as $precio) {
                         <label><input type="radio" name="medida_estuche" value="estuches de 10cm a 15cm"> 10cm a 15cm</label>
                         <label><input type="radio" name="medida_estuche" value="estuches de 16cm a 25cm"> 16cm a 25cm</label>
                         <label><input type="radio" name="medida_estuche" value="estuches de 26cm a 50cm"> 26cm a 50cm</label>
+                        <p class="error-grupo"></p>
                     </div>
                     <div class="grupo-campo">
                         <label for="cantidad_estuches">Cantidad</label>
                         <input type="number" name="cantidad_estuches" id="cantidad_estuches" placeholder="Ingrese la cantidad de estuches">
+                        <p class="error-grupo"></p>
                     </div>
+                    <p class="error-grupo" data-grupo="estuches"></p>
                 </div>
 
                 <button type="submit" name="calcular_precio">Calcular</button>
@@ -163,11 +173,13 @@ foreach ($precios as $precio) {
                 <div class="form-grupo">
                     <label for="nombre">Nombre completo:</label>
                     <input type="text" id="nombre" name="nombre" placeholder="Escribí tu nombre" required>
+                    <p class="mensaje-advertencia" id="error-nombre"></p>
                 </div>
 
                 <div class="form-grupo">
                     <label for="email">Correo electrónico:</label>
                     <input type="email" id="email" name="email" placeholder="Escribí tu correo electrónico" required>
+                    <p class="mensaje-advertencia" id="error-email"></p>
                 </div>
 
                 <div class="form-grupo">
@@ -235,7 +247,14 @@ foreach ($precios as $precio) {
                 <!-- Descripción -->
                 <div class="form-grupo">
                     <label for="descripcion">Descripción del pedido:</label>
-                    <textarea id="descripcion" name="descripcion" rows="10" placeholder="Ej: Necesito 500 cajas troqueladas, impresas a color..."></textarea>
+
+                    <div class="textarea-wrapper">
+                        <textarea id="descripcion" name="descripcion" rows="10" placeholder="Ej: Necesito 500 cajas troqueladas, impresas a color..." required maxlength="1000"></textarea>
+                        <div class="contador-caracteres">
+                            <span id="contador-descripcion">0</span>/1000
+                        </div>
+                    </div>
+                    <p class="mensaje-advertencia" id="error-descripcion"></p>
                 </div>
                 
                 <!-- Diseño -->
@@ -250,6 +269,7 @@ foreach ($precios as $precio) {
                             <input type="radio" name="diseno" value="necesito" />
                             <p class="text">Necesito un diseño</p>
                         </label>
+                        <p class="mensaje-advertencia" id="error-diseno"></p>
                     </div>
                 </fieldset>
 
@@ -267,7 +287,7 @@ foreach ($precios as $precio) {
                         </div>
                         <input type="file" id="archivo" name="archivo" accept=".jpg,.jpeg,.png,.pdf,.ai,.psd">
                     </label>
-                    <p id="archivo-nombre" id="nombre-archivo"></p>
+                    <p id="archivo-nombre" class="nombre-archivo"></p>
                 </div>
 
                 <!-- Medio contacto -->
