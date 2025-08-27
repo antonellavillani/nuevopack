@@ -2030,6 +2030,25 @@ main.contacto-page h1 {
     color: #555;
 }
 
+/* Contador de caracteres para el textarea */
+.formulario-contacto-consultas .textarea-wrapper .contador-caracteres {
+    right: 20px;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+    .formulario-contacto-consultas .textarea-wrapper .contador-caracteres {
+        right: 30px;
+    }
+}
+
+/* Móvil */
+@media (max-width: 767px) {
+    .formulario-contacto-consultas .textarea-wrapper .contador-caracteres {
+        right: 10px;
+    }
+}
+
 /* ---------------------------------------
     Estilos para página Quiénes Somos
 --------------------------------------- */

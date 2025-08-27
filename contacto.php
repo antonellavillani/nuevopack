@@ -16,15 +16,23 @@ require_once __DIR__ . '/admin-xyz2025/config_secrets.php';
             <!-- Formulario de Contacto -->
             <div class="formulario-contacto-consultas">
                 <h2>Déjanos tu consulta</h2>
-                <form id="form-consulta" action="backend/enviar_consulta.php" method="POST">
+                <form id="form-consulta" action="backend/enviar_consulta.php" method="POST" novalidate>
                     <label for="nombre">Nombre:</label>
                     <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+                    <p class="mensaje-advertencia" id="error-nombre"></p>
 
                     <label for="email">Correo Electrónico:</label>
                     <input type="email" id="email" name="email" placeholder="Tu correo electrónico" required>
+                    <p class="mensaje-advertencia" id="error-email"></p>
 
                     <label for="consulta">Consulta:</label>
-                    <textarea id="consulta" name="consulta" placeholder="Escribí tu consulta acá" rows="6" required></textarea>
+                    <div class="textarea-wrapper">
+                        <textarea id="consulta" name="consulta" placeholder="Escribí tu consulta acá" rows="6" required></textarea>
+                        <div class="contador-caracteres">
+                            <span id="contador-consulta">0</span>/1000
+                        </div>
+                    </div>
+                    <p class="mensaje-advertencia" id="error-consulta"></p>
 
                     <button type="submit">Enviar</button>
 

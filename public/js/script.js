@@ -35,13 +35,74 @@ function initFormularioConsultaContacto() {
   const spinner = document.getElementById("spinner-consulta");
   const mensajeEnvio = document.getElementById("mensaje-envio-consulta");
 
+  // Inputs
+  const nombre = document.getElementById("nombre");
+  const email = document.getElementById("email");
+  const consulta = document.getElementById("consulta");
+
+  const errorNombre = document.getElementById("error-nombre");
+  const errorEmail = document.getElementById("error-email");
+  const errorConsulta = document.getElementById("error-consulta");
+
+  // Contador de caracteres
+  const contadorConsulta = document.getElementById("contador-consulta");
+  if (consulta && contadorConsulta) {
+    // Inicial
+    contadorConsulta.textContent = consulta.value.length;
+    consulta.addEventListener("input", function () {
+      contadorConsulta.textContent = this.value.length;
+    });
+  }
+  
   formConsulta.addEventListener("submit", function (e) {
     e.preventDefault();
+
+    let valido = true;
+    let primerError = null;
+
+    const showError = (el, msg) => {
+      el.textContent = msg || "";
+      el.style.display = msg ? "block" : "none";
+      if (msg && !primerError) primerError = el;
+    };
+
+    // Al escribir en los inputs, ocultar el mensaje de error
+    [[nombre, errorNombre], [email, errorEmail], [consulta, errorConsulta]].forEach(
+      ([input, errorEl]) => {
+        input.addEventListener("input", () => showError(errorEl, ""));
+      }
+    );
+
+    // Validar nombre
+    if (!nombre.value.trim()) {
+      showError(errorNombre, "Por favor, ingresá tu nombre.");
+      valido = false;
+    } else showError(errorNombre, "");
+
+    // Validar email
+    if (!email.value.trim()) {
+      showError(errorEmail, "Por favor, ingresá tu correo.");
+      valido = false;
+    } else if (!/^[^@]+@[^@]+\.[a-zA-Z]{2,}$/.test(email.value)) {
+      showError(errorEmail, "Ingresá un correo válido.");
+      valido = false;
+    } else showError(errorEmail, "");
+
+    // Validar consulta
+    if (!consulta.value.trim()) {
+      showError(errorConsulta, "Por favor, escribí tu consulta.");
+      valido = false;
+    } else showError(errorConsulta, "");
+
+    if (!valido) {
+      if (primerError)
+        primerError.scrollIntoView({ behavior: "smooth", block: "center" });
+      return; // No enviar si hay errores
+    }
 
     if (spinner) spinner.style.display = "flex";
 
     const formData = new FormData(this);
-
     fetch(this.action, {
       method: "POST",
       body: formData,
@@ -60,6 +121,8 @@ function initFormularioConsultaContacto() {
             console.log("Evento GA4 calculadora enviado");
           }
           this.reset();
+          // Ocultar errores
+          [errorNombre, errorEmail, errorConsulta].forEach((el) => (el.style.display = "none"));
         }
       })
       .catch((error) => {
