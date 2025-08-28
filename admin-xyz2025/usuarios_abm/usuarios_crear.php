@@ -23,10 +23,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'];
 
     if (empty($nombre) || empty($apellido) || empty($email) || empty($telefono) || empty($password)) {
-        $error = "Todos los campos son obligatorios.";
+        //$error = "Todos los campos son obligatorios.";
     } else {
-        if (!esPasswordSegura($password)) {
-        $error = "La contraseña no cumple con los requisitos mínimos.";
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $error = "Ingresá un correo electrónico válido (ej: correo@ejemplo.com).";
+        } elseif (!esPasswordSegura($password)) {
+            $error = "La contraseña no cumple con los requisitos mínimos.";
         } else {
         $password_hash = password_hash($password, PASSWORD_DEFAULT);
 
@@ -65,21 +67,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <p class="mensaje-error"><?= htmlspecialchars($error) ?></p>
         <?php endif; ?>
 
-        <form method="POST" class="formulario-admin">
+        <form id="form-usuario-crear" method="POST" class="formulario-admin" novalidate>
             <label>Nombre:</label>
-            <input type="text" name="nombre" placeholder="Ej: Juan" required>
+            <input id="nombre" type="text" name="nombre" placeholder="Ej: Juan" required>
+            <p class="mensaje-advertencia" id="error-nombre"></p>
 
             <label>Apellido:</label>
-            <input type="text" name="apellido" placeholder="Ej: Pérez" required>
+            <input id="apellido" type="text" name="apellido" placeholder="Ej: Pérez" required>
+            <p class="mensaje-advertencia" id="error-apellido"></p>
 
             <label>Email:</label>
-            <input type="email" name="email" placeholder="Ej: correo@ejemplo.com" required>
+            <input id="email" type="email" name="email" placeholder="Ej: correo@ejemplo.com" required>
+            <p class="mensaje-advertencia" id="error-email"></p>
 
             <label>Teléfono:</label>
             <input type="text" name="telefono" oninput="this.value=this.value.replace(/[^0-9]/g,'')" placeholder="011 2233 4455">
 
             <label>Contraseña:</label>
             <input type="password" name="password" id="password" required>
+            <p class="mensaje-advertencia" id="error-contrasena"></p>
 
             <div class="reglas-password">
                 <p id="ruleLength">❌ Mínimo 8 caracteres</p>
@@ -94,6 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <p id="errorCoincidencia" class="contrasena_no_coincide">
                 Las contraseñas no coinciden.
             </p>
+            <p class="mensaje-advertencia" id="error-repetir-contrasena"></p>
 
             <div class="form-botones">
                 <button type="submit" class="btn-guardar">Guardar</button>

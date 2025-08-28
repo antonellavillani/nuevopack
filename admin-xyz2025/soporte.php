@@ -16,12 +16,14 @@ include ("includes/header.php");
     <h1 class="titulo-pagina icono-soporte">Soporte</h1>
     <p class="texto-soporte">¿Tenés algún problema o consulta? Mandanos un mensaje y te ayudamos.</p>
 
-    <form class="formulario-admin" id="formSoporte" enctype="multipart/form-data">
+    <form class="formulario-admin" id="formSoporte" enctype="multipart/form-data" novalidate>
         <label for="asunto">Asunto</label>
         <input type="text" id="asunto" name="asunto" required />
+        <p id="error-asunto" class="mensaje-advertencia"></p>
 
         <label for="mensaje">Mensaje</label>
         <textarea id="mensaje" name="mensaje" rows="6" required></textarea>
+        <p id="error-mensaje" class="mensaje-advertencia"></p>
 
         <div class="file-input-wrapper">
             <label for="imagen">Adjuntar imagen (opcional)</label>

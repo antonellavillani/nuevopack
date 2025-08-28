@@ -12,6 +12,52 @@ document.addEventListener("DOMContentLoaded", function () {
     initLogoutModal(); // Modal para cerrar sesión
     initRecuperarPassword() // Envío AJAX para recuperar contraseña
 
+    // ------ Inicialización de validación de inputs ------
+    // ABM Servicios
+    initFormularioGenerico("form-servicio-crear", [
+      { inputId: "nombre", errorId: "error-nombre", required: true },
+      { inputId: "descripcion", errorId: "error-descripcion", required: true }
+    ]);
+
+    initFormularioGenerico("form-servicio-editar", [
+      { inputId: "nombre", errorId: "error-nombre", required: true },
+      { inputId: "descripcion", errorId: "error-descripcion", required: true }
+    ]);
+    
+    // ABM Precios
+    initFormularioGenerico("form-precio-crear", [
+      { inputId: "servicio_id", errorId: "error-servicio_id", required: true },
+      { inputId: "descripcion", errorId: "error-descripcion", required: true },
+      { inputId: "tipo_unidad", errorId: "error-tipo_unidad", required: true },
+      { inputId: "precio", errorId: "error-precio", required: true }
+    ]);
+
+    initFormularioGenerico("form-precio-editar", [
+      { inputId: "servicio_id", errorId: "error-servicio_id", required: true },
+      { inputId: "descripcion", errorId: "error-descripcion", required: true },
+      { inputId: "tipo_unidad", errorId: "error-tipo_unidad", required: true },
+      { inputId: "precio", errorId: "error-precio", required: true }
+    ]);
+
+    // ABM Usuarios
+    initFormularioGenerico("form-usuario-crear", [
+      { inputId: "nombre", errorId: "error-nombre", required: true },
+      { inputId: "apellido", errorId: "error-apellido", required: true },
+      { inputId: "email", errorId: "error-email", required: true, tipo: "email" }
+    ]);
+
+    initFormularioGenerico("form-usuario-editar", [
+      { inputId: "nombre", errorId: "error-nombre", required: true },
+      { inputId: "apellido", errorId: "error-apellido", required: true },
+      { inputId: "email", errorId: "error-email", required: true }
+    ]);
+    
+    // Validación soporte
+    initFormularioGenerico("formSoporte", [
+      { inputId: "asunto", errorId: "error-asunto", required: true },
+      { inputId: "mensaje", errorId: "error-mensaje", required: true }
+    ]);
+
     // Inicializar modal de eliminación
     document.querySelectorAll('.btn-eliminar-tabla').forEach(link => {
         link.addEventListener('click', function(e) {
@@ -255,8 +301,9 @@ function initValidacionPassword(selectorFormulario) {
     const inputPassword = document.getElementById('password');
     const inputRepetir = document.getElementById('repetir_password');
     const errorCoincidencia = document.getElementById('errorCoincidencia');
+    const errorContrasena = document.getElementById('error-contrasena');
 
-    if (!inputPassword || !inputRepetir || !errorCoincidencia) return;
+    if (!inputPassword || !inputRepetir || !errorCoincidencia || !errorContrasena) return;
 
     const reglas = {
         ruleLength: pass => pass.length >= 8,
@@ -281,6 +328,7 @@ function initValidacionPassword(selectorFormulario) {
         for (const id in reglas) {
             actualizarEstado(id, reglas[id](pass));
         }
+        errorContrasena.style.display = "none"; // Limpiar mensaje
     });
 
     inputRepetir.addEventListener('input', () => {
@@ -296,11 +344,13 @@ function initValidacionPassword(selectorFormulario) {
         const cumpleTodo = Object.values(reglas).every(fn => fn(pass));
 
         if (!cumpleTodo) {
-            alert("La contraseña no cumple con los requisitos.");
-            e.preventDefault();
+            errorContrasena.textContent = "La contraseña no cumple con los requisitos.";
+            errorContrasena.style.display = "block";
+            errorContrasena.scrollIntoView({ behavior: "smooth", block: "center" });
         } else if (pass !== repetir) {
-            errorCoincidencia.style.display = 'block';
             e.preventDefault();
+            errorCoincidencia.style.display = 'block';
+            errorCoincidencia.scrollIntoView({ behavior: "smooth", block: "center" });
         }
     });
 }
@@ -464,4 +514,54 @@ function abrirModalEliminar(url, mensaje) {
     window.addEventListener('click', function(e) {
         if (e.target == modalEliminar) cerrarModal();
     });
+}
+
+// ------------------ Validación de inputs -----------------
+function initFormularioGenerico(formId, campos) {
+  const form = document.getElementById(formId);
+  if (!form) return;
+
+  let valido = true;
+  let primerError = null;
+
+  const showError = (el, msg) => {
+    el.textContent = msg || "";
+    el.style.display = msg ? "block" : "none";
+    if (msg && !primerError) primerError = el;
+  };
+
+  // Asignar eventos "input" para limpiar errores
+  campos.forEach(({ inputId, errorId }) => {
+    const input = document.getElementById(inputId);
+    const errorEl = document.getElementById(errorId);
+    if (!input || !errorEl) return;
+    input.addEventListener("input", () => showError(errorEl, ""));
+  });
+
+  form.addEventListener("submit", function (e) {
+    valido = true;
+    primerError = null;
+
+    campos.forEach(({ inputId, errorId, required, tipo }) => {
+      const input = document.getElementById(inputId);
+      const errorEl = document.getElementById(errorId);
+      if (!input || !errorEl) return;
+
+      if (required && !input.value.trim()) {
+        showError(errorEl, `El campo ${inputId} es obligatorio.`);
+        valido = false;
+      } else if (tipo === "email" && !/^[^@]+@[^@]+\.[a-zA-Z]{2,}$/.test(input.value)) {
+        showError(errorEl, "Ingresá un correo válido.");
+        valido = false;
+      } else {
+        showError(errorEl, "");
+      }
+    });
+
+    if (!valido) {
+      e.preventDefault();
+      if (primerError)
+        primerError.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  });
 }

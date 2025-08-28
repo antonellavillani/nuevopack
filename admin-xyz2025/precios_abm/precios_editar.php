@@ -45,7 +45,7 @@ if (!$precio) {
         exit();
 
         } else {
-            $mensaje_error = "Todos los campos son obligatorios y deben tener formato válido.";
+            //$mensaje_error = "Todos los campos son obligatorios y deben tener formato válido.";
         }
     }
 }
@@ -70,29 +70,35 @@ if (!$precio) {
         <?php endif; ?>
 
         <?php if ($precio): ?>
-            <form method="POST" class="formulario-admin">
+            <form id="form-precio-editar" method="POST" class="formulario-admin" novalidate>
                 <label>Servicio asociado:</label>
-                <select name="servicio_id" required>
+                <select id="servicio_id" name="servicio_id" required>
                     <?php foreach ($servicios as $s): ?>
                         <option value="<?php echo $s['id']; ?>" <?php echo $s['id'] == $precio['servicio_id'] ? 'selected' : ''; ?>>
                             <?php echo htmlspecialchars($s['nombre']); ?>
                         </option>
                     <?php endforeach; ?>
                 </select>
+                <p class="mensaje-advertencia" id="error-servicio_id"></p>
 
                 <label>Descripción del precio:</label>
-                <input type="text" name="descripcion" value="<?php echo htmlspecialchars($precio['descripcion']); ?>" required>
+                <input id="descripcion" type="text" name="descripcion" value="<?php echo htmlspecialchars($precio['descripcion']); ?>" required>
+                <p class="mensaje-advertencia" id="error-descripcion"></p>
 
                 <label>Tipo de unidad:</label>
-                <input type="text" name="tipo_unidad" value="<?php echo htmlspecialchars($precio['tipo_unidad']); ?>" required>
+                <input id="tipo_unidad" type="text" name="tipo_unidad" value="<?php echo htmlspecialchars($precio['tipo_unidad']); ?>" required>
+                <p class="mensaje-advertencia" id="error-tipo_unidad"></p>
 
                 <label>Precio ($):</label>
-                <input type="number" name="precio" value="<?php echo htmlspecialchars($precio['precio']); ?>" step="0.01" min="0" required>
+                <input id="precio" type="number" name="precio" value="<?php echo htmlspecialchars($precio['precio']); ?>" step="0.01" min="0" required>
+                <p class="mensaje-advertencia" id="error-precio"></p>
 
                 <button type="submit" class="btn-guardar">Guardar cambios</button>
             </form>
             <a href="../precios.php" class="link-volver"><i class="fa-solid fa-arrow-left"></i> Volver</a>
         <?php endif; ?>
     </div>
+
+<script src="../js/script.js"></script>
 </body>
 </html>

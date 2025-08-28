@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $aprobado = isset($_POST['aprobado']) ? 1 : 0;
 
         if (empty($nombre) || empty($apellido) || empty($email)) {
-            $error = "Nombre, apellido y email son obligatorios.";
+            //$error = "Nombre, apellido y email son obligatorios.";
         } else {
             try {
                 // Si $telefono es vacío, insertar NULL para la BD
@@ -92,16 +92,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <p class="mensaje-error"><?= htmlspecialchars($error) ?></p>
         <?php endif; ?>
 
-        <form method="POST" class="formulario-admin">
+        <form id="form-usuario-editar" method="POST" class="formulario-admin" novalidate>
             <input type="hidden" name="origen" value="<?= htmlspecialchars($_GET['origen'] ?? '') ?>">
             <label>Nombre:</label>
-            <input type="text" name="nombre" value="<?= htmlspecialchars($usuario['nombre']) ?>" required>
+            <input id="nombre" type="text" name="nombre" value="<?= htmlspecialchars($usuario['nombre']) ?>" required>
+            <p class="mensaje-advertencia" id="error-nombre"></p>
 
             <label>Apellido:</label>
-            <input type="text" name="apellido" value="<?= htmlspecialchars($usuario['apellido']) ?>" required>
+            <input id="apellido" type="text" name="apellido" value="<?= htmlspecialchars($usuario['apellido']) ?>" required>
+            <p class="mensaje-advertencia" id="error-apellido"></p>
 
             <label>Email:</label>
-            <input id="cursor-not-allowed" type="email" name="email" value="<?= htmlspecialchars($usuario['email']) ?>" readonly>
+            <input id="email" class="cursor-not-allowed" type="email" name="email" value="<?= htmlspecialchars($usuario['email']) ?>" readonly>
+            <p class="mensaje-advertencia" id="error-email"></p>
 
             <label>Teléfono:</label>
             <input type="text" name="telefono" value="<?= htmlspecialchars($usuario['telefono']) ?>" oninput="this.value=this.value.replace(/[^0-9]/g,'')">

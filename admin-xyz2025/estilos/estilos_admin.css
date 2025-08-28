@@ -1058,7 +1058,7 @@ body, html {
     margin-right: 8px;
 }
 
-#cursor-not-allowed {
+.cursor-not-allowed {
     cursor: not-allowed;
 }
 
@@ -1507,6 +1507,13 @@ body, html {
     margin-top: 4px;
     margin-bottom: 10px; 
     color: #666;
+}
+
+.mensaje-advertencia {
+  display: none;
+  color: red;
+  font-size: 0.9rem;
+  margin: 4px 0 10px;
 }
 
 /* ---------- Botones ---------- */

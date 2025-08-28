@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Validar que no esté vacío
     if ($nombre === '') {
-        $error = "El dato 'Nombre' no puede estar vacío.";
+        //$error = "El dato 'Nombre' no puede estar vacío.";
     } else {
         // Manejo de la nueva imagen
         if ($_FILES['foto']['name']) {
@@ -79,9 +79,10 @@ if (!$servicio) {
             <p style="color: red;"><?= $error ?></p>
         <?php endif; ?>
 
-        <form action="" method="post" enctype="multipart/form-data" class="formulario-admin">
+        <form id="form-servicio-editar" action="" method="post" enctype="multipart/form-data" class="formulario-admin" novalidate>
             <label for="nombre">Nombre del servicio:</label>
             <input type="text" id="nombre" name="nombre" value="<?= htmlspecialchars($servicio['nombre']) ?>" required>
+            <p class="mensaje-advertencia" id="error-nombre"></p>
 
             <p>Imagen actual:</p>
             <img src="../../uploads/<?= $servicio['foto'] ?>" alt="Imagen actual" class="img-tabla" style="margin-bottom: 10px;">
@@ -91,10 +92,13 @@ if (!$servicio) {
 
             <label for="descripcion">Descripción del servicio:</label>
             <textarea id="descripcion" name="descripcion" rows="4"><?= htmlspecialchars($servicio['descripcion']) ?></textarea>
+            <p class="mensaje-advertencia" id="error-descripcion"></p>
 
             <button type="submit" class="btn-guardar">Guardar cambios</button>
         </form>
         <a href="../servicios.php" class="link-volver"><i class="fa-solid fa-arrow-left"></i> Volver</a>
     </div>
+
+<script src="../js/script.js"></script>
 </body>
 </html>

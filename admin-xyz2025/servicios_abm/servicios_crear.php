@@ -56,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
 
         } else {
-            $mensaje = "Completá nombre y descripción obligatoriamente.";
+            //$mensaje = "Completá nombre y descripción obligatoriamente.";
         }
     }
 ?>
@@ -77,19 +77,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <p><?= $mensaje ?></p>
         <?php endif; ?>
 
-        <form action="" method="POST" enctype="multipart/form-data" class="formulario-admin">
+        <form id="form-servicio-crear" action="" method="POST" enctype="multipart/form-data" class="formulario-admin" novalidate>
             <label for="nombre">Nombre del servicio:</label><br>
-            <input type="text" name="nombre" id="nombre" placeholder="Folletos, tarjetas, etiquetas..." required><br><br>
+            <input type="text" name="nombre" id="nombre" value="<?= htmlspecialchars($_POST['nombre'] ?? '') ?>" placeholder="Folletos, tarjetas, etiquetas..." required><br><br>
+            <p class="mensaje-advertencia" id="error-nombre"></p>
 
             <label for="foto">Imagen del servicio:</label><br>
             <input type="file" name="foto" id="foto" accept="image/*"><br><br>
 
             <label for="descripcion">Descripción del servicio:</label><br>
-            <textarea name="descripcion" id="descripcion" rows="4" placeholder="Descripción breve del servicio."></textarea><br><br>
+            <textarea name="descripcion" id="descripcion" rows="4" placeholder="Descripción breve del servicio."><?= htmlspecialchars($_POST['descripcion'] ?? '') ?></textarea><br><br>
+            <p class="mensaje-advertencia" id="error-descripcion"></p>
 
             <button type="submit" class="btn-guardar">Crear servicio</button>
         </form>
         <a href="../servicios.php" class="link-volver"><i class="fa-solid fa-arrow-left"></i> Volver</a>
     </div>
+
+<script src="../js/script.js"></script>
 </body>
 </html>

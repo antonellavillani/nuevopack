@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
 
     } else {
-        $error = "Por favor, completá todos los campos correctamente.";
+        //$error = "Por favor, completá todos los campos correctamente.";
     }
 }
 
@@ -60,27 +60,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <p class="mensaje-exito"><?php echo $exito; ?></p>
         <?php endif; ?>
 
-        <form method="POST" class="formulario-admin">
+        <form id="form-precio-crear" method="POST" class="formulario-admin" novalidate>
             <label>Servicio asociado:</label>
-            <select name="servicio_id" required>
+            <select name="servicio_id" id="servicio_id" required>
                 <option value="">Seleccionar servicio</option>
                 <?php foreach ($servicios as $s): ?>
                     <option value="<?php echo $s['id']; ?>"><?php echo htmlspecialchars($s['nombre']); ?></option>
                 <?php endforeach; ?>
             </select>
+            <p class="mensaje-advertencia" id="error-servicio_id"></p>
 
             <label>Descripción del precio:</label>
-            <input type="text" name="descripcion" placeholder="Millar, postura, bocas..." required>
+            <input id="descripcion" type="text" name="descripcion" placeholder="Millar, postura, bocas..." required>
+            <p class="mensaje-advertencia" id="error-descripcion"></p>
 
             <label>Tipo de unidad:</label>
-            <input type="text" name="tipo_unidad" placeholder="Ej: unidad, metro, caja..." required>
+            <input id="tipo_unidad" type="text" name="tipo_unidad" placeholder="Ej: unidad, metro, caja..." required>
+            <p class="mensaje-advertencia" id="error-tipo_unidad"></p>
 
             <label>Precio ($):</label>
-            <input type="number" name="precio" step="0.01" min="0" placeholder="(Solo números)" required>
+            <input id="precio" type="number" name="precio" step="0.01" min="0" placeholder="(Solo números)" required>
+            <p class="mensaje-advertencia" id="error-precio"></p>
 
             <button type="submit" class="btn-guardar">Guardar</button>
         </form>
         <a href="../precios.php" class="link-volver"><i class="fa-solid fa-arrow-left"></i> Volver</a>
     </div>
+
+<script src="../js/script.js"></script>
 </body>
 </html>
