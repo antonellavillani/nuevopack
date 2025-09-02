@@ -4,7 +4,7 @@ require_once '../../config/config.php';
 header('Content-Type: application/json');
 
 try {
-    $stmt = $pdo->query("SELECT descripcion, fecha FROM actividad_admin ORDER BY fecha DESC LIMIT 5");
+    $stmt = $pdo->query("SELECT id, descripcion, fecha FROM actividad_admin ORDER BY fecha DESC LIMIT 5");
     $actividades = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     echo json_encode($actividades);
