@@ -8,13 +8,26 @@ $imagen_base64 = $_POST['foto'] ?? '';
 $foto = '';
 
 try {
-    if ($imagen_base64) {
-        $nombreArchivo = uniqid() . '.jpg';
-        $ruta = '../../../uploads/servicios/' . $nombreArchivo;
-        $foto = 'uploads/servicios/' . $nombreArchivo;
-
+    if (!empty($imagen_base64)) {
         $imagen_base64 = str_replace(' ', '+', $imagen_base64);
-        file_put_contents($ruta, base64_decode($imagen_base64));
+        $decoded = base64_decode($imagen_base64, true);
+
+        if ($decoded === false) {
+            http_response_code(400);
+            echo "Error: Imagen inválida o truncada";
+            exit;
+        }
+
+        // Nombre único para la foto
+        $nombreArchivo = uniqid("serv_") . '.jpg';
+        $ruta = "../../../uploads/" . $nombreArchivo;
+
+        file_put_contents($ruta, $decoded);
+
+        // Guardar el nombre
+        $foto = $nombreArchivo;
+    } else {
+        $foto = null;
     }
 
     if ($nombre && $descripcion) {

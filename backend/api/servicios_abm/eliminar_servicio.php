@@ -20,8 +20,8 @@ try {
     $foto = $stmt->fetchColumn();
 
     // Eliminar la imagen del servidor si existe
-    if ($foto && file_exists("../../../" . $foto)) {
-        unlink("../../../" . $foto);
+    if ($foto && file_exists("../../../uploads/" . $foto)) {
+        unlink("../../../uploads/" . $foto);
     }
 
     // Eliminar el registro del servicio

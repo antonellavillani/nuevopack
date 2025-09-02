@@ -27,23 +27,25 @@ try {
 
     // Si se mandó una imagen nueva:
     if ($imagen_base64 === "ELIMINAR") {
-        if ($foto && file_exists("../../../" . $foto)) {
-            unlink("../../../" . $foto); // Eliminar anterior
+        if ($foto && file_exists("../../../uploads/" . $foto)) {
+            unlink("../../../uploads/" . $foto);
         }
         $nuevaRuta = '';
-        } elseif ($imagen_base64) {
-            // Eliminar la imagen anterior si existía
-            if ($foto && file_exists("../../../" . $foto)) {
-                unlink("../../../" . $foto);
-            }
+    } elseif ($imagen_base64) {
+        // Eliminar la imagen anterior si existía
+        if ($foto && file_exists("../../../uploads/" . $foto)) {
+            unlink("../../../uploads/" . $foto);
+        }
 
-            // Guardar la nueva imagen
-            $imagen_data = base64_decode($imagen_base64);
-            $nombreArchivo = uniqid("servicio_") . ".jpg";
-            $rutaArchivo = "../../../uploads/servicios/" . $nombreArchivo;
+        // Guardar la nueva imagen
+        $imagen_data = base64_decode($imagen_base64);
+        $nombreArchivo = uniqid("servicio_") . ".jpg";
+        $rutaArchivo = "../../../uploads/" . $nombreArchivo;
 
-            file_put_contents($rutaArchivo, $imagen_data);
-            $nuevaRuta = "uploads/servicios/" . $nombreArchivo;
+        file_put_contents($rutaArchivo, $imagen_data);
+        
+        // Guardar el nombre en BD
+        $nuevaRuta = $nombreArchivo;
     }
 
     // Actualizar el registro
