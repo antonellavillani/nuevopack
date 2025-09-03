@@ -43,7 +43,7 @@ foreach ($precios as $precio) {
         </div>
 
         <div class="columna-derecha">
-            <?php if ($idServicio == 5): ?>
+            <?php if ($idServicio == 17): ?>
                 <!-- Carrusel de modelos para almanaques -->
                 <section class="carrusel-almanaques contenedor-ficha-servicio">
                     <h2 class="nombre-producto">Modelos de almanaques disponibles</h2>
