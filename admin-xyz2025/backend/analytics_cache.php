@@ -9,14 +9,15 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
 $cacheFile = __DIR__ . '/../cache/ga.json';
 $cacheTime = 600; // 10 minutos
 
-// Verificar si existe cache y está vigente
+header('Content-Type: application/json');
+
+// Si el caché está vigente
 if (file_exists($cacheFile) && (time() - filemtime($cacheFile)) < $cacheTime) {
-    header('Content-Type: application/json');
     echo file_get_contents($cacheFile);
     exit();
 }
 
-// Sino, trae datos desde GA
+// Sino, pide a GA
 require_once __DIR__ . '/../analytics/ga_client.php';
 $ga = new GAClient();
 
@@ -28,18 +29,8 @@ $data = [
     'calcUses'    => $ga->eventCountLast7Days('price_calc') ?? 0,
 ];
 
-// Guarda en cache
-echo "<pre>";
-print_r($data);
-if (file_put_contents($cacheFile, json_encode($data))) {
-    echo "Cache guardado correctamente!";
-} else {
-    echo "Error al guardar cache!";
-}
-exit();
+// Guardar cache
+file_put_contents($cacheFile, json_encode($data));
 
-header('Content-Type: application/json');
+// Devolver respuesta
 echo json_encode($data);
-
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
