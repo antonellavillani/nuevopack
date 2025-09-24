@@ -844,7 +844,7 @@ function initModalImagenAlmanaques() {
 function initAtajoDashboard() {
   document.addEventListener("keydown", function (event) {
     if (event.ctrlKey && event.shiftKey && event.key === "Y") {
-      window.location.href = "/nuevopack/admin-xyz2025/login.php";
+      window.location.href = BASE_URL + "admin-xyz2025/login.php";
     }
   });
 }

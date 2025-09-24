@@ -23,7 +23,7 @@ try {
     exit;
 }
 class ApiConfig {
-    const BASE_URL = "https://2960f0137575.ngrok-free.app/nuevopack/";
+    const BASE_URL = "https://imprentanuevopack.online/";
 }
 
 ?>

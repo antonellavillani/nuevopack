@@ -164,6 +164,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+const BASE_URL = "<?= ApiConfig::BASE_URL ?>";
 </script>
 
 </body>
