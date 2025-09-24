@@ -14,6 +14,17 @@ try {
         exit;
     }
 
+    // Verificar si tiene precios asociados
+    $stmt = $pdo->prepare("SELECT COUNT(*) FROM precios WHERE servicio_id = ?");
+    $stmt->execute([$id]);
+    $tienePrecios = $stmt->fetchColumn();
+
+    if ($tienePrecios > 0) {
+        http_response_code(409);
+        echo "El servicio no puede eliminarse porque tiene precios asociados. Eliminalos primero o desvincúlalos.";
+        exit;
+    }
+
     // Buscar la ruta de la imagen antes de eliminar el servicio
     $stmt = $pdo->prepare("SELECT foto FROM servicios WHERE id = ?");
     $stmt->execute([$id]);
@@ -37,5 +48,6 @@ try {
 
 } catch (Exception $e) {
     http_response_code(500);
-    echo "Error al eliminar: " . $e->getMessage();
+    echo "Error al eliminar el servicio. Contacte al administrador.";
+    error_log("Error al eliminar servicio ID $id: " . $e->getMessage());
 }
