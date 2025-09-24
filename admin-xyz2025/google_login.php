@@ -10,7 +10,7 @@ require_once 'auth.php';
 $client = new Google_Client();
 $client->setClientId(GOOGLE_CLIENT_ID);
 $client->setClientSecret(GOOGLE_CLIENT_SECRET);
-$client->setRedirectUri('http://localhost/nuevopack/admin-xyz2025/google_login.php');
+$client->setRedirectUri('https://imprentanuevopack.online/admin-xyz2025/google_login.php');
 $client->addScope("email");
 $client->addScope("profile");
 
