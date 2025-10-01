@@ -1,6 +1,12 @@
 <?php
 require_once '../config/config.php';
 
+function normalizar($cadena) {
+    $cadena = strtolower($cadena);
+    $cadena = iconv('UTF-8', 'ASCII//TRANSLIT', $cadena); // quitar tildes
+    return $cadena;
+}
+
 if (isset($_GET['term'])) {
     $term = strtolower(trim($_GET['term']));
     $resultados = [];
@@ -12,7 +18,7 @@ if (isset($_GET['term'])) {
     ];
 
     foreach ($paginasEstaticas as $pagina) {
-        if (strpos(strtolower($pagina['nombre']), $term) !== false || strpos($term, strtolower($pagina['url'])) !== false) {
+        if (strpos(normalizar($pagina['nombre']), $term) !== false) {
             $resultados[] = $pagina;
         }
     }
@@ -24,10 +30,12 @@ if (isset($_GET['term'])) {
     $servicios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     foreach ($servicios as $servicio) {
-        $resultados[] = [
-            'nombre' => $servicio['nombre'],
-            'url' => 'ficha_servicio.php?idServicio=' . $servicio['id']
-        ];
+        if (strpos(normalizar($servicio['nombre']), $term) !== false) {
+            $resultados[] = [
+                'nombre' => $servicio['nombre'],
+                'url' => 'ficha_servicio.php?idServicio=' . $servicio['id']
+            ];
+        }
     }
 
     // Si no hay nada
