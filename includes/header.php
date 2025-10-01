@@ -36,6 +36,8 @@ try {
         gtag('config', 'G-D9VPD90EQS');
     </script>
 
+    <link rel="icon" href="/favicon.ico?v=3" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.ico?v=3" type="image/x-icon">
     <link rel="stylesheet" href="public/css/estilos.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
@@ -137,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        fetch(`backend/buscar_servicios.php?term=${encodeURIComponent(texto)}`)
+        fetch(`backend/resultados_busqueda.php?term=${encodeURIComponent(texto)}`)
             .then(response => response.json())
             .then(data => {
                 resultadosDiv.innerHTML = '';

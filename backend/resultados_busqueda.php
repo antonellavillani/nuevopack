@@ -3,20 +3,26 @@ require_once '../config/config.php';
 
 if (isset($_GET['term'])) {
     $term = strtolower(trim($_GET['term']));
+    $resultados = [];
+    
+    // Páginas estáticas: contacto y quienes somos
+    $paginasEstaticas = [
+        ['nombre' => 'Quiénes Somos', 'url' => 'quienes_somos.php'],
+        ['nombre' => 'Contáctanos', 'url' => 'contacto.php']
+    ];
 
-    if ($term === 'contacto') {
-        echo json_encode([
-            ['nombre' => 'Ir a Contacto', 'url' => 'contacto.php']
-        ]);
-        exit;
+    foreach ($paginasEstaticas as $pagina) {
+        if (strpos(strtolower($pagina['nombre']), $term) !== false || strpos($term, strtolower($pagina['url'])) !== false) {
+            $resultados[] = $pagina;
+        }
     }
-
+    
+    // Servicios dinámicos
     $query = "SELECT id, nombre FROM servicios WHERE LOWER(nombre) LIKE :term";
     $stmt = $pdo->prepare($query);
     $stmt->execute([':term' => "%$term%"]);
     $servicios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    $resultados = [];
     foreach ($servicios as $servicio) {
         $resultados[] = [
             'nombre' => $servicio['nombre'],
@@ -24,6 +30,7 @@ if (isset($_GET['term'])) {
         ];
     }
 
+    // Si no hay nada
     if (empty($resultados)) {
         $resultados[] = ['nombre' => 'No se encontraron resultados.', 'url' => '#'];
     }
