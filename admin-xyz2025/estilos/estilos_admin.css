@@ -395,6 +395,7 @@ body, html {
     display: flex;
     flex-direction: column;
     gap: 0px;
+    justify-content: space-evenly; 
 }
 
 .sidebar-title {
