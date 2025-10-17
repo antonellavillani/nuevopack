@@ -113,9 +113,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <script src="../js/script.js"></script>
 
 <script>
-        document.addEventListener("DOMContentLoaded", function() {
-    initValidacionPassword(".formulario-admin");
-});
+    document.addEventListener("DOMContentLoaded", function() {
+        initValidacionResetPassword("#form-usuario-crear");
+    });
 </script>
 </body>
 </html>

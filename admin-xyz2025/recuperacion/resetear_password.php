@@ -110,6 +110,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <input type="hidden" name="origen" value="<?= htmlspecialchars($origen) ?>">
 
                 <button type="submit" class="btn_guardar_resetear_password">Restablecer</button>
+                
+                <p id="error-contrasena" style="display:none;color:red;"></p>
             </form>
         <?php endif; ?>
     </div>
@@ -119,7 +121,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-    initValidacionPassword(".formulario-admin_resetear_password");
+    initValidacionResetPassword(".formulario-admin_resetear_password");
+    initEnvioResetPassword();
 });
 </script>
 </body>

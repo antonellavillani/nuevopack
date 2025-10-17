@@ -297,11 +297,14 @@ function initModalDescripcion() {
 }
 
 // -------- Validar contraseñas al crear usuario o modificar contraseña existente ------------
-function initValidacionPassword(selectorFormulario) {
-    const inputPassword = document.getElementById('password');
-    const inputRepetir = document.getElementById('repetir_password');
-    const errorCoincidencia = document.getElementById('errorCoincidencia');
-    const errorContrasena = document.getElementById('error-contrasena');
+function initValidacionResetPassword(selectorFormulario) {
+    const form = document.querySelector(selectorFormulario);
+    if (!form) return;
+
+    const inputPassword = form.querySelector('#password');
+    const inputRepetir = form.querySelector('#repetir_password');
+    const errorCoincidencia = form.querySelector('#errorCoincidencia');
+    const errorContrasena = form.querySelector('#error-contrasena');
 
     if (!inputPassword || !inputRepetir || !errorCoincidencia || !errorContrasena) return;
 
@@ -316,7 +319,6 @@ function initValidacionPassword(selectorFormulario) {
     function actualizarEstado(id, cumplido) {
         const elem = document.getElementById(id);
         if (!elem) return;
-
         const textoBase = elem.textContent.replace(/^✅ |^❌ /, "");
         elem.textContent = (cumplido ? "✅ " : "❌ ") + textoBase;
         elem.style.color = cumplido ? "green" : "gray";
@@ -328,7 +330,7 @@ function initValidacionPassword(selectorFormulario) {
         for (const id in reglas) {
             actualizarEstado(id, reglas[id](pass));
         }
-        errorContrasena.style.display = "none"; // Limpiar mensaje
+        errorContrasena.style.display = "none";
     });
 
     inputRepetir.addEventListener('input', () => {
@@ -338,12 +340,13 @@ function initValidacionPassword(selectorFormulario) {
                 : 'none';
     });
 
-    document.querySelector(selectorFormulario)?.addEventListener('submit', (e) => {
+    form.addEventListener('submit', (e) => {
         const pass = inputPassword.value;
         const repetir = inputRepetir.value;
         const cumpleTodo = Object.values(reglas).every(fn => fn(pass));
 
         if (!cumpleTodo) {
+            e.preventDefault();
             errorContrasena.textContent = "La contraseña no cumple con los requisitos.";
             errorContrasena.style.display = "block";
             errorContrasena.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -356,7 +359,7 @@ function initValidacionPassword(selectorFormulario) {
 }
 
 // ---------------------- Form Resetear Contraseña ----------------------
-function initFormularioResetPassword() {
+function initEnvioResetPassword() {
     const form = document.querySelector('.formulario-admin_resetear_password');
     if (!form) return;
 
