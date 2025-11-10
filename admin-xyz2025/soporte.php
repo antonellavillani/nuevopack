@@ -1,10 +1,5 @@
 <?php
-session_start();
-if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
-    header("Location: ../index.php");
-    exit();
-}
-
+require_once('includes/auth_admin.php');
 include ("includes/header.php");
 ?>
 

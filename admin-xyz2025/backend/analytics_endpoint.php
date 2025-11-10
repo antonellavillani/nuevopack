@@ -1,11 +1,5 @@
 <?php
-session_start();
-if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
-    http_response_code(403);
-    echo json_encode(['error' => 'No autorizado']);
-    exit();
-}
-
+require_once('../includes/auth_admin.php');
 require_once __DIR__ . '/../analytics/ga_client.php';
 
 $ga = new GAClient();

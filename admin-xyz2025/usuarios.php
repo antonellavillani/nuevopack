@@ -1,10 +1,5 @@
 <?php
-session_start();
-if (!isset($_SESSION['admin_logged_in'])) {
-    header("Location: ../index.php");
-    exit();
-}
-
+require_once('includes/auth_admin.php');
 require_once '../config/config.php';
 
 // Obtener todos los usuarios especiales
@@ -57,7 +52,13 @@ include ("includes/header.php");
                         <td><?= htmlspecialchars($usuario['nombre']) ?></td>
                         <td><?= htmlspecialchars($usuario['apellido']) ?></td>
                         <td><?= htmlspecialchars($usuario['email']) ?></td>
-                        <td><?= htmlspecialchars($usuario['telefono']) ?></td>
+                        <?php
+                        $telefono = $usuario['telefono'];
+                        $telefonoLimpio = ($telefono === null || strtolower(trim($telefono)) === 'null' || trim($telefono) === '') 
+                            ? 'No cargado' 
+                            : htmlspecialchars($telefono);
+                        ?>
+                        <td><?= $telefonoLimpio ?></td>
                         <td>
                             <?= $usuario['aprobado'] ? 'Aprobado' : 'No aprobado' ?>
                         </td>

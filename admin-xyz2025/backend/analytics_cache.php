@@ -1,11 +1,5 @@
 <?php
-session_start();
-if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
-    http_response_code(403);
-    echo json_encode(['error' => 'No autorizado']);
-    exit();
-}
-
+require_once('../includes/auth_admin.php');
 $cacheFile = __DIR__ . '/../cache/ga.json';
 $cacheTime = 600; // 10 minutos
 

@@ -1,10 +1,5 @@
 <?php
-session_start();
-if (!isset($_SESSION['admin_logged_in'])) {
-    header("Location: ../../login.php");
-    exit();
-}
-
+require_once('../includes/auth_admin.php');
 require_once '../../config/config.php';
 
 // Obtener lista de servicios
@@ -47,6 +42,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>Agregar Precio | Panel de Administración NuevoPack</title>
+    <link rel="icon" href="/favicon.ico?v=3" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.ico?v=3" type="image/x-icon">
     <link rel="stylesheet" href="../estilos/estilos_admin.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>

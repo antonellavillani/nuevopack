@@ -1,10 +1,5 @@
 <?php
-session_start();
-if (!isset($_SESSION['admin_logged_in'])) {
-    header("Location: ../../index.php");
-    exit();
-}
-
+require_once('../includes/auth_admin.php');
 require_once '../../config/config.php';
 
 $id = $_GET['id'] ?? null;

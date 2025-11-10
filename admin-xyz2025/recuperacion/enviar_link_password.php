@@ -1,11 +1,6 @@
 <?php
-session_start();
 header('Content-Type: application/json');
-
-if (!isset($_SESSION['admin_logged_in'])) {
-    echo json_encode(['ok' => false, 'msg' => 'No autorizado']);
-    exit();
-}
+require_once('../includes/auth_admin.php');
 
 require_once '../../config/config.php';
 require_once '../config_secrets.php';
@@ -35,7 +30,7 @@ try {
     if ($resultado === true) {
         echo json_encode([
             'ok' => true,
-            'msg' => 'Usuario actualizado correctamente.'
+            'msg' => 'Link enviado correctamente.'
         ]);
     } else {
         echo json_encode([

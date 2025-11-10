@@ -1,10 +1,5 @@
 <?php
-session_start();
-if (!isset($_SESSION['admin_logged_in'])) {
-    header("Location: ../../index.php");
-    exit();
-}
-
+require_once('../includes/auth_admin.php');
 require_once '../../config/config.php';
 require_once '../../admin-xyz2025/config_secrets.php';
 require_once '../../admin-xyz2025/utils/mail_helper.php';
@@ -81,6 +76,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>Editar Usuario | Panel de Administración NuevoPack</title>
+    <link rel="icon" href="/favicon.ico?v=3" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.ico?v=3" type="image/x-icon">
     <link rel="stylesheet" href="../estilos/estilos_admin.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
@@ -107,8 +104,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <p class="mensaje-advertencia" id="error-email"></p>
 
             <label>Teléfono:</label>
-            <input type="text" name="telefono" value="<?= htmlspecialchars($usuario['telefono']) ?>" oninput="this.value=this.value.replace(/[^0-9]/g,'')">
-
+            <?php 
+                $telefono = $usuario['telefono'];
+                $telefonoValue = ($telefono === null || strtolower(trim($telefono)) === 'null' || trim($telefono) === '') 
+                    ? '' 
+                    : htmlspecialchars($telefono);
+            ?>
+            <input 
+                type="text" 
+                name="telefono" 
+                value="<?= $telefonoValue ?>" 
+                placeholder="No cargado" 
+                oninput="this.value=this.value.replace(/[^0-9]/g,'')">
+                
             <label>
                 <input type="checkbox" name="aprobado" <?= $usuario['aprobado'] ? 'checked' : '' ?>>
                 Usuario aprobado
