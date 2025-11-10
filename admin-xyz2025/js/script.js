@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     initSoporteFormulario(); // Envío AJAX del formulario de soporte con spinner y mensajes
     initModalDescripcion(); // Modal Descripción de Servicios
     initFormularioResetPassword(); // Form Resetear Contraseña
-    initFormularioResetPassword(); // Form Editar Usuario + spinner
+    initEnvioResetPassword(); // Form Editar Usuario + spinner
     initLogoutModal(); // Modal para cerrar sesión
     initRecuperarPassword() // Envío AJAX para recuperar contraseña
 
